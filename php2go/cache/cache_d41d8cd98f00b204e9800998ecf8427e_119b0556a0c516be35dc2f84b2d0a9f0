@@ -1,0 +1,73 @@
+                      -269695319a:1:{s:71:"cache_d41d8cd98f00b204e9800998ecf8427e_cb585d470a91cb21fa59ef32d71453b0";s:6221:"a:4:{s:6:"tplDef";a:4:{s:5:"_ROOT";a:15:{s:3:"C:0";s:30:"<style type="text/css">
+	DIV ";s:3:"C:1";s:56:"{
+		font-family: Verdana;background-color: #88bbee;
+	}";s:3:"C:2";s:10:" 
+	TD,TH ";s:3:"C:3";s:66:"{
+		font-family: Verdana;font-size: 11px;vertical-align: top;
+	}";s:3:"C:4";s:10:" 
+	TABLE ";s:3:"C:5";s:44:"{
+		border: 1px solid #000000;padding: 4px}";s:3:"C:6";s:6:" SPAN ";s:3:"C:7";s:39:"{font-size: 16px;font-weight: bold;
+	}";s:3:"C:8";s:89:"
+</style>
+<br>
+<span>
+	<!-- example of internacionalization -->
+	Hello World!<br>
+	";s:3:"V:0";s:10:"simple_var";s:3:"C:9";s:21:"
+</span>
+<br><br>
+";s:17:"B:modifiers_block";N;s:4:"C:27";s:68:"
+
+<table width="779" cellpadding="0" cellspacing="0" border="0">
+";s:15:"B:example_block";N;s:4:"C:34";s:13:"
+	
+</table>";}s:15:"modifiers_block";a:33:{s:4:"C:10";s:204:"
+
+<div>
+<table width="100%" border="0">
+  <tr>
+	<!-- simple string modifiers: capitalize (StringUtils::capitalize) and truncate (StringUtils::truncate) -->
+	<td width="50%">Capitalize string:<br><b>";s:3:"V:1";s:13:"simple_string";s:4:"C:11";s:51:"</b></td>
+	<td width="50%">Truncate string:<br><b>";s:3:"V:2";s:10:"big_string";s:4:"C:12";s:144:"</b></td>
+  </tr>
+  <tr>
+	<!-- trim, normalize (StringUtils::normalize) and upper (strtoupper) -->
+    <td>Trim, normalize and upper:<br><b>";s:3:"V:3";s:10:"raw_string";s:4:"C:13";s:152:"</b></td>
+	<!-- escape (StringUtils::escape), nl2br and filter (StringUtils::filter) -->
+	<td rowspan="2">Escape, convert new lines and filter:<br><b>";s:3:"V:4";s:20:"raw_string_multiline";s:4:"C:14";s:109:"</b></td>
+  </tr>
+  <tr>
+    <!-- implode a list of values using a given glue -->
+    <td>Implode:<br><b>";s:3:"V:5";s:5:"array";s:4:"C:15";s:119:"</b></td>
+  </tr>  
+  <tr>
+	<!-- format timestamp, using Date::formatTime -->
+	<td>Format current timestamp:<br><b>";s:3:"V:6";s:9:"timestamp";s:4:"C:16";s:104:"</b></td>
+	<!-- convert date, in this case using Date::fromSqlToEuroDate -->
+	<td>Convert date:<br><b>";s:3:"V:7";s:8:"sql_date";s:4:"C:17";s:114:"</b></td>
+  </tr>
+  <tr>
+	<!-- build a mailto link, using HtmlUtils::mailtoAnchor -->
+	<td>Mailto link:<br><b>";s:3:"V:8";s:4:"mail";s:4:"C:18";s:113:"</b></td>
+	<!-- parse links of a given string, using HtmlUtils::parseLinks -->
+	<td>Parse links in text:<br><b>";s:3:"V:9";s:10:"text_links";s:4:"C:19";s:59:"</b></td>
+  </tr>
+  <tr>  
+    <td>Number format:<br><b>";s:4:"V:10";s:6:"number";s:4:"C:20";s:39:"</b></td>
+	<td>Currency format:<br><b>";s:4:"V:11";s:6:"number";s:4:"C:21";s:168:"</b></td>
+  </tr>
+  <tr>
+    <!-- file name modifiers, based on the absolute path: basename, size and last modified time -->
+	<td>File properties:<br><b>Base name: ";s:4:"V:12";s:4:"file";s:4:"C:22";s:10:"<br>Size: ";s:4:"V:13";s:4:"file";s:4:"C:23";s:24:"<br>Last modified date: ";s:4:"V:14";s:4:"file";s:4:"C:24";s:35:"</b></dl></td>
+	<td>Image Tag:<br>";s:4:"V:15";s:3:"img";s:4:"C:25";s:93:"</td>
+  </tr>
+</table>
+</div><br>
+<!-- html table rendering, using HtmlUtils::table -->
+";s:4:"V:16";s:4:"data";s:4:"C:26";s:6:"<br>
+";}s:13:"example_block";a:7:{s:4:"C:28";s:40:"
+	<tr>
+		<td align="left" width="30%">";s:4:"V:17";s:3:"foo";s:4:"C:29";s:38:"</td>
+		<td align="left" width="50%">";s:4:"V:18";s:3:"bar";s:4:"C:30";s:5:"</td>";s:13:"B:inner_block";N;s:4:"C:33";s:8:"
+	</tr>";}s:11:"inner_block";a:3:{s:4:"C:31";s:34:"
+		<td align="right" width="20%">";s:4:"V:19";s:3:"baz";s:4:"C:32";s:5:"</td>";}}s:11:"blockParent";a:3:{s:15:"modifiers_block";s:5:"_ROOT";s:13:"example_block";s:5:"_ROOT";s:11:"inner_block";s:13:"example_block";}s:10:"blockIndex";a:4:{s:5:"_ROOT";i:0;s:15:"modifiers_block";i:0;s:13:"example_block";i:0;s:11:"inner_block";i:0;}s:12:"varModifiers";a:20:{s:3:"V:0";a:0:{}s:3:"V:1";a:1:{s:10:"capitalize";a:2:{i:0;a:2:{i:0;s:11:"StringUtils";i:1;s:10:"capitalize";}i:1;s:0:"";}}s:3:"V:2";a:1:{s:8:"truncate";a:2:{i:0;a:2:{i:0;s:11:"StringUtils";i:1;s:8:"truncate";}i:1;s:4:", 40";}}s:3:"V:3";a:3:{s:4:"trim";a:2:{i:0;s:4:"trim";i:1;s:0:"";}s:9:"normalize";a:2:{i:0;a:2:{i:0;s:11:"StringUtils";i:1;s:9:"normalize";}i:1;s:0:"";}s:5:"upper";a:2:{i:0;s:10:"strtoupper";i:1;s:0:"";}}s:3:"V:4";a:3:{s:6:"escape";a:2:{i:0;a:2:{i:0;s:11:"StringUtils";i:1;s:6:"escape";}i:1;s:11:", "htmlall"";}s:5:"nl2br";a:2:{i:0;s:5:"nl2br";i:1;s:0:"";}s:6:"filter";a:2:{i:0;a:2:{i:0;s:11:"StringUtils";i:1;s:6:"filter";}i:1;s:14:", "blank", " "";}}s:3:"V:5";a:1:{s:7:"implode";a:2:{i:0;a:2:{i:0;s:11:"StringUtils";i:1;s:7:"implode";}i:1;s:6:", ", "";}}s:3:"V:6";a:1:{s:11:"format_time";a:2:{i:0;a:2:{i:0;s:4:"Date";i:1;s:10:"formatTime";}i:1;s:37:", DATE_FORMAT_CUSTOM, "D d/m/Y H:i:s"";}}s:3:"V:7";a:1:{s:13:"date_sql_euro";a:2:{i:0;a:2:{i:0;s:4:"Date";i:1;s:17:"fromSqlToEuroDate";}i:1;s:0:"";}}s:3:"V:8";a:1:{s:6:"mailto";a:2:{i:0;a:2:{i:0;s:9:"HtmlUtils";i:1;s:12:"mailtoAnchor";}i:1;s:54:", "Send Mail", "Click here to send me a mail message!"";}}s:3:"V:9";a:1:{s:11:"parse_links";a:2:{i:0;a:2:{i:0;s:9:"HtmlUtils";i:1;s:10:"parseLinks";}i:1;s:0:"";}}s:4:"V:10";a:1:{s:13:"number_format";a:2:{i:0;s:13:"number_format";i:1;s:12:", 3, ".", """;}}s:4:"V:11";a:1:{s:16:"decimal_currency";a:2:{i:0;a:2:{i:0;s:6:"Number";i:1;s:21:"fromDecimalToCurrency";}i:1;s:0:"";}}s:4:"V:12";a:1:{s:13:"file_basename";a:2:{i:0;s:8:"basename";i:1;s:0:"";}}s:4:"V:13";a:1:{s:9:"file_size";a:2:{i:0;s:8:"filesize";i:1;s:0:"";}}s:4:"V:14";a:2:{s:13:"last_modified";a:2:{i:0;a:2:{i:0;s:10:"FileSystem";i:1;s:12:"lastModified";}i:1;s:0:"";}s:11:"format_time";a:2:{i:0;a:2:{i:0;s:4:"Date";i:1;s:10:"formatTime";}i:1;s:20:", DATE_FORMAT_RFC822";}}s:4:"V:15";a:1:{s:5:"image";a:2:{i:0;a:2:{i:0;s:9:"HtmlUtils";i:1;s:5:"image";}i:1;s:28:", "Hi there!", 120, 63, 4, 6";}}s:4:"V:16";a:2:{s:5:"table";a:2:{i:0;a:2:{i:0;s:9:"HtmlUtils";i:1;s:5:"table";}i:1;s:152:", true, "width=\"100%\"", "style=\"background-color:#b2b2b2\"", "style=\"background-color:#f2f2f2\"", "style=\"background-color:#000000;color:#ffffff\""";}s:11:"scroll_area";a:2:{i:0;a:2:{i:0;s:9:"HtmlUtils";i:1;s:14:"scrollableArea";}i:1;s:10:", 779, 200";}}s:4:"V:17";a:1:{s:8:"surround";a:2:{i:0;a:2:{i:0;s:11:"StringUtils";i:1;s:8:"surround";}i:1;s:12:", "[ ", " ]"";}}s:4:"V:18";a:0:{}s:4:"V:19";a:0:{}}}";}

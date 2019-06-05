@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!-- Form60 : template used in AddUser.php -->
+<!DOCTYPE form SYSTEM "..\..\docs\dtd\php2go_forms.dtd">
+<form >
+
+
+	<section name="My Section" id="commLevels" required_flag="T" required_color="#FF0000" required_char="*">
+        <!-- row1 estate name, number, delivery date-->
+
+		<hiddenfield name="pageid" value="39"/>
+		<hiddenfield name = "levels"  value = "0" />	
+		<hiddenfield name = "bcldb_levels"  value = "0" />
+		<hiddenfield name = "bonus"  value = "0" />
+		<hiddenfield name = "is_save"  value = "0" />
+		<hiddenfield name = "is_bcldb"  value = "0" />		
+		<hiddenfield name = "is_float"  value = "0" />
+		<hiddenfield name = "level"  value = "0" />
+		
+		<hiddenfield name = "pro2_levels"  value = "0" />
+
+      <!--section 3  other information -->
+        <!--col2 cinnussuib amount -->
+
+		<editfield name="min_intl_cases"   value="75" label="International wine cases"    size="7" length="25" required="T" tabindex="1"  autotrim="T" mask="Integer">
+			<listener type="JS" event="onblur" action="setCases(this,0)"/>
+		</editfield>
+		
+		<editfield name="min_canadian_cases"  value="50" label="Canadian wine cases"    size="7" length="25" required="T" tabindex="2"  autotrim="T" mask="Integer">
+			<listener type="JS" event="onblur" action="setCases(this,1)"/>
+		</editfield>
+		
+		<editfield name="bonus_d" label="Bonus for minimum target" tabindex="3" size="7" length="25" >
+			<listener type="JS" event="onblur" action="setPrice(this,4)"/>
+			<listener type="JS" event="onKeyPress" action="return chkFLOAT4B(this,event);"/>
+		</editfield>
+		
+		<editfield name="min_cases1"   label="Cases"    size="10" length="25"  tabindex="4"  autotrim="T" mask="Integer"/>	
+		
+		<editfield name="max_cases1"   label="Cases"    size="10" length="25"  tabindex="5"  autotrim="T" mask="Integer">
+			<listener type="JS" event="onblur" action="setCases(this,2)"/>
+		</editfield>
+		
+		<editfield name="comm1"     label="Commission %"    size="13" length="25"  tabindex="6" autotrim="T" mask="float">
+			<listener type="JS" event="onblur" action="checkOverComm(this,1)"/>
+		</editfield>
+		
+		<editfield name="min_cases2"   label="Cases"    size="10" length="25"  tabindex="7"  autotrim="T" mask="Integer"/>
+		<editfield name="max_cases2"   label="Cases"    size="10" length="25"  tabindex="8"  autotrim="T" mask="Integer">
+			<listener type="JS" event="onblur" action="setCases(this,3)"/>
+		</editfield>
+		
+		<editfield name="comm2"     label="Commission %"    size="13" length="25" tabindex="9" autotrim="T" mask="float">
+			<listener type="JS" event="onblur" action="checkOverComm(this,2)"/>
+		</editfield>
+		
+		<editfield name="min_cases3"   label="Cases"   size="10" length="25"  tabindex="10"  autotrim="T" mask="Integer"/>
+		
+		<editfield name="max_cases3"   label="Cases"     size="10" length="25"  tabindex="11"  autotrim="T" mask="Integer">
+			<listener type="JS" event="onblur" action="setCases(this,4)"/>
+		</editfield>
+		
+		<editfield name="comm3"     label="Commission %"    size="13" length="25"  tabindex="12" autotrim="T" mask="float">
+			<listener type="JS" event="onblur" action="checkOverComm(this,3)"/>
+		</editfield>
+		
+		
+		<editfield name="min_cases4"   label="Cases"    size="10" length="25"  tabindex="13"  autotrim="T" mask="Integer"/>
+		
+		<editfield name="max_cases4"   label="Cases"    size="10" length="25"  tabindex="14"  autotrim="T" mask="Integer">
+			<listener type="JS" event="onblur" action="setCases(this,5)"/>
+		</editfield>
+		
+		<editfield name="comm4"     label="Commission %"     size="13" length="25"  tabindex="15" autotrim="T" mask="float">
+			<listener type="JS" event="onblur" action="checkOverComm(this,4)"/>
+		</editfield>
+		
+		<editfield name="min_cases5"   label="Cases"    size="10" length="25"  tabindex="16"  autotrim="T" mask="Integer"/>
+		
+		<editfield name="max_cases5"   label="Cases"     size="10" length="25"  tabindex="17"  autotrim="T" mask="Integer">
+			<listener type="JS" event="onblur" action="setCases(this,6)"/>
+		</editfield>
+		
+		<editfield name="comm5"     label="Commission %"    size="13" length="25"  tabindex="18" autotrim="T" mask="float">
+			<listener type="JS" event="onblur" action="checkOverComm(this,5)"/>
+		</editfield>
+
+
+<!--BCLDB commissions-->
+		<editfield name="sales_1"   label="Sales"    	size="10" length="25"  tabindex="19"  autotrim="T" mask="Integer"/>
+		<editfield name="bonus_1"   label="Commission"  size="13" length="25"  tabindex="20" autotrim="T" mask="float"/>
+		
+		
+		<editfield name="sales_2"   label="Sales"    	size="10" length="25"  tabindex="21"  autotrim="T" mask="Integer"/>
+		<editfield name="bonus_2"   label="Commission"  size="13" length="25"  tabindex="22" autotrim="T" mask="float"/>
+		
+		<editfield name="sales_3"   label="Sales"    	size="10" length="25"  tabindex="23"  autotrim="T" mask="Integer"/>
+		<editfield name="bonus_3"   label="Commission"    size="13" length="25"  tabindex="24" autotrim="T" mask="float"/>
+		
+		<editfield name="sales_4"   label="Sales"    	size="10" length="25"  tabindex="25"  autotrim="T" mask="Integer"/>
+		<editfield name="bonus_4"   label="Commission"    size="13" length="25"  tabindex="26" autotrim="T" mask="float"/>
+		
+		<editfield name="sales_5"   label="Sales"    	size="10" length="25"  tabindex="27"  autotrim="T" mask="Integer"/>
+		<editfield name="bonus_5"    label="Commission"    size="13" length="25"  tabindex="27" autotrim="T" mask="float"/>
+		
+		<editfield name="sales_6"   label="Sales"    	size="10" length="25"  tabindex="27"  autotrim="T" mask="Integer"/>
+		<editfield name="bonus_6"    label="Commission"    size="13" length="25"  tabindex="27" autotrim="T" mask="float"/>
+    
+		<editfield name="sales_7"   label="Sales"    	size="10" length="25"  tabindex="27"  autotrim="T" mask="Integer"/>
+		<editfield name="bonus_7"    label="Commission"    size="13" length="25"  tabindex="27" autotrim="T" mask="float"/>
+		<editfield name="sales_8"   label="Sales"    	size="10" length="25"  tabindex="27"  autotrim="T" mask="Integer"/>
+		<editfield name="bonus_8"    label="Commission"    size="13" length="25"  tabindex="27" autotrim="T" mask="float"/>
+		<editfield name="sales_9"   label="Sales"    	size="10" length="25"  tabindex="27"  autotrim="T" mask="Integer"/>
+		<editfield name="bonus_9"    label="Commission"    size="13" length="25"  tabindex="27" autotrim="T" mask="float"/>
+		<editfield name="sales_10"   label="Sales"    	size="10" length="25"  tabindex="27"  autotrim="T" mask="Integer"/>
+		<editfield name="bonus_10"    label="Commission"    size="13" length="25"  tabindex="27" autotrim="T" mask="float"/>
+
+<!--Alberta commissions-->
+		<editfield name="sales_1_pro_2"   label="Cases"    size="10" length="25"  tabindex="19"  autotrim="T" mask="Integer"/>
+		<editfield name="bonus_1_pro_2"   label="Commission"    size="13" length="25"  tabindex="20" autotrim="T" mask="float"/>
+		
+		<editfield name="sales_2_pro_2"   label="Cases"    size="10" length="25"  tabindex="21"  autotrim="T" mask="Integer"/>		
+		<editfield name="bonus_2_pro_2"   label="Commission"    size="13" length="25"  tabindex="22" autotrim="T" mask="float"/>
+		
+		<editfield name="sales_3_pro_2"   label="Cases"    size="10" length="25"  tabindex="23"  autotrim="T" mask="Integer"/>
+		<editfield name="bonus_3_pro_2"   label="Commission"    size="13" length="25"  tabindex="24" autotrim="T" mask="float"/>
+		
+		<editfield name="sales_4_pro_2"   label="Cases"    size="10" length="25"  tabindex="25"  autotrim="T" mask="Integer"/>
+		<editfield name="bonus_4_pro_2"   label="Commission"    size="13" length="25"  tabindex="266" autotrim="T" mask="float"/>
+		
+		<editfield name="sales_5_pro_2"   label="Cases"    size="10" length="25"  tabindex="27"  autotrim="T" mask="Integer"/>
+		<editfield name="bonus_5_pro_2"   label="Commission"    size="13" length="25"  tabindex="28" autotrim="T" mask="float"/>
+
+
+            <!--buttons note -->
+		<buttons>
+			<button name="btnAdd" type="BUTTON"  value="OK" tabindex="29"/>
+     		<button name="btnCancel" type="BUTTON" value="Cancel" tabindex="30"/>
+		</buttons>
+
+
+	</section>
+
+</form>
+
+
+
+	<!-- Form60 : template used in addestate.php -->

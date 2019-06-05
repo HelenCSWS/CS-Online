@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE form SYSTEM "..\..\docs\dtd\php2go_forms.dtd">
+<form >
+    
+	<section name="" id="searchf60" required_flag="T" required_color="#FF0000" required_char="*">
+                <hiddenfield name="search_id" value="0"/>
+                <hiddenfield name="search_id_w" value="0"/>
+                <hiddenfield name="contact_key" value="1"/>
+                <hiddenfield name="isWine" value="0"/>
+                <hiddenfield name="isQtr" value="0"/>
+                <hiddenfield name="isStart" value="0"/>                
+	
+				<hiddenfield name="province_id" value="1"/>
+				
+				<editfield name="search_field" label="Search for" tabindex="1" size="28" length="225" value="">
+				    <listener type="JS" event="onKeyPress" action="handleEnter(this, event, gosearch)"/>
+				</editfield>
+				
+				<editfield name="street_name"   size="28" length="225" Disabled="T"/>
+		
+		<lookupfield name="lkup_store_type_id" default="1" label="Store type" nofirst="T" multiple="F" size="1" width="150" disabled="F" tabindex="4">
+			<datasource>
+				<keyfield>lkup_store_type_id</keyfield>
+                                <displayfield>license_name</displayfield>
+                                <orderby>license_name</orderby>
+                                <clause>province_id =~current_province_id~</clause>
+				<lookuptable>lkup_store_types</lookuptable>
+			</datasource>
+		</lookupfield>
+
+		<lookupfield name="user_id" label="Assigned to" nofirst="T" multiple="F" size="1" width="150" disabled="T" tabindex="4">
+			<datasource>
+				<keyfield>user_id</keyfield>
+                                <displayfield>concat(first_name,' ',last_name)</displayfield>
+                                <orderby>first_name</orderby>                               
+                                <clause>deleted=0 and lkup_user_type_id =1 and (province_id=-1 or province_id = ~current_user_province_id~) or user_id =0</clause>
+				<lookuptable>users</lookuptable>
+			</datasource>
+		</lookupfield>
+
+		<lookupfield name="estate_id" nofirst="T" multiple="F" size="1" width="200" disabled="T" tabindex="4" label="Estates" default="2">
+			<datasource>
+				<keyfield>estate_id</keyfield>
+                                <displayfield>estate_name</displayfield>
+                                <orderby>billing_address_country, estate_name</orderby>
+                                <clause> (~BC_ESTATES~ billing_address_country = 'CSWS Products') and deleted =0</clause>
+                                <!-- clause> (billing_address_country = 'Canada' or billing_address_country = 'CSWS Products') and deleted =0</clause -->
+				<lookuptable>estates</lookuptable>
+			</datasource>
+		</lookupfield>
+		
+		
+     <combofield name="contact" default="2" nofirst="T">
+        <option value="1" caption="First" />
+          <option value="2" caption="Last" />
+          <listener event="onChange" type="JS" action="changeName(this.value);" />
+      </combofield>
+      
+      
+      <combofield name="product_id" default="12" nofirst="T" width="120">
+        <option value="1" caption="Wine" />
+          <option value="2" caption="Beer" />
+          <option value="3" caption="Sake" />
+          <option value="4" caption="Spirits" />
+          <listener event="onChange" type="JS" action="setProductId(this.value);" />
+      </combofield>
+      
+      
+
+<!-- 2 section-->
+	<editfield name="search_field_w" label="Search for" tabindex="1" size="28" length="225" >
+        <listener type="JS" event="onKeyPress" action="handleEnter(this, event, searchWines)"/>
+    </editfield>
+	
+	<editfield name="city"   size="12" length="225" Disabled="F" tabindex="2" value="">
+		<listener type="JS" event="onKeyPress" action="handleEnter(this, event, searchWines)"/>
+	</editfield>
+	
+	<combofield name="sales_month" label="Month" width="94" tabindex="13" nofirst="T" disabled="T">
+          <option value="1" caption="January" />
+          <option value="2" caption="February" />
+          <option value="3" caption="March" />
+          <option value="4" caption="April" />
+          <option value="5" caption="May" />
+          <option value="6" caption="June" />
+          <option value="7" caption="July" />
+          <option value="8" caption="August" />
+          <option value="9" caption="September" />
+          <option value="10" caption="October" />
+          <option value="11" caption="November" />
+          <option value="12" caption="December" />
+	</combofield>
+    
+      
+	<combofield name="sales_year" label="Year" width="68" tabindex="13" nofirst="T" default="2019">
+	
+		<option value="2014" caption="2014" />
+		<option value="2015" caption="2015" />
+		<option value="2016" caption="2016" />
+		<option value="2017" caption="2017" />
+		<option value="2018" caption="2018" />
+        <option value="2019" caption="2019" />
+		<option value="-1" caption="All" />
+	</combofield>
+      
+	<combofield name="sales_qut" label="" width="78" tabindex="13" disabled="F" nofirst="T" default="-1">
+	  <option value="1" caption="First" />
+	  <option value="2" caption="Second" />
+	  <option value="3" caption="Third" />
+	  <option value="4" caption="Fourth" />
+	  <option value="-1" caption="YTD" />
+	  <listener type="JS" event="onChange" action="setQuarterDesc()"/>
+	</combofield>
+      
+    <editField class="Lable" name="quarter_desc" tabindex="1" value="   " readonly="T" size="20"/>
+      
+      
+	<combofield name="lkup_store_type_id_w" label="Store type" nofirst="F" multiple="F" size="1" width="140" disabled="F" tabindex="4" default ="-1">      
+		
+	</combofield>
+     <!--lookupfield name="lkup_store_type_id_w" label="Store type" nofirst="F" multiple="F" size="1" width="140" disabled="F" tabindex="4">
+			<datasource>
+				<keyfield>lkup_store_type_id</keyfield>
+                                <displayfield>license_name</displayfield>
+                                <orderby>license_name</orderby>
+                                <clause>province_id =~current_province_id~</clause>
+				<lookuptable>lkup_store_types</lookuptable>
+			</datasource>
+		</lookupfield-->
+		
+
+		<lookupfield name="user_id_w" label="Assigned to" nofirst="F" multiple="F" size="1" width="140" disabled="F" tabindex="4">
+			<datasource>
+				<keyfield>user_id</keyfield>
+                                <displayfield>concat(first_name,' ',last_name)</displayfield>
+                                <orderby>first_name</orderby>
+                                <clause>deleted=0 and lkup_user_type_id =1 and (province_id=-1 or province_id = ~current_user_province_id~)</clause>
+				<lookuptable>users</lookuptable>
+			</datasource>
+		</lookupfield>
+		
+		<combofield name="is_purchased" label="" width="108" tabindex="18" disabled="F" nofirst="T">
+          <option value="1" caption="Purchased" />
+          <option value="2" caption="Not purchased" />        
+      </combofield>
+      
+      <combofield name="cm_number" label="" width="48" tabindex="18" disabled="F" nofirst="T">
+          <option value="5" caption="5" />
+          <option value="10" caption="10" />
+          <option value="15" caption="15" />
+          <option value="20" caption="20" />
+          <option value="25" caption="25" />
+          <option value="50" caption="50" />
+          <option value="100" caption="100" />
+
+      </combofield>
+      
+      <combofield name="wine_number" label="" width="48" tabindex="18" disabled="F" nofirst="T">
+          <option value="5" caption="5" />
+          <option value="10" caption="10" />
+          <option value="15" caption="15" />
+          <option value="20" caption="20" />
+          <option value="25" caption="25" />
+          <option value="50" caption="50" />
+          <option value="100" caption="100" />
+          <option value="-1" caption="All" />
+
+      </combofield>
+      
+      <combofield name="lkup_wine_color_type_id" label="Type"  tabindex="4" default="-1" nofirst="F" multiple="F" size="1" width="90" >
+          
+           
+        </combofield>
+        
+        <combofield name="sku_name" label="" width="98" tabindex="18" disabled="F" nofirst="T">
+          <option value="1" caption="SKU/CSPC" />
+          <option value="2" caption="Product name" />        
+      </combofield>
+			
+<!-- 2 section end here-->
+
+
+		<buttons>
+    		<button name="btnSearch" type="BUTTON" value="Search" tabindex="2">
+    		      <listener type="JS" event="onClick" action="gosearch()"/>
+    		</button>
+    		<button name="btnSearch_w" type="BUTTON" value="Search" tabindex="2">
+    		      <listener type="JS" event="onClick" action="searchWines()"/>
+    		</button>
+			<button name="btnClose" type="BUTTON" value="Cancel" tabindex="3"/>
+		</buttons>
+
+	</section>
+
+</form>
+

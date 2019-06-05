@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE form SYSTEM "..\..\docs\dtd\php2go_forms.dtd">
+<form >
+    
+	<section name="" id="selectperiod" required_flag="T" required_color="#FF0000" required_char="*">
+                <hiddenfield name="pageid" value="42"/>
+                <hiddenfield name="is_recreate" value="0"/>
+                <hiddenfield name="contact_key" value="1"/>
+                <hiddenfield name="province_id" value="~current_province_id~"/>
+
+
+      
+       <lookupfield name="sale_year"  lable="Year" tabindex="2"  nofirst="T" multiple="F" size="1" width="100" >
+            <datasource>
+                <keyfield>distinct year(sale_date)</keyfield>
+                        <displayfield>year(sale_date) sale_year </displayfield>
+                        <orderby>year(sale_date)</orderby>
+                        <clause>province_id=~current_province_id~ and year(sale_date)>2013</clause>
+                <lookuptable>ssds_sales</lookuptable>
+            </datasource>
+            
+            <listener type="JS" event="onChange" action="getMonthBySaleYear(this.value)"/>
+
+        </lookupfield>
+      
+      
+
+
+        <combofield lable="Month" name="sale_month" nofirst="T" width="100"  >
+ 			<listener type="JS" event="onChange" action="checkASAvaData();"/>
+        </combofield>
+	</section>
+
+</form>
+

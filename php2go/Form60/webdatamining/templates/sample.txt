@@ -1,0 +1,3 @@
+[$$YesterdayDate$$] = yyyy-mm-dd
+
+[$$LastMonth$$]=yyyy-mm

@@ -1,0 +1,60 @@
+<html>
+<head>
+<title>Untitled Document</title>
+<style TYPE="text/css">
+	Body { 
+            margin-left:0 ; margin-right:0 ;margin-bottom:0; margin-top:0; 
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+</style>
+<script language="javascript">
+
+// Add by Helen, check if it is logined by supplier, if it is, open "Supplier sales" page directly.
+function F60GetCookie(sName) 
+{
+    var re = new RegExp( "(\;|^)[^;]*(" + sName + ")\=([^;]*)(;|$)" );
+    var res = re.exec( document.cookie );
+    return res != null ? res[3] : null;
+}
+
+function checkUserLeve()
+{
+ 
+	if(F60GetCookie("F60_USER_LEVEL_ID")==5)
+	{
+	 	
+		link = "main.php?page_name=supplierSales";
+	
+		
+		document.location = link;
+		return false;
+	}
+	
+
+	
+}
+
+if (parent.childPageMousedown && parent.browser)
+{
+    if (parent.browser.isIE)
+    {
+        document.onmousedown = parent.childPageMousedown;
+    }
+    else
+        document.addEventListener("mousedown", parent.childPageMousedown, true);
+}
+
+
+
+
+
+</script>
+</head>
+
+<body style="height:100%;" bgcolor="white" text="black" background="resources/images/bigcenter_graphic.png" onload=checkUserLeve();>
+	
+</body>
+</html>
+
+

@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE form SYSTEM "..\..\docs\dtd\php2go_forms.dtd">
+<form>
+
+	<section name="CSProductAdd" id="CSProductAdd" required_flag="T" required_color="#FF0000" required_char="*">
+	
+        <hiddenfield name="pageid" value="57"/>
+        <hiddenfield name="editMode" value="0"/>
+        <hiddenfield name="product_id"/>
+        <hiddenfield name="product_ids"/>
+        <hiddenfield name="estate_id"/>
+        <hiddenfield name="isAddNew" value="0"/>
+        <hiddenfield name="isAdmin" value="0"/>
+        <hiddenfield name="delete_id" value="0"/>
+        <hiddenfield name="basicChanged" value="0"/>
+        <hiddenfield name="infoChanged" value="0"/>
+        
+        <hiddenfield name="user_level" value="4"/>
+        
+        <hiddenfield name="total_units" value="0"/>
+        
+        <hiddenfield name="current_province_id" value="1"/>
+        
+        
+         <hiddenfield name="isAddAnother" value="0"/>
+        
+
+
+           <!-- 0: unchecked, 1: checked but need to insert new, 2: checked for update  -->
+        <lookupfield name="province_id" label="Province"  default="1" nofirst="T" multiple="F" size="1" width="130" >
+            <datasource>
+                <keyfield>province_id</keyfield>
+                        <displayfield>province_name</displayfield>
+                        <orderby>province_name</orderby>       
+                        <clause>province_id!=0</clause>                
+                <lookuptable>lkup_provinces</lookuptable>
+            </datasource>
+            <listener type="JS" event="onchange" action="changeProductProvince(this.value);"/>
+        </lookupfield>
+        
+		<editfield name="product_name" label="Product name"   size="30" length="225">
+            <listener type="JS" event="onchange" action="setFormChange(0);"/>
+        </editfield>
+        
+        <editfield name="product_number" label="Model#"  size="13" length="10" >
+            <listener type="JS" event="onchange" action="setFormChange(0);"/>
+        </editfield>
+        
+		<editfield name="bottles_per_case" label="Units/cs"  size="13" length="3"  mask="INTEGER" value="1">
+            <listener type="JS" event="onchange" action="setFormChange(0);"/>
+        </editfield>
+
+
+        <lookupfield name="lkup_product_type_id" label="Type"  default="1" nofirst="T" multiple="F" size="1" width="120" >
+            <datasource>
+                <keyfield>lkup_product_type_id</keyfield>
+                        <displayfield>caption</displayfield>
+                        <orderby>display_name</orderby>
+                        <clause>~productTypeFilter~</clause>
+                <lookuptable>lkup_product_types</lookuptable>
+            </datasource>
+            <listener type="JS" event="onchange" action="setFormChange(0);"/>
+        </lookupfield>     
+  
+        <editfield name="display_price" label="Display price"  size="13" length="12"  value="0">            
+             <listener type="JS" event="onKeyPress" action="return chkFLOAT(this, event);"/>
+             <listener type="JS" event="onchange" action="setFormChange(1);"/>
+        </editfield>
+
+         <editfield name="special_price" label="Special price"  size="13" length="12" value="0">            
+             <listener type="JS" event="onKeyPress" action="return chkFLOAT(this, event);"/>
+             <listener type="JS" event="onchange" action="setFormChange(1);"/>
+        </editfield>
+
+         <editfield name="cost" label="Cost"    size="13" length="8" value="0">
+             <listener type="JS" event="onKeyPress" action="return chkFLOAT(this, event);"/>
+             <listener type="JS" event="onchange" action="setFormChange(1);"/>
+        </editfield>
+     
+	    <editfield name="commission" label="Commission/unit"  size="13" length="12" value="0">
+
+            <listener type="JS" event="onKeyPress" action="return chkFLOAT(this, event);"/>
+            <listener type="JS" event="onchange" action="setFormChange(1);"/>
+        </editfield>       
+     
+   		<editfield name="inventory" label="" size="13"  required="T"  mask="INTEGER" value="0"/>
+      
+        <buttons>       
+            <button name="btnAdd" type="BUTTON"  value="Save" />      
+            <button name="btnAddAnother" type="BUTTON"  value="Add new" />           
+            <button name="btnCancel" type="BUTTON" value="Close" />
+        </buttons>
+
+	</section>
+
+</form>
+

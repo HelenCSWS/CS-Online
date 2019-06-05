@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE form SYSTEM "..\..\docs\dtd\php2go_forms.dtd">
+
+<form>
+	<section name="Customer compare" id="customercompare" required_flag="T" required_color="#FF0000" required_char="*">
+        <hiddenfield name="pageid" value="26" />
+        <filefield name="file_name" label="File name" tabindex="1" size="80" length="256" maxfilesize="2M" allowedtypes="XLS" savename="upd_cust.xls" required="T"/>
+		<buttons>
+			<button name="btnAdd" type="BUTTON"  value="OK  " tabindex="9"/>
+			<button name="btnCancel" type="BUTTON" value="Cancel" tabindex="10"/>
+		</buttons>
+	</section>
+</form>

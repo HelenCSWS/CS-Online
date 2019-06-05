@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE form SYSTEM "..\..\docs\dtd\php2go_forms.dtd">
+<form >
+    
+	<section name="" id="selectStoreType" required_flag="T" required_color="#FF0000" required_char="*">
+                <hiddenfield name="users" value="1"/>
+                <hiddenfield name="period_id" value=""/>
+                <hiddenfield name="fiscal_year" value=""/>
+                <hiddenfield name="is_recreate" value="0"/>
+                 <hiddenfield name="store_type" value="-1"/>
+                 <hiddenfield name="current_user_id" value="-1"/>
+                
+
+
+        <combofield name="user_id"  Label="Select wine consultant" nofirst="F" multiple="F" size="1" width="247" tabindex="17">
+			
+		</combofield>
+
+
+       
+		<buttons>
+    		<button name="btnBack" type="BUTTON" value="Back" tabindex="2">
+    		      <listener type="JS" event="onClick" action="viewReports(0)"/>
+    		</button>
+
+   		<button name="btnView" type="BUTTON" value="Next" tabindex="2">
+    		      <listener type="JS" event="onClick" action="viewReports(2)"/>
+    		</button>
+			<button name="btnCancel" type="BUTTON" value="Cancel" tabindex="3"/>
+		</buttons>
+
+	</section>
+
+</form>
+

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE form SYSTEM "..\..\docs\dtd\php2go_forms.dtd">
+
+<form>
+
+    <section name="Upload ABDailyFile" id="uploadABDailyFile" required_flag="T" required_color="#FF0000" required_char="*">
+        <hiddenfield name="pageid" value="41"/>
+        <hiddenfield name="upload_step" value="1"/>
+        <hiddenfield name="uploaded_file" value=""/>
+        
+         <hiddenfield name="sale_month" value=""/>
+         <hiddenfield name="sale_year" value=""/>
+         <hiddenfield name="is_recreate" value="0"/>
+        
+          
+         
+          
+        <filefield name="ab_file_name" label="Alberta daily upload file" tabindex="1" size="80" length="256" required="F">
+        </filefield>
+        <buttons>
+            <button name="bttnStart" type="BUTTON"  value="Start" tabindex="2">
+                    <listener event="onClick" type="JS" action="uploadFile_start();"/>
+            </button>
+            <button name="btnBack" type="BUTTON" value="Back" tabindex="2"/>
+            <button name="bttnUpload" type="BUTTON"  value="Upload" tabindex="3">
+                    <listener event="onClick" type="JS" action="uploadImport_start();"/>
+            </button>
+            <button name="btnCancel" type="BUTTON" value="Cancel" tabindex="3"/>
+            <button name="btnClose" type="BUTTON" value="Close" tabindex="1">
+                <listener event="onClick" type="JS" action="closePage();"/>
+            </button>
+        </buttons>
+	</section>
+</form>

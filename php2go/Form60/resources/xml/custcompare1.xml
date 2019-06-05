@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE form SYSTEM "..\..\docs\dtd\php2go_forms.dtd">
+
+<form>
+	<section name="customercompare" id="customercompare" required_flag="T" required_color="#FF0000" required_char="*">
+        <hiddenfield name="pageid" value="26" />
+        <editfield name="errmsg" tabindex="1" value="" size="100"/>
+        <combofield name="file_format" label="Select file format" default="3" nofirst="T" CLASS="input" >
+            <option value="1" caption="BC LRS List" />
+            <option value="3" caption="BC Licensee List" />
+            <option value="4" caption="Alberta Liquor Stores" />
+            <option value="5" caption="Alberta Licensee List" />
+            <listener type="JS" event="onChange" action="setFristFocus()"/>
+        </combofield>
+        <filefield name="file_name" label="Select file location" tabindex="3" size="80" length="256" required="T">
+            <listener type="JS" event="onpropertychange" action="delMsg()"/>
+        </filefield>
+		<buttons>
+			<button name="bttnStart" type="BUTTON"  value="Start" tabindex="9">
+				<listener event="onClick" type="JS" action="comparecustomers_start();"/>
+			</button>
+			<button name="btnCancel" type="BUTTON" value="Cancel" tabindex="10"/>
+		</buttons>
+	</section>
+</form>

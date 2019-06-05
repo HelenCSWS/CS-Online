@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE form SYSTEM "..\..\docs\dtd\php2go_forms.dtd">
+<form>
+
+	<section name="Edit order" id="orderEdit" required_flag="T" required_color="#FF0000" required_char="*">
+         <hiddenfield name="pageid" value="9"/>
+
+	
+        <hiddenfield name="order_id"/>
+        <hiddenfield name="estate_id"/>
+        <hiddenfield name="estateName" value=""/>
+        <hiddenfield name="GST_factor"/>
+        <hiddenfield name="agency_LRS_factor"/>
+        <textfield name="customer_name" label="Name: "/>
+        <textfield name="customer_address" label="Address: "/>
+        <textfield name="estate_name" label="Estate: " />
+        <textfield name="invoice_number" label="Invoice#: " />
+        <textfield name="licensee_number" label="Licensee/Agency/LRS/Store number: " />
+        <textfield name="sst_number" label="SST Number" />
+        <textfield name="created_by_user_name" label="Created by: "/>
+        <textfield name="when_entered" label="Created on: " />
+        <textfield name="when_modified" label="Updated on: " />
+        <textfield name="estate_number" label="Store: " />
+        <textfield name="license_name" label="Customer type: " />
+        <editfield name="delivery_date" label="Delivery date: " mask="DATE" default="go_TODAY" size="20" length="10" required="T" tabindex="1">
+            <!--listener type="JS" event="onchange" action="formDirty=true;setDateFormat(this,this.value);"/-->
+        </editfield>
+        <lookupfield name="lkup_order_status_id" label="Order status: "  tabindex="2" default="1" nofirst="T" multiple="F" size="1" width="100" >
+            <datasource>
+                <keyfield>lkup_order_status_id</keyfield>
+                        <displayfield>caption</displayfield>
+                        <orderby>caption</orderby>
+                <lookuptable>lkup_order_statuses</lookuptable>
+            </datasource>
+            <!--listener type="JS" event="onchange" action="formDirty=true;"/-->
+        </lookupfield>
+        <lookupfield name="lkup_payment_status_id" label="Payment status: "  tabindex="3" default="1" nofirst="T" multiple="F" size="1" width="100" >
+            <datasource>
+                <keyfield>lkup_payment_status_id</keyfield>
+                        <displayfield>caption</displayfield>
+                        <orderby>caption</orderby>
+                <lookuptable>lkup_order_payment_status</lookuptable>
+            </datasource>
+            <!--listener type="JS" event="onchange" action="formDirty=true;"/-->
+        </lookupfield>
+        <editfield name="adjustment_1" label="Adjustment 1" length="12" align="RIGHT" default="$0.00">
+                <listener type="JS" event="onKeyPress" action="return chkFLOAT(this, event);"/>
+                <listener type="JS" event="onblur" action="this.value=formatCurrency(this.value);recalculate();"/>
+                <listener type="JS" event="onfocus" action="this.value=filterNum(this.value);this.select();"/>
+        </editfield>
+        <editfield name="adjustment_2" label="Adjustment 2" length="12" align="RIGHT" default="$0.00">
+                <listener type="JS" event="onKeyPress" action="return chkFLOAT(this, event);"/>
+                <listener type="JS" event="onblur" action="this.value=formatCurrency(this.value);recalculate();"/>
+                <listener type="JS" event="onfocus" action="this.value=filterNum(this.value);this.select();"/>
+        </editfield>
+        <editfield name="deposit" label="Deposit: " length="12" align="RIGHT" default="$0.00">
+                <listener type="JS" event="onKeyPress" action="return chkFLOAT(this, event);"/>
+                <listener type="JS" event="onblur" action="this.value=formatCurrency(this.value);recalculate();"/>
+                <listener type="JS" event="onfocus" action="this.value=filterNum(this.value);this.select();"/>
+        </editfield>
+        
+        <editfield name="AL_invoice_no" label="Arrowleaf invoice#" length="12" default="" value=""/>
+                
+
+        <buttons>
+                <button name="btnOK" type="BUTTON"  value="OK  " tabindex="4"/>
+                <button name="btnCancel" type="BUTTON" value="Cancel" tabindex="10"/>
+        </buttons>
+
+	</section>
+
+</form>
+

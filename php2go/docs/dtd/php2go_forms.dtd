@@ -1,0 +1,411 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!-- DTD que especifica a forma de construção dos arquivos XML de formulários do PHP2Go -->
+<!-- $Header: /www/cvsroot/php2go/docs/dtd/php2go_forms.dtd,v 1.22 2005/09/01 13:55:42 mpont Exp $ -->
+<!-- $Revision: 1.22 $ -->
+<!-- $Date: 2005/09/01 13:55:42 $ -->
+<!ELEMENT form (section+, condsection*)>
+<!ATTLIST form
+	validatefunc CDATA #IMPLIED
+>
+<!ELEMENT section (condsection*, editfield*, editselectionfield*, rangefield*, passwdfield*, memofield*, editorfield?, checkfield*, filefield*, datagrid*, lookupfield*, lookupchoicefield*, lookupselectionfield*, radiofield*, dbradiofield*, checkgroup*, combofield*, hiddenfield*, textfield*, buttons*, button*)>
+<!ATTLIST section
+	name CDATA #REQUIRED
+	id CDATA #REQUIRED
+	condition (T | F) #IMPLIED
+	evalfunction CDATA #IMPLIED
+	required_flag (T | F) #IMPLIED
+	required_color CDATA #IMPLIED
+	required_text CDATA #IMPLIED
+>
+<!ELEMENT condsection (condsection*, editfield*, editselectionfield*, rangefield*, passwdfield*, memofield*, editorfield?, checkfield*, filefield*, lookupfield*, lookupchoicefield*, lookupselectionfield*, radiofield*, dbradiofield*, checkgroup*, combofield*, hiddenfield*, textfield*, buttons*, button*)>
+<!ATTLIST condsection
+	id CDATA #REQUIRED
+	evalfunction CDATA #IMPLIED
+	required_flag (T | F) #IMPLIED
+	required_color CDATA #IMPLIED
+	required_text CDATA #IMPLIED
+>
+<!ELEMENT captchafield (listener*, rule*)>
+<!ATTLIST captchafield
+	name CDATA #REQUIRED
+	label CDATA #REQUIRED
+	size CDATA #IMPLIED
+	length CDATA #IMPLIED
+	width CDATA #IMPLIED
+	height CDATA #IMPLIED
+	noiselevel CDATA #IMPLIED
+	fontsize CDATA #IMPLIED
+	fontshadow CDATA #IMPLIED	
+	fontangle CDATA #IMPLIED
+	imagepath CDATA #IMPLIED
+	imagetype CDATA #IMPLIED
+	style CDATA #IMPLIED
+	tabindex CDATA #IMPLIED
+	help CDATA #IMPLIED
+	required (T | F) #IMPLIED
+	disabled (T | F) #IMPLIED
+	readonly (T | F) #IMPLIED	
+>
+<!ELEMENT checkfield (listener*, rule*, search?)>
+<!ATTLIST checkfield
+	name CDATA #REQUIRED
+	label CDATA #IMPLIED
+	default CDATA #IMPLIED
+	caption CDATA #REQUIRED
+	style CDATA #IMPLIED
+	tabindex CDATA #IMPLIED
+	help CDATA #IMPLIED
+	required (T | F) #IMPLIED
+	disabled (T | F) #IMPLIED	
+>
+<!ELEMENT checkgroup (option+, listener*, rule*, search?)>
+<!ATTLIST checkgroup
+	name CDATA #REQUIRED
+	label CDATA #REQUIRED
+	default CDATA #IMPLIED
+	cols CDATA #IMPLIED
+	tablewidth CDATA #IMPLIED	
+	style CDATA #IMPLIED
+	tabindex CDATA #IMPLIED
+	help CDATA #IMPLIED
+	required (T | F) #IMPLIED
+	disabled (T | F) #IMPLIED
+>
+<!ELEMENT combofield (option+, listener*, rule*, search?)>
+<!ATTLIST combofield
+	name CDATA #REQUIRED
+	label CDATA #REQUIRED
+	default CDATA #IMPLIED
+	first CDATA #IMPLIED
+	nofirst CDATA #IMPLIED
+	multiple CDATA #IMPLIED
+	size CDATA #IMPLIED
+	width CDATA #IMPLIED
+	style CDATA #IMPLIED
+	tabindex CDATA #IMPLIED
+	help CDATA #IMPLIED	
+	required (T | F) #IMPLIED
+	disabled (T | F) #IMPLIED
+>
+<!ELEMENT dbradiofield (datasource, listener*, rule*, search?)>
+<!ATTLIST dbradiofield
+	name CDATA #REQUIRED
+	label CDATA #REQUIRED
+	default CDATA #IMPLIED
+	cols CDATA #IMPLIED
+	tablewidth CDATA #IMPLIED
+	style CDATA #IMPLIED
+	tabindex CDATA #IMPLIED
+	help CDATA #IMPLIED	
+	required (T | F) #IMPLIED
+	disabled (T | F) #IMPLIED	
+>
+<!ELEMENT editfield (listener*, rule*, search?)>
+<!ATTLIST editfield
+	name CDATA #REQUIRED
+	label CDATA #REQUIRED
+	value CDATA #IMPLIED	
+	default CDATA #IMPLIED
+	size CDATA #IMPLIED
+	length CDATA #IMPLIED
+	maxlength CDATA #IMPLIED
+	minlength CDATA #IMPLIED
+	mask (INTEGER | FLOAT | LOGIN | DATE | TIME | CPFCNPJ | CURRENCY | URL | EMAIL | ZIPnn) #IMPLIED
+	align (LEFT | CENTER | RIGHT) #IMPLIED
+	style CDATA #IMPLIED
+	tabindex CDATA #IMPLIED
+	help CDATA #IMPLIED	
+	autocomplete (T | F) #IMPLIED
+	required (T | F) #IMPLIED
+	disabled (T | F) #IMPLIED
+	readonly (T | F) #IMPLIED
+	calculator (T | F) #IMPLIED
+	upper (T | F) #IMPLIED
+	lower (T | F) #IMPLIED
+	capitalize (T | F) #IMPLIED
+	autotrim (T | F) #IMPLIED
+>
+<!ELEMENT editorfield EMPTY>
+<!ATTLIST editorfield
+	name CDATA #REQUIRED
+	label CDATA #REQUIRED
+	value CDATA #IMPLIED	
+	default CDATA #IMPLIED
+	cols CDATA #IMPLIED
+	rows CDATA #IMPLIED
+	style CDATA #IMPLIED
+	tabindex CDATA #IMPLIED
+	help CDATA #IMPLIED	
+	required (T | F) #IMPLIED
+	readonly (T | F) #IMPLIED
+	disabled (T | F) #IMPLIED
+	upper (T | F) #IMPLIED
+	lower (T | F) #IMPLIED
+>
+<!ELEMENT editsearchfield (datafilter+, datasource, lookupfield, listener*)>
+<!ATTLIST editsearchfield
+	name CDATA #REQUIRED
+	label CDATA #REQUIRED
+	size CDATA #IMPLIED
+	length CDATA #IMPLIED
+	btnvalue CDATA #IMPLIED
+	btnimg CDATA #IMPLIED
+	style CDATA #IMPLIED
+	tabindex CDATA #IMPLIED
+	help CDATA #IMPLIED	
+	autocomplete (T | F) #IMPLIED
+	autotrim (T | F) #IMPLIED
+	required (T | F) #IMPLIED	
+	disabled (T | F) #IMPLIED	
+	debug (T | F) #IMPLIED
+>
+<!ELEMENT editselectionfield (editfield, lookupfield)>
+<!ATTLIST editselectionfield
+	name CDATA #REQUIRED
+	label CDATA #REQUIRED
+	insfield CDATA #IMPLIED
+	remfield CDATA #IMPLIED
+	tablewidth CDATA #IMPLIED
+	addimg CDATA #IMPLIED
+	remimg CDATA #IMPLIED
+	remallimg CDATA #IMPLIED
+	help CDATA #IMPLIED	
+	required (T | F) #IMPLIED
+	disabled (T | F) #IMPLIED
+	tablewidth CDATA #IMPLIED
+>
+<!ELEMENT filefield (listener*, rule*)>
+<!ATTLIST filefield
+	name CDATA #REQUIRED
+	label CDATA #REQUIRED
+	size CDATA #IMPLIED
+	length CDATA #IMPLIED
+	style CDATA #IMPLIED
+	tabindex CDATA #IMPLIED
+	help CDATA #IMPLIED	
+	required (T | F) #IMPLIED
+	disabled (T | F) #IMPLIED
+	maxfilesize CDATA #IMPLIED
+	allowedtypes CDATA #IMPLIED
+	savefunction CDATA #IMPLIED
+	savepath CDATA #IMPLIED
+	savename CDATA #IMPLIED
+	savemode CDATA #IMPLIED
+	overwrite (T | F) #IMPLIED
+	uploadonvalidate (T | F) #IMPLIED
+>
+<!ELEMENT datagrid (datasource, fieldset)>
+<!ATTLIST datagrid
+	name CDATA #REQUIRED
+	label CDATA #REQUIRED	
+	headerstyle CDATA #IMPLIED
+	cellstyle CDATA #IMPLIED
+	tablewidth CDATA #IMPLIED	
+	cellsizes CDATA #IMPLIED
+	help CDATA #IMPLIED	
+	disabled (T | F) #IMPLIED	
+>
+<!ELEMENT hiddenfield (search?)>
+<!ATTLIST hiddenfield
+	name CDATA #REQUIRED
+	value CDATA #IMPLIED	
+	default CDATA #IMPLIED
+>
+<!ELEMENT lookupchoicefield (datasource, listener*, rule*, search?)>
+<!ATTLIST lookupchoicefield
+	name CDATA #REQUIRED
+	label CDATA #REQUIRED
+	default CDATA #IMPLIED
+	first CDATA #IMPLIED
+	nofirst CDATA #IMPLIED
+	multiple (T | F) #IMPLIED
+	size CDATA #IMPLIED
+	width CDATA #IMPLIED
+	style CDATA #IMPLIED
+	tabindex CDATA #IMPLIED
+	help CDATA #IMPLIED		
+	required (T | F) #IMPLIED
+	disabled (T | F) #IMPLIED
+>
+<!ELEMENT lookupfield (datasource?, listener*, rule*, search?)>
+<!ATTLIST lookupfield
+	name CDATA #REQUIRED
+	label CDATA #REQUIRED
+	default CDATA #IMPLIED
+	first CDATA #IMPLIED
+	nofirst CDATA #IMPLIED
+	multiple (T | F) #IMPLIED
+	size CDATA #IMPLIED
+	width CDATA #IMPLIED
+	style CDATA #IMPLIED
+	tabindex CDATA #IMPLIED
+	help CDATA #IMPLIED		
+	required (T | F) #IMPLIED
+	disabled (T | F) #IMPLIED
+	size CDATA #IMPLIED
+>
+<!ELEMENT lookupselectionfield (lookupfield+)>
+<!ATTLIST lookupselectionfield
+	name CDATA #REQUIRED
+	label CDATA #REQUIRED
+	insfield CDATA #IMPLIED
+	remfield CDATA #IMPLIED
+	tablewidth CDATA #IMPLIED
+	addimg CDATA #IMPLIED
+	addallimg CDATA #IMPLIED
+	remimg CDATA #IMPLIED
+	remallimg CDATA #IMPLIED
+	help CDATA #IMPLIED		
+	required (T | F) #IMPLIED
+>
+<!ELEMENT memofield (listener*, rule*, search?)>
+<!ATTLIST memofield
+	name CDATA #REQUIRED
+	label CDATA #REQUIRED
+	value CDATA #IMPLIED	
+	default CDATA #IMPLIED
+	cols CDATA #IMPLIED
+	rows CDATA #IMPLIED
+	maxlength CDATA #IMPLIED
+	minlength CDATA #IMPLIED
+	style CDATA #IMPLIED
+	tabindex CDATA #IMPLIED
+	help CDATA #IMPLIED		
+	required (T | F) #IMPLIED
+	readonly (T | F) #IMPLIED
+	disabled (T | F) #IMPLIED
+	upper (T | F) #IMPLIED
+	lower (T | F) #IMPLIED
+	charcount (T | F) #IMPLIED
+>
+<!ELEMENT passwdfield (listener*, rule*, search?)>
+<!ATTLIST passwdfield
+	name CDATA #REQUIRED
+	label CDATA #REQUIRED
+	value CDATA #IMPLIED
+	default CDATA #IMPLIED
+	size CDATA #IMPLIED
+	length CDATA #IMPLIED
+	maxlength CDATA #IMPLIED
+	minlength CDATA #IMPLIED
+	align (LEFT | CENTER | RIGHT) #IMPLIED
+	style CDATA #IMPLIED
+	tabindex CDATA #IMPLIED
+	help CDATA #IMPLIED		
+	autocomplete (T | F) #IMPLIED
+	required (T | F) #IMPLIED
+	readonly (T | F) #IMPLIED
+	disabled (T | F) #IMPLIED
+	upper (T | F) #IMPLIED
+	lower (T | F) #IMPLIED
+>
+<!ELEMENT radiofield (option+, listener*, rule*, search?)>
+<!ATTLIST radiofield
+	name CDATA #REQUIRED
+	label CDATA #REQUIRED
+	default CDATA #IMPLIED
+	cols CDATA #IMPLIED
+	tablewidth CDATA #IMPLIED	
+	style CDATA #IMPLIED
+	tabindex CDATA #IMPLIED
+	help CDATA #IMPLIED		
+	required (T | F) #IMPLIED
+	disabled (T | F) #IMPLIED
+>
+<!ELEMENT rangefield (edifield*, search?)>
+<!ATTLIST rangefield
+	name CDATA #REQUIRED
+	label CDATA #REQUIRED
+	surroundtext CDATA #IMPLIED	
+	startname CDATA #IMPLIED	
+	endname CDATA #IMPLIED
+	ruleequal (T | F) #IMPLIED
+	rulemessage CDATA #IMPLIED
+	style CDATA #IMPLIED
+	help CDATA #IMPLIED		
+	required (T | F) #IMPLIED
+	disabled (T | F) #IMPLIED
+	readonly (T | F) #IMPLIED
+>
+<!ELEMENT textfield EMPTY>
+<!ATTLIST textfield
+	name CDATA #REQUIRED
+	value CDATA #REQUIRED
+	default CDATA #IMPLIED
+	style CDATA #IMPLIED
+	help CDATA #IMPLIED		
+>
+<!ELEMENT buttons (button+)>
+<!ELEMENT button (listener*)>
+<!ATTLIST button
+	name CDATA #REQUIRED
+	value CDATA #REQUIRED
+	type (SUBMIT | RESET | BUTTON | CLEAR) #REQUIRED
+	img CDATA #IMPLIED
+	swpimg CDATA #IMPLIED
+	alt CDATA #IMPLIED
+	style CDATA #IMPLIED
+	tabindex CDATA #IMPLIED
+	disabled (T | F) #IMPLIED
+>
+<!ELEMENT listener EMPTY>
+<!ATTLIST listener
+	event (onFocus | onBlur | onChange | onKeyUp | onKeyDown | onMouseUp | onMouseDown | onClick | onDblClick) #REQUIRED
+	type (JS | JSRS) #REQUIRED
+	action CDATA #IMPLIED
+	remote CDATA #IMPLIED
+	callback CDATA #IMPLIED
+	params CDATA #IMPLIED
+	file CDATA #IMPLIED
+	debug (T | F) #IMPLIED
+	autodispatchif CDATA #IMPLIED
+>
+<!ELEMENT rule EMPTY>
+<!ATTLIST rule
+	type (REGEX | EQ | NEQ | GT | LT | GOET | LOET | REQIF | REQIFEQ | REQIFNEQ | REQIFGT | REQIFLT | REQIFGOET | REQIFLOET) #REQUIRED
+	field CDATA #IMPLIED
+	value CDATA #IMPLIED
+	message CDATA #IMPLIED
+	comparetype (STRING | INTEGER | FLOAT | DATE) #IMPLIED
+>
+<!ELEMENT search EMPTY>
+<!ATTLIST search
+	alias CDATA #IMPLIED
+	datatype (STRING | INTEGER | FLOAT | DATE | DATETIME) #IMPLIED
+	operator (EQ | NEQ | GT | LT | GOET | LOET | STARTING | ENDING | CONTAINING | IN | NOTIN | BETWEEN) #IMPLIED
+	sqlfunc CDATA #IMPLIED
+	fieldfunc CDATA #IMPLIED
+	valuefunc CDATA #IMPLIED
+>
+<!ELEMENT datafilter EMPTY>
+<!ATTLIST datafilter
+	id CDATA #REQUIRED
+	label CDATA #REQUIRED
+	expression CDATA #REQUIRED
+	mask CDATA #IMPLIED
+>
+<!ELEMENT datasource (keyfield, displayfield?, lookuptable, clause?, groupby?, orderby?, limit?, groupfield?, groupdisplay?, procedure?)>
+<!ATTLIST datasource
+	connection CDATA #IMPLIED
+>
+<!ELEMENT keyfield (#PCDATA)>
+<!ELEMENT displayfield (#PCDATA)>
+<!ELEMENT lookuptable (#PCDATA)>
+<!ELEMENT clause (#PCDATA)>
+<!ELEMENT groupby (#PCDATA)>
+<!ELEMENT orderby (#PCDATA)>
+<!ELEMENT limit (#PCDATA)>
+<!ELEMENT groupfield (#PCDATA)>
+<!ELEMENT groupdisplay (#PCDATA)>
+<!ELEMENT procedure (#PCDATA)>
+<!ATTLIST procedure
+	cursorname CDATA #IMPLIED
+>
+<!ELEMENT option (listener*)>
+<!ATTLIST option
+	value CDATA #REQUIRED
+	caption CDATA #IMPLIED
+	alt CDATA #IMPLIED
+	disabled (T | F) #IMPLIED
+>
+<!ELEMENT fieldset (editfield*, passwdfield*, memofield*, checkfield*, lookupfield*, radiofield*, dbradiofield*, checkgroup*, combofield*)>

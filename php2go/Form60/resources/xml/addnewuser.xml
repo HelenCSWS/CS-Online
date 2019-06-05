@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE form SYSTEM "..\..\docs\dtd\php2go_forms.dtd">
+<form>
+
+	<section name="Add new user" id="addnewuser" required_flag="T" required_color="#FF0000" required_char="*">
+         <hiddenfield name="pageid" value="12"/>
+         <hiddenfield name="lkup_user_type_id" value="0"/>
+
+	
+        <hiddenfield name="user_id"/>
+        <editfield name="first_name" label="First name"  tabindex="1" size="28" length="25" required="T"/>
+		<editfield name="last_name" label="Last name" tabindex="2" size="28" length="25" required="T"/>
+		<editfield name="phone_cell" label="Cell number" tabindex="3" size="28" length="25" >
+        		<!--listener type="JS" event="onfocusout" action="setformat(this.value)"/-->
+        </editfield>
+		<editfield name="email1" label="Email address" mask="EMAIL" tabindex="4" size="28" length="100"/>
+		<editfield name="username" label="Username"  tabindex="5" size="28" length="25" minlength="5" required="T"/>
+		
+		<passwdfield name="userpass" label="Password" tabindex="6" size="28" length="50" minlength="5" required="T"/>
+
+                <passwdfield name="repeatuserpass" label="Retype password" tabindex="7" size="28" length="50" minlength="5" required="T">
+                        <rule type="EQ" field="userpass" message="The passwords do not match, please try again."/>
+                </passwdfield>
+
+		<lookupfield name="user_level_id" label="User level"  tabindex="8" default="4" nofirst="T" multiple="F" size="1" width="105" required="T" >
+			<datasource>
+				<keyfield>user_level_id</keyfield>
+                                <displayfield>caption</displayfield>
+                                <orderby>user_level_id</orderby>
+				<lookuptable>user_levels</lookuptable>
+			</datasource>
+                        <listener type="JS" event="onChange" action="changesectlevel()"/>
+		</lookupfield>
+		
+		<lookupfield name="estate_id" label="Estate"  tabindex="8" default="1" nofirst="T" multiple="F" size="1" width="182" required="T" >
+			<datasource>
+				<keyfield>estate_id</keyfield>
+                                <displayfield> if(estate_id=96, 'Enotecca winery' ,estate_name) </displayfield>
+                                <orderby>estate_name</orderby>
+				<lookuptable>estates</lookuptable>
+				<clause>estate_id!=97 and deleted=0 </clause>
+			</datasource>
+                        <listener type="JS" event="onChange" action="changesectlevel()"/>
+		</lookupfield>
+		
+		<lookupfield name="province_id" label="Province"  tabindex="9" default="1" nofirst="T" multiple="F" size="1" width="70" required="T" >
+			<datasource>
+				<keyfield>province_id</keyfield>
+                  <displayfield>short_name</displayfield>
+                  <orderby>province_id</orderby>
+				<lookuptable>lkup_provinces</lookuptable>
+			</datasource>
+                     
+		</lookupfield>
+
+
+		<buttons>
+			<button name="btnAdd" type="BUTTON"  value="OK  " tabindex="10"/>
+            <!--button name="btnAddAnother" type="BUTTON" value="Add another user" tabindex="9"/-->
+			<button name="btnCancel" type="BUTTON" value="Cancel" tabindex="11"/>
+		</buttons>
+
+	</section>
+
+</form>
+

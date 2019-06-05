@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE form SYSTEM "..\..\docs\dtd\php2go_forms.dtd">
+<form>
+   
+    <section name="" id="selectWine" required_flag="T" required_color="#FF0000" required_char="*">
+        <hiddenfield name="estate_id"/>
+        <hiddenfield name="is_next"/>
+        <hiddenfield name="pageid"/>
+        <hiddenfield name="search_key"/>
+        <hiddenfield name="search_id"/>
+
+        <hiddenfield name="indexs"/>
+        <hiddenfield name="wine_ids"/>
+
+        <hiddenfield name="unwine_ids" />
+        <hiddenfield name="customer_id"/>
+        <hiddenfield name="isWine" value="0"/>
+        <hiddenfield name="is_international" value="0"/>
+
+        <combofield name="wine_id" tabindex="1"  label="Select wine" nofirst="T" multiple="T" size="25" width="480" >
+            <option value="0" caption="" />
+            <listener type="JS" event="ondblclick" action="openNextPage(0)"/>
+        </combofield>
+
+
+		<buttons>
+        	<button name="btnAlctAll" type="BUTTON" value="Update all" tabindex="2">
+    		      <listener type="JS" event="onClick" action="findallocateWine(1)"/>
+    		</button>
+        	<button name="btnAllocate" type="BUTTON" value="Next" tabindex="2">
+    		      <listener type="JS" event="onClick" action="openNextPage(0)"/>
+    		</button>
+    		
+           
+           
+           <button name="btnClose" type="BUTTON" value="Cancel" tabindex="3"/>
+		</buttons>
+      
+	</section>	
+
+</form>
+

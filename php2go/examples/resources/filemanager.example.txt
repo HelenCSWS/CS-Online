@@ -1,0 +1,2 @@
+the quick brown fox jumps over the lazy dog
+PHP2Go Web Development Framework

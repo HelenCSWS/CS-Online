@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!-- Form60 : template used in AddUser.php -->
+<!DOCTYPE form SYSTEM "..\..\docs\dtd\php2go_forms.dtd">
+<form >
+    <section name="Notes" id="noteAdd" required_flag="T" required_color="#FF0000" required_char="*">
+
+        <hiddenfield name="owner_type"/>
+        <hiddenfield name="owner_id"/>
+        <hiddenfield name="note_id"/>
+    
+        <memofield name="note_text" label="Note" cols="75" rows="18" required="T" tabindex="1"/>
+        
+        <!--buttons -->
+        <buttons>
+            <button name="btnInsert" type="BUTTON" value="Add chq" tabindex="3">
+                <listener event="onClick" type="JS" action="insertNote();"/>
+            </button>
+				
+				<button name="btnOK" type="BUTTON"  value="OK" tabindex="2">
+                <listener event="onClick" type="JS" action="saveNote();"/>
+            </button>
+            <button name="btnPopCancel" type="BUTTON" value="Cancel" tabindex="3">
+                <listener event="onClick" type="JS" action="cancelNote();"/>
+            </button>
+            
+        </buttons>
+
+    </section>
+
+</form>
+

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<form>
+	<section name="User Login" id="loginSection">
+        <editfield name="username" label="User name" size="15" length="25"  mask="LOGIN" required="T" tabindex="1">
+              <listener type="JS" event="onKeyPress" action="handleEnter(this, event, submitLogin)"/>
+        </editfield>
+        <passwdfield name="userpass" label="Password" size="15" length="25" required="T" tabindex="2">
+                <listener type="JS" event="onKeyPress" action="handleEnter(this, event, submitLogin)"/>
+        </passwdfield>
+		<!--buttons>
+			<button name="send" value="Login" type="SUBMIT"/>
+		</buttons-->
+        <buttons>
+            <button name="send" type="BUTTON" value="Login"  tabindex="3">
+                <listener type="JS" event="onClick" action="submitLogin()"/>
+            </button>
+        </buttons>
+
+	</section>
+</form>

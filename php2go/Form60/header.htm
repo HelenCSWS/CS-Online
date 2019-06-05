@@ -1,0 +1,101 @@
+<html>
+<head>
+<title>Untitled Document</title>
+
+<script type="text/javascript" src="abc.js"></script>
+<style TYPE="text/css">
+	Body { margin-left:0 ; margin-right:0 ;margin-bottom:0; margin-top:0; }
+</style>
+<script language="javascript">
+
+function F60GetCookie(sName) 
+{
+    var re = new RegExp( "(\;|^)[^;]*(" + sName + ")\=([^;]*)(;|$)" );
+    var res = re.exec( document.cookie );
+    return res != null ? res[3] : null;
+}
+
+function F60SetCookie (name,value,nDays ) 
+{
+    var expires = "";
+    if ( nDays ) {
+            var d = new Date();
+            d.setTime( d.getTime() + nDays * 24 * 60 * 60 * 1000 );
+            expires = "; expires=" + d.toGMTString();
+    }
+
+    document.cookie = name + "=" + value + expires + "; path=/";
+}
+
+function F60DeleteCookie (name)
+{
+    if (F60GetCookie(name))
+    {
+        F60SetCookie( name, "", -1 );
+    }
+
+}
+
+
+function loadProID()
+{
+    if(getCookie("F60_PRO_ID")!=null)
+        document.getElementById("province_id").value = getCookie("F60_PRO_ID");
+    else
+            document.getElementById("username").value = 2;
+
+}
+
+
+if (parent.childPageMousedown && parent.browser)
+{
+    if (parent.browser.isIE)
+    {
+        document.onmousedown = parent.childPageMousedown;
+    }
+    else
+        document.addEventListener("mousedown", parent.childPageMousedown, true);
+}
+
+function selectProvince(province_id)
+{
+	alert(province_id);
+	
+	
+}
+
+</script>
+</head>
+
+<body bgcolor="white" text="black" onload=loadProID();>
+
+
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+	<tr>
+	   <td align="left" WIDTH="*" style="padding-left:20px"><a href="http://www.christopherstewartwineandspirits.com/" target="_blank"><img id="IMG1" src="resources/images/upperleftcorner_graphic.png" border="0"  >
+       </td>
+       <!--td align="right" width="406" ><img src="resources/images/upperrigthcorner_graphic.png" border="0">
+       </td-->
+       
+        <td align="right" width="406" height="63" background="resources/images/upperrigthcorner_graphic.png" border="0">
+		  <table width="100%" border="0" cellspacing="0" cellpadding="0">
+	<tr>
+	   <td align="right" style="padding-right:8px">
+		  <SELECT ID="province_id" NAME="province_id" TITLE="Select province" onChange="selectProvince(this.value);"  STYLE="width:43px; font-size:8pt">
+<OPTION VALUE="2">AB</OPTION>
+<OPTION VALUE="1" SELECTED>BC</OPTION>
+</SELECT>
+        
+       </td>
+        </tr>
+        
+    </table>
+</td>
+        </tr>
+        
+    </table>
+		
+</body>
+</html>
+
+

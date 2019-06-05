@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE form SYSTEM "..\..\docs\dtd\php2go_forms.dtd">
+<form>
+
+	<section name="Beer" id="addbeer" required_flag="T" required_color="#FF0000" required_char="*">
+	
+        <hiddenfield name="pageid" value="0"/>
+        <hiddenfield name="org_lkup_sales_commission_type_id" value="0"/>
+
+
+
+        <lookupfield name="province_id" label="Province" tabindex="4" default="1" nofirst="T" multiple="F" size="1" width="250" >
+            <datasource>
+                <keyfield>province_id</keyfield>
+                        <displayfield>province_name</displayfield>
+                        <clause>province_id!=0 and province_id&lt;3</clause>
+                        <orderby>province_id</orderby>
+                <lookuptable>lkup_provinces</lookuptable>
+            </datasource>
+            <listener type="JS" event="onchange" action="setUsersByProvince_id()"/>
+
+        </lookupfield>
+		
+        <lookupfield name="user_id" label="Sales consultant" nofirst="T" multiple="F" size="1" width="250" disabled="F" tabindex="4">
+			<datasource>
+				<keyfield>user_id</keyfield>
+                    <displayfield>concat(first_name,' ',last_name)</displayfield>
+                    <orderby>first_name</orderby>
+                    <clause>deleted=0 and lkup_user_type_id = 1</clause>
+				<lookuptable>users</lookuptable>
+			</datasource>
+			
+			<listener type="JS" event="onchange" action="setCommissionTypeByUser()"/>
+		</lookupfield>
+		
+		<lookupfield name="lkup_sales_commission_type_id" label="Commission type" nofirst="T" multiple="F" size="1" width="250" disabled="F" tabindex="4">
+			<datasource>
+				<keyfield>lkup_sales_commission_type_id</keyfield>
+                	<displayfield>Caption</displayfield>
+                    <orderby>lkup_sales_commission_type_id</orderby>                                
+				<lookuptable>lkup_sales_commission_types</lookuptable>
+			</datasource>
+		</lookupfield>
+
+
+
+        <buttons>   
+	        <button name="btnNext" type="BUTTON"  value="Next"  >
+		        <listener type="JS" event="onClick" action="openPage(1)"/>
+		    </button>
+    		
+		    
+    	    <button name="btnCancel" type="BUTTON"  value="Close" />
+        </buttons>
+
+	</section>
+
+</form>
+

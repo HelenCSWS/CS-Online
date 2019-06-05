@@ -1,0 +1,143 @@
+html, body
+{
+    overflow:scroll;
+}
+
+/* styles for market list */
+	td.mlcolheader A {
+		font-size: 9px;
+		font-family: Verdana, Arial, Helvetica, sans-serif;
+		color: #000000;
+		font-weight: bold;
+		text-decoration: none;
+	}
+	td.mlcolheader A:hover {
+		text-decoration: underline;
+	}
+	.mlcellA {
+		font-family: Verdana, Arial;
+		font-size: 11px;
+		color: #333333;
+		padding: 3px;
+		background-color: #ffffff
+	}
+	.mlcellB {
+		font-family: Verdana, Arial;
+		font-size: 11px;
+		color: #333333;
+		padding: 3px;
+		background-color: #F2F5FA
+	}
+	.mlcolheader
+	{
+ 		font-family: Verdana, Arial;
+		font-size: 10px;
+  		font-weight: bold;
+     	padding-top: 3px;
+        padding-bottom: 3px;
+        padding-right: 10px;
+        padding-left: 3px;
+    }
+    td.CPgridrowCell {
+    padding-left: 3px;
+    padding-right: 3px;
+    text-overflow:ellipsis;
+    overflow:hidden;
+    font-size: 10px;
+    text-align: left;
+	}
+	span.sortSymbol-C {
+    margin:0;
+    padding:0;
+    padding-left:5;
+    font-family:webdings;
+    font-size:8pt;
+    text-align:top;
+	}
+div.CPgridRightLink {
+    padding: 3px;
+    padding-right: 10px;
+    display: relative;
+    float: right;
+    font-family: Verdana, Arial, Helvetica, sans-serif;
+    font-size: 8pt;
+}
+div.CPgridRightLink a {
+    font-size: 8pt;
+    text-decoration: underline;
+}
+
+
+
+/*start new allocate grid*/
+.gridBox {
+     border-top:#a3b3c0 1px solid;
+    padding:0px;
+    padding-bottom:2px;
+    width:800px;
+    font-family: Verdana, Arial, Helvetica, sans-serif;
+    font-size: 8pt;
+}
+.listContent {
+    border-bottom:#a3b3c0 1px solid;
+    border-left:#a3b3c0 1px solid;
+    font-family: Verdana, Arial, Helvetica, sans-serif;
+    font-size: 8pt;
+}
+.listContentRight {
+    border-bottom:#a3b3c0 1px solid;
+    border-left:#a3b3c0 1px solid;
+    border-right:#a3b3c0 1px solid;
+    font-family: Verdana, Arial, Helvetica, sans-serif;
+    font-size: 8pt;
+}
+
+.listHeader{
+ background: #e0f0ff;
+    border-bottom: #a3b3c0 1px outset;
+    border-left: #a3b3c0 1px outset;
+    border-top: #a3b3c0 1px solid;
+    padding-top: 0px;
+    padding-bottom: 1px;
+    font-family: Verdana, Arial, Helvetica, sans-serif;
+    font-size: 8pt;
+}
+.listHeaderVintage{
+ background: #e0f0ff;
+    border-bottom: #a3b3c0 1px outset;
+    border-left: #a3b3c0 1px outset;
+    border-top: #a3b3c0 1px solid;
+     padding-top: 0px;
+    padding-bottom: 1px;
+    padding-left: 10px;
+    padding-right: 10px;
+    font-family: Verdana, Arial, Helvetica, sans-serif;
+    font-size: 8pt;
+}
+.listHeaderRight{
+ background: #e0f0ff;
+    border-bottom: #a3b3c0 1px outset;
+    border-left: #a3b3c0 1px outset;
+    border-right: #a3b3c0 1px outset;
+    border-top: #a3b3c0 1px solid;
+      padding-top: 0px;
+    padding-bottom: 1px;
+    font-family: Verdana, Arial, Helvetica, sans-serif;
+    font-size: 8pt;
+}
+.listInput {
+	font-family: Verdana;
+	font-size: 8pt;
+	font-weight: light;
+	color: #333333;
+	border: 0px #7F9DB9 solid;
+	text-align:center;
+}
+hideTd{
+    border-bottom: #a3b3c0 0px solid;
+    border-left: #a3b3c0 0px solid;
+    border-right: #a3b3c0 0px solid;
+    border-right: #a3b3c0 0px solid;
+
+}
+

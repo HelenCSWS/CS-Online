@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE form SYSTEM "..\..\docs\dtd\php2go_forms.dtd">
+<form >
+    
+	<section name="" id="selectperiod" required_flag="T" required_color="#FF0000" required_char="*">
+                <hiddenfield name="pageid" value="42"/>
+                <hiddenfield name="is_recreate" value="0"/>
+                <hiddenfield name="contact_key" value="1"/>
+
+
+      
+       <lookupfield name="fiscal_year"  tabindex="2" default="2007" nofirst="T" multiple="F" size="1" width="200" >
+            <datasource>
+                <keyfield>fiscal_year</keyfield>
+                        <displayfield>display_name</displayfield>
+                        <orderby>fiscal_year</orderby>
+                <lookuptable>fiscal_years</lookuptable>
+            </datasource>
+            
+            <listener type="JS" event="onChange" action="getPeriodsByFiscalYear(this.value)"/>
+
+        </lookupfield>
+      
+      
+
+
+        <combofield name="period" nofirst="T" width="100"  >
+ 			<listener type="JS" event="onChange" action="changePeriod(this.value)"/>
+        </combofield>
+
+    
+
+	
+
+      <textfield name="period_desc" tabindex="1" value="test" readonly="F" />
+	
+	
+
+	</section>
+
+</form>
+

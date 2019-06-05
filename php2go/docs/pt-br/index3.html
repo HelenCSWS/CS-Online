@@ -1,0 +1,141 @@
+<html>
+<head>
+<title>PHP2Go - Manual de Utilização</title>
+<style type="text/css">
+<!--
+.courier {  font-family: "Courier New"; font-size: 10pt}
+-->
+</style>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+</head>
+
+<body bgcolor="#FFFFFF">
+<p><a name="topo"></a><font size="4"><b>PHP2Go Web Development Framework<br>
+  Manual de Utiliza&ccedil;&atilde;o</b></font></p>
+<b><a href="index.html">Parte 1</a> | <a href="index2.html">Parte 2</a> | Parte 
+3</b><br>
+<br>
+<a href="#7"> <i>7. Formul&aacute;rios </i></a><i><br>
+</i> 
+<p> <a name="7"></a> <b>7. Formul&aacute;rios<br>
+  <br>
+  </b>A constru&ccedil;&atilde;o de formul&aacute;rios HTML com o PHP2Go deve 
+  passar obrigatoriamente pela tarefa de constru&ccedil;&atilde;o de um arquivo 
+  XML que especifica os campos e bot&otilde;es que dever&atilde;o ser gerados. 
+  Na documenta&ccedil;&atilde;o inclu&iacute;da no projeto, existe um arquivo 
+  DTD (Document Type Definition) e um arquivo XML exemplo que permite com que 
+  o desenvolvedor/usu&aacute;rio conhe&ccedil;a a estrutura de um arquivo XML 
+  de especifica&ccedil;&atilde;o de formul&aacute;rios. Abaixo, seguem alguns 
+  conceitos e dicas que ser&atilde;o importantes para a correta compreens&atilde;o 
+  deste m&oacute;dulo do framework:<br>
+  <br>
+  &raquo; As &quot;SECTIONS&quot; representam grupos de campos de formul&aacute;rio, 
+  que n&atilde;o necessariamente separam o formul&aacute;rio em duas ou mais partes. 
+  Em termos de interface, uma das classes que constr&oacute;em formul&aacute;rios 
+  ir&aacute; separar cada se&ccedil;&atilde;o em uma &quot;caixa&quot;, ou &quot;fieldset&quot;. 
+  A utiliza&ccedil;&atilde;o destas se&ccedil;&otilde;es &eacute; &uacute;til 
+  para que o desenvolvedor possa &quot;dividir&quot; um formul&aacute;rio extenso 
+  em partes menores, facilitando a compreens&atilde;o, manuten&ccedil;&atilde;o 
+  e modulariza&ccedil;&atilde;o.<br>
+  <br>
+  <span class="courier">&lt;SECTION NAME=&quot;Dados do Usu&aacute;rio&quot; ID=&quot;dados&quot;&gt;<br>
+  &lt;EDITFIELD name=&quot;nome&quot; label=&quot;Nome&quot; size=&quot;20&quot; 
+  tabindex=&quot;1&quot;/&gt;<br>
+  &lt;/SECTION&gt; <br>
+  </span><br>
+  &raquo; Os atributos que permitem que uma se&ccedil;&atilde;o seja condicional 
+  e as se&ccedil;&otilde;es internas, obrigatoriamente condicionais (CONDSECTIONS), 
+  podem ser utilizadas para que um mesmo arquivo XML seja capaz de gerar diversos 
+  formul&aacute;rios ou para que seja aplicada alguma regra de acesso ou condi&ccedil;&atilde;o 
+  para a exibi&ccedil;&atilde;o de um campo ou um conjunto de campos para um determinado 
+  usu&aacute;rio ou grupo de usu&aacute;rios.<br>
+  <br>
+  <span class="courier">&lt;SECTION NAME=&quot;Teste&quot; ID=&quot;teste&quot; 
+  CONDITION=&quot;T&quot; EVALFUNCTION=&quot;avaliaSecoes&gt;<br>
+  &lt;EDITFIELD name=&quot;campo&quot; label=&quot;Campo&quot; size=&quot;20&quot; 
+  tabindex=&quot;1&quot;/&gt;<br>
+  &lt;CONDSECTION ID=&quot;interna&quot; EVALFUNCTION=&quot;avaliaSecoes&quot;&gt;<br>
+  &lt;EDITFIELD name=&quot;teste&quot; label=&quot;Teste&quot; size=&quot;15&quot; 
+  tabindex=&quot;2&quot;/&gt;<br>
+  &lt;/CONDSECITON&gt; <br>
+  &lt;/SECTION&gt;<br>
+  </span></p>
+<p>No arquivo onde o formul&aacute;rio &eacute; gerado, a fun&ccedil;&atilde;o 
+  avaliaSecoes deve ser definida. Se o usu&aacute;rio optar por omitir o atributo 
+  EVALFUNCTION, a classe ir&aacute; buscar por uma fun&ccedil;&atilde;o com mesmo 
+  ID da se&ccedil;&atilde;o, seguido do sufixo _evaluate. <br>
+  <br>
+  Exemplo: ID da se&ccedil;&atilde;o: teste =&gt; fun&ccedil;&atilde;o: teste_evaluate<br>
+  <br>
+  &raquo; Em muitas das estruturas de campos montadas nos formul&aacute;rios, 
+  pode tornar-se necess&aacute;ria a utiliza&ccedil;&atilde;o de valores din&acirc;micos, 
+  dependentes de valores armazenados em vari&aacute;veis ou em vetores globais, 
+  como $_GET, $_POST, $_SESSION, $_SERVER, etc... Para permitir esta funcionalidade, 
+  muitos dos atributos de campos definidos nos arquivos XML de formul&aacute;rios 
+  permitem a substitui&ccedil;&atilde;o de valores. O padr&atilde;o de defini&ccedil;&atilde;o 
+  de vari&aacute;veis, neste caso &eacute; ~variavel~. Observe o exemplo abaixo:<br>
+  <br>
+  <span class="courier">&lt;LOOKUPFIELD name=&quot;lookup&quot; label=&quot;Lista&quot; 
+  tabindex=&quot;1&quot;&gt;<br>
+  &lt;DATASOURCE&gt;<br>
+  &lt;KEYFIELD&gt;colunaA&lt;/KEYFIELD&gt;<br>
+  &lt;DISPLAYFIELD&gt;colunaB&lt;/DISPLAYFIELD&gt;<br>
+  &lt;LOOKUPTABLE&gt;tabela&lt;/LOOKUPTABLE&gt;<br>
+  &lt;CLAUSE&gt;colunaA = ~valor~&lt;/CLAUSE&gt;<br>
+  &lt;ORDERBY&gt;colunaA&lt;/ORDERBY&gt; <br>
+  &lt;/DATASOURCE&gt; <br>
+  &lt;/LOOKUPFIELD&gt; <br>
+  </span><br>
+  A constru&ccedil;&atilde;o desta tag com a vari&aacute;vel de substitui&ccedil;&atilde;o 
+  ~valor~ considera que ela possa ser encontrada no escopo global da fun&ccedil;&atilde;o 
+  que gera o formul&aacute;rio: seja nos vetores SUPERGLOBALS, ou no pr&oacute;prio 
+  vetor $GLOBALS do PHP.<br>
+  <br>
+  Se o valor que deve ser atribu&iacute;do a um campo n&atilde;o est&aacute; no 
+  escopo global do script, &eacute; poss&iacute;vel alterar manualmente o valor 
+  do campo utilizando o m&eacute;todo getField acess&iacute;vel nas classes de 
+  gera&ccedil;&atilde;o de formul&aacute;rios. Este m&eacute;todo recebe como 
+  par&acirc;metro uma string, que representa o caminho do campo dentro da &aacute;rvore 
+  XML do formul&aacute;rio. O exemplo abaixo permite uma melhor visualiza&ccedil;&atilde;o 
+  desta funcionalidade:<br>
+  <br>
+  <span class="courier">&lt;!-- myForm.xml --&gt;<br>
+  &lt;SECTION name=&quot;Dados&quot; id=&quot;dados&quot;&gt;<br>
+  &lt;HIDDENFIELD NAME=&quot;id_cliente&quot;/&gt;<br>
+  &lt;/SECTION&gt;<br>
+  <br>
+  &lt;!-- myScript.php --&gt;<br>
+  // cria&ccedil;&atilde;o do objeto form, utilizando a classe FormBasic<br>
+  $form = new FormBasic(&quot;myForm.xml&quot;, &quot;myForm&quot;, $doc);<br>
+  // obten&ccedil;&atilde;o do campo dentro do XML processado, para altera&ccedil;&atilde;o<br>
+  // o par&acirc;metro string cont&eacute;m id da se&ccedil;&atilde;o e nome do 
+  campo <br>
+  $idCliente =&amp; $form-&gt;getField(&quot;dados.id_cliente&quot;);<br>
+  // o m&eacute;todo setValue atribui um valor ao campo antes da gera&ccedil;&atilde;o<br>
+  // do c&oacute;digo HTML final do formul&aacute;rio<br>
+  $idCliente-&gt;setValue($valor);<br>
+  // o c&oacute;digo do formul&aacute;rio &eacute; gerado e anexado ao documento 
+  HTML <br>
+  $doc-&gt;elements['main'] = $form-&gt;getContent();<br>
+  </span> </p>
+<p>O link abaixo ir&aacute; abrir um exemplo da constru&ccedil;&atilde;o de um 
+  formul&aacute;rio, contendo exemplos para todos os tipos de campos e se&ccedil;&otilde;es 
+  que podem ser constru&iacute;dos.<br>
+  <br>
+  Clique no link ao lado para ver o exemplo: <a href="../../examples/forms.example.xml" target="_blank">forms.example.xml</a><br>
+  <b><br>
+  </b>A classe Form, componente principal do m&oacute;dulo de formul&aacute;rios, 
+  &eacute; a classe pai para outras tr&ecirc;s classes: <b>FormBasic</b>, <b>FormTemplate</b> 
+  e <b>FormDataBind</b>. Estas tr&ecirc;s classes s&atilde;o as que realmente 
+  devem ser instanciadas pelo desenvolvedor/usu&aacute;rio, uma vez que todas 
+  elas extendem a funcionalidade de interpreta&ccedil;&atilde;o do arquivo XML 
+  implementada pela classe Form, definindo por sua vez uma forma de gerar a interface 
+  HTML final dos campos, se&ccedil;&otilde;es e bot&otilde;es.<b><br>
+  <br>
+  </b>Na documenta&ccedil;&atilde;o da API, que pode ser obtida juntamente com 
+  o framework, existem exemplos da constru&ccedil;&atilde;o de formul&aacute;rios 
+  utilizando cada um dos tr&ecirc;s componentes.<b><br>
+  <br>
+  </b><a href="#topo">topo</a><b> </b></p>
+</body>
+</html>

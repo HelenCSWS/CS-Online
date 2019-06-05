@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!-- Form60 : template used in AddUser.php -->
+<!DOCTYPE form SYSTEM "..\..\docs\dtd\php2go_forms.dtd">
+<form >
+
+
+	<section name="My Section" id="cutomerreport" required_flag="T" required_color="#FF0000" required_char="*">
+     
+        <!--buttons note -->
+		<buttons>
+			<button name="btnAdd" type="BUTTON"  value="Save" tabindex="27">
+				<listener event="onClick" type="JS" action="return comparecustomers_save();"/>
+			</button>
+     		<button name="btnCancel" type="BUTTON" value="Cancel" tabindex="28"/>
+		</buttons>
+
+
+	</section>
+
+</form>
+
+
+
+	<!-- Form60 : template used in addestate.php -->

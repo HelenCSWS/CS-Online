@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!-- Form60 : template used in AddUser.php -->
+<!DOCTYPE form SYSTEM "..\..\docs\dtd\php2go_forms.dtd">
+<form >
+
+
+	<section name="My Section" id="summaryreport" required_flag="T" required_color="#FF0000" required_char="*">
+		
+			<hiddenfield name="sale_month" value="0"/>
+			<hiddenfield name="sale_year" value="0"/>
+			<hiddenfield name="bonus_type" value="-1"/>
+			<hiddenfield name="is_recreate" value="0"/>
+		
+			<hiddenfield name="fiscal_year_4" value="-1"/>
+			<hiddenfield name="users" value="1"/>
+			<hiddenfield name="current_user_id" value="-1"/>
+			<hiddenfield name="store_type" value="-1"/>
+		
+		   <textfield name="period_desc" tabindex="1" value="" size="100"/>
+		   <textfield name="target_inter_cases" tabindex="1" value="" size="10"/>
+		   <textfield name="target_ca_cases" tabindex="1" value="" size="10"/>
+		     
+        <combofield name="user_id"  nofirst="F" multiple="F" size="1" width="200" tabindex="17">
+				<listener event="onChange" type="JS" action="changeuser();" />
+		  </combofield>
+		
+		 <combofield name="store_types"  nofirst="F" multiple="F" size="1" width="120" tabindex="17">
+			<option value="-1" caption="All store type" />
+          	<option value="3" caption="Licensee" />
+         	<option value="1" caption="LRS" />
+         	<option value="2" caption="Agency" />
+         
+			<listener event="onChange" type="JS" action="changeType(this.value);" />
+		 </combofield>
+		
+		<combofield name="store_type_all"  nofirst="F" multiple="F" size="1" width="120" tabindex="17">
+			<option value="-1" caption="All store type" />
+		</combofield>
+
+		<combofield name="store_type_bcldb"  nofirst="F" multiple="F" size="1" width="120" tabindex="17">
+			<option value="6" caption="BCLDB" />
+		</combofield>
+        <!--buttons note -->
+		<buttons>
+			
+     		<button name="btnCancel" type="BUTTON" value="Close" tabindex="28"/>
+		</buttons>
+
+
+	</section>
+
+</form>
+
+
+
+	<!-- Form60 : template used in addestate.php -->

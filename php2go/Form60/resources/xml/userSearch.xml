@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<report title="Search users">
+	<datasource>
+		<fields>first_name, last_name, username, email1, phone_cell</fields>
+		<tables>users</tables>
+		<clause>deleted = 0</clause>
+		<groupby/>
+		<orderby>first_name</orderby>
+	</datasource>
+	<datafilters>
+		<datafilter field="first_name" label="First name" mask="string" index="0"/>
+		<datafilter field="last_name" label="Last name" mask="string" index="1"/>
+                <datafilter field="email1" label="Email" mask="string" index="2"/>
+	</datafilters>
+</report>

@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE form SYSTEM "..\..\docs\dtd\php2go_forms.dtd">
+<form>
+
+	<section name="Wine" id="addwine" required_flag="T" required_color="#FF0000" required_char="*">
+	
+        <hiddenfield name="pageid" value="25"/>
+
+
+        <hiddenfield name="editMode" value="0"/>
+        <hiddenfield name="wine_id"/>
+        <hiddenfield name="wine_delivery_date_id"/>
+        <hiddenfield name="estate_id"/>
+        <hiddenfield name="delivery_total" value="0"/>
+         
+        
+        <hiddenfield name="new_bc" value="0"/>
+        <hiddenfield name="new_ab" value="0"/>
+        <hiddenfield name="new_mb" value="0"/>
+          <!-- 0: unchecked, 1: checked but need to insert new, 2: checked for update  -->
+          
+        <hiddenfield name="price_per_unit_bc" />
+        <hiddenfield name="price_winery_bc" />
+        <hiddenfield name="cost_per_unit_bc" />
+        <hiddenfield name="profit_per_unit_bc" />
+        
+        <hiddenfield name="price_per_unit_ab" />
+        <hiddenfield name="price_winery_ab" />
+        <hiddenfield name="cost_per_unit_ab" value="0"/>
+        <hiddenfield name="profit_per_unit_ab" />
+      
+      	
+        
+        <hiddenfield name="is_international" value="1" />
+        
+        <editfield name="wine_name" label="Wine name"  tabindex="1" size="30" length="225" required="T"/>
+
+       <editfield name="vintage" label="Vintage"     tabindex="2" size="13" length="4" minlength="4" required="T" mask="INTEGER"/>
+ 
+		  <editfield name="bottles_per_case" label="Btl/cs" tabindex="3" size="13" length="3" required="T"  mask="INTEGER">
+            <listener type="JS" event="onblur" action="setCaBottles()"/>
+        </editfield>
+
+        <lookupfield name="lkup_wine_color_type_id" label="Type"  tabindex="4" default="1" nofirst="T" multiple="F" size="1" width="90" >
+            <datasource>
+                <keyfield>lkup_wine_color_type_id</keyfield>
+                        <displayfield>caption</displayfield>
+                        <orderby>lkup_wine_color_type_id</orderby>
+                <lookuptable>lkup_wine_color_types</lookuptable>
+            </datasource>
+        </lookupfield>
+         <lookupfield name="lkup_bottle_size_id" label="Size"  tabindex="5" default="1" nofirst="T" multiple="F" size="1" width="84" >
+            <datasource>
+                <keyfield>lkup_bottle_size_id</keyfield>
+                        <displayfield>caption</displayfield>
+                        <orderby>lkup_bottle_size_id</orderby>
+                <lookuptable>lkup_bottle_sizes</lookuptable>
+            </datasource>
+        </lookupfield>
+ 		 
+
+        <editfield name="cspc_code_bc" label="CSPC code" tabindex="6" size="13" length="25" />
+ 
+        <editfield name="display_price_bc" label="Display price" tabindex="7" size="13" length="12"  >
+            <listener type="JS" event="onblur" action="setPrice(this,0)"/>
+             <listener type="JS" event="onKeyPress" action="return chkFLOAT(this, event);"/>
+        </editfield>
+
+         <editfield name="wholesale_bc" label="CSWS price$" tabindex="8" size="13" length="12" >
+            <listener type="JS" event="onblur" action="setPrice(this,1)"/>
+             <listener type="JS" event="onKeyPress" action="return chkFLOAT(this, event);"/>
+        </editfield>
+
+         <editfield name="cost_bc" label="Cost"   tabindex="9" size="13" length="8"  >
+            <listener type="JS" event="onblur" action="setPrice(this,3)"/>
+             <listener type="JS" event="onKeyPress" action="return chkFLOAT(this, event);"/>
+        </editfield>
+     
+	    <editfield name="profit_bc" label="Profit per unit" tabindex="10" size="13" length="12"  Disabled="T" >
+            <listener type="JS" event="onblur" action="setPrice(this,2)"/>
+            <listener type="JS" event="onKeyPress" action="return chkFLOAT(this, event);"/>
+        </editfield>
+        
+        <!--Alberta -->
+        <editfield name="cspc_code_ab" label="CSPC code" tabindex="14" size="13" length="25" />
+ 
+        <editfield name="display_price_ab" label="Display price" tabindex="15" size="13" length="12"  >
+            <listener type="JS" event="onblur" action="setPrice4Pro(this,0,2)"/>
+             <listener type="JS" event="onKeyPress" action="return chkFLOAT(this, event);"/>
+        </editfield>
+
+         <editfield name="wholesale_ab" label="CSWS price$" tabindex="16" size="13" length="12" >
+            <listener type="JS" event="onblur" action="setPrice4Pro(this,1,2)"/>
+             <listener type="JS" event="onKeyPress" action="return chkFLOAT(this, event);"/>
+        </editfield>
+
+         <editfield name="cost_ab" label="Cost"   tabindex="17" size="13" length="8" value="0" >
+            <listener type="JS" event="onblur" action="setPrice4Pro(this,3,2)"/>
+             <listener type="JS" event="onKeyPress" action="return chkFLOAT(this, event);"/>
+        </editfield>
+     
+	    <editfield name="profit_ab" label="Profit per unit" tabindex="18" size="13" length="12"  Disabled="T" >
+            <listener type="JS" event="onblur" action="setPrice4Pro(this,2,2)"/>
+            <listener type="JS" event="onKeyPress" action="return chkFLOAT(this, event);"/>
+        </editfield>
+              
+         
+        <!--editfield name="display_price" label="Display price$" tabindex="8" size="14" length="12" required="T" >
+            <listener type="JS" event="onblur" action="setPrice(this,0)"/>
+             <listener type="JS" event="onKeyPress" action="return chkFLOAT(this, event);"/>
+        </editfield-->
+  
+        <combofield name="case_sold_bc" label="Case sold" width="86" tabindex="11" nofirst="T" default="1">
+            <option value="1" caption="1" />
+             <option value="2" caption="2" />
+             <option value="3" caption="3" />
+              <option value="4" caption="4" />
+               <option value="8" caption="8" />
+        </combofield>
+
+       <combofield name="case_value_bc" label="Case value" width="86" tabindex="12" nofirst="T" default="1">
+       		<option value="0" caption="0" />
+            <option value="1" caption="1" />
+             <option value="2" caption="2" />
+             <option value="3" caption="3" />
+        </combofield>
+        
+        <combofield name="case_sold_ab" label="Case sold" width="86" tabindex="19" nofirst="T" default="1">
+            <option value="1" caption="1" />
+             <option value="2" caption="2" />
+             <option value="3" caption="3" />
+             <option value="4" caption="4" />
+             <option value="8" caption="8" />
+        </combofield>
+
+       <combofield name="case_value_ab" label="Case value" width="86" tabindex="20" nofirst="T" default="1">
+            <option value="1" caption="1" />
+             <option value="2" caption="2" />
+             <option value="3" caption="3" />
+        </combofield>
+
+		<editfield name="delivery_date" label="Delivery date" mask="DATE"  default="go_TODAY" size="13" length="10" required="F" tabindex="9" />
+        <!--editfield name="delivery_date" label="Delivery date" mask="DATE"  default="go_TODAY" size="12" length="10" required="T" tabindex="7" /-->
+
+          <editfield name="total_cases" label="Total cases"   tabindex="8" size="13" length="8" required="F" mask="INTEGER">
+            <listener type="JS" event="onblur" action="setCaBottles()"/>
+        </editfield>
+
+       
+
+        <editfield name="total_bottles" label="Total bottles" tabindex="8" size="13" length="12" sdefault=""/>
+        <checkfield name="chkIncludeInStorePenReport" tabindex="13" caption="Include in store penetration report" class="jj"/>
+
+        <buttons>
+        
+        <button name="btnDel_bc" type="BUTTON"  value="Clear content" >
+		        <listener type="JS" event="onClick" action="delWine(1)"/>
+    		</button>
+        <button name="btnDel_ab" type="BUTTON"  value="Delete" >
+        		 <listener type="JS" event="onClick" action="delWine(2)"/>
+    		</button>
+        <button name="btnDel_mb" type="BUTTON"  value="Delete" >
+	        	 <listener type="JS" event="onClick" action="delWine(3)"/>
+    		</button>
+        
+        <button name="btnDeleteWine" type="BUTTON"  value="Delete" >
+        		<listener type="JS" event="onClick" action="runDelete(25)"/>
+    		</button>
+        <button name="btnAdd" type="BUTTON"  value="OK" />
+         <button name="btnAddAnother" type="BUTTON"  value="Add wine" />
+       <button name="btnCancel" type="BUTTON" value="Cancel" />
+        </buttons>
+
+	</section>
+
+</form>
+

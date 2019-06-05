@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE form SYSTEM "..\..\docs\dtd\php2go_forms.dtd">
+<form >
+    
+	<section name="" id="supplierSales" required_flag="T" required_color="#FF0000" required_char="*">
+    <hiddenfield name="estate" value="0"/>
+    <hiddenfield name="isWine" value="0"/>
+    <hiddenfield name="isQtr" value="0"/>
+    <hiddenfield name="isStart" value="0"/>
+    <hiddenfield name="isBCEstate" value="0"/>
+
+	<lookupfield name="estate_id"  label="Estate" tabindex="1" nofirst="F" multiple="F" size="1" width="130"  >
+		<datasource>
+			<keyfield>estate_id</keyfield>
+			<displayfield>estate_name</displayfield>
+			<clause>deleted=0 and estate_id =96 or estate_id =97</clause>
+			<orderby>estate_name</orderby>
+			<lookuptable>estates</lookuptable>
+		</datasource>
+	
+		<listener event="onChange" type="JS" action="reloadData(0);" />
+	
+	</lookupfield>
+		
+	
+		
+
+	
+		
+		<combofield name="lkup_store_type_id" label="Store type" nofirst="F" multiple="F" size="1" width="130" disabled="F" tabindex="4">
+        
+          <!--listener type="JS" event="onChange" action="setGenerateButton(false)"/-->
+      </combofield>
+		
+		
+		<combofield name="user_id" label="Assigned to" nofirst="F" multiple="F" size="1" width="140" disabled="F" tabindex="4">
+        
+          <!--listener type="JS" event="onChange" action="setGenerateButton(false)"/-->
+      </combofield>
+
+
+     <combofield name="province_id" default="1" nofirst="T" width="130" label="Provinces">
+        <listener event="onChange" type="JS" action="reloadData(1);" />
+     </combofield>
+      
+      <combofield name="wine_id"  nofirst="T" width="280" label="Wines">     	
+        	<listener type="JS" event="onChange" action="getVintages()"/>
+      </combofield>
+      
+      <combofield name="vintage"  nofirst="T" width="80" label="Vintage">
+      
+      		<option value="-1" caption="All" />
+        	<!--listener type="JS" event="onChange" action="setGenerateButton(false)"/-->
+      </combofield>
+      
+<!-- 2 row-->      
+<editfield name="from_1"  mask="DATE"  default="go_TODAY" size="11" length="10" required="T" tabindex="3" label="from">
+	<!--listener type="JS" event="onChange" action="setGenerateButton(false)"/>
+	<listener type="JS" event="onKeyPress" action="setGenerateButton(false)"/-->
+</editfield>
+
+<editfield name="to_1"  mask="DATE"  default="go_TODAY" size="11" length="10" required="T" tabindex="3" label="to">
+	<!--listener type="JS" event="onChange" action="setGenerateButton(false)"/>
+	<listener type="JS" event="onKeyPress" action="setGenerateButton(false)"/-->
+</editfield>
+
+
+<!-- 2 section-->
+	
+		<combofield name="sales_month" label="Month" width="85" tabindex="13" nofirst="T" disabled="T">
+          
+        	<!--listener type="JS" event="onChange" action="setGenerateButton(false)"/-->
+
+      </combofield>
+    
+      
+      <combofield name="sales_year" label="Year" width="85" tabindex="13" nofirst="T" default="2009">
+      <listener type="JS" event="onChange" action="changeYear(false)"/>
+      </combofield>
+      
+      <combofield name="sales_qut" label="Quarter" width="95" tabindex="13" disabled="F" nofirst="T" default="-1" >
+          <option value="1" caption="First" />
+          <option value="2" caption="Second" />
+          <option value="3" caption="Third" />
+          <option value="4" caption="Fourth" />
+          <option value="-1" caption="YTD" />
+          <listener type="JS" event="onChange" action="setQuarterDesc()"/>
+      </combofield>
+      
+      <editField class="Lable" name="quarter_desc" tabindex="1" value="   " readonly="T" size="20"/>
+ 			
+<!-- 2 section end here-->
+
+
+		<!--buttons>
+    		<button name="btnRefresh" type="BUTTON" value="Generate" disabled="T">
+    		      <listener type="JS" event="onClick" action="refreshSpSalesList()"/>
+    		</button>
+    	
+		</buttons-->
+
+
+
+	</section>
+
+</form>
+

@@ -1,0 +1,392 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!-- Form60 : template used in AddUser.php -->
+<!DOCTYPE form SYSTEM "..\..\docs\dtd\php2go_forms.dtd">
+<form >
+
+	<section name="My Section" id="customerAdd" required_flag="T" required_color="#FF0000" required_char="*">
+        <hiddenfield name="pageid" value="4"/>
+        <hiddenfield name="customer_id" value=""/>
+        <hiddenfield name="lkup_phone_type_id" value="1"/>
+        <hiddenfield name="contact_id"/>
+        <hiddenfield name="is_primary" value = "0"/>
+        <hiddenfield name="customers_contacts_id_1" value = "0"/>
+        <hiddenfield name="customers_contacts_id_2" value = "0"/>
+        <hiddenfield name="estate_id_order" value=""/>
+        <hiddenfield name="isorder"/>
+        
+        <hiddenfield name="old_lkup_payment_type_id"/>
+        <hiddenfield name="old_cc_number"/>
+        <hiddenfield name="current_cc_number"/>
+        <hiddenfield name="old_cc_exp_month"/>
+        <hiddenfield name="old_cc_exp_year"/>
+        <hiddenfield name="isload" value = "0"/>
+        
+        <hiddenfield name="isAdmin" value = "0"/>              
+        
+        <hiddenfield name="province_id" value="1"/>
+        
+        <hiddenfield name="pst_no_org" value=""/>
+        
+        <hiddenfield name="assign_user_id" value=""/>
+        
+     
+        <hiddenfield name="current_sales_page" value="1"/>
+        <hiddenfield name="billing_address_state" value=""/>
+       
+         <editfield name="pst_no" value="" length="12">
+             <!--listener type="JS" event="onfocus" action="this.select();"/>
+              <listener type="JS" event="onkeyup" action="isEmptyPSTNo(this.value);"/>        
+              <listener type="JS" event="onblur" action="showPSTNOMSG(this.value);"/-->
+        </editfield>
+        
+        
+        <editField class="Lable" name="quarter_desc" tabindex="1" value="   " readonly="T" size="20"/>
+        <editField class="Lable" name="order_quarter_desc" tabindex="1" value="   " readonly="T" size="20"/>
+        <editField class="Lable" name="cs_order_quarter_desc" tabindex="1" value="   " readonly="T" size="20"/>
+        <editField class="Lable" name="display_cm_name" tabindex="1" value="   " readonly="T" size="100"/>
+        
+
+        <!-- row1 customer name, licensee, sstaxnumber-->
+        <editfield name="customer_name" label="Customer name"  size="38" length="40" required="T" tabindex="1" autotrim="T"/>
+        <editfield name="licensee_number" label="Licensee / Agency / LRS / Store number"  size="38" length="225" tabindex="2" autotrim="T" />
+		<editfield name="sst_number" label="Social services tax number"  size="38" length="20" tabindex="3" autotrim="T"/>
+
+         <!-- row2 storetype,  street number, address, city-->
+
+    	<lookupfield name="lkup_store_type_id" label="Store type"  first="" nofirst="F" multiple="F" size="1" width="112" required="T" disabled="F" tabindex="4">
+			<datasource>
+				<keyfield>lkup_store_type_id</keyfield>
+                                <displayfield>license_name</displayfield>
+                                <orderby>license_name</orderby>
+                                <clause>province_id=~current_storetype_province_id~</clause>
+				<lookuptable>lkup_store_types</lookuptable>
+			</datasource>
+                        <listener type="JS" event="onChange" action="changestoretype(this.value)"/>
+		</lookupfield>
+        
+        
+        <editfield name="billing_address_street_number" label="Street number"  size="16" length="25"  tabindex="5" autotrim="T"/>
+        <editfield name="billing_address_street" label="Address"  size="25" length="150" required="T" tabindex="6" autotrim="T"/>
+        <editfield name="po_box" label="PO Box"  size="8" length="150" required="F" tabindex="7" autotrim="T"/>
+
+        <editfield name="billing_address_city" label="City"  size="38" length="100" required="T"  tabindex="8" autotrim="T"/>
+
+      <!-- row3 province,  post 3, payment method, credit card type, ccard number-->
+
+		<!--editfield name="billing_address_state" label="Province"  size="17" length="100" value=""  required="T" tabindex="9" autotrim="T" /-->
+        
+        <lookupfield name="cm_province_id" label="Province"   nofirst="T" multiple="F" size="1" width="130" >
+            <datasource>
+                <keyfield>province_id</keyfield>
+                        <displayfield>province_name</displayfield>
+                        <orderby>province_name</orderby>       
+                        <clause>province_id!=0</clause>                
+                <lookuptable>lkup_provinces</lookuptable>
+            </datasource>
+        </lookupfield>
+        
+		<editfield name="billing_address_postalcode" label="Postal code"  size="16" length="20"  tabindex="10" upper="T" lower="F"  autotrim="T">
+            <listener type="JS" event="onkeyup" action="upperCaseLetters(this.value)"/>
+		</editfield>
+		<lookupfield name="lkup_payment_type_id" label="Payment method" default="2" first="None" nofirst="T" multiple="F" size="1"  tabindex="11" width="96"  disabled="F">
+			<datasource>
+				<keyfield>lkup_payment_type_id</keyfield>
+                                <displayfield>caption</displayfield>
+                                <clause>lkup_payment_type_id!=6</clause>
+                                <orderby>lkup_payment_type_id</orderby>
+				<lookuptable>lkup_payment_types</lookuptable>
+			</datasource>
+				<listener type="JS" event="onChange" action="changePaymentType(this.value)"/>
+
+		</lookupfield>
+		<editfield name="cc_number" label="Credit card number"  size="20" length="100" value=""  tabindex="12" autotrim="T" />
+
+		<!--editfield name="cc_exp_date" label="Expiry date"  size="15" length="100"   tabindex="12" autotrim="T" mask="DATE" /-->
+
+         <combofield name="cc_exp_month" label="Expiry month / year" width="68" tabindex="13">
+          <option value="01" caption="01" />
+          <option value="02" caption="02" />
+          <option value="03" caption="03" />
+          <option value="04" caption="04" />
+          <option value="05" caption="05" />
+          <option value="06" caption="06" />
+          <option value="07" caption="07" />
+          <option value="08" caption="08" />
+          <option value="09" caption="09" />
+          <option value="10" caption="10" />
+          <option value="11" caption="11" />
+          <option value="12" caption="12" />
+      </combofield>
+
+      <combofield name="cc_exp_year" width="72" nofirst="F" tabindex="14">
+        <option value="2017" caption="" />
+        
+       </combofield>
+
+
+    	<editfield name="cc_digit_code" label="Secret code"  size="11" length="10" tabindex="15" autotrim="T" />
+      <!-- row4 best time,  store priority, assign to-->
+      	<editfield name="best_time_to_deliver" label="Delivery instructions"  size="38" length="225"  tabindex="16" autotrim="T"/>
+      	<editfield name="rank" label="Rank"  size="37" length="225"  tabindex="16" autotrim="T" readonly="T" />
+        <lookupfield name="lkup_store_priority_id" required="F" label="Store priority" first="" nofirst="F"  tabindex="17" multiple="F" size="1" width="230" disabled="F">
+			<datasource>
+				<keyfield>lkup_store_priority_id</keyfield>
+                                <displayfield>caption</displayfield>
+                                <orderby>lkup_store_priority_id</orderby>
+				<lookuptable>lkup_store_priority</lookuptable>
+			</datasource>
+		</lookupfield>
+        
+         <lookupfield name="lkup_territory_id" required="F" label="Store territory" first="" nofirst="F"  tabindex="17" multiple="F" size="1" width="230" disabled="F">
+			<datasource>
+				<keyfield>lkup_territory_id</keyfield>
+                                <displayfield>territory</displayfield>
+                                <orderby>territory</orderby>
+				<lookuptable>lkup_store_territories</lookuptable>
+                <clause>province_id = ~current_user_province_id~ </clause>
+			</datasource>
+		</lookupfield>
+
+    	<lookupfield name="user_id"   nofirst="F" multiple="F" size="1" width="225" tabindex="17" defualt="0" label="" >
+			<datasource>
+				<keyfield>user_id</keyfield>
+                                <displayfield>concat( first_name,' ', last_name) </displayfield>
+                                <orderby>username</orderby>
+                                <clause>deleted=0 and estate_id =0 and user_level_id!=1 and province_id = ~current_user_province_id~ or user_id=0</clause>
+				<lookuptable>users</lookuptable>
+			</datasource>
+            
+            	<listener type="JS" event="onChange" action="changeAssignUser(this.value)"/>
+                
+		</lookupfield>
+
+        <!--section 2  Contact information -->
+        <!--row1 first name ,last name title -->
+
+        <editfield name="first_name"  label="First name"  size="37" length="25" tabindex="18" autotrim="T"/>
+		<editfield name="last_name"   label="Last name"   size="37" length="25" tabindex="19" autotrim="T"/>
+		<editfield name="title"       label="Title"       size="37" length="25" tabindex="20" autotrim="T"/>
+
+
+        <!--row1 bs number ,cellnumber, faxnumber-->
+    	<editfield name="phone_office1" label="Business #"   size="30" length="25"  tabindex="21" autotrim="T" required="F"/>
+    	<hiddenfield name="phone_work" />
+   	     <editfield name="ext_no" label="Ext."  size="4" length="10" required="F" tabindex="22" autotrim="T"/>
+
+   		<editfield name="phone_other1" label="Cell number"  size="37" length="25"  tabindex="23" autotrim="T"/>
+ 		<hiddenfield name="phone_cell" />
+		<editfield name="phone_fax"  label="Fax number"    size="37" length="25"  tabindex="24" autotrim="T"/>
+
+        <!--row1 bs number ,cellnumber, faxnumber-->
+        <editfield name="email1"            label="Email address"                 size="37" length="100" tabindex="25" mask="EMAIL" autotrim="T"/>
+		<editfield name="second_first_name" label="Secondary contact first name"  size="37" length="25"  tabindex="26" autotrim="T"/>
+		<editfield name="second_last_name"  label="Secondary contact last name"   size="37" length="25"  tabindex="27" autotrim="T"/>
+
+		<buttons>
+			<button name="btnAdd" id="btnAdd" type="BUTTON"  value="OK  "   tabindex="29"/>
+     		<button name="btnCancel" id="btnCancel" type="BUTTON" value="Cancel"  tabindex="30"/>
+		</buttons>
+                
+        <lookupfield name="order_estate_id" label="Estate"  first= "Show all" nofirst="F" multiple="F" size="1" width="226" required="F" disabled="F">
+			<datasource>
+				<keyfield>e.estate_id</keyfield>
+                                <displayfield>estate_name</displayfield>
+                                <orderby>estate_name</orderby>
+                                <groupby>e.estate_id</groupby>
+				<lookuptable>customer_wine_allocations c, wines w, estates e</lookuptable>
+                                <clause>c.wine_id = w.wine_id and w.estate_id = e.estate_id and e.deleted=0 and c.customer_id =~current_customer_id~</clause>
+			</datasource>
+                        <listener type="JS" event="onChange" action="refreshOrders()"/>
+		</lookupfield>
+                
+          <!--lookupfield name="order_year" label="Year"  nofirst="T" multiple="F" size="1" width="68" required="F" disabled="F">
+			<datasource>
+				<keyfield>year(when_entered)</keyfield>
+                                <orderby>year(when_entered) desc</orderby>
+                                <groupby>year(when_entered)</groupby>
+				<lookuptable>orders</lookuptable>
+                                <clause>customer_id =~current_customer_id~ and year(when_entered)&lt;&gt;0</clause>
+			</datasource>
+                        <listener type="JS" event="onChange" action="refreshOrders()"/>
+		</lookupfield-->
+		
+		<combofield name="order_year" label="Year" width="68" tabindex="13" nofirst="T" default ="2019">
+        
+          <option value="2014" caption="2014" />
+          <option value="2015" caption="2015" />
+			<option value="2016" caption="2016" />
+			<option value="2017" caption="2017" />
+            <option value="2018" caption="2018" />
+            <option value="2019" caption="2019" />
+          <listener type="JS" event="onChange" action="refreshOrders()"/>
+      </combofield>
+      
+                
+      <lookupfield name="estate_id" label="Estate"  first= "Select estate" nofirst="T" multiple="F" size="1" width="226" required="F" disabled="F">
+			<datasource>
+				<keyfield>e.estate_id</keyfield>
+                                <displayfield>estate_name</displayfield>
+                                <orderby>estate_name</orderby>
+                                <groupby>e.estate_id</groupby>
+				<lookuptable>customer_wine_allocations c, wines w, estates e</lookuptable>
+         <clause>c.wine_id = w.wine_id and w.estate_id = e.estate_id and e.deleted=0 and e.estate_id!=2 and c.customer_id =~current_customer_id~</clause>
+		</datasource>
+		<listener type="JS" event="onChange" action="refreshWines()"/>
+		</lookupfield>
+		
+		
+		
+		
+		<!-- Sales list part -->
+		<combofield name="sales_month" label="Month" width="94" tabindex="13" nofirst="T" disabled="T">
+          <option value="1" caption="January" />
+          <option value="2" caption="February" />
+          <option value="3" caption="March" />
+          <option value="4" caption="April" />
+          <option value="5" caption="May" />
+          <option value="6" caption="June" />
+          <option value="7" caption="July" />
+          <option value="8" caption="August" />
+          <option value="9" caption="September" />
+          <option value="10" caption="October" />
+          <option value="11" caption="November" />
+          <option value="12" caption="December" />
+          <listener type="JS" event="onChange" action="refreshSalesList()"/>
+      </combofield>
+      
+      <combofield name="order_month" label="Month" width="94" tabindex="13" nofirst="T" disabled="T">
+          <option value="1" caption="January" />
+          <option value="2" caption="February" />
+          <option value="3" caption="March" />
+          <option value="4" caption="April" />
+          <option value="5" caption="May" />
+          <option value="6" caption="June" />
+          <option value="7" caption="July" />
+          <option value="8" caption="August" />
+          <option value="9" caption="September" />
+          <option value="10" caption="October" />
+          <option value="11" caption="November" />
+          <option value="12" caption="December" />
+          <listener type="JS" event="onChange" action="refreshOrders()"/>
+      </combofield>
+      
+      <combofield name="sales_year" label="Year" width="68" tabindex="13" nofirst="T" >
+		
+			<option value="2014" caption="2014" />
+			<option value="2015" caption="2015" />
+			<option value="2016" caption="2016" />
+			<option value="2017" caption="2017" />
+            <option value="2018" caption="2018" />
+            <option value="2019" caption="2019" />
+          <listener type="JS" event="onChange" action="refreshSalesList()"/>
+      </combofield>
+      
+      <combofield name="sales_qut" label="" width="78" tabindex="13" disabled="F" nofirst="T">
+          <option value="1" caption="First" />
+          <option value="2" caption="Second" />
+          <option value="3" caption="Third" />
+          <option value="4" caption="Fourth" />
+          <option value="-1" caption="YTD" />
+          <listener type="JS" event="onChange" action="refreshSalesList()"/>
+      </combofield>
+      
+      <combofield name="order_qut" label="" width="78" tabindex="13" disabled="F" nofirst="T">
+          <option value="1" caption="First" />
+          <option value="2" caption="Second" />
+          <option value="3" caption="Third" />
+          <option value="4" caption="Fourth" />
+          <option value="-1" caption="YTD" />
+          <listener type="JS" event="onChange" action="refreshOrders()"/>
+      </combofield>
+      
+   		
+	
+        <!-- display cs orders list-->
+          <lookupfield name="display_products" label="Products"  width="200" tabindex="13" nofirst="T" default ="Winelife">		
+			<datasource>
+				<keyfield>estate_id</keyfield>
+                                <displayfield>estate_name</displayfield>
+                                <orderby>estate_name</orderby>
+                                <groupby>estate_id</groupby>
+			
+            <clause>billing_address_country='CSWS Products'</clause>
+             <lookuptable>estates</lookuptable>
+		  </datasource>
+		<listener type="JS" event="onChange" action="changeCSProducer()"/>
+		</lookupfield>
+        
+        	<!-- combofield name="display_products" label="Products" width="200" tabindex="13" nofirst="T" default ="Winelife">		
+        
+          <option value="2014" caption="2014" />
+          <option value="2015" caption="2015" />
+			<option value="2016" caption="2016" />
+          <listener type="JS" event="onChange" action="refreshOrders()"/>
+      </combofield -->
+      
+        
+        
+		
+   <!--  csws product section-->
+        
+        
+         <lookupfield name="cs_products_id" label="Select products"  width="200" tabindex="13" nofirst="T" default="188" >		
+			<datasource>
+				<keyfield>estate_id</keyfield>
+                                <displayfield>estate_name</displayfield>
+                                <orderby>estate_name</orderby>
+                                <groupby>estate_id</groupby>
+			
+            <clause>billing_address_country='CSWS Products'</clause>
+             <lookuptable>estates</lookuptable>
+		  </datasource>
+		<listener type="JS" event="onChange" action="refreshCSProduts4OrderList(this.value)"/>
+		</lookupfield>
+        
+            
+        		
+		<combofield name="cs_order_year" label="Year" width="68" tabindex="13" nofirst="T" default ="2019">
+			<option value="2016" caption="2016" />
+			<option value="2017" caption="2017" />
+            <option value="2018" caption="2018" />
+            <option value="2019" caption="2019" />
+          <listener type="JS" event="onChange" action="refreshCSOrders()"/>
+      </combofield>
+      
+      <combofield name="cs_order_month" label="Month" width="94" tabindex="13" nofirst="T" disabled="T">
+          <option value="1" caption="January" />
+          <option value="2" caption="February" />
+          <option value="3" caption="March" />
+          <option value="4" caption="April" />
+          <option value="5" caption="May" />
+          <option value="6" caption="June" />
+          <option value="7" caption="July" />
+          <option value="8" caption="August" />
+          <option value="9" caption="September" />
+          <option value="10" caption="October" />
+          <option value="11" caption="November" />
+          <option value="12" caption="December" />
+          <listener type="JS" event="onChange" action="refreshCSOrders()"/>
+      </combofield>
+      
+      <combofield name="cs_order_qut" label="" width="78" tabindex="13" disabled="F" nofirst="T">
+          <option value="1" caption="First" />
+          <option value="2" caption="Second" />
+          <option value="3" caption="Third" />
+          <option value="4" caption="Fourth" />
+          <option value="-1" caption="YTD" />
+          <listener type="JS" event="onChange" action="refreshCSOrders()"/>
+      </combofield>
+
+      		<!-- editfield name="wl_aval_btls"  label="Btls"    size="5"  length="25"   autotrim="T"/>
+      		<editfield name="wl_aval_case"  label="Cs"    size="5"  length="25"   autotrim="T"/>
+      		
+      		<editfield name="qty_btls"  label="Order Quantities"    size="15"  length="25"   autotrim="T"/ -->
+
+
+	</section>
+
+</form>
+
+
+
+	<!-- Form60 : template used in AddUser.php -->

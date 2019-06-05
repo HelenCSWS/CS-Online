@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE form SYSTEM "..\..\docs\dtd\php2go_forms.dtd">
+<form >
+    
+	<section name="" id="supplierSales" required_flag="T" required_color="#FF0000" required_char="*">
+        <hiddenfield name="current_estate_id" value="0"/>
+        <hiddenfield name="user_id" id="user_id" value="0"/>
+	 <hiddenfield name="estate" value="0"/>
+	
+	<combofield name="estate_id" label="Estate" nofirst="F" multiple="F" size="1" width="130" disabled="F" tabindex="4">       
+          <option value="-1" caption="All" />
+          <option value="97" caption="LaStella" />
+          <option value="96" caption="Le Vieux Pin" />
+    </combofield>
+
+    <combofield name="search_type" label="Search for" width="125" tabindex="13" disabled="F" nofirst="T" default="-1" >
+      <option value="1" caption="Customer"/>
+      <option value="2" caption="Invoice"/>
+      <option value="3" caption="License number"/>
+      <option value="4" caption="Street name"/>
+      <listener event="onChange" type="JS" action="changeSearchFeild();" />
+	</combofield>
+	
+
+      
+    <editField class="Lable" name="search_field" tabindex="1" value="" size="20">
+    		<listener type="JS" event="onKeyPress" action="handleEnter(this, event, getinvoices)"/>
+    </editField>
+    
+    
+ 			
+<!-- 2 section end here-->
+
+
+		<!--buttons>
+    		<button name="btnRefresh" type="BUTTON" value="Generate" disabled="T">
+    		      <listener type="JS" event="onClick" action="refreshSpSalesList()"/>
+    		</button>
+    	
+		</buttons-->
+
+
+
+	</section>
+
+</form>
+

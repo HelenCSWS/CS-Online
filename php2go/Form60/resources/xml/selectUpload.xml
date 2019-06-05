@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE form SYSTEM "..\..\docs\dtd\php2go_forms.dtd">
+<form>
+   
+	<section name="" id="selectEstate" required_flag="T" required_color="#FF0000" required_char="*">
+        <hiddenfield name="pageid"/>
+        <hiddenfield name="stestate_id"/>
+        
+        <hiddenfield name="search_id"/>
+         <hiddenfield name="search_key"/>
+
+		
+
+
+		<!--lookupfield name="province"  label="Country" tabindex="1" default="1" nofirst="T" multiple="F"  width="180"  >
+			<datasource>
+				<keyfield>distinct billing_address_country</keyfield>
+                <displayfield>billing_address_country</displayfield>
+                <orderby>billing_address_country</orderby>
+                <clause>deleted=0 </clause>
+				<lookuptable>estates</lookuptable>
+			</datasource>
+			
+			<listener type="JS" event="onChange" action="getEstatsByCountry('estate_id', this.value)"/>
+
+		</lookupfield-->
+		
+		<combofield name="estate_id"  label="Estate" tabindex="1" default="1" nofirst="T" multiple="F" size="15" width="380"  >
+		<>
+		<listener type="JS" event="ondblclick" action="openPage()"/>
+		</combofield>
+
+		
+		<combofield name="estate_id"  label="Estate" tabindex="1" default="1" nofirst="T" multiple="F" size="15" width="380"  >
+		<listener type="JS" event="ondblclick" action="openPage()"/>
+		</combofield>
+
+ 		<buttons>
+
+            <button name="btnNext" type="BUTTON"  value="Next  " tabindex="2">
+     		      <listener type="JS" event="onClick" action="openPage()"/>
+    		</button>
+    		
+			<button name="btnCancel" type="BUTTON" value="Cancel" tabindex="3"/>
+			
+		</buttons>
+     
+	</section>	
+
+</form>
+

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE form SYSTEM "..\..\docs\dtd\php2go_forms.dtd">
+<form>
+
+	<section name="allocatewine" id="allocatewine" required_flag="T" required_color="#FF0000" required_char="*">
+	        <hiddenfield name="wine_numbers"/>
+	        <hiddenfield name="wine_ids"/>
+	        <hiddenfield name="all_wine_ids"/>
+	        <hiddenfield name="pageid"/>
+
+	        <hiddenfield name="estate_id"/>
+
+
+    		<buttons>
+    			<button name="btnAllocate"   type="BUTTON"  value=" Allocate now " >
+                              <listener type="JS" event="onclick" action="allocateWine()"/>
+    			</button>
+    			<button name="btnSave"       type="BUTTON"  value="OK  " >
+                               <listener type="JS" event="onclick" action="saveAllocate()"/>
+    			</button>
+     			<button name="btnCancel"     type="BUTTON" value="Cancel" />
+    		</buttons>
+
+	</section>
+
+</form>
+

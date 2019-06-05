@@ -1,0 +1,261 @@
+<html>
+<head>
+<title>PHP2Go - Manual de Utilização</title>
+<style type="text/css">
+<!--
+.courier {  font-family: "Courier New"; font-size: 10pt}
+-->
+</style>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+</head>
+
+<body bgcolor="#FFFFFF">
+<p><a name="topo"></a><font size="4"><b>PHP2Go Web Development Framework<br>
+  Manual de Utiliza&ccedil;&atilde;o</b></font></p>
+<b><a href="index.html">Parte 1</a> | Parte 2 | <a href="index3.html">Parte 3</a></b><br>
+<br>
+<a href="#4"> <i>4. Constru&ccedil;&atilde;o de um documento HTML </i></a><i><br>
+<a href="#5">5. Elementos do documento HTML</a><br>
+<a href="#6">6. 
+Templates</a><br>
+</i> 
+<p> <a name="4"></a> <b>4. Constru&ccedil;&atilde;o de um documento HTML<br>
+  <br>
+  </b>A base para a constru&ccedil;&atilde;o de um sistema utilizando o framework 
+  PHP2Go &eacute; a constru&ccedil;&atilde;o de documentos HTML. A classe base 
+  para a constru&ccedil;&atilde;o de documentos chama-se Document, e baseia-se 
+  em uma estrutura de &quot;templates&quot; para a constru&ccedil;&atilde;o da 
+  interface de uma p&aacute;gina Web.<br>
+  <br>
+  Um documento criado com a classe Document deve estar associado a um <b>template 
+  </b>ou<b> esqueleto de conte&uacute;do</b>. Este esqueleto de conte&uacute;do 
+  &eacute; um template HTML que define a estrutura geral da p&aacute;gina, subdivindo-a 
+  em grandes &aacute;reas. Como em um template podem existir vari&aacute;veis 
+  nas quais &eacute; aplicada substitui&ccedil;&atilde;o de valor, o desenvolvedor/usu&aacute;rio 
+  deve definir no esqueleto de conte&uacute;do vari&aacute;veis que representem 
+  as principais &aacute;reas do documento HTML a ser constru&iacute;do. Na classe, 
+  estas &aacute;reas definidas transformam-se em <b>elementos </b>da p&aacute;gina. 
+  A estes &quot;elementos&quot; podem ser associados os conte&uacute;dos dos elementos 
+  na forma de outros templates.<br>
+  <br>
+  Desta forma, o documento HTML acaba sendo constru&iacute;do atrav&eacute;s de 
+  uma &aacute;rvore de templates. No primeiro n&iacute;vel, encontra-se o esqueleto 
+  de conte&uacute;do. No segundo, os elementos e dentro deles blocos de conte&uacute;do, 
+  vari&aacute;veis ou outros templates inclu&iacute;dos.<br>
+  <br>
+  Abaixo, segue um exemplo de cria&ccedil;&atilde;o de um documento HTML b&aacute;sico, 
+  juntamente com o esqueleto de conte&uacute;do associado:<br>
+  <br>
+  <b>Template de conte&uacute;do (pageLayout.tpl):</b><br>
+  <br>
+  <span class="courier">&lt;table cellpadding=&quot;0&quot; cellspacing=&quot;0&quot; 
+  border=&quot;0&quot; width=&quot;760&quot;&gt;<br>
+  &lt;tr&gt;&lt;td colspan=&quot;2&quot; align=&quot;left&quot;&gt;<b><i>{header}</i></b>&lt;/td&gt;&lt;/tr&gt;<br>
+  &lt;tr&gt;&lt;td align=&quot;left&quot;&gt;<b><i>{menu}</i></b>&lt;/td&gt;&lt;td 
+  align=&quot;left&quot;&gt;<b><i>{main}</i></b>&lt;/td&gt;&lt;/tr&gt;<br>
+  &lt;tr&gt;&lt;td colspan=&quot;2&quot; align=&quot;left&quot;&gt;<i><b>{footer}</b></i>&lt;/td&gt;&lt;/tr&gt;<br>
+  &lt;/table&gt; </span><b><br>
+  <br>
+  C&oacute;digo para constru&ccedil;&atilde;o do documento (doc.php):<br>
+  <br>
+  </b><span class="courier">require_once(&quot;path/to/php2go/p2gConfig.inc&quot;);<br>
+  import(&quot;php2go.base.Document&quot;);<br>
+  <br>
+  $doc = new Document(&quot;path/to/pageLayout.tpl&quot;);<br>
+  $doc-&gt;setTitle(&quot;T&iacute;tulo&quot;);<br>
+  $doc-&gt;elements[&quot;header&quot;] = &quot;Header&quot;;<br>
+  $doc-&gt;elements[&quot;menu&quot;] = &quot;Menu&quot;;<br>
+  $doc-&gt;elements[&quot;main&quot;] = &quot;Hello World!&quot;;<br>
+  $doc-&gt;elements[&quot;footer&quot;] = &quot;Footer&quot;;<br>
+  $doc-&gt;display();</span><br>
+  <br>
+  <a href="#topo">topo</a><b> <br>
+  <br>
+  <a name="5"></a> <b>5. Elementos do documento HTML</b><br>
+  <br>
+  </b>Os elementos do documento HTML podem receber valores de dois tipos:<b><br>
+  <br>
+  </b>&raquo; Strings com o conte&uacute;do a ser atribu&iacute;do ao elemento;<br>
+  &raquo; Objetos do tipo DocumentElement (template HTML espec&iacute;fico para 
+  constru&ccedil;&atilde;o de elementos de documento), no qual podem ser inseridos 
+  um ou v&aacute;rios arquivos template, ou conte&uacute;do, e sobre qual podem 
+  ser realizadas opera&ccedil;&otilde;es de substitui&ccedil;&atilde;o, replica&ccedil;&atilde;o 
+  de blocos ou inclus&atilde;o de arquivos.<br>
+  <br>
+  A classe DocumentElement, ao ser instanciada, est&aacute; preparada para receber 
+  conte&uacute;do atrav&eacute;s de arquivos ou vari&aacute;veis. O m&eacute;todo 
+  put( ) pode receber o nome de um arquivo (template HTML) ou uma vari&aacute;vel 
+  string contendo uma por&ccedil;&atilde;o de conte&uacute;do a ser inserida. 
+  Um buffer interno &eacute; criado at&eacute; o momento em que o desenvolvedor/usu&aacute;rio 
+  executar o m&eacute;todo parse( ). A partir deste instante, as opera&ccedil;&otilde;es 
+  dispon&iacute;veis para a manipula&ccedil;&atilde;o do buffer criado podem ser 
+  executadas: substitui&ccedil;&atilde;o de vari&aacute;veis com valores provenientes 
+  de uma base de dados, cria&ccedil;&atilde;o e replica&ccedil;&atilde;o de blocos 
+  de conte&uacute;do, inclus&atilde;o de arquivos, inser&ccedil;&atilde;o de outros 
+  templates ou o resultado produzido por outras classes do framework, como aquelas 
+  que constr&oacute;em formul&aacute;rios, relat&oacute;rios, etc...<br>
+  <br>
+  Abaixo, segue um exemplo da utiliza&ccedil;&atilde;o da classe DocumentElement:<br>
+  <br>
+  <span class="courier">// cria&ccedil;&atilde;o do documento HTML<br>
+  // o esqueleto de documento myLayout cont&eacute;m, entre os elementos definidos, 
+  o elemento <br>
+  // {header} (representa o cabe&ccedil;alho da p&aacute;gina)<br>
+  $doc = new Document(&quot;myLayout.tpl&quot;);<br>
+  // inst&acirc;ncia do elemento de documento<br>
+  $header = new DocumentElement();<br>
+  // inclus&atilde;o de um arquivo template no elemento<br>
+  $header-&gt;put(&quot;header.tpl&quot;);<br>
+  // interpreta&ccedil;&atilde;o do conte&uacute;do buferizado (impede execu&ccedil;&otilde;es 
+  futuras do m&eacute;todo put())<br>
+  $header-&gt;parse();<br>
+  // substitui&ccedil;&atilde;o simples de vari&aacute;vel<br>
+  $header-&gt;assign(&quot;date&quot;, Date::localDate());<br>
+  // substitui&ccedil;&atilde;o m&uacute;ltipla de vari&aacute;veis<br>
+  $header-&gt;assign(array(&quot;localPath&quot;=&gt;&quot;http://www.mydomain.com/&quot;, 
+  &quot;imagePath&quot;=&gt;&quot;http://www.mydomain.com/images/&quot;));<br>
+  // atribui&ccedil;&atilde;o do elemento criado no vetor de elementos do documento<br>
+  $doc-&gt;elements['header'] =&amp; $header;<br>
+  // exibi&ccedil;&atilde;o do documento<br>
+  $doc-&gt;display();</span> <br>
+  <b><br>
+  </b><a href="#topo">topo</a><b> <br>
+  <br>
+  <a name="6"></a> <b>6. Templates</b><br>
+  <br>
+  </b>A classe DocumentElement &eacute; extendida da classe Template. Esta, por 
+  sua vez, permite a manipula&ccedil;&atilde;o de arquivos Template simples, que 
+  podem ser utilizados na constru&ccedil;&atilde;o de m&oacute;dulos de conte&uacute;do 
+  din&acirc;mico em p&aacute;ginas Web.<br>
+  <br>
+  O sistema de templates adotado no PHP2Go &eacute; o TemplatePower. O endere&ccedil;o 
+  <a href="http%7C//templatepower.codocad.com/" target="_blank">http://templatepower.codocad.com/</a> 
+  &eacute; o site oficial do projeto, e cont&eacute;m informa&ccedil;&otilde;es 
+  iniciais para quem deseja compreender o formato de constru&ccedil;&atilde;o 
+  de templates do componente.<b><br>
+  <br>
+  </b>A cria&ccedil;&atilde;o de um template de c&oacute;digo HTML (execu&ccedil;&atilde;o 
+  do construtor) pode ser realizada das seguintes tr&ecirc;s formas exemplificadas 
+  abaixo:<br>
+</p>
+<p><span class="courier">// constru&ccedil;&atilde;o de um template a partir de 
+  um arquivo<br>
+  $template = new Template(&quot;file.tpl&quot;);<br>
+  <br>
+  // constru&ccedil;&atilde;o de um template a partir de uma vari&aacute;vel<br>
+  $template = new Template($content, T_BYVAR);<br>
+  <br>
+  // constru&ccedil;&atilde;o de um tempalte a partir de conte&uacute;do serializado<br>
+  $template = new Template($content);<br>
+  $template-&gt;setSerializedTpl();<b><br>
+  </b></span><b><br>
+  </b>Basicamente, o mecanismo de templates implementado pelo componente TemplatePower 
+  e adotado pela classe Template do PHP2Go permite as seguintes opera&ccedil;&otilde;es:<br>
+  <br>
+  <b>a) Substitui&ccedil;&atilde;o de vari&aacute;veis:</b> a ado&ccedil;&atilde;o 
+  de um sistema de templates indica que, no m&iacute;nimo, seu sistema necessita 
+  de uma forma de separa&ccedil;&atilde;o de l&oacute;gica e interface. Para tanto, 
+  o mecanismo de substitui&ccedil;&atilde;o de vari&aacute;veis &eacute; a ferramenta 
+  mais simples e a primeira a ser utilizada pelos desenvolvedores. O padr&atilde;o 
+  de declara&ccedil;&atilde;o de vari&aacute;veis nos templates &eacute; a inclus&atilde;o 
+  do nome da mesma entre chaves. {variavel}, por exemplo, poder&aacute; receber 
+  um valor no momento que o m&eacute;todo Template::assign for executado da seguinte 
+  maneira:<br>
+  <br>
+  <span class="courier">&lt;!-- myTemplate.tpl --&gt;<br>
+  &lt;table border='0'&gt;<br>
+  &lt;tr&gt;&lt;td&gt;Simple Template Example&lt;/td&gt;&lt;/tr&gt;<br>
+  &lt;tr&gt;&lt;td&gt;Hello, <b>{name}</b>!&lt;/td&gt;&lt;/tr&gt;<br>
+  &lt;/table&gt; <br>
+  <br>
+  &lt;!-- myScript.php --&gt;<br>
+  $name = &quot;John Foo&quot;;<br>
+  $template = new Template(&quot;myTemplate.tpl&quot;);<br>
+  $template-&gt;assign(&quot;name&quot;, $name);</span><br>
+  <span class="courier">$doc-&gt;elements['template'] = $template-&gt;getContent();</span><br>
+  <br>
+  <b>b) Cria&ccedil;&atilde;o de blocos aninhados: </b>blocos s&atilde;o por&ccedil;&otilde;es 
+  de HTML que podem ser replicadas dentro de um arquivo template. A sintaxe para 
+  a cria&ccedil;&atilde;o de blocos deve seguir <b>estritamente</b> o padr&atilde;o 
+  abaixo:<br>
+  <br>
+  <span class="courier"><b>&lt;!-- START BLOCK : nome_do_bloco --&gt;</b><br>
+  c&oacute;digo HTML<br>
+  <b>&lt;!-- END BLOCK : nome_do_bloco --&gt;</b><br>
+  </span></p>
+<p>Podem existir blocos dentro de blocos, indefinidamente. A quest&atilde;o a 
+  ser apontada &eacute; a de que, no momento que uma nova c&oacute;pia de um bloco 
+  &eacute; criada, os comandos de substitui&ccedil;&atilde;o de vari&aacute;vel 
+  passam a apontar para o bloco criado. Por exemplo, no c&oacute;digo abaixo:<br>
+  <br>
+  <span class="courier">&lt;!-- myTemplate.tpl --&gt;<br>
+  &lt;table border='0'&gt;<br>
+  &lt;tr&gt;&lt;td&gt;<br>
+  <b>{teste}</b><br>
+  &lt;/td&gt;&lt;/tr&gt;<br>
+  &lt;/table&gt;<br>
+  &lt;table&gt;<br>
+  <b>&lt;!-- START BLOCK : meu_bloco --&gt;</b><br>
+  &lt;tr&gt;&lt;td&gt;<br>
+  <b>{outra_variavel}</b><br>
+  &lt;/td&gt;&lt;/tr&gt;<br>
+  &lt;/table&gt; <br>
+  <b>&lt;!-- END BLOCK : meu_bloco --&gt;</b><br>
+  <br>
+  &lt;!-- myScript.php --&gt;<br>
+  $template = new Template(&quot;myTemplate.tpl&quot;);<br>
+  $template-&gt;createBlock(&quot;meu_bloco&quot;);<br>
+  $template-&gt;assign(&quot;teste&quot;, $valor);</span></p>
+<p><span class="courier"><b> </b></span>A substitui&ccedil;&atilde;o da vari&aacute;vel 
+  &quot;teste&quot; n&atilde;o ocorrer&aacute; corretamente, pois ap&oacute;s 
+  a execu&ccedil;&atilde;o do m&eacute;todo createBlock(), as opera&ccedil;&otilde;es 
+  de substitui&ccedil;&atilde;o estar&atilde;o apontando para o bloco corrente, 
+  ou seja, &quot;meu_bloco&quot;.<br>
+  <br>
+  Para solucionar este problema, existem duas sa&iacute;das: <br>
+  <br>
+  A primeira &eacute; a chamada do m&eacute;todo assign com a indica&ccedil;&atilde;o 
+  do bloco onde a vari&aacute;vel se encontra: assign(&quot;bloco.variavel&quot;, 
+  $valor);. A vari&aacute;vel teste n&atilde;o est&aacute; &quot;visivelmente&quot; 
+  inclu&iacute;da em nenhum bloco. Isto porque ela est&aacute; no &quot;escopo 
+  global&quot; do template. Este espa&ccedil;o tamb&eacute;m possui um nome de 
+  bloco: _ROOT. <br>
+  <br>
+  <span class="courier">&lt;!-- myScript.php --&gt;<br>
+  $template = new Template(&quot;myTemplate.tpl&quot;);<br>
+  $template-&gt;createBlock(&quot;meu_bloco&quot;);<br>
+  $template-&gt;assign(&quot;_ROOT.teste&quot;, $valor);</span> <br>
+  <br>
+  A segunda sa&iacute;da &eacute; executar o m&eacute;todo globalAssign, que substitui 
+  todas as ocorr&ecirc;ncias da vari&aacute;vel &quot;teste&quot;, em qualquer 
+  bloco, pelo valor fornecido como segundo par&acirc;metro.<br>
+</p>
+<p><span class="courier">&lt;!-- myScript.php --&gt;<br>
+  $template = new Template(&quot;myTemplate.tpl&quot;);<br>
+  $template-&gt;createBlock(&quot;meu_bloco&quot;);<br>
+  $template-&gt;globalAssign(&quot;teste&quot;, $valor);</span><br>
+  <br>
+  <b>c) Inclus&atilde;o de arquivos: </b>A inclus&atilde;o de outros arquivos 
+  dentro de templates pode ser realizada com a sintaxe e exemplo exibidos abaixo:<br>
+  <br>
+  <span class="courier">&lt;!-- myTemplate.tpl --&gt;<br>
+  &lt;table border='0'&gt;<br>
+  &lt;!-- INCLUDE BLOCK : nome_do_bloco --&gt;<br>
+  &lt;tr&gt;&lt;td&gt;<br>
+  &amp;nbsp;<br>
+  &lt;/td&gt;&lt;/tr&gt;<br>
+  &lt;/table&gt;<br>
+  <br>
+  &lt;!-- include.tpl --&gt;<br>
+  &lt;tr&gt;&lt;td&gt;<br>
+  Hello World!<br>
+  &lt;/td&gt;&lt;/tr&gt;<br>
+  <br>
+  &lt;!-- myScript.php --&gt;<br>
+  $template = new Template(&quot;myTemplate.tpl&quot;);<br>
+  $template-&gt;includeAssign(&quot;nome_do_bloco&quot;, &quot;include.tpl&quot;);<br>
+  <br>
+  </span> <a href="#topo">topo</a><br>
+  <a href="index3.html">&raquo; Pr&oacute;xima Parte</a></p>
+</body>
+</html>

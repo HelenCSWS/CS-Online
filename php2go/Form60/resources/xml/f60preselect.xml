@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE form SYSTEM "..\..\docs\dtd\php2go_forms.dtd">
+<form>
+   
+    <section name="" id="f60Select" required_flag="T" required_color="#FF0000" required_char="*">
+        <hiddenfield name="estate_id"/>
+        <hiddenfield name="pageid"/>
+        <hiddenfield name="product_id"/>
+        
+        <hiddenfield name="search_key"/>
+        <hiddenfield name="search_id"/>
+        <hiddenfield name="year"/>
+        <hiddenfield name="period"/>
+         <hiddenfield name="isQtr"/>
+        <hiddenfield name="store_type_id"/>
+        <hiddenfield name="start_with"/>
+        <hiddenfield name="search_adt"/>
+        <hiddenfield name="wine_type"/>
+        <hiddenfield name="user_id"/>
+        <hiddenfield name="indexs"/>
+        <hiddenfield name="wine_ids"/>
+        <hiddenfield name="city"/>
+ 
+        <hiddenfield name="unwine_ids" />
+        <hiddenfield name="customer_id"/>
+        <hiddenfield name="isNoWine" value="0"/>
+        <hiddenfield name="is_international" value="0"/>
+
+        <combofield name="wine_id" tabindex="1"  label="Select product" nofirst="T" multiple="F" size="25" width="480" default="~first_id~">
+            <option value="0" caption="" />
+            <listener type="JS" event="ondblclick" action="getWinesReport()"/>
+        </combofield>
+
+
+		<buttons>        	
+        	<button name="btnBack" type="BUTTON" value="Back" tabindex="2">
+    		      <listener type="JS" event="onClick" action="back2Search()"/>
+    		</button>
+
+        	<button name="btnOk" type="BUTTON" value="Next" tabindex="2">
+    		      <listener type="JS" event="onClick" action="getWinesReport()"/>
+    		</button>
+          <button name="btnClose" type="BUTTON" value="Cancel" tabindex="3"/>
+		</buttons>
+      
+	</section>	
+
+</form>
+

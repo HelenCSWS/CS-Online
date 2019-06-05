@@ -1,0 +1,212 @@
+<html>
+<head>
+<title>PHP2Go - Manual de Utilização</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<style type="text/css">
+<!--
+.courier {  font-family: "Courier New"; font-size: 10pt}
+-->
+</style>
+</head>
+
+<body bgcolor="#FFFFFF">
+<p> <a name="topo"></a><font size="4"><b>PHP2Go Web Development Framework<br>
+  Manual de Utiliza&ccedil;&atilde;o</b></font></p>
+<p> <b>Parte 1 | <a href="index2.html">Parte 2</a></b><b> | <a href="index3.html">Parte 
+  3</a></b><br>
+  <br>
+  <i><a href="#1">1. Introdu&ccedil;&atilde;o</a><br>
+  <a href="#2">2. Configura&ccedil;&otilde;es Globais</a><br>
+  <a href="#3">3. Instala&ccedil;&atilde;o do Framework</a></i><br>
+</p>
+<p> <a name="1"></a> <b>1. Introdu&ccedil;&atilde;o</b><br>
+  <br>
+  Este manual introdut&oacute;rio cont&eacute;m orienta&ccedil;&otilde;es de instala&ccedil;&atilde;o, 
+  configura&ccedil;&atilde;o e pequenos tutorias para que voc&ecirc; seja capaz 
+  de criar sistemas utilizando o PHP2Go. Com as instru&ccedil;&otilde;es abaixo, 
+  as principais configura&ccedil;&otilde;es iniciais ser&atilde;o explicadas e 
+  as no&ccedil;&otilde;es b&aacute;sicas de como executar tarefas simples para 
+  iniciar o desenvolvimento de um sistema ser&atilde;o fornecidas.<br>
+  <br>
+  Inicialmente, voc&ecirc; realizou o download do pacote de arquivos do framework. 
+  A primeira decis&atilde;o a ser tomada &eacute; definir se ele ser&aacute; utilizado 
+  em um servidor objetivando o desenvolvimento de uma ou v&aacute;rias aplica&ccedil;&otilde;es. 
+  Desenvolvendo v&aacute;rias aplica&ccedil;&otilde;es, o framework dever&aacute; 
+  estar alocado e configurado de forma a ser reutilizado por cada aplica&ccedil;&atilde;o, 
+  funcionando como um reposit&oacute;rio comum de software respons&aacute;vel 
+  pela gera&ccedil;&atilde;o e automa&ccedil;&atilde;o de tarefas na constru&ccedil;&atilde;o 
+  de sistemas para a Web.<br>
+  <br>
+  <a href="#topo">topo</a><br>
+</p>
+<p> <a name="2"></a> <b>2. Configura&ccedil;&otilde;es Globais</b><br>
+  <br>
+  O segundo ponto inicial mais importante &eacute; a defini&ccedil;&atilde;o das 
+  configura&ccedil;&otilde;es globais do framework. Juntamente com todas as classes 
+  e bibliotecas, existe um arquivo b&aacute;sico de configura&ccedil;&atilde;o, 
+  chamado <span class="courier">userConfig.php</span>. Dentro dele, existe um 
+  vetor, denominado <span class="courier">$P2G_USER_CFG</span> que cont&eacute;m 
+  todas as defini&ccedil;&otilde;es de configura&ccedil;&atilde;o poss&iacute;veis. 
+  Em um ambiente com um s&oacute; sistema, este arquivo pode ser mantido, e populado 
+  com os valores adequados de configura&ccedil;&atilde;o. Na exist&ecirc;ncia 
+  de v&aacute;rios sistemas, a solu&ccedil;&atilde;o mais adequada para a customiza&ccedil;&atilde;o 
+  do ambiente para cada sistema &eacute; a cria&ccedil;&atilde;o de arquivos independentes 
+  de configura&ccedil;&atilde;o. <br>
+  <br>
+  Quando o primeiro script for criado utilizando o framework, a seguinte ordem 
+  de busca dos dados de configura&ccedil;&atilde;o &eacute; executada:<br>
+  <br>
+  <b>a)</b> O framework busca pelo vetor <span class="courier">$P2G_USER_CFG</span> 
+  j&aacute; definido no escopo global. Esta &eacute; uma boa alternativa, uma 
+  vez que o usu&aacute;rio pode definir, independente de qualquer configura&ccedil;&atilde;o, 
+  o arquivo onde deseja gravar as configura&ccedil;&otilde;es do framework;<br>
+  <b>b)</b> Um arquivo de nome userConfig.php &eacute; procurado na raiz do sistema 
+  de arquivos do dom&iacute;nio (vari&aacute;vel <span class="courier">DOCUMENT_ROOT</span> 
+  em um servidor Apache). Este arquivo deve conter o vetor <span class="courier">$P2G_USER_CFG</span>;<br>
+  <b>c)</b> O arquivo padr&atilde;o de configura&ccedil;&otilde;es (<span class="courier">/caminho/para/o/framework/userConfig.php</span>) 
+  &eacute; buscado. As configura&ccedil;&otilde;es originais ser&atilde;o utilizadas;<br>
+  <b>d)</b> Um erro &eacute; exibido ao desenvolvedor/usu&aacute;rio, uma vez 
+  que n&atilde;o foi poss&iacute;vel detectar um vetor de configura&ccedil;&otilde;es 
+  v&aacute;lido.<br>
+  <br>
+  A lista abaixo define todas as chaves de configura&ccedil;&atilde;o poss&iacute;veis 
+  e o objetivo de cada uma delas:<br>
+  <br>
+  <span class="courier">PHP2GO_ABSOLUTE_URI</span>: define um caminho absoluto 
+  <i>http</i> para o sistema de arquivos do framework. Tanto em um ambiente mono 
+  quanto em um ambiente multi-sistema, deve ser um caminho v&aacute;lido;<br>
+  <span class="courier">LANGUAGE</span>: c&oacute;digo da linguagem a ser utilizada, 
+  dentre as suportadas pelo framework;<br>
+  <span class="courier">CHARSET</span>: charset padrão a ser utilizado pelo framework quando um valor não for fornecido pelo usuário;<br>  
+  <span class="courier">COUNTRY</span>: armazena o nome do pa&iacute;s local (opcional);<br>
+  <span class="courier">CITY</span>: armazena o nome da cidade local (opcional);<br>
+  <span class="courier">LOCAL_DATE_FORMAT</span>: formato de data local, um entre 
+  os formatos d/m/Y e Y/m/d;<br>
+  <span class="courier">LOCAL_TIME_ZONE</span>: especifica a zona de tempo a ser usada pelas funções
+  de data do framework. Aceita deslocamentos horários, identificadores de zona universais, norte-americanos ou militares;<br>
+  <span class="courier">CAPTURE_ERRORS</span>: indica se os erros devem ser capturados 
+  pelo framework (TRUE ou FALSE);<br>
+  <span class="courier">LOG_ERRORS</span>: indica se deve ser criado log de erros 
+  encontrados (TRUE ou FALSE);<br>
+  <span class="courier">ERROR_LOG_FILE</span>: arquivo onde os erros de aplica&ccedil;&atilde;o 
+  devem ser gravados (opcional);<br>
+  <span class="courier">DB_ERROR_LOG_FILE</span>: arquivo onde os erros de banco de dados devem ser gravados 
+  (opcional);<br>
+  <span class="courier">IGNORE_ERRORS</span>: Um vetor que cont&eacute;m c&oacute;digos 
+  ou por&ccedil;&otilde;es de mensagens de erro que devem ser ignoradas pelo framework. 
+  Ex: <span class="courier">array(&quot;UNDEFINED INDEX&quot;, &quot;UNDEFINED 
+  VARIABLE&quot;)</span>;<br>
+  <span class="courier">SHOW_ERRORS</span>: se os erros devem ser exibidos ao 
+  usu&aacute;rio (desaconselhado em ambiente de produ&ccedil;&atilde;o, &uacute;til 
+  em ambiente de desenvolvimento);<br>
+  <span class="courier">DEBUG_TRACE</span>: habilita a exibi&ccedil;&atilde;o 
+  do conte&uacute;do da pilha da aplica&ccedil;&atilde;o no momento de um erro 
+  (stack trace);<br>
+  <span class="courier">TITLE</span>: T&iacute;tulo base para os documentos HTML 
+  constru&iacute;dos no sistema;<br>
+  <span class="courier">DESCRIPTION</span>: Valor para a tag META DESCRIPTION 
+  dos documentos HTML;<br>
+  <span class="courier">KEYWORDS</span>: Valor para a tag META KEYWORDS dos documentos 
+  HTML;<br>
+  <span class="courier">CATEGORY</span>: Valor para a tag META CATEGORY dos documentos 
+  HTML;<br>
+  <span class="courier">DATE_CREATION</span>: Valor para a tag META DATE-CREATION 
+  dos documentos HTML;<br>
+  <span class="courier">SESSION_PATH</span>: Caminho onde os arquivos de sessão devem ser gravados. 
+  Se for omitido, utilizará o valor padrão definido na inicialização do PHP;<br>
+  <span class="courier">SESSION_LIFETIME</span>: Número de segundos que a sessão deve ser mantida ativa.
+  Se for omitido, utilizará o valor padrão definido na inicialização do PHP;<br>
+  <span class="courier">INCLUDE_PATH</span>: Vetor associativo que armazena caminhos 
+  de inclus&atilde;o de m&oacute;dulos ou classes para os sistemas. O valor de 
+  cada chave inclu&iacute;do deve representar a raiz a partir da qual arquivos 
+  ser&atilde;o inclu&iacute;dos. Para um diret&oacute;rio <span class="courier">/www/app/classes/</span>, 
+  defina a chave <i>'app'</i> com o valor <i>'/www/app/classes'</i>;<br>
+  <br>
+  <a href="#topo">topo</a><br>
+  <br>
+  <a name="3"></a> <b>3. Instala&ccedil;&atilde;o do Framework</b><br>
+  <br>
+  No caso da utiliza&ccedil;&atilde;o do PHP2Go para o desenvolvimento de apenas 
+  um sistema, recomendamos que ele seja alocado em um diret&oacute;rio um n&iacute;vel 
+  abaixo da raiz do sistema de arquivos da aplica&ccedil;&atilde;o. Se a raiz 
+  da aplica&ccedil;&atilde;o (DOCUMENT_ROOT, para usu&aacute;rios do Apache) for, 
+  por exemplo, <i>/usr/local/apache/htdocs/app</i>, o sistema de arquivos do PHP2Go 
+  dever&aacute; ser copiado para <i>/usr/local/apache/htdocs/app/php2go</i>.<br>
+  <br>
+  Na maioria dos casos, torna-se muito &uacute;til e ben&eacute;fico o aproveitamento 
+  de um framework para constru&ccedil;&atilde;o de aplica&ccedil;&otilde;es Web 
+  com mais de um sistema. Mesmo que inicialmente ele seja necess&aacute;rio para 
+  o desenvolvimento de uma pequena aplica&ccedil;&atilde;o, a configura&ccedil;&atilde;o 
+  que &quot;prev&ecirc;&quot; a exist&ecirc;ncia futura de novos sistemas &eacute; 
+  mais adequada, pois cria um ambiente escal&aacute;vel de desenvolvimento, onde 
+  novas aplica&ccedil;&otilde;es de portes diferenciados podem ser adicionadas, 
+  utilizando uma base &uacute;nica de c&oacute;digo.<br>
+  <br>
+  Para contemplar a utiliza&ccedil;&atilde;o do PHP2Go com mais de um sistema, 
+  existem algumas alternativas:<br>
+  <br>
+  <a href="#topo">topo<br>
+  </a><br>
+  <b>3.1. Utiliza&ccedil;&atilde;o de <i>alias</i></b><i><br>
+  <br>
+  </i>Defina uma pasta em seu servidor Web onde o framework ser&aacute; gravado. 
+  Utilizando como exemplo um servidor Unix, uma possibilidade seria criar uma 
+  pasta abaixo da raiz de documentos do servidor Web (<i>/usr/local/apache/htdocs/php2go</i>) 
+  ou a cria&ccedil;&atilde;o de uma outra pasta a crit&eacute;rio do desenvolvedor. 
+  Utilizando o exemplo acima, deve-se atentar para o fato de que, para o funcionamento 
+  completo do framework, o servidor Web deve ser capaz de executar scripts internos 
+  do framework diretamente, independente do sistema. Desta forma, em toda configura&ccedil;&atilde;o 
+  de sistema que utilizar o framework deve haver uma maneira de acessar via <i>http</i> 
+  o sistema de arquivos do framework. Com v&aacute;rios sistemas utilizando uma 
+  base comum de c&oacute;digo, uma solu&ccedil;&atilde;o poss&iacute;vel seria 
+  a utiliza&ccedil;&atilde;o de <i>alias</i>, permitida na configura&ccedil;&atilde;o 
+  da maioria dos servidores Web. Utilizando o servidor Apache como exemplo, segue 
+  abaixo a configura&ccedil;&atilde;o recomendada:<br>
+  <br>
+  <span class="courier">Alias /php2go/ "/usr/local/apache/htdocs/php2go" </span><i><br>
+  <br>
+  </i>Desta forma, qualquer dom&iacute;nio registrado na configura&ccedil;&atilde;o 
+  do servidor ter&aacute; acesso <i>http</i> ao sistema de arquivos do framework 
+  atrav&eacute;s do subdiret&oacute;rio <i>php2go. </i>Para um dom&iacute;nio 
+  <i>www.dominio.com</i> registrado na configura&ccedil;&atilde;o, o endere&ccedil;o 
+  www.dominio.com/php2go representaria acesso direto via <i>http</i> para o framework.<br>
+  <br>
+  Com a utiliza&ccedil;&atilde;o de alias, a primeira das defini&ccedil;&otilde;es 
+  de configura&ccedil;&atilde;o est&aacute; conclu&iacute;da. A chave de configura&ccedil;&atilde;o 
+  <font face="Courier New" class="courier">PHP2GO_ABSOLUTE_URI</font> deve armazenar 
+  o valor <font face="Courier New, Courier, mono" size="2" class="courier">$_SERVER['SERVER_NAME'] 
+  . &quot;/php2go/&quot;</font> no arquivo de configura&ccedil;&otilde;es definido 
+  para cada sistema.<br>
+  <br>
+  <a href="#topo">topo</a><br>
+  <br>
+  <b>3.2. Utiliza&ccedil;&atilde;o de <i>dom&iacute;nio virtual</i></b><i><br>
+  <br>
+  </i>Outra solu&ccedil;&atilde;o poss&iacute;vel para a instala&ccedil;&atilde;o 
+  do framework &eacute; a utiliza&ccedil;&atilde;o de um dom&iacute;nio virtual 
+  para o mesmo. Atrav&eacute;s do dom&iacute;nio virtual registrado na configura&ccedil;&atilde;o 
+  do servidor Web, ser&aacute; poss&iacute;vel acessar os scripts internos do 
+  framework via <i>http</i>. Esta &eacute; uma solu&ccedil;&atilde;o mais restrita, 
+  no caso em que o desenvolvedor ou o usu&aacute;rio n&atilde;o tem acesso &agrave; 
+  configura&ccedil;&atilde;o do servidor ou n&atilde;o lhe &eacute; permitida 
+  a cria&ccedil;&atilde;o de dom&iacute;nios virtuais. Para o caso de haver a 
+  possibilidade, torna-se tamb&eacute;m uma boa solu&ccedil;&atilde;o para a correta 
+  instala&ccedil;&atilde;o e funcionamento. Segue, abaixo, um modelo de defini&ccedil;&atilde;o 
+  de dom&iacute;nio virtual para o servidor Apache:<br>
+  <br>
+  <span class="courier">&lt;virtualhost *&gt;<br>
+  DocumentRoot&nbsp;&nbsp;&nbsp;&nbsp;/usr/local/apache/htdocs/php2go<br>
+  ServerName&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;php2go.domain.com<br>
+  Options All<br>
+  &lt;/virtualhost&gt;</span><br>
+</p>
+<p>Com a utiliza&ccedil;&atilde;o de dom&iacute;nio virtual, o caminho absoluto 
+  (<span class="courier">PHP2GO_ABSOLUTE_URI</span>) deve armazenar o mesmo valor 
+  do dom&iacute;nio virtual criado, tanto no arquivo padr&atilde;o de configura&ccedil;&otilde;es 
+  (PHP2GO_ROOT . &quot;userConfig.php&quot;) quanto no arquivo de configura&ccedil;&otilde;es 
+  definido para cada sistema.<br>
+  <br>
+  <a href="#topo">topo</a><br>
+  <a href="index2.html">&raquo; Pr&oacute;xima Parte</a></p>
+</body>
+</html>

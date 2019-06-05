@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!-- DTD que especifica a forma de construção dos arquivos XML de relatórios do PHP2Go -->
+<!-- $Header: /www/cvsroot/php2go/docs/dtd/php2go_reports.dtd,v 1.4 2005/08/09 17:56:41 mpont Exp $ -->
+<!-- $Revision: 1.4 $ -->
+<!-- $Date: 2005/08/09 17:56:41 $ -->
+<!ELEMENT report (datasource, datafilters)>
+<!ELEMENT datasource (procedure?, fields?, tables?, clause?, groupby?, orderby?)>
+<!ATTLIST datasource
+	connection CDATA #IMPLIED
+>
+<!ELEMENT datafilters (datafilter+)>
+<!ELEMENT procedure (#PCDATA)>
+<!ATTLIST procedure
+	cursorname CDATA #IMPLIED
+>
+<!ELEMENT fields (#PCDATA)>
+<!ELEMENT tables (#PCDATA)>
+<!ELEMENT clause (#PCDATA)>
+<!ELEMENT groupby (#PCDATA)>
+<!ELEMENT orderby (#PCDATA)>
+<!ELEMENT datafilter EMPTY>
+<!ATTLIST datafilter
+	label CDATA #REQUIRED
+	field CDATA #REQUIRED
+	mask (date | integer | string | float | currency | email | url | zipNN) #REQUIRED
+	index CDATA #IMPLIED
+>

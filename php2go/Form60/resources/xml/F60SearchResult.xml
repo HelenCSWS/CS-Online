@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<report title="Search users">
+	<datasource>
+		<fields></fields>
+		<tables></tables>
+		<clause></clause>
+		<groupby/>
+		<orderby></orderby>
+	</datasource>
+	<!--datafilters>
+		<datafilter field="customer_name" label="customer_name" mask="string" index="0"/>
+	</datafilters-->
+	
+   
+
+</report>
+

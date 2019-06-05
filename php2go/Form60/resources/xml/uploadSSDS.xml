@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE form SYSTEM "..\..\docs\dtd\php2go_forms.dtd">
+
+<form>
+
+    <section name="Upload SSDS" id="uploadSSDS" required_flag="T" required_color="#FF0000" required_char="*">
+        <hiddenfield name="pageid" value="41"/>
+        <hiddenfield name="SSDS_step" value="1"/>
+        <hiddenfield name="uploaded_file" value=""/>
+        
+         <hiddenfield name="sale_month" value=""/>
+         <hiddenfield name="sale_year" value=""/>
+         <hiddenfield name="is_recreate" value="0"/>
+        
+         <hiddenfield name="bcldb_uploaded_file" value=""/>
+         
+         <hiddenfield name="pro_id" value="1"/>
+         
+         
+         
+         <lookupfield name="province_id" label="Select province"  tabindex="1" default="2" nofirst="T" multiple="F" size="1" width="190" >
+            <datasource>
+                <keyfield>province_id</keyfield>
+                        <displayfield>province_name</displayfield>
+                        <orderby>province_name</orderby>
+                        <clause> province_id !=0 and province_id!=3</clause> 
+                        <!--clause>province_id <3</clause--> 
+                <lookuptable>lkup_provinces</lookuptable>
+            </datasource> 
+            
+            <listener event="onChange" type="JS" action="changeProvince(this.value);" />
+        </lookupfield>
+        
+        <filefield name="file_name" label="Licensee, LRS and Agency, etc (Customer sales by date)" tabindex="1"  length="256" required="F" >
+        </filefield>
+		<filefield name="bcldb_file_name" label="BCLDB (Channel sales by date)" tabindex="1" length="256" required="F">
+        </filefield>
+        
+        <filefield name="ab_file_name" label="Alberta licensee" tabindex="1"  length="256" required="F">
+        </filefield>
+        <buttons>
+            <button name="bttnStart" type="BUTTON"  value="Start" tabindex="2">
+                    <listener event="onClick" type="JS" action="uploadSSDS_start();"/>
+            </button>
+            <button name="btnBack" type="BUTTON" value="Back" tabindex="2"/>
+            <button name="bttnUpload" type="BUTTON"  value="Upload" tabindex="3">
+                    <listener event="onClick" type="JS" action="uploadImport_start();"/>
+            </button>
+            <button name="btnCancel" type="BUTTON" value="Cancel" tabindex="3"/>
+            <button name="bttnClose" type="BUTTON" value="Close" tabindex="1">
+                <listener event="onClick" type="JS" action="uploadSSDS_close();"/>
+            </button>
+        </buttons>
+	</section>
+</form>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE form SYSTEM "..\..\docs\dtd\php2go_forms.dtd">
+
+<form>
+	<section name="customercompare" id="customercompare" required_flag="F" required_color="#FF0000" required_char="*">
+        <textfield name="errmsg" tabindex="1"/>
+        <textfield name="file_name"/>
+		<buttons>
+			<button name="bttnClose" type="BUTTON"  value="Close" tabindex="9">
+				<listener event="onClick" type="JS" action="window.close();"/>
+			</button>
+		</buttons>
+	</section>
+</form>

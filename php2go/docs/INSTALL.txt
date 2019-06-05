@@ -1,0 +1,338 @@
+PHP2Go Web Development Framework - INSTALL
+===========================================
+
+	Version 0.3.1 - September 2005
+	---------------------------------
+	http://php2go.sourceforge.net
+	
+		Copyright (C) 2002-2005 Marcos Pont <mpont@uses.sourceforge.net>
+		
+		This library is free software; you can redistribute it and/or       
+		modify it under the terms of the GNU Lesser General Public          
+		License as published by the Free Software Foundation; either        
+		version 2.1 of the License, or (at your option) any later version.  
+
+		This library is distributed in the hope that it will be useful,     
+		but WITHOUT ANY WARRANTY; without even the implied warranty of      
+		MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU   
+		Lesser General Public License for more details.
+
+		You should have received a copy of the GNU Lesser General Public    
+		License along with this library; if not, write to the Free Software
+		Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA
+		02111-1307  USA
+		
+	Installation Manual:
+		
+		After unpacking the PHP2Go project in your webserver, you must decide where to
+		use it. The decision between using the framework in one web application or in many
+		applications is very important. The decision brings differences to the task of 
+		installing, preparing the environment and enabling the framework to work correctly.
+		
+		In an "one system" environment, please open the userConfig.php file, located at the
+		root folder of the framework. Fill the array entries to suite your environment: path
+		settings, error handling settings, database settings and values for some common META 
+		tags that will be included in the HTML documents of your system.
+		
+		If you choose to use the framework in more than one system, then you'll have to define
+		one configuration set for each system. To create this sets, you can create a file called
+		userConfig.php and place it in the DOCUMENT_ROOT folder of each system. If this alternative
+		seems inadequate to you, you can define the $P2G_USER_CFG array, containing all the required
+		entries, and put it in your system's configuration file. Using this approach, PHP2Go will be
+		enable to catch the configuration array in the global scope and process it.
+		
+		To create a PHP script that can be able to access all the PHP2Go features, you must include
+		the p2gConfig.php file. Before that, the configuration set ($P2G_USER_CFG) must be defined.
+		The example below can illustrate that.
+		
+	Configuration file example:
+		
+		<?php
+		
+		// your constants
+		define("FOO", "baz");
+		
+		// your includes
+		include_once("foo.php");
+		include_once("bar.php");
+		
+		// PHP2Go configuration array definition
+		$P2G_USER_CFG['ABSOLUTE_URI'] = $_SERVER['DOCUMENT_ROOT'] . "/php2go/";
+		//... (fill all the possible entries, see 'Configuration Set' section below)
+		
+		// PHP2Go configuration file
+		require_once("/path/to/php2go/p2gConfig.php");
+		
+		?>
+		
+		Suppose that the file shown above is called config.inc.php. Just include it in the first line of
+		your scripts and you'll be able to access all the framework's features.
+		
+	Configuration Set:
+	
+		PHP2Go absolute URI:
+		----------------------------
+	
+		$P2G_USER_CFG['ABSOLUTE_URI'] string
+			The HTTP absolute PATH that points to the folder in which the framework is installed;
+			You must provide a valid path in order to allow requests to the framework Javascript libraries and icons.
+		
+			Scenario 1 - using a folder under the DOCUMENT_ROOT of your application :
+			---------------------------------------
+				PHP2Go path:
+					/path/to/my/website/path/to/php2go/installation/
+				Your website configuration:
+					http://www.mywebsite.com (DOCUMENT_ROOT: /path/to/my/website/)
+				ABSOLUTE_URI config value:
+					http://www.mywebsite.com/path/to/php2go/installation/
+
+			Scenario 2 - using an Apache alias :
+			-------------------------------------
+				Alias definition:
+					Alias /php2go/ /complete/path/to/php2go
+				Your website main address:
+					http://www.mywebsite.com/~myspace/
+				ABSOLUTE_URI config value:
+					http://www.mywebsite.com/~myspace/php2go/
+		
+		Language/localization settings:
+		----------------------------
+
+		$P2G_USER_CFG['LANGUAGE'] hash array
+			'DEFAULT' string
+				The code of the default language that must be used when the provided/detected language is not supported (default: en-us)
+			'AUTO_DETECT' bool
+				Enable or disable auto detection of the user language based on the Accept-Language header (default: FALSE)
+			'AVAILABLE' array
+				Here you can specify a subset of language codes supported by your system
+				The default value is array('en-us', 'pt-br', 'es', 'it', 'cs', 'de-de', 'fr-fr')
+			'REQUEST_PARAM' string
+				This entry holds the name of the request parameter that will be used by the application to change the language dinamically
+				The parameter will be searched in the $_REQUEST superglobal array and must be one of the supported languages
+				If the language is detected from the request (user defined), it's persisted in the session scope and in a cookie
+			'MESSAGES_PATH' string
+ 				Full path to the user language files. Inside it, you must create a folder for each supported 
+ 				language and inside these folders a file for each language domain. Besides, all these files
+ 				must return the array of entries in the last line in order to be used  by the LanguageBase class
+		$P2G_USER_CFG['CHARSET'] string
+			Default charset to be used when needed. Some methods of the framework's classes will use this configuration value if the user don't provide a charset.
+			To use auto detection based on the Accept-Charset HTTP header, use the "auto" value.
+			The default value for this configuration key is "iso-8859-1".
+		$P2G_USER_CFG['COUNTRY'] string
+			Stores the local country name. It's used to build the current date string, and it's optional.
+		$P2G_USER_CFG['CITY'] string
+			Stores the local city name. It's also used in the printDate method (class Date), and it's optional.
+		$P2G_USER_CFG['LOCAL_DATE_FORMAT'] string
+			Specifies the date format used in the system. You may choose one of the following values: "d/m/Y" or "Y/m/d".
+		$P2G_USER_CFG['LOCAL_TIME_ZONE'] string
+			Specifies the local time zone to be used by some date functions. Accepts hour offsets, universal, north american or military time zone identifiers.
+			
+		Error handling settings:
+		----------------------------
+			
+		$P2G_USER_CFG['CAPTURE_ERRORS'] bool
+			Tells the framework if the application and database errors may be captured.
+		$P2G_USER_CFG['SHOW_ERRORS'] bool
+			Indicates if application and database errors must be displayed. The FALSE value is strongly recommended
+			in a production environment.
+		$P2G_USER_CFG['LOG_ERRORS'] bool
+			Indicates if the errors must be logged.
+		$P2G_USER_CFG['ERROR_LOG_FILE'] string
+			Stores the full path to the application error log file.
+		$P2G_USER_CFG['DB_ERROR_LOG_FILE'] string
+			Stores the full path to the database error log file.
+		$P2G_USER_CFG['DEBUG_TRACE'] bool
+			Defines if the stack trace of an error must be shown (works only under PHP4 >= 4.3.0)
+		$P2G_USER_CFG['IGNORE_ERRORS'] array
+			Stores an array of error messages (all the message or a substring) that must be ignored by the framework.
+			If you want to ignore the "undefined index" notice thrown when you try to access an inexistent array key,
+			declare $P2G_USER_CFG['IGNORE_ERRORS'] = array("UNDEFINED INDEX");
+			
+		META tags:
+		----------------------------
+			
+		$P2G_USER_CFG['TITLE'] string
+			Defines the base title of the HTML documents generated by the framework (you can change it or append values using methods later).
+		$P2G_USER_CFG['DESCRIPTION'] string
+			Defines the DESCRIPTION META tag, included in all HTML documents.
+		$P2G_USER_CFG['KEYWORKDS'] string
+			Stores the value of the KEYWORDS META tag.
+		$P2G_USER_CFG['CATEGORY'] string
+			Stores the value of the CATEGORY META tag.
+		$P2G_USER_CFG['DATE_CREATION'] string
+			Stores the value of the DATE_CREATION META tag.
+			
+		Database settings:
+		----------------------------
+		
+		$P2G_USER_CFG['DATABASE'] hash array
+			'CONNECTIONS' hash array
+				A hash array containing the database connections that will be used by the application.
+				Each key of this array represents a "connection ID". This ID will be used later in the application to select the connection.
+				Each entry of the array "CONNECTIONS" must respect the following format:
+					'HOST' string
+						IP or host of the database, plus the connection port, if necessary;
+					'USER' string
+						Username of the database connection;
+					'PASS' string
+						Password of the database connection;
+					'BASE' string
+						Name of the database/tablespace/service name to be used by the connection;
+					'TYPE' string
+						The driver type - you must use one of the drivers implemented by ADODb (http://adodb.sourceforge.net);
+					'PERSISTENT' bool
+						Sinalize that the connection must be persistent or not.
+			'DEFAULT_CONNECTION' string
+				The ID of the default connection in this application. If this entry is missing, the first entry of the "CONNECTIONS" array will be used.
+		
+		Authentication settings:
+		----------------------------
+		
+		$P2G_USER_CFG['AUTH'] hash array
+			'EXPIRY_TIME' int
+				Number of seconds that the user session must remain alive. If this entry is 0 or missing, the limit will be the PHP session lifetime.
+			'IDLE_TIME' int
+				Maximum number of seconds between two user requests. If this entry is 0 or missing, the limit will be the PHP session lifetime.
+			'AUTHENTICATOR_PATH' string
+				Path (using "dot" pattern) of the application authenticator.
+				Here, you must provide a class that extends php2go.auth.Auth.
+				The default authenticator (if this entry is missing) is php2go.auth.AuthDb.
+		
+		User settings:
+		----------------------------
+		
+		$P2G_USER_CFG['USER'] hash array
+			'SESSION_NAME' string
+				The name of the session var that will be created to store the User object
+			'CONTAINER_PATH' string
+				Path (using "dot" pattern) of the container class. This class must extend php2go.auth.User.
+				If this entry is missing, the default container (php2go.auth.User) will be used			
+					
+			
+		Session settings:
+		----------------------------
+			
+		$P2G_USER_CFG['SESSION_NAME'] string
+			Stores the name of the session cookie (ini: session.name).
+			If ommited, the name of the cookie will be "PHP2GO_SESSION"
+		$P2G_USER_CFG['SESSION_PATH'] string
+			Stores the path were the session files must be saved (ini: session.save_path).
+			If ommited, will use the php.ini default setting
+		$P2G_USER_CFG['SESSION_LIFETIME'] int
+			Stores the number of seconds that the session must be kept alive (ini: session.gc_maxlifetime).
+			If ommited, will use the php.ini default setting
+			
+		Include path:
+		----------------------------
+			
+		$P2G_USER_CFG['INCLUDE_PATH'] array
+			To include a class from the framework, you will use the import() function. This function recieves a string
+			parameter that represents the "dot-style" path of the module in the framework file system. You can apply this feature to
+			your system's classes by defining an entry in the INCLUDE_PATH array. See the following example:			
+		
+		<?php
+		//...
+		
+		// in your configuration file
+		$P2G_USER_CFG['INCLUDE_PATH']['mysystem'] = "/path/to/my/classes/";
+		
+		//...
+		?>
+		
+		<?php
+		// in the beggining of your script
+		require_once("my.config.file");
+		import("mysystem.MyClass");
+		
+		//...
+		?>
+		
+		Note: the files must have the .class.php extension, or you'll have to provide another extension in the second
+		parameter of the import() function.
+		
+	Writing your first scripts:
+	
+		The following example shows how to write a simple script using the Document class:
+		
+		Situation 1 - using PHP2Go default configuration file
+		------------------------------------------------------
+		
+		<!-- pageLayout.tpl -->
+		{main}
+		
+		<!-- myScript.php -->
+		<?php
+		// this script will detect the default configuration file and include it
+		require_once("/path/to/php2go/p2gConfig.php");
+		import('php2go.base.Document');
+		
+		// create a HTML document
+		$document = new Document("pageLayout.tpl");
+		
+		// Assign values to all elements
+		// Here, we suppose that the page layout has one single variable declared: {main}
+		$document->elements['main'] = "Hello World!";
+		
+		// Display the document
+		$document->display();
+		?>
+		
+		Situation 2 - using your customized configuration file
+		-------------------------------------------------------
+		
+		<!-- pageLayout2.tpl -->
+		<table border='0' width='760'>
+		 <tr>
+		  <td>{header}</td>
+		 </tr>
+		 <tr>
+		  <td>{main}</td>
+		 </tr>
+		</table>
+		
+		<!-- header.tpl -->
+		<table border='0' width='100%'>
+		 <tr>
+		  <td>{pageTitle}</td>
+		 </tr>
+		</table>
+		
+		<!-- myScript2.php -->
+		<?php
+		// inside the file included below, you must include p2gConfig.php, from the PHP2Go root folder
+		require_once("myConfigFile.php");
+		import('php2go.base.Document');
+		
+		// Create a HTML document
+		$document = new Document("pageLayout2.tpl");
+		
+		// Assign values to all elements
+		// Here, the page layout has two defined variables: {header} and {main}
+		// To the header element, we'll create a DocumentElement to include
+		// another template
+		$header = new DocumentElement();
+		$header->put('header.tpl');
+		$header->parse();
+		$header->assign('pageTitle', 'My Test Page');
+		$document->elements['header'] =& $header;
+		
+		// To the main element, we assign some string value
+		$document->elements['main'] = "Hello World!";
+		
+		// Display the document
+		$document->display();		
+		?>
+
+	Getting to know the framework's API:
+
+		The package you've just downloaded contains a folder called 'examples'. Inside it, there are many use cases
+		related to some of the most important classes included in the PHP2Go core.
+
+		The examples were created to help developers with the task of learning PHP2Go. It's true that the current learning
+		curve of this framework is very long, but we'll working hard on this. The available examples try to demonstrate with
+		simple test cases the utility of some methods in each class. In some scripts, as the ones that use the classes of
+		php2go.form and php2go.data packages, there's a real example inserted, on which the developers can be based to build
+		features for their applications.
+
+		It's stronlgy recommended that you try to use these examples, getting to know the funcionalities of each involved class.
+		This will became the task of learning PHP2Go much more easier.	

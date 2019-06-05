@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE form SYSTEM "..\..\docs\dtd\php2go_forms.dtd">
+<form>
+
+	<section name="Wine" id="addwine" required_flag="T" required_color="#FF0000" required_char="*">
+	
+        <hiddenfield name="pageid" value="25"/>
+
+
+        <hiddenfield name="editMode" />
+        <hiddenfield name="wineid"/>
+        <hiddenfield name="estate_id"/>
+        <hiddenfield name="profit_per_unit" />
+        <hiddenfield name="price_per_unit" />
+		  <hiddenfield name="price_winery" />
+		  
+        <hiddenfield name="ab_price_winery" /> 
+        <hiddenfield name="ab_profit_per_unit" />
+        <hiddenfield name="ab_price_per_unit" />
+         
+       <hiddenfield name="cost_per_unit" />
+       <hiddenfield name="ab_cost_per_unit" />
+        
+       <hiddenfield name="is_international" value="0" />
+       <hiddenfield name="wine_info_id" value=""/>
+
+
+<lookupfield name="province_id" label="Select province"  tabindex="1" default="1" nofirst="T" multiple="F" size="1" width="190" >
+            <datasource>
+                <keyfield>province_id</keyfield>
+                        <displayfield>province_name</displayfield>
+                        <orderby>province_name</orderby>
+                <lookuptable>lkup_provinces</lookuptable>
+            </datasource> 
+        </lookupfield>
+        
+        <editfield name="wine_name" label="Wine name"  tabindex="1" size="40" length="225" required="T"/>
+        
+        <lookupfield name="lkup_bottle_size_id" label="Size"  tabindex="2" default="1" nofirst="T" multiple="F" size="1" width="90" >
+            <datasource>
+                <keyfield>lkup_bottle_size_id</keyfield>
+                        <displayfield>caption</displayfield>
+                        <orderby>lkup_bottle_size_id</orderby>
+                <lookuptable>lkup_bottle_sizes</lookuptable>
+            </datasource>
+        </lookupfield>
+
+        <lookupfield name="lkup_wine_color_type_id" label="Type"  tabindex="3" default="1" nofirst="T" multiple="F" size="1" width="98" >
+            <datasource>
+                <keyfield>lkup_wine_color_type_id</keyfield>
+                        <displayfield>caption</displayfield>
+                        <orderby>lkup_wine_color_type_id</orderby>
+                <lookuptable>lkup_wine_color_types</lookuptable> 
+            </datasource>
+        </lookupfield>
+        
+         <editfield name="vintage" label="Vintage" tabindex="5" size="10" length="4" minlength="4" required="T" mask="INTEGER"/>
+        <editfield name="bottles_per_case" label="Bts / cs" tabindex="5" size="11" length="3" required="T"  mask="INTEGER"/>
+     
+	    <editfield name="cspc_code_bc" label="CSPC code" tabindex="4" size="14" length="25" required="T"/>
+
+        <editfield name="display_price_bc" label="Display price$" tabindex="8" size="14" length="12" required="T" >
+            <listener type="JS" event="onblur" action="setPrice(this,0)"/>
+             <listener type="JS" event="onKeyPress" action="return chkFLOAT(this, event);"/>
+        </editfield>
+        
+             
+              
+         <editfield name="wholesale_bc" label="CSWS price$" tabindex="8" size="13" length="12" required="T" >
+            <listener type="JS" event="onblur" action="setPrice(this,1)"/>
+             <listener type="JS" event="onKeyPress" action="return chkFLOAT(this, event);"/>
+        </editfield>
+        <editfield name="profit_bc" label="Profit per unit" tabindex="6" size="14" length="12" required="T" Disabled="T" >
+            <listener type="JS" event="onblur" action="setPrice(this,2)"/>
+            <listener type="JS" event="onKeyPress" action="return chkFLOAT(this, event);"/>
+        </editfield>
+    <editfield name="cost_bc" label="Cost"   tabindex="7" size="12" length="8" required="T" >
+            <listener type="JS" event="onblur" action="setPrice(this,3)"/>
+             <listener type="JS" event="onKeyPress" action="return chkFLOAT(this, event);"/>
+        </editfield>
+       
+   
+        <combofield name="case_sold" label="Case sold" width="86" tabindex="9" nofirst="F" default="1">
+        	<option value="0" caption="0" />
+            <option value="1" caption="1" />
+             <option value="2" caption="2" />
+             <option value="3" caption="3" />
+           
+        </combofield>
+   <combofield name="case_value" label="Case value" width="86" tabindex="10" nofirst="F" default="1">
+            <option value="1" caption="1" />
+             <option value="2" caption="2" />
+             <option value="3" caption="3" />
+             <option value="4" caption="4" />
+             <option value="5" caption="5" />
+             <option value="8" caption="8" />
+        </combofield>
+
+        <buttons>
+        	<button name="btnAdd" type="BUTTON"  value="OK  " />
+        	<button name="btnCancel" type="BUTTON" value="Cancel" />
+        </buttons>
+
+	</section>
+
+</form>
+

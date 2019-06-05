@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE form SYSTEM "..\..\docs\dtd\php2go_forms.dtd">
+<form>
+
+	<section name="allocatewine2customer" id="allocatewine2customer" required_flag="T" required_color="#FF0000" required_char="*">
+	        <hiddenfield name="wine_numbers"/>
+	        <hiddenfield name="customers"/>
+	        <hiddenfield name="wine_ids"/>
+	        <hiddenfield name="all_wine_ids"/>
+	        <hiddenfield name="pageid"/>
+	        <hiddenfield name="isNoCm" value="0"/>
+        <hiddenfield name="estate_id_order"/>
+
+	        <hiddenfield name="sql_select"/>
+	        <hiddenfield name="sql_where"/>
+	        
+	        <hiddenfield name="cm_name"/>
+
+	        <hiddenfield name="current_page" value="1"/>
+	        <hiddenfield name="total_pages" value="0"/>
+	        <hiddenfield name="status" value="0"/>
+	        <hiddenfield name="record_counts" value="0"/>
+	        <hiddenfield name="isCurrentSave" value="0"/>
+	        <hiddenfield name="customer_id"/>
+
+	        
+	        <hiddenfield name="estate_id"/>
+	        <textfield name="customer_numbers" id="test" value="1" />
+
+
+    		<buttons>
+     			<button name="btnSave" type="BUTTON"  value="OK  " >
+                               <listener type="JS" event="onclick" action="saveAllocate()"/>
+    			</button>
+     			<button name="btnCancel" type="BUTTON" value="Cancel" />
+    		</buttons>
+
+	</section>
+
+</form>
+

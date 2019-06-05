@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE form SYSTEM "..\..\docs\dtd\php2go_forms.dtd">
+<form >
+    
+	<section name="" id="customerSelect" required_flag="T" required_color="#FF0000" required_char="*">
+                <hiddenfield name="search_id" value="0"/>
+                <hiddenfield name="contact_key" value="1"/>
+
+ 	        <hiddenfield name="wine_ids"/>
+	        <hiddenfield name="all_wine_ids"/>
+	        <hiddenfield name="pageid"/>
+
+	        <hiddenfield name="estate_id"/>
+
+
+           		<editfield name="search_field" label="Search for" tabindex="1" size="28" length="225" >
+                                <listener type="JS" event="onKeyPress" action="handleEnter(this, event, goallocate)"/>
+                </editfield>
+
+
+
+
+     <combofield name="contact" default="2" nofirst="T">
+        <option value="1" caption="First" />
+          <option value="2" caption="Last" />
+          <listener event="onChange" type="JS" action="changeName(this.value);" />
+      </combofield>
+
+     <combofield name="adt0" default="1" nofirst="T" Disabled="T">
+        <option value="1" caption="BC" />
+      </combofield>
+
+  
+        <editfield name="adt1" size="37" length="225" required="F" tabindex="1" autotrim="T" Disabled="T">
+             <!--listener type="JS" event="onblur" action="changePaymentInfo(this.value)"/ -->
+             <listener type="JS" event="onkeyup" action="checkAdt(1,this.value)"/>
+        </editfield>
+
+        <editfield name="adt2" size="37" length="200" required="F" tabindex="1" autotrim="T" Disabled="T">
+             <listener type="JS" event="onkeyup" action="checkAdt(2,this.value)"/>
+        </editfield>
+        <editfield name="adt3" size="37" length="200" required="F" tabindex="1" autotrim="T" Disabled="T">
+             <listener type="JS" event="onkeyup" action="checkAdt(3,this.value)"/>
+        </editfield>
+        <editfield name="adt4" size="37" length="200" required="F" tabindex="1" autotrim="T" Disabled="T">
+             <listener type="JS" event="onkeyup" action="checkAdt(4,this.value)"/>
+        </editfield>
+       <lookupfield name="adt5"  first="" nofirst="F" multiple="F" size="1" width="140" required="F" disabled="F" tabindex="4">
+			<datasource>
+				<keyfield>lkup_store_type_id</keyfield>
+                                <displayfield>license_name</displayfield>
+                                <orderby>license_name</orderby>
+                                
+				<lookuptable>lkup_store_types</lookuptable>
+			</datasource>
+
+		</lookupfield>
+		
+		
+
+		 <lookupfield name="adt6"  first="" nofirst="F" multiple="F"  size="1" width="140" required="F" disabled="T" tabindex="4">
+    		<datasource>
+				<keyfield>user_id</keyfield>
+                                <displayfield>concat( first_name,' ', last_name) </displayfield>
+                                <orderby>username</orderby>
+                                <clause>deleted=0</clause>
+				<lookuptable>users</lookuptable>
+			</datasource>
+		</lookupfield>
+		<buttons>
+    		<button name="btnSearch" type="BUTTON" value="Next" tabindex="2">
+    		      <listener type="JS" event="onClick" action="goallocate()"/>
+    		</button>
+			<button name="btnClose" type="BUTTON" value="Cancel" tabindex="3"/>
+		</buttons>
+      
+	</section>
+
+</form>
+

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE form SYSTEM "..\..\docs\dtd\php2go_forms.dtd">
+<form >
+    
+	<section name="" id="searchf60" required_flag="T" required_color="#FF0000" required_char="*">
+                <hiddenfield name="search_id" value="0"/>
+                <hiddenfield name="contact_key" value="1"/>
+
+
+       
+      <textfield name="fiscal_year" tabindex="1" value="Apr 01,2006 - Mar 31,2007" size="100"/>
+     <textfield name="period_desc" tabindex="1" value="Preiod 9: Nov 26,2006 - Dec 30,2006" size="100"/>
+     <textfield name="user" tabindex="1" value="Tyler Mackenzie" size="100"/>
+     <editField name="total_cases" tabindex="1" value="230" size="100"/>
+     
+
+		<buttons>
+    		<button name="btnView" type="BUTTON" value="View reports" tabindex="2">
+                 <listener type="JS" event="onClick" action="tempNextPage(1)"/>
+    		</button>
+			<button name="btnCancel" type="BUTTON" value="Cancel" tabindex="3"/>
+		</buttons>
+
+	</section>
+
+</form>
+

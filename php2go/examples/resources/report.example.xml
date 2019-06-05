@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!-- PHP2Go Examples : report.example.xml, used at report.example.php -->
+<report title="My Report Title, coming from the XML file!">
+	<datasource>
+		<fields>NAME, ADDRESS, CATEGORY, CLIENT_ID</fields>
+		<tables>client</tables>
+		<clause>ACTIVE = 1</clause>
+		<groupby/>
+		<orderby>NAME</orderby>
+	</datasource>
+	<datafilters>
+		<datafilter field="NAME" label="Client Name" mask="STRING" index="0"/>
+		<datafilter field="ADDRESS" label="Client Address" mask="STRING" index="1"/>
+	</datafilters>
+</report>

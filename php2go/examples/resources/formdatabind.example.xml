@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<form>
+	<section name="User Table" id="USER_TABLE">
+		<hiddenfield name="CLIENT_ID"/>
+		<editfield name="NAME" label="Name" size="35" length="100" required="T" tabindex="1"/>
+		<editfield name="ADDRESS" label="Address" size="40" length="100" required="T" tabindex="2"/>
+		<combofield name="CATEGORY" label="Category" width="100" required="T" tabindex="3">
+			<option value="Common" caption="Common"/>
+			<option value="Master" caption="Master"/>
+		</combofield>
+		<combofield name="ACTIVE" label="Active" width="100" required="T" tabindex="4">
+			<option value="0" caption="No"/>
+			<option value="1" caption="Yes"/>
+		</combofield>
+	</section>
+</form>

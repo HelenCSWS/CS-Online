@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE form SYSTEM "..\..\docs\dtd\php2go_forms.dtd">
+<form>
+
+	<section name="Beer" id="addbeer" required_flag="T" required_color="#FF0000" required_char="*">
+	
+        <hiddenfield name="pageid" value="25"/>
+
+
+        <hiddenfield name="editMode" value="0"/>
+        <hiddenfield name="beer_id"/>
+        <hiddenfield name="beer_ids"/>
+        
+        <hiddenfield name="estate_id"/>
+         
+        
+        <hiddenfield name="new_1" value="0"/>
+        <hiddenfield name="new_2" value="0"/>
+        
+        <hiddenfield name="delete_id" value="0"/>
+ 
+ 
+           <!-- 0: unchecked, 1: checked but need to insert new, 2: checked for update  -->
+      
+            
+		<editfield name="beer_name" label="Product name"  tabindex="1" size="30" length="225" required="T"/>
+		<editfield name="bottles_per_case" label="Units/cs" tabindex="3" size="13" length="3" required="T"  mask="INTEGER" value="24"/>
+		<editfield name="bottles_per_pack" label="Units/pack" tabindex="4" size="13" length="3" required="T"  mask="INTEGER" value="4"/>
+
+
+        <lookupfield name="lkup_beer_type_id" label="Type" tabindex="4" default="1" nofirst="T" multiple="F" size="1" width="120" >
+            <datasource>
+                <keyfield>lkup_beer_type_id</keyfield>
+                        <displayfield>caption</displayfield>
+                        <orderby>lkup_beer_type_id</orderby>
+                        <clause>~typefilter~</clause>
+                <lookuptable>lkup_beer_types</lookuptable>
+            </datasource>
+        </lookupfield>
+         <lookupfield name="lkup_beer_size_id" label="Size"  tabindex="5" default="1" nofirst="T" multiple="F" size="1" width="84" >
+            <datasource>
+                <keyfield>lkup_beer_size_id</keyfield>
+                        <displayfield>caption</displayfield>
+                        <orderby>lkup_beer_size_id</orderby>
+                <lookuptable>lkup_beer_sizes</lookuptable>
+            </datasource>
+        </lookupfield>
+
+        <editfield name="cspc_code_1" label="CSPC code" tabindex="6" size="13" length="6" mask="INTEGER"/>
+ 
+        <editfield name="display_price_1" label="Display price" tabindex="7" size="13" length="12"  >
+            
+             <listener type="JS" event="onKeyPress" action="return chkFLOAT(this, event);"/>
+        </editfield>
+
+         <editfield name="wholesale_1" label="CSWS price" tabindex="8" size="13" length="12" >
+            
+             <listener type="JS" event="onKeyPress" action="return chkFLOAT(this, event);"/>
+        </editfield>
+
+         <editfield name="cost_1" label="Cost"   tabindex="9" size="13" length="8"  >
+
+             <listener type="JS" event="onKeyPress" action="return chkFLOAT(this, event);"/>
+        </editfield>
+     
+	    <editfield name="profit_1" label="Profit per unit" tabindex="10" size="13" length="12"  Readonly="T" >
+
+            <listener type="JS" event="onKeyPress" action="return chkFLOAT(this, event);"/>
+        </editfield>
+        
+        <!--Alberta -->
+        <editfield name="cspc_code_2" label="CSPC code" tabindex="14" size="13" length="6" mask="INTEGER"/>
+ 
+        <editfield name="display_price_2" label="Display price" tabindex="15" size="13" length="12"  >
+            <listener type="JS" event="onblur" action="setPrice4Pro(this,0,2)"/>
+             <listener type="JS" event="onKeyPress" action="return chkFLOAT(this, event);"/>
+        </editfield>
+
+         <editfield name="wholesale_2" label="CSWS price" tabindex="16" size="13" length="12" >
+            <listener type="JS" event="onblur" action="setPrice4Pro(this,1,2)"/>
+             <listener type="JS" event="onKeyPress" action="return chkFLOAT(this, event);"/>
+        </editfield>
+
+         <editfield name="cost_2" label="Cost"   tabindex="17" size="13" length="8" value="0" >
+            <listener type="JS" event="onblur" action="setPrice4Pro(this,3,2)"/>
+             <listener type="JS" event="onKeyPress" action="return chkFLOAT(this, event);"/>
+        </editfield>
+     
+	    <editfield name="profit_2" label="Profit per unit" tabindex="18" size="13" length="12"  Readonly="T" >
+            <listener type="JS" event="onblur" action="setPrice4Pro(this,2,2)"/>
+            <listener type="JS" event="onKeyPress" action="return chkFLOAT(this, event);"/>
+        </editfield>
+              
+         
+        <!--editfield name="display_price" label="Display price$" tabindex="8" size="14" length="12" required="T" >
+            <listener type="JS" event="onblur" action="setPrice(this,0)"/>
+             <listener type="JS" event="onKeyPress" action="return chkFLOAT(this, event);"/>
+        </editfield-->
+  
+        <combofield name="case_sold_1" label="Case sold" width="86" tabindex="11" nofirst="T" default="1">
+           	<option value="1" caption="1" />
+		    <option value="2" caption="2" />
+             <option value="3" caption="3" />
+             <option value="4" caption="4" />
+        </combofield>
+
+       <combofield name="case_value_1" label="Case value" width="86" tabindex="12" nofirst="T" default="1">
+            <option value="1" caption="1" />
+             <option value="2" caption="2" />
+             <option value="3" caption="3" />
+              <option value="4" caption="4" />
+        </combofield>
+        
+        <combofield name="case_sold_2" label="Case sold" width="86" tabindex="19" nofirst="T" default="1">
+            <option value="1" caption="1" />
+			<option value="2" caption="2" />
+             <option value="3" caption="3" />
+             <option value="4" caption="4" />
+        </combofield>
+
+       <combofield name="case_value_2" label="Case value" width="86" tabindex="20" nofirst="T" default="1">
+            <option value="1" caption="1" />
+             <option value="2" caption="2" />
+             <option value="3" caption="3" />
+              <option value="4" caption="4" />
+        </combofield>
+        
+        <buttons>
+        
+        <button name="btnAdd" type="BUTTON"  value="OK" />
+        <button name="btnAddAnother" type="BUTTON"  value="Add new" />
+        
+        
+       <button name="btnCancel" type="BUTTON" value="Cancel" />
+       
+    
+        </buttons>
+
+	</section>
+
+</form>
+

@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!-- Form60 : template used in AddUser.php -->
+<!DOCTYPE form SYSTEM "..\..\docs\dtd\php2go_forms.dtd">
+<form >
+
+
+	<section name="My Section" id="estateAdd" required_flag="T" required_color="#FF0000" required_char="*">
+        <!-- row1 estate name, number, delivery date-->
+
+            <hiddenfield name="pageid" value="1"/>
+            
+            <hiddenfield name="is_addwine" value="0"/>
+            <hiddenfield name="estate_id"/>
+            <hiddenfield name="lkup_phone_type_id" value="1"/>
+            <hiddenfield name="contact_id"/>
+            <hiddenfield name="is_primary" value = "0"/>
+            <hiddenfield name = "is_save"  value = "0" />
+            <hiddenfield name = "billing_address_country"  value = "0" />
+            <hiddenfield name = "isCountry"  value = "0" />
+            
+
+           <hiddenfield name = "is_international"  value = "0" />
+       <hiddenfield name="estates_contacts_id_1" value = "0"/>
+         <hiddenfield name="estates_contacts_id_2" value = "0"/>
+         <hiddenfield name="is_fob" value="0"/>
+         
+
+
+        <editfield name="estate_name" label="Estate name"  size="37" length="225" required="T" tabindex="1" autotrim="T" />
+  <editfield name="billing_address_street_number" label="Street number"  size="37" length="25" tabindex="2" autotrim="T"/>
+
+          <editfield name="billing_address_street" label="Address"  size="35" length="150" required="T" tabindex="3" autotrim="T"/>
+
+    <!-- row2   -->
+    <editfield name="billing_address_postalcode" label="Zip code"  size="17" length="20"  tabindex="4" upper="T" lower="F"  autotrim="T" >
+         <listener type="JS" event="onkeyup" action="upperCaseLetters(this.value)"/>
+		</editfield>
+       <editfield name="po_box" label="PO Box"  size="17" length="150" required="F" tabindex="5" autotrim="T"/>
+    <editfield name="billing_address_city" label="City"  size="37" length="100" tabindex="6" autotrim="T"/>
+		<editfield name="billing_address_state" label="Region"  size="35" length="100" tabindex="7" value=""  />
+     <!-- row3 province,  post code, payment information,-->
+
+      <editfield name="billing_address_country_1" label="Country"  size="37" length="25" required="F" tabindex="8" autotrim="T"/>
+        <lookupfield name="billing_address_country_2" label="Country"  first="" nofirst="T" multiple="F" size="1" width="236" required="F" disabled="F" tabindex="8">
+			<datasource>
+				<keyfield>distinct billing_address_country</keyfield>
+                                <displayfield>billing_address_country</displayfield>
+                                <orderby>billing_address_country</orderby>
+                                <cause>deleted=0</cause>
+				<lookuptable>estates</lookuptable>
+			</datasource>
+		</lookupfield>
+  
+ 		
+   	    <editfield name="payment_info" label="Payments term"   size="37" length="225" value="" tabindex="9"/>
+			
+
+
+        <!--section 2  Contact information -->
+        <!--row1 first name ,last name title -->
+
+    <editfield name="first_name" label="First name"  size="37" length="25" tabindex="12" autotrim="T"/>
+		<editfield name="last_name" label="Last name"  size="37" length="25" tabindex="13" autotrim="T"/>
+		<editfield name="title" label="Title"  size="37" length="25" tabindex="14" autotrim="T"/>
+
+
+        <!--row1 bs number ,cellnumber, faxnumber-->
+    	<editfield name="phone_office1" label="Business #"  size="30" length="25" tabindex="15" autotrim="T"/>
+      <editfield name="ext_no" label="Ext."  size="4" length="10" required="F" tabindex="16" autotrim="T"/>
+  		<editfield name="phone_other1" label="Cell number"  size="37" length="25" tabindex="17" autotrim="T"/>
+		<editfield name="phone_fax" label="Fax number"  size="37" length="25" tabindex="18" autotrim="T"/>
+
+        <!--row1 bs number ,cellnumber, faxnumber-->
+        <editfield name="email1" label="Email address"  size="37" length="100" tabindex="19" mask="EMAIL" autotrim="T"/>
+		<editfield name="secondary_first_name" label="Secondary contact first name"  size="37" length="25" tabindex="20" autotrim="T"/>
+		<editfield name="secondary_last_name" label="Secondary contact last name"  size="37" length="25" tabindex="21" autotrim="T"/>
+
+        <!--new row -->
+      <!--section 3  other information -->
+        <!--col1 note -->
+
+
+
+     
+
+
+        <!--buttons note -->
+		<buttons>
+			<button name="btnAdd" type="BUTTON"  value="OK" tabindex="27"/>
+     		<button name="btnCancel" type="BUTTON" value="Cancel" tabindex="28"/>
+		</buttons>
+
+
+	</section>
+
+</form>
+
+
+
+	<!-- Form60 : template used in addestate.php -->

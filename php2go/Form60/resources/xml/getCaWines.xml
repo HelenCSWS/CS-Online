@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE form SYSTEM "..\..\docs\dtd\php2go_forms.dtd">
+<form >
+    
+	<section name="" id="getCaWines" required_flag="T" required_color="#FF0000" required_char="*">
+                <hiddenfield name="sale_month" value="0"/>
+                <hiddenfield name="is_recreate" value="0"/>
+                <hiddenfield name="users" value="0"/>
+                <hiddenfield name="user_id" value="-1"/>
+                <hiddenfield name="store_type" value="-1"/>
+                 <hiddenfield name="sale_year" value="-1"/>
+                
+                                <hiddenfield name="is_update_CaCases" value="0"/>
+
+
+       
+      <textfield name="fiscal_year" tabindex="1" value="" size="100"/>
+     <textfield name="period_desc" tabindex="1" value="" size="100"/>
+
+     <textField readonly="T" name="user1" tabindex="1" value="NAme" size="100"/>
+     <editField name="total_cases1" tabindex="1" value="0" size="5" readonly="T"/>
+     
+    <textField readonly="T" name="user2" tabindex="1" value="NAme" size="100"/>
+     <editField name="total_cases2" tabindex="1" value="0" size="5" readonly="T"/>
+     
+    <textField readonly="T" name="user3" tabindex="1" value="NAme" size="100"/>
+     <editField name="total_cases3" tabindex="1" value="0" size="5" readonly="T"/>
+     
+    <textField readonly="T" name="user4" tabindex="1" value="NAme" size="100"/>
+     <editField name="total_cases4" tabindex="1" value="0" size="5" readonly="T"/>
+     
+    <textField readonly="T" name="user5" tabindex="1" value="NAme" size="100"/>
+     <editField name="total_cases5" tabindex="1" value="0" size="5" readonly="T"/>
+
+
+        <buttons>
+     	    <button name="btnBack" type="BUTTON" value="Back" tabindex="1">
+                 <listener type="JS" event="onClick" action="viewReports(0)"/>
+        	</button>
+  		    <button name="btnAdd" type="BUTTON" value="Next" tabindex="2"/>
+			<button name="btnCancel" type="BUTTON" value="Cancel" tabindex="3"/>
+	</buttons>
+
+	</section>
+
+</form>
+

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE form SYSTEM "..\..\docs\dtd\php2go_forms.dtd">
+<form >
+    
+	<section name="" id="searchf60" required_flag="T" required_color="#FF0000" required_char="*">
+                <hiddenfield name="search_id" value="0"/>
+                <hiddenfield name="contact_key" value="1"/>
+
+
+        <combofield name="fiscal_year" default="1" nofirst="T">
+        <option value="1" caption="Apr 01,2006 - Mar 31,2007" />
+          <!--listener event="onChange" type="JS" action="changeFisalYear(this.value);" /-->
+      </combofield>
+
+
+        <combofield name="period" default="1" nofirst="T">
+            <option value="1" caption="Period 1" select/>
+            <option value="2" caption="Period 2" />
+          <!--listener event="onChange" type="JS" action="changeFisalYear(this.value);" /-->
+      </combofield>
+      
+	
+		<buttons>
+    		<button name="btnView" type="BUTTON" value="View sales reports" tabindex="2">
+    		      <!--listener type="JS" event="onClick" action="gosearch()"/-->
+    		</button>
+			<button name="btnClose" type="BUTTON" value="Cancel" tabindex="3"/>
+		</buttons>
+
+	</section>
+
+</form>
+

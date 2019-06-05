@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!-- Form60 : template used in AddUser.php -->
+<!DOCTYPE form SYSTEM "..\..\docs\dtd\php2go_forms.dtd">
+<form >
+
+
+	<section name="My Section" id="f60searchwingreports" required_flag="T" required_color="#FF0000" required_char="*">
+     
+        <!--buttons note -->
+        
+        <hiddenfield name="pageid"/>
+        
+        <hiddenfield name="search_key"/>
+        <hiddenfield name="search_id"/>
+        <hiddenfield name="sales_year"/>
+        <hiddenfield name="sales_period"/>
+        <hiddenfield name="isQtr"/>
+        <hiddenfield name="isStart"/>
+        <hiddenfield name="store_type_id"/>
+        <hiddenfield name="isOneRec"/>
+        <hiddenfield name="city"/>
+        <hiddenfield name="product_id" value="1"/>
+
+  
+        <hiddenfield name="search_adt1"/>
+        <hiddenfield name="search_adt2"/>
+  
+        <hiddenfield name="user_id"/>
+        
+     
+		<buttons>
+			<button name="btnBack" type="BUTTON"  value="Back" tabindex="27">
+				<listener event="onClick" type="JS" action="goBack();"/>
+			</button>
+     		<button name="btnCancel" type="BUTTON" value="Close" tabindex="28"/>
+		</buttons>
+
+
+	</section>
+
+</form>
+
+
+
+	<!-- Form60 : template used in addestate.php -->

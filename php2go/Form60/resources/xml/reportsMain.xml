@@ -1,0 +1,351 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE form SYSTEM "..\..\docs\dtd\php2go_forms.dtd">
+<form>
+
+	<section name="reportsMain" id="reportsMain" required_flag="T" required_color="#FF0000" required_char="*">
+	
+         <hiddenfield name="changekey" value="1"/>
+         <hiddenfield name="current_sp_type" value="0"/>
+         
+         <hiddenfield name="is_sp_current_ava" value="0"/>
+          
+         <hiddenfield name="login_user_id" value="0"/>         
+         <hiddenfield name="login_user_level" value="0"/>         
+         <hiddenfield name="login_pro" value="0"/>
+
+<editfield name="sale_month" value="0"/>
+		
+
+<!--row 1-->
+      <lookupfield name="user_id" label="Assigned to" nofirst="F" multiple="F" size="1" width="140" disabled="F" tabindex="4" >
+			<datasource>
+				<keyfield>user_id</keyfield>
+                    <displayfield>concat(first_name,' ',last_name)</displayfield>
+                    <orderby>first_name</orderby>
+                    <clause>deleted=0 and lkup_user_type_id =1 and (province_id=-1 or province_id = ~current_user_province_id~) </clause>
+				<lookuptable>users</lookuptable>
+			</datasource>
+		</lookupfield>
+		
+		
+		
+
+       <lookupfield name="estate_id_1"  label="estate" tabindex="2"  nofirst="T" multiple="F" size="1" width="190"  >
+			<datasource>
+				<keyfield>estate_id</keyfield>
+                <displayfield>estate_name</displayfield>
+                                <clause>deleted=0 and billing_address_country='Canada' or estate_id=0</clause>
+                                <orderby>estate_name</orderby>
+				<lookuptable>estates</lookuptable>
+			</datasource>
+		</lookupfield>
+
+        <editfield name="from_1"  mask="DATE"  default="go_TODAY" size="11" length="10" required="T" tabindex="3" label="from"/>
+
+      <editfield name="to_1"  mask="DATE"  default="go_TODAY" size="11" length="10" required="T" tabindex="3" label="to"/>
+
+<!--row 2-->
+    <combofield name="searchType_2" default="1" nofirst="T" tabindex="1" label="is paid">
+        <option value="1" caption="Not paid" />
+        <option value="2" caption="Paid" />
+          <!-- listener event="onChange" type="JS" action="changeName(this.value);" / -->
+      </combofield>
+
+       <lookupfield name="estate_id_2"  tabindex="2"  nofirst="T" multiple="F" size="1" width="190" label="estate" >
+			<datasource>
+				<keyfield>estate_id</keyfield>
+                                <displayfield>estate_name</displayfield>
+                                <clause>deleted=0 and billing_address_country='Canada'</clause>
+                                <orderby>estate_name</orderby>
+				<lookuptable>estates</lookuptable>
+			</datasource>
+		</lookupfield>
+
+	<editfield name="from_2"  mask="DATE"  default="go_TODAY" size="11" length="10" required="T" tabindex="3" label="from"/>
+	  
+	<editfield name="to_2"  mask="DATE"  default="go_TODAY" size="11" length="10" required="T" tabindex="3" label="to"/>
+          
+
+<!--row 3-->
+    <combofield name="searchType_3" nofirst="T" tabindex="1" label="is recieved">
+        <option value="2" caption="Received" />
+        <option value="1" caption="Not Received" />
+          <!-- listener event="onChange" type="JS" action="changeName(this.value);" / -->
+      </combofield>
+
+       <lookupfield name="estate_id_3"  tabindex="2"  nofirst="T" multiple="F" size="1" width="190"  label="estate">
+			<datasource>
+				<keyfield>estate_id</keyfield>
+                                <displayfield>estate_name</displayfield>
+                                <clause>deleted=0 and billing_address_country='Canada'</clause>
+                                <orderby>estate_name</orderby>
+				<lookuptable>estates</lookuptable>
+			</datasource>
+		</lookupfield>
+
+    <editfield name="from_3"  mask="DATE"  default="go_TODAY" size="11" length="10" required="T" tabindex="3" label="from">
+        <!--listener type="JS" event="onchange" action="setDateFormat(this,this.value)"/-->
+    </editfield>
+    
+     <editfield name="to_3"  mask="DATE"  default="go_TODAY" size="11" length="10" required="T" tabindex="3" label="to">
+            <!--listener type="JS" event="onchange" action="setDateFormat(this,this.value)"/-->
+        </editfield>
+
+<!--row 4-->
+      <lookupfield name="estate_id_4"  tabindex="2"  nofirst="T" multiple="F" size="1" width="190"  label="estate">
+			<datasource>
+				<keyfield>estate_id</keyfield>
+                                <displayfield>estate_name</displayfield>
+                                
+                                <clause>deleted=0 and billing_address_country='Canada'</clause>
+                                <orderby>estate_name</orderby>
+				<lookuptable>estates</lookuptable>
+			</datasource>
+		</lookupfield>
+
+<!--row 5-->
+      <lookupfield name="estate_id_5"  tabindex="2"  nofirst="T" multiple="F" size="1" width="190"  label="estate">
+			<datasource>
+				<keyfield>distinct estates.estate_id</keyfield>
+                                <displayfield>estates.estate_name</displayfield>
+                                <clause>wines.deleted=0 and wines.price_per_unit!=0 and estates.deleted=0 and estates.estate_id=wines.estate_id and estates. billing_address_country='Canada' and estates.is_international=0</clause>
+                                <orderby>estates.estate_name</orderby>
+				<lookuptable>estates,wines</lookuptable>
+			</datasource>
+			<listener type="JS" event="onChange" action="getWines('wine_id_5', this.value)"/>
+		</lookupfield>
+		
+			<combofield name="wine_id_5" nofirst="T" tabindex="1" size="1" width="200"/>
+
+<!--row 6-->
+		<lookupfield name="store_type_id" first="" nofirst="T" multiple="F" size="1" width="116" required="F" disabled="F" label="store type">
+			<datasource>
+				<keyfield>lkup_store_type_id</keyfield>
+                                <displayfield>license_name</displayfield>
+                                <orderby>license_name</orderby>
+                                <clause>province_id =~current_store_province_id~</clause>
+				<lookuptable>lkup_store_types</lookuptable>
+			</datasource>
+		</lookupfield>
+	
+	
+		
+	<!-- wine -->
+
+      
+      
+      <lookupfield name="estate_id_6"  nofirst="T" multiple="F" size="1" width="192"  label="estate">
+			<datasource>
+				<keyfield>distinct estates.estate_id</keyfield>
+                                <displayfield>estates.estate_name</displayfield>
+                                <clause>wines.deleted=0 and wines.price_per_unit!=0 and estates.deleted=0 and estates.estate_id=wines.estate_id and estates. billing_address_country='Canada'</clause>
+                                <orderby>estates.estate_name</orderby>
+				<lookuptable>estates,wines</lookuptable>
+			</datasource>
+			<listener type="JS" event="onChange" action="getWines('wine_id_6', this.value)"/>
+		</lookupfield>
+	  
+	  <combofield name="wine_id_6"  nofirst="T" tabindex="1" width="200" label="wine" />
+
+      <editfield name="from_6"  mask="DATE"  default="GO_TODAY" size="11" length="10" required="T" />
+
+      <editfield name="to_6"  mask="DATE"  default="GO_TODAY" size="11" length="10" required="T"  />
+<!--rwo 77 -->
+
+    <combofield name="store_type_id_city"   nofirst="T" multiple="F" width="116" label="store type" default="0">
+		<option value="0" caption="All" />
+		<option value="2" caption="Agency" />
+		<option value="1" caption="L.R.S" />
+		<option value="3" caption="Licensee" />
+		<option value="5" caption="VQA" />
+	</combofield>
+	
+	<lookupfield name="estate_id_city"  nofirst="T" multiple="F" size="1" width="192"  label="estate">
+			<datasource>
+				<keyfield>distinct estates.estate_id</keyfield>
+                                <displayfield>estates.estate_name</displayfield>
+                                <clause>wines.deleted=0 and wines.price_per_unit!=0 and estates.deleted=0 and estates.estate_id=wines.estate_id and estates. billing_address_country='Canada'</clause>
+                                <orderby>estates.estate_name</orderby>
+				<lookuptable>estates,wines</lookuptable>
+			</datasource>
+		</lookupfield>
+	  
+	  <editfield name="city"  nofirst="T" tabindex="1" size="36" label="Input city nam here, user ; to seperate the cities." value="Input city name here, use ; to seperate the cities" />
+
+      <editfield name="from_city"  mask="DATE"  default="GO_TODAY" size="11" length="10" required="T" />
+
+      <editfield name="to_city"  mask="DATE"  default="GO_TODAY" size="11" length="10" required="T"  />
+      
+	<!--wine-->
+	
+
+<!--row 7-->
+	<combofield name="estate_id_8"   nofirst="T" multiple="F" width="300" label="inventory">
+		<option value="1" caption="Both BC inventory and samples control sheets" />
+		<option value="2" caption="BC Wine Inventory Control Sheet" />
+		<option value="3" caption="BC Wine Sample Inventory Control Sheet" />
+		<option value="4" caption="Imported Wine Sample Inventory Control Sheet" />
+	</combofield>
+     
+	<combofield name="sp_location_type" default="1" nofirst="T" tabindex="1" disabled="T">
+	    <option value="1" caption="Okanagan" />
+	    <option value="2" caption="Cariboo" />
+	    <option value="3" caption="Lower Mainland" />
+	    <option value="4" caption="Vancouver Island" />
+	    <listener type="JS" event="onChange" action="getSpLocation(this.value)"/>
+	</combofield>
+
+    <editField class="Lable" name="sp_location_name" disabled="T" tabindex="1" value="BC Rockies North, BC Rockies South, Okanagan, Thompson Nicola" readonly="T" size="80"/>
+
+	<lookupfield name="sp_report_year"  nofirst="T" multiple="F" size="1" width="60"  label="Year">
+		<datasource>
+			<keyfield>distinct year(when_entered)</keyfield>
+			<displayfield>year(when_entered)</displayfield>
+			<orderby>when_entered desc</orderby>
+			<lookuptable>store_penetration_data</lookuptable>
+		</datasource>
+		<listener type="JS" event="onChange" action="getSPReportMonths('sp_report_month', this.value)"/>
+	</lookupfield>
+	<combofield name="sp_report_month"  nofirst="T" tabindex="1" width="100" label="Month" />
+	
+<!--row 8-->
+	<combofield name="estate_id_cc"   nofirst="T" multiple="F" width="190" label="Estate">
+		<option value="0" caption="All" />
+
+		<option value="150" caption="Spearhead Winery" />
+	
+		<!--option value="118" caption="Rustico Farm and Cellars" /-->
+		
+	</combofield>
+	
+	<!--combofield name="estate_id_overdue"   nofirst="T" multiple="F" width="150" label="Estate">
+		<option value="0" caption="All" />
+		<option value="2" caption="Hillside" />
+		<option value="96" caption="Le Vieux Pin" />
+		<option value="97" caption="LaStella" />
+		<option value="1" caption="Paradise Ranch" />	
+	</combofield-->
+		
+		<lookupfield name="estate_id_overdue"  nofirst="T" multiple="F" size="1" width="190"  label="estate">
+			<datasource>
+				<keyfield>distinct estates.estate_id</keyfield>
+                                <displayfield>estates.estate_name</displayfield>
+                                <clause>wines.deleted=0 and wines.price_per_unit!=0 and estates.deleted=0 and estates.estate_id=wines.estate_id and estates. billing_address_country='Canada' and estates.estate_id!=110</clause>
+                                <orderby>estates.estate_name</orderby>
+				<lookuptable>estates,wines</lookuptable>
+			</datasource>
+		
+		</lookupfield>
+		
+		<lookupfield name="estate_id_sm"  nofirst="T" multiple="F" size="1" width="190"  label="estate">
+			<datasource>
+				<keyfield>distinct estates.estate_id</keyfield>
+                                <displayfield>estates.estate_name</displayfield>
+                                <clause>wines.deleted=0 and wines.price_per_unit!=0 and estates.deleted=0 and estates.estate_id=wines.estate_id and estates. billing_address_country='Canada' and estates.estate_id!=110</clause>
+                                <orderby>estates.estate_name</orderby>
+				<lookuptable>estates,wines</lookuptable>
+			</datasource>
+		
+		</lookupfield>
+		
+		
+		
+		<lookupfield name="estate_id_sales"  nofirst="T" multiple="F" size="1" width="190"  label="estate">
+			<datasource>
+				<keyfield>distinct estates.estate_id</keyfield>
+                                <displayfield>estates.estate_name</displayfield>
+                                <clause>wines.deleted=0 and wines.price_per_unit!=0 and estates.deleted=0 and estates.estate_id!=110 and estates.estate_id=wines.estate_id and estates. billing_address_country='Canada'</clause>
+                                <orderby>estates.estate_name</orderby>
+				<lookuptable>estates,wines</lookuptable>
+			</datasource>
+		
+		</lookupfield>
+			<lookupfield name="bc_sale_month"  nofirst="T" multiple="F" size="1" width="100"  label="Month">
+			<datasource>
+				<keyfield>distinct month(delivery_date)</keyfield>
+                                <displayfield>monthname(delivery_date)</displayfield>
+                                <clause>year(delivery_date)=2015 and deleted=0</clause>
+                                <orderby>month(delivery_date) asc</orderby>
+				<lookuptable>orders</lookuptable>
+			</datasource>
+		
+		</lookupfield>
+		
+		<lookupfield name="bc_sale_year"  nofirst="T" multiple="F" size="1" width="100"  label="Month">
+			<datasource>
+				<keyfield>distinct year(delivery_date)</keyfield>
+                                <displayfield>year(delivery_date)</displayfield>
+                                <clause>deleted=0 and year(delivery_date)>2013</clause>
+                                <orderby>year(delivery_date) desc</orderby>
+				<lookuptable>orders</lookuptable>
+			</datasource>
+		
+		</lookupfield>
+		
+        
+        
+        <combofield name="cs_estate_id_sales"   nofirst="T" multiple="F" size="1" width="190"  label="estate">
+		<option value="0" caption="All" />
+		<option value="196" caption="Bittered Sling" />
+		<option value="188" caption="Le Verre de Vin" />
+        <option value="215" caption="Sorbos Straw" />
+		<option value="187" caption="Winelife" />
+
+	</combofield>
+        
+          <editfield name="from_cs"  mask="DATE"  default="go_TODAY" size="11" length="10" required="T" tabindex="3" label="from"/>
+
+      <editfield name="to_cs"  mask="DATE"  default="go_TODAY" size="11" length="10" required="T" tabindex="3" label="to"/>
+        
+		
+		<lookupfield name="bc_sale_month_sm"  nofirst="T" multiple="F" size="1" width="100"  label="Month">
+			<datasource>
+				<keyfield>distinct month(delivery_date)</keyfield>
+                                <displayfield>monthname(delivery_date)</displayfield>
+                                <clause>year(delivery_date)=2015 and deleted=0</clause>
+                                <orderby>month(delivery_date) asc</orderby>
+				<lookuptable>orders</lookuptable>
+			</datasource>
+		
+		</lookupfield>
+		
+		<lookupfield name="bc_sale_year_sm"  nofirst="T" multiple="F" size="1" width="100"  label="Month">
+			<datasource>
+				<keyfield>distinct year(delivery_date)</keyfield>
+                                <displayfield>year(delivery_date)</displayfield>
+                                <clause>deleted=0 and year(delivery_date)>2013</clause>
+                                <orderby>year(delivery_date) desc</orderby>
+				<lookuptable>orders</lookuptable>
+			</datasource>
+		
+		</lookupfield>
+		
+		
+	<combofield name="overdue_type" label="Overdue days" nofirst="T" multiple="F" size="1" default="3" width="110" disabled="F" tabindex="4">
+	        <option value="0" caption=" All "/>
+	        <option value="1" caption=" 31 to 60 days"/>
+   	        <option value="2" caption=" 60 to 90 days"/>
+   	        <option value="3" caption=" Over 90 days"/>
+
+      </combofield>
+      
+      	<combofield name="bi_user_id" label="Sales consultant" nofirst="T" multiple="F" size="1" width="140" disabled="F" tabindex="4" >
+		
+		</combofield>
+		
+			<combofield name="bi_sale_month"  nofirst="T" multiple="F" size="1" width="100"  label="Month">
+			<listener type="JS" event="onChange" action="getAnaUsers()"/>
+		</combofield>
+		
+		
+		<combofield name="bi_sale_year"  nofirst="T" multiple="F" size="1" width="100"  label="Year">
+			<listener type="JS" event="onChange" action="setAnaSalesDate()"/>
+		</combofield>
+		
+		
+		
+		
+	</section>
+
+</form>
+

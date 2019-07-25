@@ -212,7 +212,8 @@ class F60Reports extends F60PageBase
 																sum(oi.ordered_quantity/w.bottles_per_case) total_cs,
 																if( o.lkup_payment_status_id =2, 'Paid','Not paid')  isPaid,
 																if( o.lkup_order_status_id =2, 'Delivered','Pending')  isRecieved,
-																concat(IFNULL(u.first_name,''),' ',IFNULL(u.last_name,'')) user_name";
+																IF( CONCAT(IFNULL(u.first_name, ''),' ',IFNULL(u.last_name, ''))='',
+                                                                 'Not Assign',CONCAT(IFNULL(u.first_name, ''),' ',IFNULL(u.last_name, '')))  user_name";
                              
                              
            $storetypeidAdt = "";
@@ -238,17 +239,16 @@ class F60Reports extends F60PageBase
                       and stype.lkup_store_type_id=cm.lkup_store_type_id
                       and o.deleted=0
                       and oi.deleted=0
-							 and o.customer_id = cm.customer_id
-							 and o.estate_id = e.estate_id
-							 and cm.customer_id=uc.customer_id
-							 and uc.user_id=u.user_id
+                      and o.customer_id = cm.customer_id
+					  and o.estate_id = e.estate_id
+						 
 							 
 							 $estateFilter 
 							 $storetypeidAdt $userAdt 
                    
                      and oi.order_id = o.order_id
                       and oi.wine_id = w.wine_id
-                      and (cmc.is_primary=1 or cmc.is_primary is NULL)
+                      
                       and date_format(o.delivery_date,'%Y%m%d')>='$from' 
 					  and date_format(o.delivery_date,'%Y%m%d') <='$to'
 				 group by cm.customer_id,oi.order_id";
@@ -256,10 +256,15 @@ class F60Reports extends F60PageBase
 
              $report->_dataSource['CLAUSE']=$cause;
 
-            $tables =  "customers cm
-							 left join customers_contacts cmc on cm.customer_id = cmc.customer_id and cmc.is_primary=1,
-							 
-							 orders o, estates e,order_items oi, wines w,lkup_store_types stype , users_customers uc, users u";
+            $tables =  "orders o
+                         left join  users_customers uc on o.customer_id = uc.customer_id
+                         left join users u on uc.user_id =u.user_id,     
+                        customers cm,
+                        estates e,
+                        order_items oi,
+                        wines w,
+                        lkup_store_types stype";
+                        
             if($user_id!="")
             {
                 $tables = $tables." ,users_customers ucm ";

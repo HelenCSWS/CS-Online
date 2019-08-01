@@ -155,10 +155,7 @@ function changeNumberType(controlID,ntype_id)
 //------------------------------------------------------------------------------
 function changeTab(id)
 {
-    
-
     var province_id = document.getElementById("province_id").value;
-
     var tab0 = document.getElementById("tab0");
     var tab1 = document.getElementById("tab1");
     var tab2= document.getElementById("tab2");
@@ -166,7 +163,6 @@ function changeTab(id)
     var tab4 = document.getElementById("tab4");
     var tab5 = document.getElementById("tab5");
     
-
     tab0.className = "tab";
     tab1.className = "tab";
     tab4.className = "tab";
@@ -174,7 +170,6 @@ function changeTab(id)
     tab5.className = "tab";
     tab2.className = "tabRight";
    
-
 	if(province_id>1)    
 	{
 		tab3.style.display="none";
@@ -195,8 +190,9 @@ function changeTab(id)
 			tab4.width="25%";
 			tab5.width="25%";
 		}
-		//tab4.width="25%";
-		document.getElementById("trSelectEstate").style.display="none";
+        //tab4.width="25%";
+
+		
 	}
 
     if (id==0)//store
@@ -314,6 +310,11 @@ function changeTab(id)
     if (window.setCSProductsListHeight) 
 	 	setCSProductsListHeight();
          }
+
+        if(province_id>1)
+        {
+            document.getElementById("trSelectEstate").style.display="none";
+        }
 
 }
 
@@ -541,11 +542,11 @@ function extDisable(editMode)
 
 //!----------------------------------------------------------------
 // @function	chkFLOAT
-// @desc		Aplica máscara de número decimal automaticamente
-// @param		field Field object		Campo de um formulário
+// @desc		Aplica mï¿½scara de nï¿½mero decimal automaticamente
+// @param		field Field object		Campo de um formulï¿½rio
 // @param		event Event object		Evento do teclado
-// @param		llen Integer			Tamanho da parte inteira do número
-// @param		rlen Integer			Tamanho da parte decimal do número
+// @param		llen Integer			Tamanho da parte inteira do nï¿½mero
+// @param		rlen Integer			Tamanho da parte decimal do nï¿½mero
 // @return		Boolean
 //!----------------------------------------------------------------
 //chkFLOAT
@@ -1435,8 +1436,10 @@ function setForm(pagename)
         
         if(province_id ==2 )
         { 
+            alert("here");
         	document.getElementById("tdrank").style.display="block";
-        	document.getElementById("tddelivery").style.display="none"	
+            document.getElementById("tddelivery").style.display="none";
+            document.getElementById("trSelectEstate").style.display="none";
         }
         else
         {
@@ -1462,30 +1465,33 @@ function setForm(pagename)
  			if ((document.getElementById("estate_id_order").value!="")||(document.getElementById("isorder").value=="1")
 				|| (F60GetCookie("CustomerTab") == "Order")) 
 				{
-					changeTab(3); // set to ORder 3
+
+                    changeTab(3); // set to ORder 3
 				}
 				else if((F60GetCookie("CustomerTab") == "Product"))
 				{
-						changeTab(5);
+
+                    changeTab(5);
 				}
 				else
 				{
+
 					changeTab(0);  // set to customer:0 
 				}
           
-          	if(parseInt(document.getElementById("total_sales_pages").value)>1)   
-            {             
-				document.getElementById("tdFlip").style.display="block";
-			}
+          	// if(parseInt(document.getElementById("total_sales_pages").value)>1)   
+            // {             
+			// 	document.getElementById("tdFlip").style.display="block";
+			// }
 			
-            if(document.getElementById("isAdmin").value!=1)//not admin
-            {
-              // disable assign when user is not login, comment by Chris so sales any one can assigned the store to them self
-                document.getElementById("user_id").disabled=true;
-                document.getElementById("lkup_territory_id").disabled=true;
+            // if(document.getElementById("isAdmin").value!=1)//not admin
+            // {
+            //   // disable assign when user is not login, comment by Chris so sales any one can assigned the store to them self
+            //     document.getElementById("user_id").disabled=true;
+            //     document.getElementById("lkup_territory_id").disabled=true;
                 
-            }
-			setCSInventory();
+            // }
+			// setCSInventory();
         }
         else
         {

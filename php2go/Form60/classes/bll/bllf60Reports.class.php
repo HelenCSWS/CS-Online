@@ -465,7 +465,7 @@ AND w.estate_id = e.estate_id and e.estate_id = $estate_id order by wine_name";
 	 	  
 	}
 	
-	 function getTotalAmountByInvoiceNo($invoiceNo)
+	 function getTotalAmountByInvoiceNo($estate_id, $invoiceNo)
 	{
 	
         $sql = "Select 			 			 
@@ -476,6 +476,8 @@ AND w.estate_id = e.estate_id and e.estate_id = $estate_id order by wine_name";
 			 From 
 			 orders o,order_items oi
 			 where invoice_number=$invoiceNo and o.order_id=oi.order_id
+             and estate_id =$estate_id
+             
 			 group by invoice_number
 			 ";
 			 

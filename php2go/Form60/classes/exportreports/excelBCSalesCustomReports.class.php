@@ -214,9 +214,9 @@ class excelBCSalesCustomReports
 					else
 					{
 					//	$displayAmount= $invoiceNo;
-					 	$displayAmount=$this->invData->getTotalAmountByInvoiceNo($invoiceNo);
+					 	$displayAmount=$this->invData->getTotalAmountByInvoiceNo($this->estate_id,$invoiceNo);
 					 	
-					 $displayAmount = Number::fromDecimalToCurrency($displayAmount,"$", ".", ",", 2, "left");
+					    $displayAmount = Number::fromDecimalToCurrency($displayAmount,"$", ".", ",", 2, "left");
 					 	
 						$totalRow =$row; // remember the first row for put total amount value ;
 					}

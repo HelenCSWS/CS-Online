@@ -2,7 +2,7 @@
 //clear the error message while reslect another file
 function initpage()
 {
-checkASAvaData();
+    checkASAvaData();
 }
 
 function checkASAvaData()
@@ -19,9 +19,25 @@ function checkASAvaData()
 function setAvaMsg(isAva)
 {	
  	document.getElementById('td_msg').innerHTML = "";
+    
+    var province_id = document.getElementById("province_id").value;
+    
+    var reportName = "SalesAnalysisEmailToBC"; // BC
+    if(province_id !=1)
+    {
+        reportName = "SalesAnalysisEmailToAB"; // AB
+    }
+    
+   // var hyperLink ="csonline.christopherstewart.com:8088/"+reportName;
+    
+    var hyperLink =reportName;
+    
+    hyperLink = "<a target='_blank' href='"+ hyperLink+ "'>available.<a/>";
+    
+     
 	if(isAva)
 	{
-		document.getElementById('td_msg').innerHTML = "Current month's data is available.";
+		document.getElementById('td_msg').innerHTML = "Current month's data is "+hyperLink;
 		document.getElementById('td_msg').style.color = "black";
 	}
 	else

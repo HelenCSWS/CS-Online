@@ -83,7 +83,7 @@ class generateAnaData extends F60FormBase
     function getMonths($currentFsYear)
     {
  	 	$periods = $this->getMonthBySaleYear($currentFsYear);
-       $cmbPeriods=& $this->form->getField("sale_month");
+         $cmbPeriods=& $this->form->getField("sale_month");
        
        $current_period_id=intval($_REQUEST["sale_month"]);
 

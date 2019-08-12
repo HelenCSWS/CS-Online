@@ -186,7 +186,6 @@ class excelBCSalesCustomReports
 						{
 							$address=substr_replace($address,'',0,2);
 						}
-		
 					
 						$wine= $sales["wine_name"];
 		            	$sku= $sales["sku"];
@@ -198,8 +197,6 @@ class excelBCSalesCustomReports
 		            	$amount= $sales["amount"];
 		            	$store_type_id= $sales["lkup_store_type_id"];
 		            
-		            	
-		            
 					if($invoiceNo==$last_invNo)
 					{
 						$orderDate="";
@@ -209,7 +206,7 @@ class excelBCSalesCustomReports
 						$address="";
 						$displayInvNo="";
 						$displayAmount="";
-						//	$total_amount=$total_amount+$amount;
+					//	$total_amount=$total_amount+$amount;
 					}
 					else
 					{
@@ -220,8 +217,8 @@ class excelBCSalesCustomReports
 					 	
 						$totalRow =$row; // remember the first row for put total amount value ;
 					}
-				
-						$last_invNo = $invoiceNo;
+
+					$last_invNo = $invoiceNo;
 						
 						if($store_type_id!=$lastStoreType&&$lastStoreType!="")
 						{

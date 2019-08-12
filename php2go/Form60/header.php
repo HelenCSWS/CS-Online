@@ -96,6 +96,7 @@ if (parent.childPageMousedown && parent.browser)
             <OPTION VALUE="5">ON</OPTION>
             <OPTION VALUE="4">SK</OPTION>
             <OPTION VALUE="6">QC</OPTION>
+			<OPTION VALUE="13">HK</OPTION>
 </SELECT>
         
        </td>

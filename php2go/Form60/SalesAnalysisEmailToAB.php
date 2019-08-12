@@ -33,8 +33,8 @@
 		
         if($retVal)
         {
-		      $isToCP =1; // to CP only with all reports combined
-		      $anaData-> emailAnaReport($report_year,$report_month,$province_id,$isToCP);
+		     $isToCP =1; // to CP only with all reports combined
+		     $anaData-> emailAnaReport($report_year,$report_month,$province_id,$isToCP);
         }
     	
 ?>

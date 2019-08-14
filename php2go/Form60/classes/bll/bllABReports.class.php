@@ -254,7 +254,7 @@ class ABReportData extends Php2Go
 				where c.licensee_number =$licno
 				
 				and c.lkup_store_type_id =8 
-				and deleted =0";
+				and c.deleted =0";
 				
 		$bRet=$this->db->getAll($SQL);
 		return $bRet;

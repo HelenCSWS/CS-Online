@@ -29,14 +29,14 @@ class bllABVenderData extends Php2Go
     
     function collectData()
     {
-		$this->logMessage("---- Start data collection ---- ", false);	 
+	//	$this->logMessage("---- Start data collection ---- ", false);	 
 		
-		//// 2014-4-1 comment by helen, AB site format has been change, export the file from the site directly then manuly import the data
+		//// 2014-4-1 comment by helen, AB site format has been changed, export the file from the site directly then manuly import the data
 		
 //		$this->getVenderSiteSalesData(); 
 	//	$this->getVenderSiteInvertoryData();
 		
-		$this->logMessage("---- Finished data collection ---- ", false);
+		//$this->logMessage("---- Finished data collection ---- ", false);
 		
 		if ($this->errorMessage <> "")
 		{

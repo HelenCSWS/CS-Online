@@ -23,7 +23,7 @@ class F60NotesList extends PagedDataSet
     var $noteYear="";
 
 
-    function F60NotesList($Document, $owner, $ID,  $noResize=false,$noteYear="")
+    function F60NotesList($Document, $owner, $ID,  $noResize=false,$noteYear=0)
     {
        PagedDataSet::PagedDataSet('db');
        PagedDataSet::setPageSize(20);
@@ -50,14 +50,34 @@ class F60NotesList extends PagedDataSet
           
 
 		$this->noteYear=$noteYear;
+        
+    
+         
+        	$fp = fopen("logs/Ajax_logfile.log","a");
+    fputs($fp, $this->noteYear."\n");
+    fclose($fp);
 		
     }
 
 	
     function _loadDataset()
     {
-     	
-        $sqlTemplate = "SELECT n.note_id, n.when_created, n.note_text, CONCAT_WS(' ', u.first_name, u.last_name) as user_name 
+     
+        if($this->noteYear==0)
+          {
+  
+              $sqlTemplate = "SELECT n.note_id, n.when_created, n.note_text, CONCAT_WS(' ', u.first_name, u.last_name) as user_name 
+                          FROM notes n, users u, %s en
+                          where n.deleted = 0
+                          and n.created_user_id = u.user_id
+                          and n.note_id = en.note_id
+                          and en.%s = %s
+                       
+                          order by %s %s";
+          }
+          else
+          {
+                $sqlTemplate = "SELECT n.note_id, n.when_created, n.note_text, CONCAT_WS(' ', u.first_name, u.last_name) as user_name 
                         FROM notes n, users u, %s en
                         where n.deleted = 0
                         and n.created_user_id = u.user_id
@@ -65,6 +85,7 @@ class F60NotesList extends PagedDataSet
                         and en.%s = %s
                         and year(n.when_created)=%s
                         order by %s %s";
+          }
                         
         if ($this->ownerType == "estate")
         {
@@ -79,8 +100,14 @@ class F60NotesList extends PagedDataSet
             $idFiledName 	= "customer_id";
         }
         
-        	        
-        $this->sqlCode = sprintf($sqlTemplate, $joinTable, $idFiledName,$this->ownerID, $this->noteYear,$this->orderBy,
+       if($this->noteYear==0)
+       {
+          $this->sqlCode = sprintf($sqlTemplate, $joinTable, $idFiledName,$this->ownerID, $this->orderBy,     
+                             ($this->orderType == "d")?"DESC":"ASC");
+                   
+       }
+        else
+           $this->sqlCode = sprintf($sqlTemplate, $joinTable, $idFiledName,$this->ownerID, $this->noteYear,$this->orderBy,
                         ($this->orderType == "d")?"DESC":"ASC");
         PagedDataSet::setCurrentPage($this->page);
         PagedDataSet::load($this->sqlCode);
@@ -115,20 +142,17 @@ class F60NotesList extends PagedDataSet
 	     
 	     	foreach ($yearsSet as $noteYear)
 	     	{
-			
-				
 				$nYear =$noteYear["note_year"];
-				
+                $yearValue =$noteYear["value_year"];
 				
 				$this->Template->createBlock('year_loop_line');
 				$this->Template->assign("note_year", $nYear);
+                $this->Template->assign("value_year", $yearValue);
 				if($nYear==$this->noteYear)
 						$this->Template->assign("selected", "selected");
 				
 			}
 		}
-     	
-     	
      	//Note content
      
         $aRow = 0;	
@@ -169,12 +193,14 @@ class F60NotesList extends PagedDataSet
     
     function getNoteYears()
     {
-		 $sqlTemplate = "SELECT distinct year(n.when_created) note_year
+		 $sqlTemplate = "SELECT distinct year(n.when_created) value_year, year(n.when_created) note_year
                         FROM notes n, users u, %s en
                         where n.deleted = 0
                         and n.created_user_id = u.user_id
                         and n.note_id = en.note_id
                         and en.%s = %s
+                        
+                        Union select '0', 'ALL'
                         order by note_year desc";
                         
         if ($this->ownerType == "estate")
@@ -202,9 +228,8 @@ class F60NotesList extends PagedDataSet
 		{
 			
 		 	if($this->noteYear==""||is_object($this->noteYear))
-				$this->noteYear= $rows[0]["note_year"];
-				    
-        
+				$this->noteYear= $rows[0]["value_year"];
+       
 			return	$rows;
 		}
 		else

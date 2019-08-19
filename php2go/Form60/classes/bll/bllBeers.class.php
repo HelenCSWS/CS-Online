@@ -387,16 +387,6 @@ class bllBeers extends  Php2Go
 		return $retVal;	
 		
     }
-    
-    
-
-
-   
-	function logMessage2($msg)
-	{
-	    $logFile = PHP2Go::getConfigVal('ERROR_LOG_FILE', FALSE);
-	    PHP2Go::logError($logFile, $msg, E_USER_NOTICE);
-	}
 
 }
 ?>

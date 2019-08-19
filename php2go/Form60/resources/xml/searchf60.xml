@@ -12,7 +12,7 @@
 	
 				<hiddenfield name="province_id" value="1"/>
 				
-				<editfield name="search_field" label="Search for" tabindex="1" size="28" length="225" value="">
+				<editfield name="search_field" label="Search for" tabindex="1" size="40" length="225" value="">
 				    <listener type="JS" event="onKeyPress" action="handleEnter(this, event, gosearch)"/>
 				</editfield>
 				

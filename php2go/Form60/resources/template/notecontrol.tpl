@@ -36,7 +36,7 @@
 
      <div class="gridRightLink" style="margin-top:5px">
  	<select CLASS="input" SIZE="1" STYLE="width:60px" onChange="refreshNotes();"  id="note_year">
-		<!-- START BLOCK : year_loop_line -->	<option value="{note_year}" {selected}>{note_year}</option>  <!-- END BLOCK : year_loop_line -->
+		<!-- START BLOCK : year_loop_line -->	<option value="{value_year}" {selected}>{note_year}</option>  <!-- END BLOCK : year_loop_line -->
 		
 		</select> &nbsp;&nbsp;
 		

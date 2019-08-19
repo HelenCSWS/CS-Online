@@ -67,9 +67,6 @@ class excelABDailyUnabledRepor
 			
    }   
    
-  
-  
-	
     function generateReportSheet($returnFile=true)
     {			    
 
@@ -127,14 +124,9 @@ class excelABDailyUnabledRepor
     {
 	    $fp = fopen("logs/test.log","a");
 		fputs($fp, $text);
-		fclose($fp);
-		
+		fclose($fp);	
 	}
-	
-
-
-   
-	
+		
 	function _writeData(&$workbook, & $sp, & $row)
     {
        	$fm = & $workbook->addFormat(array('fontfamily'=>'Arial', 'size'=>10, 'border'=>1));
@@ -170,13 +162,9 @@ class excelABDailyUnabledRepor
 		$reportData = new ABReportData();
 		//$user_id,$province_id,$sale_month,$sale_year
 		$basicInfos = $reportData->getDailyUnabledInfo();
-	//	print_r($report_data);
-	
-
+/
 		 $i=0;
-		 
-	
-		 
+         
 		 $cellFormat = $arialNormalBorder;
 		 $cellCurrencyFormat = $arialNormalCurrency;
 		 
@@ -213,10 +201,7 @@ class excelABDailyUnabledRepor
 							array("data"=>$unit_price,"format"=>$cellCurrencyFormat),
 							array("data"=>$unable_date),
 							array("data"=>$user_name,"format"=>$user_nameformat)
-						
-												
-							); 
-			             
+        				); 
         
 			$this->_writeRow($sp, $values, $row, $cellFormat); 
            
@@ -226,13 +211,7 @@ class excelABDailyUnabledRepor
         }
         $endRow=$row;
 	                
-        
-
     }
-    
-   
-    
-   
     
     function _writeTitle(& $workbook, & $sp, & $row)
     {
@@ -252,7 +231,7 @@ class excelABDailyUnabledRepor
         $sp->setRow($row, 60); 
         $sp->insertBitmap($row, $this->columns["F"]["index"], "resources/images/cswslogo.bmp", 33, -8, 1,1);
 
-$row=2;
+        $row=2;
 //$row+=5;
 
 //row 4

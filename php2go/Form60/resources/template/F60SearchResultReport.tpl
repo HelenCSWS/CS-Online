@@ -40,6 +40,22 @@
         padding: 2px;
         font-size: 8pt;
     }
+    
+    #report_first_page,#report_prev_page,#report_next_page, #report_last_page{
+        width:70px;
+        height:20px;
+        font-size:10px;
+		border-radius：10%;
+    
+    }
+	
+	#btnClose{
+        width:100px;
+        height:30px;
+        font-size:11px;
+		border-radius：30%;
+    
+    }
 </style>
 
 <table  width="100%" height="100%"  cellpadding="0" cellspacing="0" border="0"  >
@@ -72,16 +88,16 @@
     </table>
     <table width="95%" cellpadding="0" cellspacing="0" border="0" align="center">
     
-      <tr style="display:block">
-        <td colspan="2" width="100%" align="right" class="cellA"><span id="spTotalCS"></span>&nbsp;{page_links}</td>
+      <tr style="">
+        <td style="padding-top:20px;" colspan="2" width="100%" align="center" class="cellA"><span id="spTotalCS"></span>&nbsp;{page_links}</td>
     </tr>
-      <tr style="display:block">
-        <td width="50%" align="right" class="cellA" >{this_page}</td>
-        <td style="display:none" width="50%" align="right" class="cellA">{row_interval}</td >
+      <tr style="">
+        <td width="100%" align="center" class="cellA" >{this_page}</td>
+        <td style="display:none" width="50%" align="center" class="cellA">{row_interval}</td >
       </tr>
     </table>
     <table border="0" width ="100%">
-    <tr><td align="right" style="padding-right:25px;padding-top:20px"><span id="spTotalCS">&nbsp;</span> <INPUT onClick="closePage()" ID="btnClose" NAME="btnClose" TYPE="BUTTON" VALUE="Close" CLASS="btnOK" ></td></tr>
+    <tr><td align="center" style="padding-right:25px;padding-top:20px"><span id="spTotalCS">&nbsp;</span> <INPUT onClick="closePage()" ID="btnClose" NAME="btnClose" TYPE="BUTTON" VALUE="Close" CLASS="btnOK" ></td></tr>
     </table>
 </td></tr>
 

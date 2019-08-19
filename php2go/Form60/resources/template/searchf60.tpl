@@ -1,4 +1,14 @@
 {search_id}{search_id_w}{isWine}{contact_key}{isQtr}{isStart}{province_id}
+
+<style>
+#btnClose, #btnSearch,#btnSearch_w{
+        width:100px;
+        height:27px;
+        font-size:12px;
+  
+    }
+    
+</style>
 <table border="0" cellpadding="0" cellspacing="0" width="99%">
 <tr id="showWine" name="showWine" cellpadding="0" cellspacing="0"><td style="padding-top:100px" align="center">
 <fieldset style="padding:0px 0px 0px 0px;width:656px" >
@@ -18,7 +28,7 @@
 <tr id="trSrchCM" name="trSrchCM" style="display:none"> <td colspan=2 style="padding-top:10px;padding-left:15px">
 
 
-<table cellpadding="0" cellspacing="0" border="0" width="630" height="289"><tr><td align="middle" valign="top"  >
+<table cellpadding="0" cellspacing="0" border="0" width="630" height="320"><tr><td align="middle" valign="top"  >
     <tr><td>
                 	<table cellpadding="0" cellspacing="0" border="0" class="label">
                       <!--store type & start with-->
@@ -26,7 +36,7 @@
                         
                         
                        <table cellpadding="0" cellspacing="0" border="0" class="label" height="30"><tr><td><input type="checkbox" id="chkstoretype" name="chkstoretype"  onclick=enableStoretype(0) ></td><td class="label"> Store type</td><td style="padding-left:11px" > {lkup_store_type_id}</td><td style="padding-left:87px"> <input type="checkbox" id="startwith" name="startwith" onclick=setFocus2Text(0)></td><td class="label"> Starts with</td>
-								<td style="padding-left:17px"> <input type="checkbox" id="chkisOOB" name="chkisOOB" onclick=setFocus2Text()></td><td class="label"> OOB Customers</td></tr></table>
+								<td style="padding-left:17px"> <input type="checkbox" id="chkisOOB" name="chkisOOB" onclick=setFocus2Text()></td><td class="label"> Out of business customers</td></tr></table>
 								
 								
 								
@@ -38,7 +48,7 @@
                     <td class="label" nowrap> Assigned to</td><td style="padding-left:5px" > {user_id}</td>
 <td nowrap style="padding-left:25px">{label_search_field}&nbsp;</td><td id="edt">{search_field}</td>
   <td id="cmd"  style="display:none">{estate_id1}</td>
- <td sytle="paddingtop:0px">&nbsp;{btnSearch}</td>
+ <td sytle="paddingtop:0px">&nbsp;</td>
                    </tr></table></td></tr>
                         
                         <!--customre-->
@@ -62,7 +72,7 @@
                     	<tr><td nowrap class="label" style="padding-top:5px;padding-bottom:0px"><input type="radio" id="searchKey" name="searchKey"  onclick=changeKey("11") >Street name</td></tr>
                     	
                     	<tr><td nowrap class="label" style="padding-top:5px;padding-bottom:5px"><input type="radio" id="searchKey" name="searchKey"  onclick=changeKey("12") >City</td></tr>
-                    	<tr style="display:none"><td nowrap class="label" style="padding-top:0px;padding-bottom:5px"> <input type="radio" id="searchKey" name="searchKey" onclick=changeKey("5") >Search for OOB customers</td></tr>
+                    	<tr ><td nowrap class="label" style="padding-top:0px;padding-bottom:5px; text-align:center"> {btnSearch}&nbsp;&nbsp;&nbsp;&nbsp;{btnClose}</td></tr>
                     
                 	</table>
  </td>
@@ -81,8 +91,8 @@
    <tr id="trSrchWine" name="trSrchWine" style="display:none"> <td colspan=2 style="padding-top:17px;padding-left:15px">
 
 
-<table cellpadding="0" cellspacing="0" border="0" width="610" height="282"><tr><td align="middle" valign="top"  >
-<tr><td valign="top" align="left" >
+<table cellpadding="0" cellspacing="0" border="0" width="610" height="310"><tr><td align="middle" valign="top"  >
+<tr><td valign="top" align="left" style="height:160px;" >
 <table cellpadding="0" cellspacing="0" border="0" >
 <tr><td><table cellpadding="0" cellspacing="0" border="0" class="label"><tr>
 <td class="label">{product_id}
@@ -92,7 +102,7 @@
 </table>
 
 </td></tr>
-<tr><td valign="top" align="left" >
+<tr><td valign="top" align="left"  >
                 	<table cellpadding="0" cellspacing="0" border="0" class="label" >
                 	
                 		 <!--period-->	
@@ -122,7 +132,7 @@
                     <td class="label" nowrap> Assigned to</td><td style="padding-left:5px" > {user_id_w}</td>
 <td nowrap style="padding-left:25px">{label_search_field_w}&nbsp;</td><td id="edt">{search_field_w}</td>
   <td id="cmd"  style="display:none">{estate_id1}</td>
- <td sytle="paddingtop:1px">&nbsp;{btnSearch_w}</td>
+
                    </tr></table></td></tr>
                       
                         
@@ -144,9 +154,12 @@
                     	<tr><td nowrap class="label" style="padding-top:8px;padding-bottom:0x" ><input type="radio" id="searchKey_w" name="searchKey_w"  onclick=changeKey_w("3") >Total sales by &nbsp;{sku_name}</td></tr></table>
  </td>
     		</tr>
+            <tr><td style="padding-top:4px;padding-bottom:0px;text-align:center" >{btnSearch_w}&nbsp;&nbsp;&nbsp;&nbsp;{btnClose}</td></tr></table>
+ </td>
+    		</tr>
         </table>
       
-   <!-- end -->
+   <!-- end --> 
    
    </td></tr>
 
@@ -154,9 +167,6 @@
                 </legend>
                 </fieldset>
                 </td></tr>     
-    <tr>
-    	<td align="middle" style="padding-top:18px;"><div style="width:626px; text-align:right">{btnClose}<div></td>
-    </tr>
-
+  
         </table> 
        

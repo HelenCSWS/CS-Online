@@ -340,7 +340,7 @@ class ABReportData extends Php2Go
                 $allEmaiAddress =$allEmaiAddress.$email["email1"].";";
         }        
         
-		$allEmaiAddress = $allEmaiAddress.";anne@christopherstewart.com;chris@christopherstewart.com;"; // Add Alberta inventory person to email lists
+		$allEmaiAddress = $allEmaiAddress.";anne@christopherstewart.com;chris@christopherstewart.com;tyler@christopherstewart.com;"; // Add Alberta inventory person to email lists
         
         return $allEmaiAddress;            			      	
 	}

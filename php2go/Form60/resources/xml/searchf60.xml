@@ -57,7 +57,7 @@
       </combofield>
       
       
-      <combofield name="product_id" default="12" nofirst="T" width="120">
+      <combofield name="product_id" label="Products" default="1" nofirst="T" width="120">
         <option value="1" caption="Wine" />
           <option value="2" caption="Beer" />
           <option value="3" caption="Sake" />

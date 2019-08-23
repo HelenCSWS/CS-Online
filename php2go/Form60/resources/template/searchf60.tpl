@@ -95,7 +95,7 @@
 <tr><td valign="top" align="left" style="height:160px;" >
 <table cellpadding="0" cellspacing="0" border="0" >
 <tr><td><table cellpadding="0" cellspacing="0" border="0" class="label"><tr>
-<td class="label">{product_id}
+<td class="label"><LABEL FOR="product_id" ID="lbl_product_id_label" CLASS="label" >Products</LABEL>&nbsp;{product_id}
 <!-- input type="radio" id="chkProduct" name="chkProduct" checked onclick=setProductId("1")  />Wine</td><td style="padding-left:20px" class="label"><input type="radio" id="chkProduct" name="chkProduct"  onclick=setProductId("2")  />Beer -->
 
 </td></tr>
@@ -116,11 +116,10 @@
 	<td colspan="6" class="label" style="padding-left:0px;padding-top:5px; display:none" width="120px"><input type="checkbox" id="chkNoDate" checked name="chkNoDate" onclick=setWithoutDate()>Without date </td>
 	</tr></table>
 	
-	
-	</td></tr>
-								</table></td></tr>
-
-                      <!--store type & start with-->
+    </td></tr></table>
+    
+    </td></tr>
+                  <!--store type & start with-->
                         <tr><td colspan="10" style="padding-top:10px">
                        <table cellpadding="0" cellspacing="0" border="0" class="label" height="30"><tr><td></td><td class="label"> Store type</td><td style="padding-left:11px" > {lkup_store_type_id_w}</td><td style="padding-left:87px"> <input type="checkbox" id="startwith_w" name="startwith_w" onclick=setFocus2Text(1)></td><td class="label"> Starts with</td>
 								<td style="padding-left:17px">&nbsp;</td><tr></table>

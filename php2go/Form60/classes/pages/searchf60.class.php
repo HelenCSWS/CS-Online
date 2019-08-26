@@ -48,7 +48,7 @@ class searchf60 extends F60FormBase
             
   		Registry::set('BC_ESTATES', $bc_estates_filter);
           	
-      $form = & $this->getForm();
+        $form = & $this->getForm();
         $form->setFormAction($_SERVER["REQUEST_URI"]);
       
         $this->registerActionhandler(array("btnClose", array($this, processForm), "LASTPAGE",  null));
@@ -74,25 +74,26 @@ class searchf60 extends F60FormBase
 			 $cntl->setValue("1");
 			 $this->isWine=true;
 		}
-
 	
-		
-        $this->attachBodyEvent('onLoad', $funstring);
+       $this->attachBodyEvent('onLoad', $funstring);
         
        $this->setProductTypes(1);
        
-     
+      /**
+      *        printf("uniqid(): %s\r\n", uniqid(true));
+      *        printf("uniqid('php_'): %s\r\n", uniqid('php_'));
+      *        printf("uniqid('', true): %s\r\n", uniqid('', true));
+      */     
    
     }
 
-    	function display()
-    	{
-            if (!$this->handlePost())
-            {             	
-                $this->displayForm();
-            }
- 		}
-
+    function display()
+    {
+        if (!$this->handlePost())
+        {             	
+            $this->displayForm();
+        }
+    }
 
      function displayForm()
      {

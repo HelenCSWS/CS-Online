@@ -42,13 +42,16 @@
     }
     
     #report_first_page,#report_prev_page,#report_next_page, #report_last_page{
-        width:70px;
-        height:20px;
+        width:90px;
+        height:25px;
         font-size:10px;
 		border-radius：10%;
     
     }
 	
+    button:hover{
+        cursor: pointer;
+    }
 	#btnClose{
         width:100px;
         height:30px;

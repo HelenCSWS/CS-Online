@@ -72,7 +72,7 @@
                     	<tr><td nowrap class="label" style="padding-top:5px;padding-bottom:0px"><input type="radio" id="searchKey" name="searchKey"  onclick=changeKey("11") >Street name</td></tr>
                     	
                     	<tr><td nowrap class="label" style="padding-top:5px;padding-bottom:5px"><input type="radio" id="searchKey" name="searchKey"  onclick=changeKey("12") >City</td></tr>
-                    	<tr ><td nowrap class="label" style="padding-top:0px;padding-bottom:5px; text-align:center"> {btnSearch}&nbsp;&nbsp;&nbsp;&nbsp;{btnClose}</td></tr>
+                    	<tr ><td nowrap class="label" style="padding-top:0px;padding-bottom:5px; text-align:center"> {btnClose}&nbsp;&nbsp;&nbsp;&nbsp;{btnSearch}</td></tr>
                     
                 	</table>
  </td>
@@ -153,7 +153,7 @@
                     	<tr><td nowrap class="label" style="padding-top:8px;padding-bottom:0x" ><input type="radio" id="searchKey_w" name="searchKey_w"  onclick=changeKey_w("3") >Total sales by &nbsp;{sku_name}</td></tr></table>
  </td>
     		</tr>
-            <tr><td style="padding-top:4px;padding-bottom:0px;text-align:center" >{btnSearch_w}&nbsp;&nbsp;&nbsp;&nbsp;{btnClose}</td></tr></table>
+            <tr><td style="padding-top:4px;padding-bottom:0px;text-align:center" >{btnClose}&nbsp;&nbsp;&nbsp;&nbsp;{btnSearch_w}</td></tr></table>
  </td>
     		</tr>
         </table>

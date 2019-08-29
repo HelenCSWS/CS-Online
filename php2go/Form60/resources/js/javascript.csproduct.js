@@ -8,12 +8,12 @@ function initPST()
         if($("#pst_no").val()!="")
         {
            
-             $("#chk_PST").prop('checked', true);
+            $("#chk_PST").attr('checked', true);
         }
         else
         {
            
-             $("#chk_PST").prop('checked', false);
+             $("#chk_PST").attr('checked', false);
              
              
         }
@@ -48,12 +48,12 @@ function setPST4CM()
      if(document.getElementById("chk_PST").checked)
      {
        
-        $("#pst_no").prop('disabled', false);
+        $("#pst_no").removeAttr('disabled');
      }    
      else
      {
        
-        $("#pst_no").prop('disabled', true);
+        $("#pst_no").attr('disabled', 'disabled');
      }
 }
 function initCSOrder() // init edit cs order page
@@ -674,6 +674,7 @@ function createCSOrder()
             }
         }
         //      showWinelistLoading();
+	
         xajax_createCSOrder(province_id,customer_id,estate_id,pst_no,other_info,arProductInfos);
         return true;
     }

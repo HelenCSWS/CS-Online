@@ -4,9 +4,11 @@ import('Form60.dal.dalusers');
 
 class bllusers extends dalusersCollection
 {
+  
 	function bllusers()
 	{
 		parent::dalusersCollection();
+        
 	}
 	
     function usernameExists($username, $user_id = NULL)

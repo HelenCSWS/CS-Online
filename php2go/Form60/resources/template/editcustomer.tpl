@@ -6,7 +6,7 @@
 
   {customer_id}{is_primary}{contact_id}{lkup_phone_type_id}{customers_contacts_id_1}{customers_contacts_id_2}{pageid}{isload}{test}
 
-{pst_no_org}{assign_user_id}{billing_address_state} 
+{pst_no_org}{assign_user_id}{billing_address_state} {hk_rank_1}{hk_rank_2}{hk_rank_3}{hk_rank_4}{hk_rank_5}{hk_rank_dirty}
 
 <!--Main table-->
 <table border="0" width="100%">
@@ -142,6 +142,7 @@
                         <tr>
                             <td width="33%" style="padding-left:3px" id="tddelivery">{label_best_time_to_deliver}<BR>{best_time_to_deliver}</td>
                             <td width="33%" style="padding-left:3px; display:none" id="tdrank">{label_rank}<BR>{rank}</td>
+							<td width="33%" style="padding-left:3px; display:none" id="tdsubtype">{label_sub_type}<BR>{sub_type}</td>
                             <td width="*" align="middle">
                                 <table>
                                     <tr>
@@ -165,7 +166,28 @@
                             </td>
                         </tr>
                         <!-- Store info 4th row end-->
-
+						
+						<tr>
+						<!-- Store info 5th row end HK Rank-->
+						<td colspan="3" >
+						
+						<section id="hk_ranks">
+							<div style="padding-left:5px">Ranks</div>
+							<table>
+							<tr>
+							<td><input class="chk-input" type="checkbox" name="rank_type_1" id="rank_type_1" border="0"></td><td>TimeOut Hong Kong 2019</td>
+							<td style="padding-left:20px"><input class="chk-input" type="checkbox" name="rank_type_2" id="rank_type_2" border="0"></td><td>Top Bars Hong Kong</td>
+							<td style="padding-left:20px"><input class="chk-input" type="checkbox" name="rank_type_3" id="rank_type_3" border="0"></td><td>Tatler 2018</td>
+							<td style="padding-left:20px"><input class="chk-input" type="checkbox" name="rank_type_4" id="rank_type_4" border="0"></td><td>Tatler 2019</td>
+							<td style="padding-left:20px"><input class="chk-input" type="checkbox" name="rank_type_5" id="rank_type_5" border="0"></td><td>Tatler Best Resautants</td>
+							<td></td><td></td>
+							</tr>
+							</table>
+			
+						</section>
+						</td>
+						</tr>
+						<!-- Store info 5th row end-->
                     </table><!-- Store info table end here-->
 
 
@@ -405,5 +427,69 @@ if (window.setorderListHeight) setorderListHeight();
 if (window.setcsListHeight) setcsListHeight();
 if (window.tglOrderButton) tglOrderButton(false);
 refreshWines();
+
+$(document).ready(function(){
+
+ 
+
+if($("#province_id").val()==13)
+{
+		initHKRank();
+
+	    document.getElementById("rank_type_1").onclick = function () { setHKRank("rank_type_1", 1) };
+		document.getElementById("rank_type_2").onclick = function () { setHKRank("rank_type_2", 2) };
+		document.getElementById("rank_type_3").onclick = function () { setHKRank("rank_type_3", 3) };
+		document.getElementById("rank_type_4").onclick = function () { setHKRank("rank_type_4", 4) };
+		document.getElementById("rank_type_5").onclick = function () { setHKRank("rank_type_5", 5) };
+		   
+	   
+
+ }              
+ });
+ 
+ 
+ function initHKRank()
+ {
+	var i=1;
+	for(i=1;i<=5;i++)
+	{
+		var editRankTypeID="hk_rank_"+i;
+		
+		var chkRankTypeID="rank_type_"+i;
+		
+		if(document.getElementById(editRankTypeID).value==1)
+		{
+			document.getElementById(chkRankTypeID).checked=true;
+		}
+		
+	
+		if ($("#isAdmin").val()==0) // disable checkbox
+		{
+			document.getElementById(chkRankTypeID).disabled=true;
+		}
+	}
+	//document.getElementById("user_id").disabled=true;
+	$("#billing_address_city_label").html("District");
+	$("#cm_province_id_label").html("Territory");
+ }
+ function setHKRank(chk_rank_type_id,rankType)
+ {
+	
+	document.getElementById("hk_rank_dirty").value=1;
+		
+	var editRankTypeID="#hk_rank_"+rankType;
+	if(document.getElementById(chk_rank_type_id).checked)
+	{
+
+		$(editRankTypeID).val(1)
+	}
+	else
+	{
+
+		$(editRankTypeID).val(0)
+	}
+	
+ }
+ 
 </script>
 

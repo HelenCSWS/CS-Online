@@ -550,7 +550,11 @@ function createCSOrder($province_id, $customerID, $estate_id,$pst_no,$other_info
     {*/
     $order_id = $order->createCSOrder($customerID, $estate_id, $province_id,$pst_no,$other_info, $cs_product_list);
 
-    if ($order_id)
+	  	/* 	$fp = fopen("logs/Ajax_logfile.log","a");
+        fputs($fp, $order_id);
+        fclose($fp); */
+        
+    if ($order_id!=0)
     {
         //$objResponse->addAlert($order_id);
         $objResponse->addScript("showCsOrderForm(" . $order_id . ");");

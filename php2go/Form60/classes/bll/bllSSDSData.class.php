@@ -593,51 +593,45 @@ class SSDSData extends Php2Go
                 }   
                 else
                 {//Licensee_No, SKUA, unit_sales,product_name,sale_date
-                   	//	$index=7;
-                     		
-				 		
-				 		$sku =intval($data[0]);
+ 				 		$sku =intval($data[0]);
 				 		if(is_numeric($sku)&&$sku!="")
 				 		{
 				 		
 				 	
-						  $row++;
-                    if ($row == 1)
-                    {
-                     
-					         $sale_date = $this->sale_year."-".$this->sale_month."-01";
-					         
-                     
-                            $product_name = str_replace("'","\'",$data[1]);
-                            $license_no = intval($data[6]);
-                            //$sku = intval($data[0]);
-									
-									$SQL .= "('$license_no', '$sku', $data[3],'$product_name','$sale_date')";
-                          //  $SQL .= "($data[0], $data[2], $data[4],'$product_name','$this->sale_date')";
-                     
-                    } 
-                    //Licensee_No, SKUA, unit_sales,product_name,sale_date
-                    else
-                    {
-                     	if($data[0]!=null) // some sales file were saved by unix sys which will save a null value at the end of rows
-                     	{
-							   	//$n_date=explode("/",$data[$index]);
-									$sale_date = $this->sale_year."-".$this->sale_month."-01";
-								
-	                            $product_name = str_replace("'","\'",$data[1]);
-	                            //$product_name = str_replace("'","\'",$data[1]);
-	                            $license_no = intval($data[6]);
-	                            $sku = intval($data[0]);
-										
-										$SQL .= ",('$license_no', '$sku', $data[3],'$product_name','$sale_date')";
-	                           // $SQL .= ",($data[0], $data[2], $data[4],'$product_name','$this->sale_date')";
-	                       
-	                     }
-                    }
+	                        $row++;
+                            if ($row == 1)
+                            {
+                             
+        					         $sale_date = $this->sale_year."-".$this->sale_month."-01";
+        					         
+                             
+                                    $product_name = str_replace("'","\'",$data[1]);
+                                    $license_no = intval($data[6]);
+                                    //$sku = intval($data[0]);
+        									
+        									$SQL .= "('$license_no', '$sku', $data[3],'$product_name','$sale_date')";
+                                  //  $SQL .= "($data[0], $data[2], $data[4],'$product_name','$this->sale_date')";
+                             
+                            } 
+                            //Licensee_No, SKUA, unit_sales,product_name,sale_date
+                            else
+                            {
+                             	if($data[0]!=null) // some sales file were saved by unix sys which will save a null value at the end of rows
+                             	{
+        							   	//$n_date=explode("/",$data[$index]);
+        									$sale_date = $this->sale_year."-".$this->sale_month."-01";
+        								
+        	                            $product_name = str_replace("'","\'",$data[1]);
+        	                            //$product_name = str_replace("'","\'",$data[1]);
+        	                            $license_no = intval($data[6]);
+        	                            $sku = intval($data[0]);
+        										
+        										$SQL .= ",('$license_no', '$sku', $data[3],'$product_name','$sale_date')";
+        	                           // $SQL .= ",($data[0], $data[2], $data[4],'$product_name','$this->sale_date')";
+        	                       
+        	                     }
+                            }
 						}
-						
-				 		
-                  
                 }
             }
            
@@ -2165,8 +2159,7 @@ class SSDSData extends Php2Go
                 {
                  	  if($i!=1&&$i!=6) // add by HL, still display the sales if not catch the first level $i!=4 : next user
 	                    $rows[$i-1]["total_cases"] = 0.0;
-                    $rows[$i-1]["bonus"] = 0.0;                  
-                    
+                    $rows[$i-1]["bonus"] = 0.0;                                      
                 }
                 
                 if ($rows[$i]["user_id"] <> $rows[$i-1]["user_id"])
@@ -2189,15 +2182,12 @@ class SSDSData extends Php2Go
                 $rows[$i-1]["bonus"] = 0.0;
             }		
         } //BCLDB
-        
-        
         return $rows;
-        
     }
     
     function getMaxSaleMonth($province_id =1)
     {
-		  $SQL = "select max(sale_year) sale_year from user_sales_summary where province_id= $province_id";
+		$SQL = "select max(sale_year) sale_year from user_sales_summary where province_id= $province_id";
         $rows = $this->db->getAll($SQL);
         if (count($rows) <= 0)
         {

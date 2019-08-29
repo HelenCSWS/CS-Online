@@ -21,9 +21,14 @@ class bllcustomer extends dalcustomers
     var $isContact = array(false,false);
 
     var $customer_id = "";
+    var $db;
+    
     function bllcustomer()
     {
         parent::dalcustomers();
+        
+          $this->db = &Db::getInstance();
+        $this->db->setFetchMode(ADODB_FETCH_ASSOC);
     }
     
     function format_phone($phone)
@@ -440,6 +445,49 @@ class bllcustomer extends dalcustomers
         }
 
    }
+   
+   //HK ranks
+   function saveHKRanks($customer_id, $ranks)
+   {
+        //clear previous ranls
+    	$SQL="delete from hk_customers_ranks where customer_id =$customer_id";
+		$bRet = $this->db->execute($SQL);
+      
+	   for($i=0;$i<5; $i++)
+	   {
+	       
+	     $year =2019;  
+         
+       
+	     if($ranks[$i]==1)
+         {
+           
+            if($i==2)// tatler 2018
+            {
+                $year=2018;
+            }
+             $rankType=$i+1;
+            
+           
+            $SQL="insert hk_customers_ranks(customer_id, hk_rank_type_id, rank_year)                       
+                                value ($customer_id,$rankType,$year)";
+                                
+            $bRet = $this->db->execute($SQL);
+                                
+         }   
+          
+	   }
+  }
+  
+    function getHKRanks($customer_id)
+    {
+        $SQL="select * from hk_customers_ranks where customer_id =$customer_id";
+        
+        $rows = $this->db->getAll($SQL);
+        
+		return $rows;	       
+        
+    }
 
 }
 //------------------------------------------------------------------------------

@@ -1384,7 +1384,6 @@ function setForm(pagename)
      }
     else if(pagename=="estateAdd")
     {
-
         var ncheckID =document.getElementById("lkup_phone_type_id").value-1;
         
         estateAdd.best1[ncheckID].checked=true;
@@ -1434,25 +1433,41 @@ function setForm(pagename)
         
         var province_id= document.getElementById("province_id").value;
         
-        if(province_id ==2 )
+		if(province_id ==1 )
         { 
-            alert("here");
+
+        	document.getElementById("tdrank").style.display="none";
+            document.getElementById("tddelivery").style.display="block";
+			document.getElementById("tdsubtype").style.display="none";
+           document.getElementById("hk_ranks").style.display="none";
+        }
+        else if(province_id ==2 )
+        { 
+       
         	document.getElementById("tdrank").style.display="block";
             document.getElementById("tddelivery").style.display="none";
+			document.getElementById("tdsubtype").style.display="none";
             document.getElementById("trSelectEstate").style.display="none";
+			document.getElementById("hk_ranks").style.display="none";
         }
         else
         {
+
         	document.getElementById("tdrank").style.display="none";
-        	document.getElementById("tddelivery").style.display="block"	
+            document.getElementById("tddelivery").style.display="none";
+			document.getElementById("tdsubtype").style.display="block";
+			document.getElementById("hk_ranks").style.display="block";
+            document.getElementById("trSelectEstate").style.display="none";
+			
+			
         }
         
-      
+		
         if(document.getElementById("customer_id").value!="" )
         {
-        		document.getElementById("chkOdQut").checked = true;
-        		document.getElementById("chkQut").checked = true;
-        		document.getElementById("chkCSOdQut").checked = true;
+			document.getElementById("chkOdQut").checked = true;
+			document.getElementById("chkQut").checked = true;
+			document.getElementById("chkCSOdQut").checked = true;
        	}
 
   		if(document.getElementById("user_id").value=="" || document.getElementById("user_id").value==null)
@@ -1462,6 +1477,7 @@ function setForm(pagename)
          if(document.getElementById("customer_id").value!="" )
          {         
       
+
  			if ((document.getElementById("estate_id_order").value!="")||(document.getElementById("isorder").value=="1")
 				|| (F60GetCookie("CustomerTab") == "Order")) 
 				{
@@ -1478,19 +1494,20 @@ function setForm(pagename)
 
 					changeTab(0);  // set to customer:0 
 				}
-          
+           if(document.getElementById("isAdmin").value!=1)//not admin
+             {
+				
+               // disable assign when user is not Admin, comment by chris so sales  cann't assign the store to themselves
+                 document.getElementById("user_id").disabled=true;
+                 document.getElementById("lkup_territory_id").disabled=true;
+				 document.getElementById("cm_province_id").disabled=true;
+                
+             }
           	// if(parseInt(document.getElementById("total_sales_pages").value)>1)   
             // {             
 			// 	document.getElementById("tdFlip").style.display="block";
 			// }
-			
-            // if(document.getElementById("isAdmin").value!=1)//not admin
-            // {
-            //   // disable assign when user is not login, comment by Chris so sales any one can assigned the store to them self
-            //     document.getElementById("user_id").disabled=true;
-            //     document.getElementById("lkup_territory_id").disabled=true;
-                
-            // }
+		           
 			// setCSInventory();
         }
         else

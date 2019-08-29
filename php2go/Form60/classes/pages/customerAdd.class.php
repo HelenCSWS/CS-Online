@@ -126,7 +126,7 @@ class customerAdd extends F60FormBase
             
             $login_user_id = F60DALBase::get_current_user_id();
             $user_level_id = F60DbUtil::get_user_level($login_user_id);
-    
+         
             if ($user_level_id == 1)
             {
                $this->setValue2Ctl("isAdmin",1);
@@ -290,7 +290,11 @@ class customerAdd extends F60FormBase
                         $this->setValue2Ctl("old_cc_exp_year"   ,$this->getCtlValue("cc_exp_year"));
                         
                         
-                    }              
+                    }       
+                if ($this->province_id == 13)
+                {    
+                    $this->getHKRanks();
+                }       
             } 
             else
             {               
@@ -533,7 +537,19 @@ class customerAdd extends F60FormBase
         return true;
     }
     
-
+    function getHKRanks()
+    {
+        $bllCM = &new bllcustomer();
+        $ranks = $bllCM->getHKRanks($this->customer_id);
+        
+        foreach($ranks as $rank)
+        {
+            $type_id =$rank["hk_rank_type_id"];
+            $rankValCtl ="hk_rank_$type_id";
+            $this->setValue2Ctl($rankValCtl, 1);
+        }
+        
+    }
     function processForm()
     {
         if ($_POST["action_name"] == "btnAddAnother" || $_POST["action_name"] == "allocate")
@@ -558,10 +574,34 @@ class customerAdd extends F60FormBase
             $edit = false;
             $customer_id = null;
         }
+       
+            
         $customers = &new bllcustomers();
 
         if ($edit)
+        {
             $customer = $customers->getByPrimaryKey($customer_id);
+            
+             // HK ranks
+            if($this->province_id==13)
+            {
+                if($this->getCtlValue("hk_rank_dirty")==1)
+                { 
+                    $ranks = array();
+                     for($i=1; $i<=5; $i++)
+            		 {
+                        $fieldName ="hk_rank_$i";
+                 
+                        $rankType = $this->getCtlValue($fieldName);
+                        array_push($ranks,$rankType);
+            		 }
+                     $bllCM = &new bllcustomer();
+                     
+                     $bllCM->saveHKRanks($customer_id,$ranks);
+                }
+                 
+            }
+        }
         else
             $customer = $customers->add_new(); //& new customers();
 
@@ -576,8 +616,17 @@ class customerAdd extends F60FormBase
             {
                 if($_COOKIE["F60_PROVINCE_ID"]==1)// only for BC customers  Needs to be released when publish
                   $this->sendCCUpdateEmail($this->customer_id); 
-            }
-            return true;
+                  
+                  
+          $form = &$this->getForm();
+
+        $edtCmid = &$form->getField("customer_id");
+        $customer_id = $edtCmid->getValue();
+        
+            
+       
+        }
+        return true;
         } else
             return true;
     }

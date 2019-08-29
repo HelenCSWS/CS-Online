@@ -23,7 +23,7 @@
         
         <hiddenfield name="isAdmin" value = "0"/>              
         
-        <hiddenfield name="province_id" value="1"/>
+        <hiddenfield name="province_id" id="province_id" value="1"/>
         
         <hiddenfield name="pst_no_org" value=""/>
         
@@ -32,13 +32,23 @@
      
         <hiddenfield name="current_sales_page" value="1"/>
         <hiddenfield name="billing_address_state" value=""/>
+		
+		<hiddenfield name="hk_rank_1" value = "0"/>
+		<hiddenfield name="hk_rank_2" value = "0"/>
+		<hiddenfield name="hk_rank_3" value = "0"/>
+		<hiddenfield name="hk_rank_4" value = "0"/>
+		<hiddenfield name="hk_rank_5" value = "0"/>
+		
+		<hiddenfield name="hk_rank_dirty" id="hk_rank_dirty" value = "0"/>
+		
+		
+		
        
-         <editfield name="pst_no" value="" length="12">
+        <editfield name="pst_no" value="" length="12">
              <!--listener type="JS" event="onfocus" action="this.select();"/>
               <listener type="JS" event="onkeyup" action="isEmptyPSTNo(this.value);"/>        
               <listener type="JS" event="onblur" action="showPSTNOMSG(this.value);"/-->
         </editfield>
-        
         
         <editField class="Lable" name="quarter_desc" tabindex="1" value="   " readonly="T" size="20"/>
         <editField class="Lable" name="order_quarter_desc" tabindex="1" value="   " readonly="T" size="20"/>
@@ -128,6 +138,8 @@
       <!-- row4 best time,  store priority, assign to-->
       	<editfield name="best_time_to_deliver" label="Delivery instructions"  size="38" length="225"  tabindex="16" autotrim="T"/>
       	<editfield name="rank" label="Rank"  size="37" length="225"  tabindex="16" autotrim="T" readonly="T" />
+		<editfield name="sub_type" label="Sub Type"  size="37" length="225"  tabindex="16" autotrim="T" readonly="F" />
+		
         <lookupfield name="lkup_store_priority_id" required="F" label="Store priority" first="" nofirst="F"  tabindex="17" multiple="F" size="1" width="230" disabled="F">
 			<datasource>
 				<keyfield>lkup_store_priority_id</keyfield>

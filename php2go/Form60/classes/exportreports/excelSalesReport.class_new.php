@@ -58,7 +58,7 @@ class excelSalesReport extends F60DocBase
         
           
         //fonts
-        $arialNormal = $sp->addFont(array('name'=>'Arial', 'size'=>10));
+        $CalibriNormal = $sp->addFont(array('name'=>'Calibri', 'size'=>10));
         $verdanaNormal = $sp->addFont(array('name'=>'Verdana', 'size'=>9));
         $verdanaBold = $sp->addFont(array('bold'=>true, 'italic'=>false, 'name'=>'Verdana', 'size'=>9));
         
@@ -115,7 +115,7 @@ class excelSalesReport extends F60DocBase
         $storeTypes = $this->reportData["store_type_details"];
         
         //fonts
-        $arialNormal = $sp->addFont(array('name'=>'Arial', 'size'=>10));
+        $CalibriNormal = $sp->addFont(array('name'=>'Calibri', 'size'=>10));
         $verdanaNormal = $sp->addFont(array('name'=>'Verdana', 'size'=>9));
         $verdanaBold = $sp->addFont(array('bold'=>true, 'italic'=>false, 'name'=>'Verdana', 'size'=>9));
         

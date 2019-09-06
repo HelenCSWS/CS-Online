@@ -238,15 +238,15 @@ class excelSalesReportByNewRule
 	      
           
         $fm = & $workbook->addFormat(array('fontfamily'=>'Verdana', 'size'=>9,'align'=>'left','bold'=>1 ));
-        $arialNormalBoldLeft = $fm;
+        $CalibriNormalBoldLeft = $fm;
     
 	    $fm = & $workbook->addFormat(array('fontfamily'=>'Verdana','size'=>9, 'align'=>'right','border'=>0));
         $fm ->setNumFormat("$#,##0.00;[Red]-$#,##0.00");
-        $arialNormalCurrency = $fm;
+        $CalibriNormalCurrency = $fm;
          
      	$fm = & $workbook->addFormat(array('fontfamily'=>'Verdana', 'size'=>9, 'align'=>'right','border'=>0,'numformat'=>'0'));
      //	$fm ->setNumFormat("#,##0.00");
-        $arialNormalNumber = $fm;
+        $CalibriNormalNumber = $fm;
         
        if(count($reportData["summary_details"])!=0)			
 		{
@@ -262,13 +262,13 @@ class excelSalesReportByNewRule
 			
 			$real_totalIntCases = $summary_details['total_international_real_cases'];
 	
-			$values = array(array("data"=>"Total Inter profit:","format"=>$arialNormalBoldLeft),
-							array("data"=>$totalIntProfit,"format"=>$arialNormalCurrency), 					
-							array("data"=>"Total Inter sold:","format"=>$arialNormalBoldLeft), 
-							array("data"=>$totalIntCases,"format"=>$arialNormalNumber), 
-							array("data"=>$real_totalIntCases,"format"=>$arialNormalNumber), 
-							array("data"=>$rowWH,"format"=>$arialNormalCurrency), 
-							array("data"=>$rowRT,"format"=>$arialNormalCurrency)						
+			$values = array(array("data"=>"Total Inter profit:","format"=>$CalibriNormalBoldLeft),
+							array("data"=>$totalIntProfit,"format"=>$CalibriNormalCurrency), 					
+							array("data"=>"Total Inter sold:","format"=>$CalibriNormalBoldLeft), 
+							array("data"=>$totalIntCases,"format"=>$CalibriNormalNumber), 
+							array("data"=>$real_totalIntCases,"format"=>$CalibriNormalNumber), 
+							array("data"=>$rowWH,"format"=>$CalibriNormalCurrency), 
+							array("data"=>$rowRT,"format"=>$CalibriNormalCurrency)						
 						       	);
 			
 			$this->_writeRow($sp, $values, $row, null,"F", "M");
@@ -293,33 +293,33 @@ class excelSalesReportByNewRule
         
         
         $fm = & $workbook->addFormat(array('fontfamily'=>'Verdana', 'size'=>10, 'border'=>1));
-        $arialNormalBorder = $fm;
+        $CalibriNormalBorder = $fm;
       
             
        	$fm = & $workbook->addFormat(array('fontfamily'=>'Verdana', 'size'=>9, 'align'=>'right','top'=>1, 'numformat'=>'0','bold'=>1,color=>'red'));
-        $arialBoldNumberBorderTop = $fm;
+        $CalibriBoldNumberBorderTop = $fm;
    
       	$fm = & $workbook->addFormat(array('fontfamily'=>'Verdana','size'=>9, 'align'=>'right','top'=>1,'bold'=>1, color=>'red'));
         $fm ->setNumFormat("$#,##0.00;[Red]-$#,##0.00");
-        $arialBoldCurrencyTop = $fm;
+        $CalibriBoldCurrencyTop = $fm;
         
         $fm = & $workbook->addFormat(array('fontfamily'=>'Verdana', 'size'=>9, 'align'=>'right','border'=>0));
-        $arialNormalRight = $fm;
+        $CalibriNormalRight = $fm;
         
         $fm = & $workbook->addFormat(array('fontfamily'=>'Verdana','size'=>9, 'align'=>'left','border'=>0));
-        $arialNormalLeft = $fm;
+        $CalibriNormalLeft = $fm;
         
         $fm = & $workbook->addFormat(array('fontfamily'=>'Verdana','size'=>9, 'align'=>'right','border'=>0));
         $fm ->setNumFormat("$#,##0.00;[Red]-$#,##0.00");
-        $arialNormalCurrency = $fm;
+        $CalibriNormalCurrency = $fm;
         
         $fm = & $workbook->addFormat(array('fontfamily'=>'Verdana','size'=>9, 'align'=>'right','border'=>0,'bold'=>1));
         $fm ->setNumFormat("$#,##0.00;[Red]-$#,##0.00");
-        $arialBoldCurrency = $fm;
+        $CalibriBoldCurrency = $fm;
       
      	$fm = & $workbook->addFormat(array('fontfamily'=>'Verdana', 'size'=>9, 'align'=>'right','border'=>0,'numformat'=>'0'));
      //	$fm ->setNumFormat("#,##0.00");
-        $arialNormalNumber = $fm;
+        $CalibriNormalNumber = $fm;
         
    		$startRow= $row + 1; //internally rows are 0 based, in formulas rows are 1 based
 		
@@ -338,7 +338,7 @@ class excelSalesReportByNewRule
         $totalRTSales = 0;
         
         $emptyCell = array("data"=>"");
-        $emptyCellTopLine = array("data"=>"","format"=>$arialBoldNumberBorderTop);
+        $emptyCellTopLine = array("data"=>"","format"=>$CalibriBoldNumberBorderTop);
 		
 		$i=0;
 		$salesDetails->moveFirst();            
@@ -363,13 +363,13 @@ class excelSalesReportByNewRule
                     
                         $totalValues = array($emptyCellTopLine, $emptyCellTopLine,
 						 $emptyCellTopLine, $emptyCellTopLine, 
-                        array("data"=>"Total:","format"=>$arialBoldNumberBorderTop), 
-						array("data"=>$totalBottles,"format"=>$arialBoldNumberBorderTop), $emptyCellTopLine, 
-                        array("data"=>$totalProfit,"format"=>$arialBoldCurrencyTop), 
-                        array("data"=>$totlaCases,"format"=>$arialBoldNumberBorderTop),
-                        array("data"=>$totlaRLCases,"format"=>$arialBoldNumberBorderTop),
-                        array("data"=>$totlaSales,"format"=>$arialBoldCurrencyTop),
-						array("data"=>$totalRTSales, "format"=>$arialBoldCurrencyTop)); 
+                        array("data"=>"Total:","format"=>$CalibriBoldNumberBorderTop), 
+						array("data"=>$totalBottles,"format"=>$CalibriBoldNumberBorderTop), $emptyCellTopLine, 
+                        array("data"=>$totalProfit,"format"=>$CalibriBoldCurrencyTop), 
+                        array("data"=>$totlaCases,"format"=>$CalibriBoldNumberBorderTop),
+                        array("data"=>$totlaRLCases,"format"=>$CalibriBoldNumberBorderTop),
+                        array("data"=>$totlaSales,"format"=>$CalibriBoldCurrencyTop),
+						array("data"=>$totalRTSales, "format"=>$CalibriBoldCurrencyTop)); 
 								
 								
                         $this->_writeRow(& $sp, $totalValues, & $row, $format=null);
@@ -395,12 +395,12 @@ class excelSalesReportByNewRule
 					}
                     $this->_writeColumnHeaders($workbook, $sp, $row,1);
                    
-                 	$values = array(array("data"=>$sale["licensee_no"],"format"=>$arialNormalLeft ),
-									array("data"=>F60Date::ucwords1($sale["customer_name"]),"format"=>$arialNormalLeft ),
+                 	$values = array(array("data"=>$sale["licensee_no"],"format"=>$CalibriNormalLeft ),
+									array("data"=>F60Date::ucwords1($sale["customer_name"]),"format"=>$CalibriNormalLeft ),
 									
-									array("data"=>$sale["license_name"],"format"=>$arialNormalLeft ),
-									array("data"=>F60Date::ucwords1($sale["city"]),"format"=>$arialNormalLeft ),
-									array("data"=>$address,"format"=>$arialNormalLeft ),
+									array("data"=>$sale["license_name"],"format"=>$CalibriNormalLeft ),
+									array("data"=>F60Date::ucwords1($sale["city"]),"format"=>$CalibriNormalLeft ),
+									array("data"=>$address,"format"=>$CalibriNormalLeft ),
 									$emptyCell, $emptyCell, $emptyCell, $emptyCell,$emptyCell,$emptyCell,$emptyCell
 								
 									); 
@@ -423,21 +423,21 @@ class excelSalesReportByNewRule
                 $totlaSales += $sale["total_sales"];
                 $totalRTSales += $sale["rt_sales"];
                 
-                $values = array(array("data"=>$sale["SKUA"],"format"=>$arialNormalLeft ),
-									array("data"=>F60Date::ucwords1($sale["wine_name"]),"format"=>$arialNormalLeft ),
-									array("data"=>$sale["liters"],"format"=>$arialNormalLeft ),
-									array("data"=>$sale["type"],"format"=>$arialNormalLeft ),
-									array("data"=>F60Date::ucwords1($sale["country"]),"format"=>$arialNormalLeft ),
-									array("data"=>$sale["bottles_sold"],"format"=>$arialNormalNumber ),
-									array("data"=>$sale["profit_per_bottle"],"format"=>$arialNormalCurrency ),
-									array("data"=>$sale["total_profit"],"format"=>$arialNormalCurrency ),
-									array("data"=>$sale["cases_sold"],"format"=>$arialNormalNumber ),
-									array("data"=>$sale["cases"],"format"=>$arialNormalNumber ),
-									array("data"=>$sale["total_sales"],"format"=>$arialNormalCurrency ),
-									array("data"=>$sale["rt_sales"],"format"=>$arialNormalCurrency )
+                $values = array(array("data"=>$sale["SKUA"],"format"=>$CalibriNormalLeft ),
+									array("data"=>F60Date::ucwords1($sale["wine_name"]),"format"=>$CalibriNormalLeft ),
+									array("data"=>$sale["liters"],"format"=>$CalibriNormalLeft ),
+									array("data"=>$sale["type"],"format"=>$CalibriNormalLeft ),
+									array("data"=>F60Date::ucwords1($sale["country"]),"format"=>$CalibriNormalLeft ),
+									array("data"=>$sale["bottles_sold"],"format"=>$CalibriNormalNumber ),
+									array("data"=>$sale["profit_per_bottle"],"format"=>$CalibriNormalCurrency ),
+									array("data"=>$sale["total_profit"],"format"=>$CalibriNormalCurrency ),
+									array("data"=>$sale["cases_sold"],"format"=>$CalibriNormalNumber ),
+									array("data"=>$sale["cases"],"format"=>$CalibriNormalNumber ),
+									array("data"=>$sale["total_sales"],"format"=>$CalibriNormalCurrency ),
+									array("data"=>$sale["rt_sales"],"format"=>$CalibriNormalCurrency )
 								); 
 
-          	$this->_writeRow($sp, $values, $row, $arialNormalBorder); 
+          	$this->_writeRow($sp, $values, $row, $CalibriNormalBorder); 
             //print total for last one
            
             $row++;
@@ -447,13 +447,13 @@ class excelSalesReportByNewRule
 		if (!$firstRow)
         {                         	
                $totalValues = array($emptyCellTopLine, $emptyCellTopLine, $emptyCellTopLine,$emptyCellTopLine,
-                        array("data"=>"Total:","format"=>$arialBoldNumberBorderTop), 
-						array("data"=>$totalBottles,"format"=>$arialBoldNumberBorderTop), $emptyCellTopLine,
-                        array("data"=>$totalProfit,"format"=>$arialBoldCurrencyTop), 
-                        array("data"=>$totlaCases,"format"=>$arialBoldNumberBorderTop),
-                        array("data"=>$totlaRLCases,"format"=>$arialBoldNumberBorderTop),
-                        array("data"=>$totlaSales,"format"=>$arialBoldCurrencyTop),
-						array("data"=>$totalRTSales, "format"=>$arialBoldCurrencyTop)); 
+                        array("data"=>"Total:","format"=>$CalibriBoldNumberBorderTop), 
+						array("data"=>$totalBottles,"format"=>$CalibriBoldNumberBorderTop), $emptyCellTopLine,
+                        array("data"=>$totalProfit,"format"=>$CalibriBoldCurrencyTop), 
+                        array("data"=>$totlaCases,"format"=>$CalibriBoldNumberBorderTop),
+                        array("data"=>$totlaRLCases,"format"=>$CalibriBoldNumberBorderTop),
+                        array("data"=>$totlaSales,"format"=>$CalibriBoldCurrencyTop),
+						array("data"=>$totalRTSales, "format"=>$CalibriBoldCurrencyTop)); 
                    
                 $this->_writeRow($sp, $totalValues, $row, null); 
             
@@ -465,45 +465,45 @@ class excelSalesReportByNewRule
     {
         
         $fm = & $workbook->addFormat(array('fontfamily'=>'Verdana', 'size'=>9, 'bold'=>1));
-        $arialNormalBorder = $fm;
+        $CalibriNormalBorder = $fm;
         
         $fm = & $workbook->addFormat(array('fontfamily'=>'Verdana', 'size'=>9, 'border'=>1));
-        $arialNormalBold = $fm;
+        $CalibriNormalBold = $fm;
         
         $fm = & $workbook->addFormat(array('fontfamily'=>'Verdana', 'size'=>9,'align'=>'left','bold'=>1 ));
-        $arialNormalBoldLeft = $fm;
+        $CalibriNormalBoldLeft = $fm;
                   
        	$fm = & $workbook->addFormat(array('fontfamily'=>'Verdana', 'size'=>9, 'align'=>'right','top'=>1, 'numformat'=>'0','bold'=>1));
-        $arialBoldNumberBorderTop = $fm;
+        $CalibriBoldNumberBorderTop = $fm;
         
         $fm = & $workbook->addFormat(array('fontfamily'=>'Verdana', 'size'=>9, 'align'=>'left','top'=>1, 'numformat'=>'0','bold'=>1));
-        $arialBoldNumberBorderTopLeft = $fm;
+        $CalibriBoldNumberBorderTopLeft = $fm;
         
         $fm = & $workbook->addFormat(array('fontfamily'=>'Verdana', 'size'=>9, 'align'=>'right','border'=>0));
-        $arialNormalRight = $fm;
+        $CalibriNormalRight = $fm;
         
         $fm = & $workbook->addFormat(array('fontfamily'=>'Verdana','size'=>9, 'align'=>'left','border'=>0));
-        $arialNormalLeft = $fm;
+        $CalibriNormalLeft = $fm;
         
         $fm = & $workbook->addFormat(array('fontfamily'=>'Verdana','size'=>9, 'align'=>'right','border'=>0));
         $fm ->setNumFormat("$#,##0.00;[Red]-$#,##0.00");
-        $arialNormalCurrency = $fm;
+        $CalibriNormalCurrency = $fm;
         
         $fm = & $workbook->addFormat(array('fontfamily'=>'Verdana','size'=>9, 'align'=>'right','top'=>1,'bold'=>1));
         $fm ->setNumFormat("$#,##0.00;[Red]-$#,##0.00");
-        $arialNormalCurrencyTopBold = $fm;
+        $CalibriNormalCurrencyTopBold = $fm;
       
      	$fm = & $workbook->addFormat(array('fontfamily'=>'Verdana', 'size'=>9, 'align'=>'right','border'=>0,'numformat'=>'0'));
      //	$fm ->setNumFormat("#,##0.00");
-        $arialNormalNumber = $fm;
+        $CalibriNormalNumber = $fm;
         
         $fm = & $workbook->addFormat(array('fontfamily'=>'Verdana','size'=>9, 'align'=>'right','top'=>1,'bold'=>1));
-        $arialNormalTopBorderBold = $fm;
+        $CalibriNormalTopBorderBold = $fm;
         
         $partternNumber =17;
      	$bgColor="white";
      	$fgColor="38";
-        $fm = & $workbook->addFormat(array('fontfamily'=>'Arial', 'size'=>10, 'fgcolor'=>$fgColor, 'pattern'=>$partternNumber,
+        $fm = & $workbook->addFormat(array('fontfamily'=>'Calibri', 'size'=>10, 'fgcolor'=>$fgColor, 'pattern'=>$partternNumber,
                 'bgcolor'=>$bgColor, 'color'=>'black' ,'border'=>0, 'align'=>'left', 'valign'=>'bottom','bold'=>1,
                 'top'=>0, 'bottom'=>0));
         //$fm->setTextWrap();
@@ -565,18 +565,18 @@ class excelSalesReportByNewRule
 		         	
 		         	if($this->commissionTypeID==4)
 		         	{
-						$values = array(array("data"=>$commission["target_price"],"format"=>$arialNormalCurrency), 
-										array("data"=>$commission["total_cases"],"format"=>$arialNormalNumber), 
+						$values = array(array("data"=>$commission["target_price"],"format"=>$CalibriNormalCurrency), 
+										array("data"=>$commission["total_cases"],"format"=>$CalibriNormalNumber), 
 										$emptyCell, 
-										array("data"=>$bonus,"format"=>$arialNormalCurrency), 
+										array("data"=>$bonus,"format"=>$CalibriNormalCurrency), 
 										$emptyCell);
 					}
 					else
 					{
-			        	$values = array(array("data"=>$commission["target_price"],"format"=>$arialNormalCurrency), 
-										array("data"=>$commission["total_sales"],"format"=>$arialNormalCurrency), 
+			        	$values = array(array("data"=>$commission["target_price"],"format"=>$CalibriNormalCurrency), 
+										array("data"=>$commission["total_sales"],"format"=>$CalibriNormalCurrency), 
 										$emptyCell, 
-										array("data"=>$bonus,"format"=>$arialNormalCurrency), 
+										array("data"=>$bonus,"format"=>$CalibriNormalCurrency), 
 										$emptyCell);
 					}
 					   	
@@ -596,10 +596,10 @@ class excelSalesReportByNewRule
 				 	$level_cases=$commission["total_cases"];
 				 	$commission_rate = $commission["commission_rate"]."%";
 		         	
-		        	$values = array(array("data"=>$levelInfo,"format"=>$arialNormalLeft), 
-									array("data"=>$level_cases,"format"=>$arialNormalNumber), 
-									array("data"=>$commission_rate,"format"=>$arialNormalRight), 
-									array("data"=>$bonus,"format"=>$arialNormalCurrency), 
+		        	$values = array(array("data"=>$levelInfo,"format"=>$CalibriNormalLeft), 
+									array("data"=>$level_cases,"format"=>$CalibriNormalNumber), 
+									array("data"=>$commission_rate,"format"=>$CalibriNormalRight), 
+									array("data"=>$bonus,"format"=>$CalibriNormalCurrency), 
 									$emptyCell);
 							       	
 					   	
@@ -616,11 +616,11 @@ class excelSalesReportByNewRule
 							$emptyCell, 
 					
 							array("data"=>"Sub Total"), 
-							array("data"=>$totalBonus,"format"=>$arialNormalCurrencyTopBold), 
-							array("data"=>"","format"=>$arialNormalRight)						
+							array("data"=>$totalBonus,"format"=>$CalibriNormalCurrencyTopBold), 
+							array("data"=>"","format"=>$CalibriNormalRight)						
 						       	);
 						       	
-			$this->_writeRow($sp, $values, $row, $arialNormalTopBorderBold,"A", "F");
+			$this->_writeRow($sp, $values, $row, $CalibriNormalTopBorderBold,"A", "F");
 			
 			
 			/* type 2 :   Array ( [0] => Array ( [user_id] => 44 [total_cases] => 935.37 [total_units] => 11284 [total_canadian_profit] => 0.00 [total_international_profit] => 9684.00 [total_profit] => 9684.00 [avg_profit_per_case] => 10.35 [total_canadian_cases] => 0.00 [total_international_cases] => 935.37 [total_sales] => 59964.33 [total_retail] => 167277.36 ) )	
@@ -702,24 +702,24 @@ class excelSalesReportByNewRule
 		
 			if($this->commissionTypeID==1||$this->commissionTypeID==3)// BC regular
 			{
-					$values = array(array("data"=>"Total CND profit:","format"=>$arialNormalBoldLeft),
-							array("data"=>$totalCAProfit,"format"=>$arialNormalCurrency), 					
-							array("data"=>"Total CND sold:","format"=>$arialNormalBoldLeft), 
-							array("data"=>$totalCACases,"format"=>$arialNormalNumber), 
-							array("data"=>$totalCACases,"format"=>$arialNormalNumber),
-							array("data"=>$totalWH,"format"=>$arialNormalCurrency), 							
-							array("data"=>$totalRT,"format"=>$arialNormalCurrency)						
+					$values = array(array("data"=>"Total CND profit:","format"=>$CalibriNormalBoldLeft),
+							array("data"=>$totalCAProfit,"format"=>$CalibriNormalCurrency), 					
+							array("data"=>"Total CND sold:","format"=>$CalibriNormalBoldLeft), 
+							array("data"=>$totalCACases,"format"=>$CalibriNormalNumber), 
+							array("data"=>$totalCACases,"format"=>$CalibriNormalNumber),
+							array("data"=>$totalWH,"format"=>$CalibriNormalCurrency), 							
+							array("data"=>$totalRT,"format"=>$CalibriNormalCurrency)						
 						       	);
 						       	
 						    
-				/*	$values = array(array("data"=>"Total CND profit:","format"=>$arialNormalBoldLeft),
-							array("data"=>$totalCAProfit,"format"=>$arialNormalCurrency), 					
-							array("data"=>"Total CND sold:","format"=>$arialNormalBoldLeft), 
-							array("data"=>$totalCACases,"format"=>$arialNormalNumber), 
-							array("data"=>$totalCACases,"format"=>$arialNormalNumber),
-							array("data"=>$totalWH,"format"=>$arialNormalCurrency), 
+				/*	$values = array(array("data"=>"Total CND profit:","format"=>$CalibriNormalBoldLeft),
+							array("data"=>$totalCAProfit,"format"=>$CalibriNormalCurrency), 					
+							array("data"=>"Total CND sold:","format"=>$CalibriNormalBoldLeft), 
+							array("data"=>$totalCACases,"format"=>$CalibriNormalNumber), 
+							array("data"=>$totalCACases,"format"=>$CalibriNormalNumber),
+							array("data"=>$totalWH,"format"=>$CalibriNormalCurrency), 
 							
-							array("data"=>$totalRT,"format"=>$arialNormalCurrency)						
+							array("data"=>$totalRT,"format"=>$CalibriNormalCurrency)						
 						       	);*/
 			
 					$this->_writeRow($sp, $values, $row, null,"F", "M");
@@ -737,14 +737,14 @@ class excelSalesReportByNewRule
 			$totalProfit=$totalCAProfit+$totalIntProfit;
 			
 			//international
-			$values = array(array("data"=>"Total Inter profit:","format"=>$arialNormalBoldLeft),
-							array("data"=>$totalIntProfit,"format"=>$arialNormalCurrency), 					
-							array("data"=>"Total Inter sold:","format"=>$arialNormalBoldLeft), 
+			$values = array(array("data"=>"Total Inter profit:","format"=>$CalibriNormalBoldLeft),
+							array("data"=>$totalIntProfit,"format"=>$CalibriNormalCurrency), 					
+							array("data"=>"Total Inter sold:","format"=>$CalibriNormalBoldLeft), 
 						
-							array("data"=>$totalIntCases,"format"=>$arialNormalNumber), 
-							array("data"=>$real_totalIntCases,"format"=>$arialNormalNumber), // actual cases gose here
-							array("data"=>$rowWH,"format"=>$arialNormalCurrency), 
-							array("data"=>$rowRT,"format"=>$arialNormalCurrency)						
+							array("data"=>$totalIntCases,"format"=>$CalibriNormalNumber), 
+							array("data"=>$real_totalIntCases,"format"=>$CalibriNormalNumber), // actual cases gose here
+							array("data"=>$rowWH,"format"=>$CalibriNormalCurrency), 
+							array("data"=>$rowRT,"format"=>$CalibriNormalCurrency)						
 						       	);
 			
 			$this->_writeRow($sp, $values, $row, null,"F", "M");
@@ -755,21 +755,21 @@ class excelSalesReportByNewRule
 			
 			else if($this->commissionTypeID==3||$this->commissionTypeID==1)// bc regular stores 
 			{
-				$values = array(array("data"=>"Total profit:","format"=>$arialBoldNumberBorderTopLeft),
-							array("data"=>$totalProfit,"format"=>$arialNormalCurrencyTopBold), 					
-							array("data"=>"Total cs sold:","format"=>$arialBoldNumberBorderTopLeft), 
-							array("data"=>$totalCases,"format"=>$arialBoldNumberBorderTop),
-							array("data"=>$totalRealCases,"format"=>$arialBoldNumberBorderTop)					
+				$values = array(array("data"=>"Total profit:","format"=>$CalibriBoldNumberBorderTopLeft),
+							array("data"=>$totalProfit,"format"=>$CalibriNormalCurrencyTopBold), 					
+							array("data"=>"Total cs sold:","format"=>$CalibriBoldNumberBorderTopLeft), 
+							array("data"=>$totalCases,"format"=>$CalibriBoldNumberBorderTop),
+							array("data"=>$totalRealCases,"format"=>$CalibriBoldNumberBorderTop)					
 						       	);	
-				$this->_writeRow($sp, $values, $row, $arialNormalTopBorderBold,"F", "K");
+				$this->_writeRow($sp, $values, $row, $CalibriNormalTopBorderBold,"F", "K");
 				$row++;
 				$row++;
 			}
 			
-			$values = array(array("data"=>"Commission:","format"=>$arialNormalBoldLeft),
-							array("data"=>$totalBonus,"format"=>$arialNormalCurrency), 					
-							array("data"=>"Avg profit:","format"=>$arialNormalBoldLeft), 
-							array("data"=>$avgProfit,"format"=>$arialNormalCurrency)
+			$values = array(array("data"=>"Commission:","format"=>$CalibriNormalBoldLeft),
+							array("data"=>$totalBonus,"format"=>$CalibriNormalCurrency), 					
+							array("data"=>"Avg profit:","format"=>$CalibriNormalBoldLeft), 
+							array("data"=>$avgProfit,"format"=>$CalibriNormalCurrency)
 						       	);
 			$this->_writeRow($sp, $values, $row, null,"F", "J");
 			
@@ -777,11 +777,11 @@ class excelSalesReportByNewRule
 			$row++;
 			$netProfit = $totalProfit-$totalBonus;
 			
-			$values = array(array("data"=>"Net profit:","format"=>$arialBoldNumberBorderTopLeft),
-							array("data"=>$netProfit,"format"=>$arialNormalCurrencyTopBold)
+			$values = array(array("data"=>"Net profit:","format"=>$CalibriBoldNumberBorderTopLeft),
+							array("data"=>$netProfit,"format"=>$CalibriNormalCurrencyTopBold)
 						
 						       	);
-			$this->_writeRow($sp, $values, $row, $arialNormalTopBorderBold,"F", "H");
+			$this->_writeRow($sp, $values, $row, $CalibriNormalTopBorderBold,"F", "H");
 			
 				
 			//target information
@@ -800,10 +800,10 @@ class excelSalesReportByNewRule
 				$row++;
 				if($this->commissionTypeID==1 )
 				{
-					$this->_writeCell($sp, array("data"=>$minInTarget),$row, "A", $arialNormalLeft);
+					$this->_writeCell($sp, array("data"=>$minInTarget),$row, "A", $CalibriNormalLeft);
 					$row++;
 				}
-				$this->_writeCell($sp, array("data"=>$minCaTarget),$row, "A", $arialNormalLeft);
+				$this->_writeCell($sp, array("data"=>$minCaTarget),$row, "A", $CalibriNormalLeft);
 	                
 
                 
@@ -814,45 +814,45 @@ class excelSalesReportByNewRule
     {
         
         $fm = & $workbook->addFormat(array('fontfamily'=>'Verdana', 'size'=>9, 'bold'=>1));
-        $arialNormalBorder = $fm;
+        $CalibriNormalBorder = $fm;
         
         $fm = & $workbook->addFormat(array('fontfamily'=>'Verdana', 'size'=>9, 'border'=>1));
-        $arialNormalBold = $fm;
+        $CalibriNormalBold = $fm;
         
         $fm = & $workbook->addFormat(array('fontfamily'=>'Verdana', 'size'=>9,'align'=>'left','bold'=>1 ));
-        $arialNormalBoldLeft = $fm;
+        $CalibriNormalBoldLeft = $fm;
                   
        	$fm = & $workbook->addFormat(array('fontfamily'=>'Verdana', 'size'=>9, 'align'=>'right','top'=>1, 'numformat'=>'0','bold'=>1));
-        $arialBoldNumberBorderTop = $fm;
+        $CalibriBoldNumberBorderTop = $fm;
         
         $fm = & $workbook->addFormat(array('fontfamily'=>'Verdana', 'size'=>9, 'align'=>'left','top'=>1, 'numformat'=>'0','bold'=>1));
-        $arialBoldNumberBorderTopLeft = $fm;
+        $CalibriBoldNumberBorderTopLeft = $fm;
         
         $fm = & $workbook->addFormat(array('fontfamily'=>'Verdana', 'size'=>9, 'align'=>'right','border'=>0));
-        $arialNormalRight = $fm;
+        $CalibriNormalRight = $fm;
         
         $fm = & $workbook->addFormat(array('fontfamily'=>'Verdana','size'=>9, 'align'=>'left','border'=>0));
-        $arialNormalLeft = $fm;
+        $CalibriNormalLeft = $fm;
         
         $fm = & $workbook->addFormat(array('fontfamily'=>'Verdana','size'=>9, 'align'=>'right','border'=>0));
         $fm ->setNumFormat("$#,##0.00;[Red]-$#,##0.00");
-        $arialNormalCurrency = $fm;
+        $CalibriNormalCurrency = $fm;
         
         $fm = & $workbook->addFormat(array('fontfamily'=>'Verdana','size'=>9, 'align'=>'right','top'=>1,'bold'=>1));
         $fm ->setNumFormat("$#,##0.00;[Red]-$#,##0.00");
-        $arialNormalCurrencyTopBold = $fm;
+        $CalibriNormalCurrencyTopBold = $fm;
       
      	$fm = & $workbook->addFormat(array('fontfamily'=>'Verdana', 'size'=>9, 'align'=>'right','border'=>0,'numformat'=>'0'));
      //	$fm ->setNumFormat("#,##0.00");
-        $arialNormalNumber = $fm;
+        $CalibriNormalNumber = $fm;
         
         $fm = & $workbook->addFormat(array('fontfamily'=>'Verdana','size'=>9, 'align'=>'right','top'=>1,'bold'=>1));
-        $arialNormalTopBorderBold = $fm;
+        $CalibriNormalTopBorderBold = $fm;
         
         $partternNumber =17;
      	$bgColor="white";
      	$fgColor="38";
-        $fm = & $workbook->addFormat(array('fontfamily'=>'Arial', 'size'=>10, 'fgcolor'=>$fgColor, 'pattern'=>$partternNumber,
+        $fm = & $workbook->addFormat(array('fontfamily'=>'Calibri', 'size'=>10, 'fgcolor'=>$fgColor, 'pattern'=>$partternNumber,
                 'bgcolor'=>$bgColor, 'color'=>'black' ,'border'=>0, 'align'=>'left', 'valign'=>'bottom','bold'=>1,
                 'top'=>0, 'bottom'=>0));
         //$fm->setTextWrap();
@@ -934,12 +934,12 @@ class excelSalesReportByNewRule
 		
 			if($this->commissionTypeID==1||$this->commissionTypeID==3)
 			{
-					$values = array(array("data"=>"Total CND profit:","format"=>$arialNormalBoldLeft),
-							array("data"=>$totalCAProfit,"format"=>$arialNormalCurrency), 					
-							array("data"=>"Total CND sold:","format"=>$arialNormalBoldLeft), 
-							array("data"=>$totalCACases,"format"=>$arialNormalNumber), 
-							array("data"=>$totalWH,"format"=>$arialNormalCurrency), 
-							array("data"=>$totalRT,"format"=>$arialNormalCurrency)						
+					$values = array(array("data"=>"Total CND profit:","format"=>$CalibriNormalBoldLeft),
+							array("data"=>$totalCAProfit,"format"=>$CalibriNormalCurrency), 					
+							array("data"=>"Total CND sold:","format"=>$CalibriNormalBoldLeft), 
+							array("data"=>$totalCACases,"format"=>$CalibriNormalNumber), 
+							array("data"=>$totalWH,"format"=>$CalibriNormalCurrency), 
+							array("data"=>$totalRT,"format"=>$CalibriNormalCurrency)						
 						       	);
 			
 					$this->_writeRow($sp, $values, $row, null,"F", "L");
@@ -956,12 +956,12 @@ class excelSalesReportByNewRule
 			$totalProfit=$totalCAProfit+$totalIntProfit;
 			
 			//international
-			$values = array(array("data"=>"Total Inter profit:","format"=>$arialNormalBoldLeft),
-							array("data"=>$totalIntProfit,"format"=>$arialNormalCurrency), 					
-							array("data"=>"Total Inter sold:","format"=>$arialNormalBoldLeft), 
-							array("data"=>$totalIntCases,"format"=>$arialNormalNumber), 
-							array("data"=>$rowWH,"format"=>$arialNormalCurrency), 
-							array("data"=>$rowRT,"format"=>$arialNormalCurrency)						
+			$values = array(array("data"=>"Total Inter profit:","format"=>$CalibriNormalBoldLeft),
+							array("data"=>$totalIntProfit,"format"=>$CalibriNormalCurrency), 					
+							array("data"=>"Total Inter sold:","format"=>$CalibriNormalBoldLeft), 
+							array("data"=>$totalIntCases,"format"=>$CalibriNormalNumber), 
+							array("data"=>$rowWH,"format"=>$CalibriNormalCurrency), 
+							array("data"=>$rowRT,"format"=>$CalibriNormalCurrency)						
 						       	);
 			
 			$this->_writeRow($sp, $values, $row, null,"F", "L");
@@ -972,21 +972,21 @@ class excelSalesReportByNewRule
 			
 			else if($this->commissionTypeID==3||$this->commissionTypeID==1)// total 
 			{
-				$values = array(array("data"=>"Total profit:","format"=>$arialBoldNumberBorderTopLeft),
-							array("data"=>$totalProfit,"format"=>$arialNormalCurrencyTopBold), 					
-							array("data"=>"Total cs sold:","format"=>$arialBoldNumberBorderTopLeft), 
-							array("data"=>$totalCases,"format"=>$arialBoldNumberBorderTop)
+				$values = array(array("data"=>"Total profit:","format"=>$CalibriBoldNumberBorderTopLeft),
+							array("data"=>$totalProfit,"format"=>$CalibriNormalCurrencyTopBold), 					
+							array("data"=>"Total cs sold:","format"=>$CalibriBoldNumberBorderTopLeft), 
+							array("data"=>$totalCases,"format"=>$CalibriBoldNumberBorderTop)
 												
 						       	);	
-				$this->_writeRow($sp, $values, $row, $arialNormalTopBorderBold,"F", "J");
+				$this->_writeRow($sp, $values, $row, $CalibriNormalTopBorderBold,"F", "J");
 				$row++;
 				$row++;
 			}
 			
-			$values = array(array("data"=>"Commission:","format"=>$arialNormalBoldLeft),
-							array("data"=>$totalBonus,"format"=>$arialNormalCurrency), 					
-							array("data"=>"Avg profit:","format"=>$arialNormalBoldLeft), 
-							array("data"=>$avgProfit,"format"=>$arialNormalCurrency)
+			$values = array(array("data"=>"Commission:","format"=>$CalibriNormalBoldLeft),
+							array("data"=>$totalBonus,"format"=>$CalibriNormalCurrency), 					
+							array("data"=>"Avg profit:","format"=>$CalibriNormalBoldLeft), 
+							array("data"=>$avgProfit,"format"=>$CalibriNormalCurrency)
 						       	);
 			$this->_writeRow($sp, $values, $row, null,"F", "J");
 			
@@ -994,11 +994,11 @@ class excelSalesReportByNewRule
 			$row++;
 			$netProfit = $totalProfit-$totalBonus;
 			
-			$values = array(array("data"=>"Net profit:","format"=>$arialBoldNumberBorderTopLeft),
-							array("data"=>$netProfit,"format"=>$arialNormalCurrencyTopBold)
+			$values = array(array("data"=>"Net profit:","format"=>$CalibriBoldNumberBorderTopLeft),
+							array("data"=>$netProfit,"format"=>$CalibriNormalCurrencyTopBold)
 						
 						       	);
-			$this->_writeRow($sp, $values, $row, $arialNormalTopBorderBold,"F", "H");
+			$this->_writeRow($sp, $values, $row, $CalibriNormalTopBorderBold,"F", "H");
 			
 				
 			//target information
@@ -1017,10 +1017,10 @@ class excelSalesReportByNewRule
 				$row++;
 				if($this->commissionTypeID==1 )
 				{
-					$this->_writeCell($sp, array("data"=>$minInTarget),$row, "A", $arialNormalLeft);
+					$this->_writeCell($sp, array("data"=>$minInTarget),$row, "A", $CalibriNormalLeft);
 					$row++;
 				}
-				$this->_writeCell($sp, array("data"=>$minCaTarget),$row, "A", $arialNormalLeft);
+				$this->_writeCell($sp, array("data"=>$minCaTarget),$row, "A", $CalibriNormalLeft);
 	                
 
                 
@@ -1030,12 +1030,12 @@ class excelSalesReportByNewRule
   
     function _writeTitle(& $workbook, & $sp, & $row, $titleText)
     {
-        $fm = & $workbook->addFormat(array('fontfamily'=>'Arial', 'size'=>10, 'bold'=>1, 
+        $fm = & $workbook->addFormat(array('fontfamily'=>'Calibri', 'size'=>10, 'bold'=>1, 
                 'fgcolor'=>'white', 'bgcolor'=>'black', 'align'=>'left', 'valign'=>'center'));
         $fmReportTitle = $fm;
 
-        $fm = & $workbook->addFormat(array('fontfamily'=>'Arial', 'size'=>10, 'bold'=>1, 'underline'=>1));
-        $arialBoldUnderlined  = $fm;
+        $fm = & $workbook->addFormat(array('fontfamily'=>'Calibri', 'size'=>10, 'bold'=>1, 'underline'=>1));
+        $CalibriBoldUnderlined  = $fm;
         
         $fm = & $workbook->addFormat(array('right'=>2));
         $thickRight = $fm;   
@@ -1047,7 +1047,7 @@ class excelSalesReportByNewRule
 		$row++;
 
       //  $sp->mergeCells($row, $this->columns["A"]["index"], $row, $this->columns["C"]["index"]);
-      //  $this->_writeCell($sp, array("data"=>"Generated on: " . date("M, Y")), $row, "A", $arialBoldUnderlined); 
+      //  $this->_writeCell($sp, array("data"=>"Generated on: " . date("M, Y")), $row, "A", $CalibriBoldUnderlined); 
       //  $row++;
 		
     }
@@ -1057,31 +1057,31 @@ class excelSalesReportByNewRule
      	$partternNumber =1;
      	$bgColor="23";
      	$fgColor="26";
-        $fm = & $workbook->addFormat(array('fontfamily'=>'Arial', 'size'=>10, 'fgcolor'=>$fgColor, 'pattern'=>$partternNumber,
+        $fm = & $workbook->addFormat(array('fontfamily'=>'Calibri', 'size'=>10, 'fgcolor'=>$fgColor, 'pattern'=>$partternNumber,
                 'bgcolor'=>$bgColor, 'color'=>'black' ,'border'=>1, 'align'=>'center', 'valign'=>'bottom','bold'=>1, 'left'=>0,'right'=>0,
                 'top'=>0, 'bottom'=>0));
         //$fm->setTextWrap();
         $columnHeader = $fm;
           
-        $fm = & $workbook->addFormat(array('fontfamily'=>'Arial', 'size'=>10, 'fgcolor'=>$fgColor, 'pattern'=>$partternNumber,
+        $fm = & $workbook->addFormat(array('fontfamily'=>'Calibri', 'size'=>10, 'fgcolor'=>$fgColor, 'pattern'=>$partternNumber,
                 'bgcolor'=>$bgColor,'color'=>'black' ,'border'=>0, 'align'=>'left', 'valign'=>'bottom','bold'=>1,
                 'left'=>0,'right'=>0,
                 'top'=>1, 'bottom'=>1));       
         $columnHeaderLeft = $fm;
         
-        $fm = & $workbook->addFormat(array('fontfamily'=>'Arial', 'size'=>10, 'fgcolor'=>$fgColor, 'pattern'=>$partternNumber,
+        $fm = & $workbook->addFormat(array('fontfamily'=>'Calibri', 'size'=>10, 'fgcolor'=>$fgColor, 'pattern'=>$partternNumber,
                 'bgcolor'=>$bgColor,'color'=>'black' ,'border'=>0, 'align'=>'left', 'valign'=>'bottom','bold'=>1,
                 'left'=>1,'right'=>0,
                 'top'=>1, 'bottom'=>1));       
         $columnHeaderLeftBorderLeft = $fm;
         
-        $fm = & $workbook->addFormat(array('fontfamily'=>'Arial', 'size'=>10, 'fgcolor'=>$fgColor, 'pattern'=>$partternNumber,
+        $fm = & $workbook->addFormat(array('fontfamily'=>'Calibri', 'size'=>10, 'fgcolor'=>$fgColor, 'pattern'=>$partternNumber,
                 'bgcolor'=>$bgColor,'color'=>'black' ,'border'=>0, 'align'=>'left', 'valign'=>'bottom','bold'=>1,
                 'left'=>0,'right'=>1,
                 'top'=>1, 'bottom'=>1));       
         $columnHeaderRightBorderLeft = $fm;
         
-        $fm = & $workbook->addFormat(array('fontfamily'=>'Arial', 'size'=>10, 'fgcolor'=>$fgColor, 'pattern'=>$partternNumber,
+        $fm = & $workbook->addFormat(array('fontfamily'=>'Calibri', 'size'=>10, 'fgcolor'=>$fgColor, 'pattern'=>$partternNumber,
                 'bgcolor'=>$bgColor,'color'=>'black' , 'border'=>0, 'align'=>'right', 'valign'=>'bottom','bold'=>1,
                'left'=>1,'right'=>1,
                 'top'=>1, 'bottom'=>1));       
@@ -1137,18 +1137,18 @@ class excelSalesReportByNewRule
      	$partternNumber =1;
      	$bgColor="44";
      	$fgColor="56";
-        $fm = & $workbook->addFormat(array('fontfamily'=>'Arial', 'size'=>10, 'fgcolor'=>$fgColor, 'pattern'=>$partternNumber,
+        $fm = & $workbook->addFormat(array('fontfamily'=>'Calibri', 'size'=>10, 'fgcolor'=>$fgColor, 'pattern'=>$partternNumber,
                 'bgcolor'=>$bgColor, 'color'=>'black' ,'border'=>0, 'align'=>'center', 'valign'=>'bottom','bold'=>1,
                 'top'=>0, 'bottom'=>0));
         //$fm->setTextWrap();
         $columnHeader = $fm;
           
-        $fm = & $workbook->addFormat(array('fontfamily'=>'Arial', 'size'=>10, 'fgcolor'=>$fgColor, 'pattern'=>$partternNumber,
+        $fm = & $workbook->addFormat(array('fontfamily'=>'Calibri', 'size'=>10, 'fgcolor'=>$fgColor, 'pattern'=>$partternNumber,
                 'bgcolor'=>$bgColor,'color'=>'white' ,'border'=>0, 'align'=>'left', 'valign'=>'bottom','bold'=>1,
                 'top'=>0, 'bottom'=>0));       
         $columnHeaderLeft = $fm;
         
-        $fm = & $workbook->addFormat(array('fontfamily'=>'Arial', 'size'=>10, 'fgcolor'=>$fgColor, 'pattern'=>$partternNumber,
+        $fm = & $workbook->addFormat(array('fontfamily'=>'Calibri', 'size'=>10, 'fgcolor'=>$fgColor, 'pattern'=>$partternNumber,
                 'bgcolor'=>$bgColor,'color'=>'black' , 'border'=>0, 'align'=>'right', 'valign'=>'bottom','bold'=>10,
                 'top'=>0, 'bottom'=>0));       
         $columnHeaderRight = $fm;

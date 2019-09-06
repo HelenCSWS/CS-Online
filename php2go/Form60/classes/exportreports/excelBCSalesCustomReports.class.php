@@ -111,50 +111,50 @@ class excelBCSalesCustomReports
     function _writeInvoiceData(&$workbook, & $sp, & $row, $invoiceDatas)
     {
 	     $isWrite=true;
-        $fm = & $workbook->addFormat(array('fontfamily'=>'Arial', 'size'=>10, 'border'=>1));
-        $arialNormalBorder = $fm;
+        $fm = & $workbook->addFormat(array('fontfamily'=>'Calibri', 'size'=>10, 'border'=>1));
+        $CalibriNormalBorder = $fm;
  
-         $fm = & $workbook->addFormat(array('fontfamily'=>'Arial', 'size'=>10, 'border'=>1,color=>'red'));
-        $arialNormalBorderRed = $fm;
+         $fm = & $workbook->addFormat(array('fontfamily'=>'Calibri', 'size'=>10, 'border'=>1,color=>'red'));
+        $CalibriNormalBorderRed = $fm;
   
-        $fm = & $workbook->addFormat(array('fontfamily'=>'Arial', 'size'=>10, 'align'=>'right','border'=>1));
-        $arialNormalBorderRight = $fm;
+        $fm = & $workbook->addFormat(array('fontfamily'=>'Calibri', 'size'=>10, 'align'=>'right','border'=>1));
+        $CalibriNormalBorderRight = $fm;
         
-        $fm = & $workbook->addFormat(array('fontfamily'=>'Arial', 'size'=>10, 'align'=>'right','border'=>1,color=>'red'));
-        $arialNormalBorderRightRed = $fm;
+        $fm = & $workbook->addFormat(array('fontfamily'=>'Calibri', 'size'=>10, 'align'=>'right','border'=>1,color=>'red'));
+        $CalibriNormalBorderRightRed = $fm;
         
-        $fm = & $workbook->addFormat(array('fontfamily'=>'Arial', 'size'=>10,'align'=>'right', 'border'=>1,'bold'=>1, 'fgcolor'=>'yellow'));
-        $arialBoldBorderYellowRightFg = $fm;
+        $fm = & $workbook->addFormat(array('fontfamily'=>'Calibri', 'size'=>10,'align'=>'right', 'border'=>1,'bold'=>1, 'fgcolor'=>'yellow'));
+        $CalibriBoldBorderYellowRightFg = $fm;
         
         
-        $fm = & $workbook->addFormat(array('fontfamily'=>'Arial', 'size'=>10, 'fgcolor'=>'27', color=>'red',
+        $fm = & $workbook->addFormat(array('fontfamily'=>'Calibri', 'size'=>10, 'fgcolor'=>'27', color=>'red',
                 'border'=>1, 'align'=>'right',  'bold'=>'1',  'top'=>1, 'bottom'=>1));       
         $columnBorderBoldGrantTotal = $fm;     
 		
-		  $fm = & $workbook->addFormat(array('fontfamily'=>'Arial', 'size'=>10, 'border'=>0));
-        $arialNormal = $fm;  
+		  $fm = & $workbook->addFormat(array('fontfamily'=>'Calibri', 'size'=>10, 'border'=>0));
+        $CalibriNormal = $fm;  
         
-      /*   $fm = & $workbook->addFormat(array('fontfamily'=>'Arial', 'size'=>10, 'align'=>'right','border'=>1));
+      /*   $fm = & $workbook->addFormat(array('fontfamily'=>'Calibri', 'size'=>10, 'align'=>'right','border'=>1));
         $fm ->setNumFormat("$#,##0.00;[Black]-$#,##0.00");
-        $arialBorderRighCurrency = $fm;
+        $CalibriBorderRighCurrency = $fm;
         
          $fm = & $workbook->addFormat(array('fontfamily'=>'Verdana','size'=>9, 'align'=>'right','border'=>0));
         $fm ->setNumFormat("$#,##0.00;[Red]-$#,##0.00");
-        $arialNormalCurrency = $fm;
+        $CalibriNormalCurrency = $fm;
         
-         $fm = & $workbook->addFormat(array('fontfamily'=>'Arial', 'size'=>10, 'border'=>1, 'numformat'=>'$0.00'));
-        $arialNormalBorderCurrency = $fm;
+         $fm = & $workbook->addFormat(array('fontfamily'=>'Calibri', 'size'=>10, 'border'=>1, 'numformat'=>'$0.00'));
+        $CalibriNormalBorderCurrency = $fm;
         
         
-        $fm = & $workbook->addFormat(array('fontfamily'=>'Arial', 'size'=>10, 'align'=>'right','border'=>1,'bold'=>1, 'fgcolor'=>'yellow'));
-        $arialNormalBorderBoldRight = $fm;
+        $fm = & $workbook->addFormat(array('fontfamily'=>'Calibri', 'size'=>10, 'align'=>'right','border'=>1,'bold'=>1, 'fgcolor'=>'yellow'));
+        $CalibriNormalBorderBoldRight = $fm;
         
-        $fm = & $workbook->addFormat(array('fontfamily'=>'Arial', 'size'=>10, 'border'=>1, 'fgcolor'=>'yellow'));
-        $arialNormalBorderYellowFg = $fm;
+        $fm = & $workbook->addFormat(array('fontfamily'=>'Calibri', 'size'=>10, 'border'=>1, 'fgcolor'=>'yellow'));
+        $CalibriNormalBorderYellowFg = $fm;
  
  */
- 	//	 $fm = & $workbook->addFormat(array('fontfamily'=>'Arial', 'size'=>10, 'border'=>1, 'fgcolor'=>'yellow'));
-      //  $arialNormalBorderYellowBorFg = $fm;
+ 	//	 $fm = & $workbook->addFormat(array('fontfamily'=>'Calibri', 'size'=>10, 'border'=>1, 'fgcolor'=>'yellow'));
+      //  $CalibriNormalBorderYellowBorFg = $fm;
         
 		  $i=1;
        // $row= $row + 1; //internally rows are 0 based, in formulas rows are 1 based
@@ -236,25 +236,25 @@ class excelBCSalesCustomReports
 							array("data"=>""), 	                      
 							array("data"=>""),
 							array("data"=>""),
-							array("data"=>$totalStoreTypequantity,"format"=>$arialBoldBorderYellowRightFg), 
-							array("data"=>$totalStoreTypeCS,"format"=>$arialBoldBorderYellowRightFg), 
-							array("data"=>"","format"=>$arialBoldBorderYellowRightFg), 
-							array("data"=>"","format"=>$arialBoldBorderYellowRightFg), 
-							array("data"=>"","format"=>$arialBoldBorderYellowRightFg), 
-							array("data"=>$displayStoreTypeAmount,"format"=>$arialBoldBorderYellowRightFg));
+							array("data"=>$totalStoreTypequantity,"format"=>$CalibriBoldBorderYellowRightFg), 
+							array("data"=>$totalStoreTypeCS,"format"=>$CalibriBoldBorderYellowRightFg), 
+							array("data"=>"","format"=>$CalibriBoldBorderYellowRightFg), 
+							array("data"=>"","format"=>$CalibriBoldBorderYellowRightFg), 
+							array("data"=>"","format"=>$CalibriBoldBorderYellowRightFg), 
+							array("data"=>$displayStoreTypeAmount,"format"=>$CalibriBoldBorderYellowRightFg));
 					
-						 	$this->_writeRow($sp, $values, $row, $arialNormalBorder); 
+						 	$this->_writeRow($sp, $values, $row, $CalibriNormalBorder); 
 							$row++;
 						}
 						
 						$lastStoreType= $store_type_id;
 						
-						$RightFormat = $arialNormalBorderRight;
-						$normalFormat=$arialNormalBorder;
+						$RightFormat = $CalibriNormalBorderRight;
+						$normalFormat=$CalibriNormalBorder;
 						if($wholesale=="0")
 						{
-							$RightFormat= $arialNormalBorderRightRed;
-							$normalFormat=$arialNormalBorderRed;
+							$RightFormat= $CalibriNormalBorderRightRed;
+							$normalFormat=$CalibriNormalBorderRed;
 						}
 			/*	
 			
@@ -279,14 +279,14 @@ class excelBCSalesCustomReports
 						array("data"=>$address), 	                      
 						array("data"=>$wine),
 						array("data"=>$sku),
-						array("data"=>$quantity,"format"=>$arialNormalBorderRightRed), 
-						array("data"=>$totalCS,"format"=>$arialNormalBorderRightRed), 
-						array("data"=>("$".$wholesale),"format"=>$arialNormalBorderRightRed), 
-						array("data"=>("$".$retail),"format"=>$arialNormalBorderRightRed), 
+						array("data"=>$quantity,"format"=>$CalibriNormalBorderRightRed), 
+						array("data"=>$totalCS,"format"=>$CalibriNormalBorderRightRed), 
+						array("data"=>("$".$wholesale),"format"=>$CalibriNormalBorderRightRed), 
+						array("data"=>("$".$retail),"format"=>$CalibriNormalBorderRightRed), 
 						array("data"=>$status), 
 						
-						array("data"=>Number::fromDecimalToCurrency($amount,"$", ".", ",", 2, "left"),"format"=>$arialNormalBorderRight));
-						 $this->_writeRow($sp, $values, $row, $arialNormalBorderRed); 
+						array("data"=>Number::fromDecimalToCurrency($amount,"$", ".", ",", 2, "left"),"format"=>$CalibriNormalBorderRight));
+						 $this->_writeRow($sp, $values, $row, $CalibriNormalBorderRed); 
 				}
 				else
 				{*/
@@ -309,7 +309,7 @@ class excelBCSalesCustomReports
 			
 		//	if($invoiceNo!=$last_invNo)
 		//	{
-			//	$this->_writeCell($sp, array("data"=>$displayAmount), $totalRow, "N", $arialNormalBorderRight);
+			//	$this->_writeCell($sp, array("data"=>$displayAmount), $totalRow, "N", $CalibriNormalBorderRight);
 		//	}
 			
 			
@@ -323,7 +323,7 @@ class excelBCSalesCustomReports
         	    $row++;
         
        }
-	//			  $this->_writeCell($sp, array("data"=>"=SUM(J$startRow:J$endRow)"), $row, "J", $arialNormalBorderYellowFg);
+	//			  $this->_writeCell($sp, array("data"=>"=SUM(J$startRow:J$endRow)"), $row, "J", $CalibriNormalBorderYellowFg);
 	
 		//Last Store Type total
 			$totalInfo =$this->invData->getBCTotalInfoByStoreType($this->estate_id,$this->year,$this->month,$lastStoreType);
@@ -341,14 +341,14 @@ class excelBCSalesCustomReports
 							array("data"=>""), 	                      
 							array("data"=>""),
 							array("data"=>""),
-							array("data"=>$totalStoreTypequantity,"format"=>$arialBoldBorderYellowRightFg), 
-							array("data"=>$totalStoreTypeCS,"format"=>$arialBoldBorderYellowRightFg), 
-							array("data"=>"","format"=>$arialBoldBorderYellowRightFg), 
-							array("data"=>"","format"=>$arialBoldBorderYellowRightFg), 
-							array("data"=>"","format"=>$arialBoldBorderYellowRightFg), 
-							array("data"=>$displayStoreTypeAmount,"format"=>$arialBoldBorderYellowRightFg));
+							array("data"=>$totalStoreTypequantity,"format"=>$CalibriBoldBorderYellowRightFg), 
+							array("data"=>$totalStoreTypeCS,"format"=>$CalibriBoldBorderYellowRightFg), 
+							array("data"=>"","format"=>$CalibriBoldBorderYellowRightFg), 
+							array("data"=>"","format"=>$CalibriBoldBorderYellowRightFg), 
+							array("data"=>"","format"=>$CalibriBoldBorderYellowRightFg), 
+							array("data"=>$displayStoreTypeAmount,"format"=>$CalibriBoldBorderYellowRightFg));
 					
-						 	$this->_writeRow($sp, $values, $row, $arialNormalBorder); 
+						 	$this->_writeRow($sp, $values, $row, $CalibriNormalBorder); 
 							$row++;
 							
 							//grand total
@@ -374,19 +374,19 @@ class excelBCSalesCustomReports
 							array("data"=>"","format"=>$columnBorderBoldGrantTotal), 
 							array("data"=>$displayStoreTypeAmount,"format"=>$columnBorderBoldGrantTotal));
 					
-						 	$this->_writeRow($sp, $values, $row, $arialNormal); 
+						 	$this->_writeRow($sp, $values, $row, $CalibriNormal); 
 							$row++;
 	
     }
     
     function _writeTitle(& $workbook, & $sp, & $row)
     {
-         $fm = & $workbook->addFormat(array('fontfamily'=>'Arial', 'size'=>10, 'bold'=>1, 
+         $fm = & $workbook->addFormat(array('fontfamily'=>'Calibri', 'size'=>10, 'bold'=>1, 
                 'fgcolor'=>'white', 'bgcolor'=>'black', 'align'=>'center', 'valign'=>'center'));
         $reportTitle = $fm;
 
-        $fm = & $workbook->addFormat(array('fontfamily'=>'Arial', 'size'=>10, 'bold'=>1, 'underline'=>1));
-        $arialBoldUnderlined  = $fm;
+        $fm = & $workbook->addFormat(array('fontfamily'=>'Calibri', 'size'=>10, 'bold'=>1, 'underline'=>1));
+        $CalibriBoldUnderlined  = $fm;
         
         $fm = & $workbook->addFormat(array('right'=>2));
         $thickRight = $fm;
@@ -402,7 +402,7 @@ class excelBCSalesCustomReports
     
     function _writeColumnHeaders(& $workbook, & $sp, & $row)
     {
-        $fm = & $workbook->addFormat(array('fontfamily'=>'Arial', 'size'=>10, 'fgcolor'=>'silver', 'bold'=>1, 
+        $fm = & $workbook->addFormat(array('fontfamily'=>'Calibri', 'size'=>10, 'fgcolor'=>'silver', 'bold'=>1, 
                 'bgcolor'=>'black', 'border'=>1, 'align'=>'center', 'valign'=>'bottom',
                 'top'=>1, 'bottom'=>1));
      
@@ -411,12 +411,12 @@ class excelBCSalesCustomReports
      
         
         
-        $fm = & $workbook->addFormat(array('fontfamily'=>'Arial', 'size'=>10, 'fgcolor'=>'silver', 'bold'=>1, 
+        $fm = & $workbook->addFormat(array('fontfamily'=>'Calibri', 'size'=>10, 'fgcolor'=>'silver', 'bold'=>1, 
                 'bgcolor'=>'black', 'border'=>1, 'align'=>'left', 'valign'=>'bottom',
                 'top'=>1, 'bottom'=>1));       
         $columnHeaderLeft = $fm;
         
-        $fm = & $workbook->addFormat(array('fontfamily'=>'Arial', 'size'=>10, 'fgcolor'=>'silver', 'bold'=>1, 
+        $fm = & $workbook->addFormat(array('fontfamily'=>'Calibri', 'size'=>10, 'fgcolor'=>'silver', 'bold'=>1, 
                 'bgcolor'=>'black', 'border'=>1, 'align'=>'right', 'valign'=>'bottom',
                 'top'=>1, 'bottom'=>1));       
         $columnHeaderRight = $fm;

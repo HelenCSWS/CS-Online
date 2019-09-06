@@ -27,11 +27,11 @@
  
       </combofield>
       
-      <combofield name="estate_id" label="Estate" width="88" tabindex="13" nofirst="T" >
-			<option value="96" caption="Enotecca"/>
-			<option value="118" caption="Rustico"/>
-			<listener type="JS" event="onKeyPress" action="changeEstate4BC()"/>
-			<listener type="JS" event="onChange" action="changeEstate4BC()"/>
+      <combofield name="estate_id" label="Estate" width="150" tabindex="13" size="1" nofirst="T" >
+		
+			<option value="150" caption="SpearHead Winery"/>
+			<!-- listener type="JS" event="onKeyPress" action="changeEstate4BC()"/>
+			<listener type="JS" event="onChange" action="changeEstate4BC()"/ -->
       </combofield>
 
 <!--row 1-->
@@ -45,11 +45,22 @@
 			</datasource>
 		</lookupfield>		
 		
+        <combofield name="bc_sale_month"  nofirst="T" multiple="F" size="1" width="100"  label="Month">
+        	<option value="9" caption="September"/>
+	
+		</combofield>
+		
+		
+		<combofield name="bc_sale_year"  nofirst="T" multiple="F" size="1" width="100"  label="Year">
+            <option value="2019" caption="2019"/>
+		
+		</combofield>
+        
 	 	<combofield name="bi_user_id" label="Sales consultant" nofirst="T" multiple="F" size="1" width="140" disabled="F" tabindex="4" >
 		
 		</combofield>
 		
-			<combofield name="bi_sale_month"  nofirst="T" multiple="F" size="1" width="100"  label="Month">
+		<combofield name="bi_sale_month"  nofirst="T" multiple="F" size="1" width="100"  label="Month">
 			<listener type="JS" event="onChange" action="getAnaUsers()"/>
 		</combofield>
 		

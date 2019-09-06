@@ -48,10 +48,10 @@
                             </td></tr>                              
                             
                              <tr id="trBCE2"><td>
-                                <table cellpadding="0" cellspacing="0" border="0" class="label" style="display:none">
+                                <table cellpadding="0" cellspacing="0" border="0" class="label" style="display:block">
                                     <tr>
                                     <td nowrap class="label" style="padding-left:0px;padding-top:5px"><input type="radio" id="searchkey" name="searchKey"  onclick=changeSalesReportType("3") ></td>
-                                    <td nowrap  class="label" style="padding-left:3px;padding-top:8px" >{estate_id} monthly sales report.</td>
+                                    <td nowrap  class="label" style="padding-left:3px;padding-top:8px" >{estate_id} sales comission report on {bc_sale_month} in {bc_sale_year}</td>
                                     </tr>
                                 </table>
                             </td></tr>

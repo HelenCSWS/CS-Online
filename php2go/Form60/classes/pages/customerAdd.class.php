@@ -293,7 +293,7 @@ class customerAdd extends F60FormBase
                     }       
                 if ($this->province_id == 13)
                 {    
-                    $this->getHKRanks();
+                   // $this->getHKRanks();
                 }       
             } 
             else
@@ -582,25 +582,25 @@ class customerAdd extends F60FormBase
         {
             $customer = $customers->getByPrimaryKey($customer_id);
             
-             // HK ranks
-            if($this->province_id==13)
-            {
-                if($this->getCtlValue("hk_rank_dirty")==1)
-                { 
-                    $ranks = array();
-                     for($i=1; $i<=5; $i++)
-            		 {
-                        $fieldName ="hk_rank_$i";
-                 
-                        $rankType = $this->getCtlValue($fieldName);
-                        array_push($ranks,$rankType);
-            		 }
-                     $bllCM = &new bllcustomer();
-                     
-                     $bllCM->saveHKRanks($customer_id,$ranks);
-                }
-                 
-            }
+          //   // HK ranks
+//            if($this->province_id==13)
+//            {
+//                if($this->getCtlValue("hk_rank_dirty")==1)
+//                { 
+//                    $ranks = array();
+//                     for($i=1; $i<=5; $i++)
+//            		 {
+//                        $fieldName ="hk_rank_$i";
+//                 
+//                        $rankType = $this->getCtlValue($fieldName);
+//                        array_push($ranks,$rankType);
+//            		 }
+//                     $bllCM = &new bllcustomer();
+//                     
+//                     $bllCM->saveHKRanks($customer_id,$ranks);
+//                }
+//                 
+//            }
         }
         else
             $customer = $customers->add_new(); //& new customers();

@@ -236,18 +236,18 @@ class excelF60Reports
     function _writeInvoiceData(&$workbook, & $sp, & $row, $invoiceDatas,$city_name="")
     {
 	     $isWrite=true;
-        $fm = & $workbook->addFormat(array('fontfamily'=>'Arial', 'size'=>10, 'border'=>1));
-        $arialNormalBorder = $fm;
+        $fm = & $workbook->addFormat(array('fontfamily'=>'Calibri', 'size'=>10, 'border'=>1));
+        $CalibriNormalBorder = $fm;
  
     
-        $fm = & $workbook->addFormat(array('fontfamily'=>'Arial', 'size'=>10, 'align'=>'right','border'=>1));
-        $arialNormalBorderRight = $fm;
+        $fm = & $workbook->addFormat(array('fontfamily'=>'Calibri', 'size'=>10, 'align'=>'right','border'=>1));
+        $CalibriNormalBorderRight = $fm;
         
-        $fm = & $workbook->addFormat(array('fontfamily'=>'Arial', 'size'=>10, 'align'=>'right','border'=>1,'bold'=>1, 'fgcolor'=>'yellow'));
-        $arialNormalBorderBoldRight = $fm;
+        $fm = & $workbook->addFormat(array('fontfamily'=>'Calibri', 'size'=>10, 'align'=>'right','border'=>1,'bold'=>1, 'fgcolor'=>'yellow'));
+        $CalibriNormalBorderBoldRight = $fm;
         
-        $fm = & $workbook->addFormat(array('fontfamily'=>'Arial', 'size'=>10, 'border'=>1, 'fgcolor'=>'yellow'));
-        $arialNormalBorderYellowFg = $fm;
+        $fm = & $workbook->addFormat(array('fontfamily'=>'Calibri', 'size'=>10, 'border'=>1, 'fgcolor'=>'yellow'));
+        $CalibriNormalBorderYellowFg = $fm;
  
  
         
@@ -274,14 +274,14 @@ class excelF60Reports
 	            $values = array(array("data"=>($sales["wine"])), 
 	                      array("data"=>$sales["cspc_code"]), 
 	                      array("data"=>$sales["color"]), 
-	                      array("data"=>$sales["size"],"format"=>$arialNormalBorderRight), 
-	                      array("data"=>$sales["price"],"format"=>$arialNormalBorderRight), 
-	                      array("data"=>$sales["unallocated"],"format"=>$arialNormalBorderRight), 
-	                      array("data"=>$sales["sample"],"format"=>$arialNormalBorderRight),
-							    array("data"=>$sales["breakage_corked"],"format"=>$arialNormalBorderRight), 
-	                      array("data"=>$sales["cases"],"format"=>$arialNormalBorderRight), 
-	                      array("data"=>$sales["btls"],"format"=>$arialNormalBorderRight),
-	                      array("data"=>$sales["bottles"],"format"=>$arialNormalBorderRight)								
+	                      array("data"=>$sales["size"],"format"=>$CalibriNormalBorderRight), 
+	                      array("data"=>$sales["price"],"format"=>$CalibriNormalBorderRight), 
+	                      array("data"=>$sales["unallocated"],"format"=>$CalibriNormalBorderRight), 
+	                      array("data"=>$sales["sample"],"format"=>$CalibriNormalBorderRight),
+							    array("data"=>$sales["breakage_corked"],"format"=>$CalibriNormalBorderRight), 
+	                      array("data"=>$sales["cases"],"format"=>$CalibriNormalBorderRight), 
+	                      array("data"=>$sales["btls"],"format"=>$CalibriNormalBorderRight),
+	                      array("data"=>$sales["bottles"],"format"=>$CalibriNormalBorderRight)								
 								); 
          	}
          	else if($this->search_id==5)
@@ -302,8 +302,8 @@ class excelF60Reports
 	                      array("data"=>$sales["contact_name"]), 
 	                      array("data"=>$sales["contact_number"]), 
 	                       array("data"=>$address), 
-	                      array("data"=>$sales["allocated"],"format"=>$arialNormalBorderRight),
-							    array("data"=>$sales["sold"],"format"=>$arialNormalBorderRight)
+	                      array("data"=>$sales["allocated"],"format"=>$CalibriNormalBorderRight),
+							    array("data"=>$sales["sold"],"format"=>$CalibriNormalBorderRight)
 								); 
 			}
 			else if($this->search_id==1)//1
@@ -328,10 +328,10 @@ class excelF60Reports
 	                      array("data"=>$address), 	                      
 	                      array("data"=>$sales["wine_name"]),
 	                      array("data"=>$sales["sku"]),
-							    array("data"=>$sales["orqt"],"format"=>$arialNormalBorderRight), 
-							    array("data"=>$sales["total_cs"],"format"=>$arialNormalBorderRight), 
-							    array("data"=>("$".$sales["csws_price"]),"format"=>$arialNormalBorderRight), 
-							    array("data"=>("$".$sales["market_price"]),"format"=>$arialNormalBorderRight), 
+							    array("data"=>$sales["orqt"],"format"=>$CalibriNormalBorderRight), 
+							    array("data"=>$sales["total_cs"],"format"=>$CalibriNormalBorderRight), 
+							    array("data"=>("$".$sales["csws_price"]),"format"=>$CalibriNormalBorderRight), 
+							    array("data"=>("$".$sales["market_price"]),"format"=>$CalibriNormalBorderRight), 
 	                      array("data"=>$sales["isPaid"]), 
 	                      array("data"=>$sales["isRecieved"]),
 	                      array("data"=>$sales["user_name"])								
@@ -364,10 +364,10 @@ class excelF60Reports
 		                      array("data"=>$address), 	                      
 		                      array("data"=>$sales["wine_name"]),
 		                      array("data"=>$sales["sku"]),
-								    array("data"=>$sales["orqt"],"format"=>$arialNormalBorderRight), 
-								    array("data"=>$sales["total_cs"],"format"=>$arialNormalBorderRight), 
-								    array("data"=>("$".$sales["csws_price"]),"format"=>$arialNormalBorderRight), 
-								    array("data"=>("$".$sales["market_price"]),"format"=>$arialNormalBorderRight), 
+								    array("data"=>$sales["orqt"],"format"=>$CalibriNormalBorderRight), 
+								    array("data"=>$sales["total_cs"],"format"=>$CalibriNormalBorderRight), 
+								    array("data"=>("$".$sales["csws_price"]),"format"=>$CalibriNormalBorderRight), 
+								    array("data"=>("$".$sales["market_price"]),"format"=>$CalibriNormalBorderRight), 
 		                      array("data"=>$sales["isPaid"]), 
 		                      array("data"=>$sales["isRecieved"]),
 		                      array("data"=>$sales["user_name"])								
@@ -399,7 +399,7 @@ class excelF60Reports
 	                      array("data"=>$sales["customer_name"]), 
 	                      array("data"=>$address), 
 	                      array("data"=>$sales["total_cs"]),
-							    array("data"=>$sales["amount_owned"],"format"=>$arialNormalBorderRight), 
+							    array("data"=>$sales["amount_owned"],"format"=>$CalibriNormalBorderRight), 
 	                      array("data"=>$sales["isPaid"]), 
 	                      array("data"=>$sales["isRecieved"]),
 	                      array("data"=>$sales["user_name"])								
@@ -421,7 +421,7 @@ class excelF60Reports
             if($isWrite)
             {
             	$sp->setRow($row, 15); 
-	            $this->_writeRow($sp, $values, $row, $arialNormalBorder); 
+	            $this->_writeRow($sp, $values, $row, $CalibriNormalBorder); 
     	        $i++;
         	    $row++;
         	}
@@ -433,25 +433,25 @@ class excelF60Reports
       	if($this->search_id==1||$this->search_id==14)
       	{
 	     	if($isWrite)
-				  $this->_writeCell($sp, array("data"=>"=SUM(J$startRow:J$endRow)"), $row, "J", $arialNormalBorderYellowFg);
+				  $this->_writeCell($sp, array("data"=>"=SUM(J$startRow:J$endRow)"), $row, "J", $CalibriNormalBorderYellowFg);
 
 		}
 	    else if($this->search_id==2 || $this->search_id==3 || $this->search_id==6)
       	{
 		      $this->_writeCell($sp, array("data"=>"=SUM(G$startRow:G$endRow)"), $row, "G"
-	                , $arialNormalBorderYellowFg);
+	                , $CalibriNormalBorderYellowFg);
 
 		}
     }
     
     function _writeTitle(& $workbook, & $sp, & $row)
     {
-         $fm = & $workbook->addFormat(array('fontfamily'=>'Arial', 'size'=>10, 'bold'=>1, 
+         $fm = & $workbook->addFormat(array('fontfamily'=>'Calibri', 'size'=>10, 'bold'=>1, 
                 'fgcolor'=>'white', 'bgcolor'=>'black', 'align'=>'left', 'valign'=>'center'));
         $reportTitle = $fm;
 
-        $fm = & $workbook->addFormat(array('fontfamily'=>'Arial', 'size'=>10, 'bold'=>1, 'underline'=>1));
-        $arialBoldUnderlined  = $fm;
+        $fm = & $workbook->addFormat(array('fontfamily'=>'Calibri', 'size'=>10, 'bold'=>1, 'underline'=>1));
+        $CalibriBoldUnderlined  = $fm;
         
         $fm = & $workbook->addFormat(array('right'=>2));
         $thickRight = $fm;
@@ -467,7 +467,7 @@ class excelF60Reports
     
     function _writeColumnHeaders(& $workbook, & $sp, & $row)
     {
-        $fm = & $workbook->addFormat(array('fontfamily'=>'Arial', 'size'=>10, 'fgcolor'=>'silver', 
+        $fm = & $workbook->addFormat(array('fontfamily'=>'Calibri', 'size'=>10, 'fgcolor'=>'silver', 
                 'bgcolor'=>'black', 'border'=>1, 'align'=>'center', 'valign'=>'bottom',
                 'top'=>2, 'bottom'=>2));
      
@@ -476,12 +476,12 @@ class excelF60Reports
      
         
         
-        $fm = & $workbook->addFormat(array('fontfamily'=>'Arial', 'size'=>10, 'fgcolor'=>'silver', 
+        $fm = & $workbook->addFormat(array('fontfamily'=>'Calibri', 'size'=>10, 'fgcolor'=>'silver', 
                 'bgcolor'=>'black', 'border'=>1, 'align'=>'left', 'valign'=>'bottom',
                 'top'=>2, 'bottom'=>2));       
         $columnHeaderLeft = $fm;
         
-        $fm = & $workbook->addFormat(array('fontfamily'=>'Arial', 'size'=>10, 'fgcolor'=>'silver', 
+        $fm = & $workbook->addFormat(array('fontfamily'=>'Calibri', 'size'=>10, 'fgcolor'=>'silver', 
                 'bgcolor'=>'black', 'border'=>1, 'align'=>'right', 'valign'=>'bottom',
                 'top'=>2, 'bottom'=>2));       
         $columnHeaderRight = $fm;

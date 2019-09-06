@@ -618,36 +618,36 @@ class excelBCEstateSalesReport
     function _writeSheetData(&$workbook, & $sp, & $row, $rowsData,$grpWines, $province_id=1,$location_id=0)
     {
       	
- 		$fm = & $workbook->addFormat(array('fontfamily'=>'Arial', 'size'=>10, 'border'=>1));
-		$arialNormalBorder = $fm;
+ 		$fm = & $workbook->addFormat(array('fontfamily'=>'Calibri', 'size'=>10, 'border'=>1));
+		$CalibriNormalBorder = $fm;
 		
-		$fm = & $workbook->addFormat(array('fontfamily'=>'Arial', 'fgcolor'=>'yellow','size'=>10, 'border'=>1));
-		$arialNormalBorderYellow = $fm;
+		$fm = & $workbook->addFormat(array('fontfamily'=>'Calibri', 'fgcolor'=>'yellow','size'=>10, 'border'=>1));
+		$CalibriNormalBorderYellow = $fm;
 		
-		$fm = & $workbook->addFormat(array('fontfamily'=>'Arial', 'fgcolor'=>'42','size'=>10, 'border'=>1));
-		$arialNormalBorderGreen = $fm;
+		$fm = & $workbook->addFormat(array('fontfamily'=>'Calibri', 'fgcolor'=>'42','size'=>10, 'border'=>1));
+		$CalibriNormalBorderGreen = $fm;
 				
 
-		$fm = & $workbook->addFormat(array('fontfamily'=>'Arial', 'fgcolor'=>'yellow', 'size'=>10, 'color'=>'red','align'=>'left','border'=>1,'bold'=>1,));
-		$arialNormalBorderLefttRedBold = $fm;
+		$fm = & $workbook->addFormat(array('fontfamily'=>'Calibri', 'fgcolor'=>'yellow', 'size'=>10, 'color'=>'red','align'=>'left','border'=>1,'bold'=>1,));
+		$CalibriNormalBorderLefttRedBold = $fm;
 		
-		$fm = & $workbook->addFormat(array('fontfamily'=>'Arial', 'fgcolor'=>'42', 'size'=>10, 'color'=>'37','align'=>'left','border'=>1,'bold'=>1,));
-		$arialNormalBorderLefttRedGreenBold = $fm;
+		$fm = & $workbook->addFormat(array('fontfamily'=>'Calibri', 'fgcolor'=>'42', 'size'=>10, 'color'=>'37','align'=>'left','border'=>1,'bold'=>1,));
+		$CalibriNormalBorderLefttRedGreenBold = $fm;
 		
-		$fm = & $workbook->addFormat(array('fontfamily'=>'Arial', 'size'=>10, 'align'=>'right','border'=>1,'numformat'=>'0'));
-		$arialNormalBorderNumRight = $fm;
+		$fm = & $workbook->addFormat(array('fontfamily'=>'Calibri', 'size'=>10, 'align'=>'right','border'=>1,'numformat'=>'0'));
+		$CalibriNormalBorderNumRight = $fm;
 		
-		$fm = & $workbook->addFormat(array('fontfamily'=>'Arial', 'fgcolor'=>'42','size'=>10, 'align'=>'right','border'=>1,'numformat'=>'0','color'=>'37','bold'=>1,));							
-		$arialNormalBorderNumRightRedGreenBold = $fm;
+		$fm = & $workbook->addFormat(array('fontfamily'=>'Calibri', 'fgcolor'=>'42','size'=>10, 'align'=>'right','border'=>1,'numformat'=>'0','color'=>'37','bold'=>1,));							
+		$CalibriNormalBorderNumRightRedGreenBold = $fm;
 		
-		$fm = & $workbook->addFormat(array('fontfamily'=>'Arial', 'fgcolor'=>'yellow','size'=>10, 'align'=>'right','border'=>1,'numformat'=>'0','color'=>'red','bold'=>1,));							
-		$arialNormalBorderNumRightRedBold = $fm;
+		$fm = & $workbook->addFormat(array('fontfamily'=>'Calibri', 'fgcolor'=>'yellow','size'=>10, 'align'=>'right','border'=>1,'numformat'=>'0','color'=>'red','bold'=>1,));							
+		$CalibriNormalBorderNumRightRedBold = $fm;
 		
-		$fm = & $workbook->addFormat(array('fontfamily'=>'Arial', 'fgcolor'=>'yellow','size'=>10, 'align'=>'left','border'=>1,'numformat'=>'0','color'=>'red','bold'=>1,));							
-		$arialNormalBorderNumLeftRedBold = $fm;
+		$fm = & $workbook->addFormat(array('fontfamily'=>'Calibri', 'fgcolor'=>'yellow','size'=>10, 'align'=>'left','border'=>1,'numformat'=>'0','color'=>'red','bold'=>1,));							
+		$CalibriNormalBorderNumLeftRedBold = $fm;
 		
-        $fm = & $workbook->addFormat(array('fontfamily'=>'Arial', 'size'=>11, 'bold'=>1));
-        $arialBoldUnderlined  = $fm;
+        $fm = & $workbook->addFormat(array('fontfamily'=>'Calibri', 'size'=>11, 'bold'=>1));
+        $CalibriBoldUnderlined  = $fm;
 
 		
 		$i=0;
@@ -679,8 +679,8 @@ class excelBCEstateSalesReport
 			if($location_id>0)
 			{
 				$row=$row+2;
-		       // $this->_writeCell($sp, array("data"=>"$location_name: " ." $monthTxt ". date(Y)), $row, "A", $arialBoldUnderlined); 
-		        $this->_writeCell($sp, array("data"=>"$location_name: " ." $monthTxt ".$this->report_year), $row, "A", $arialBoldUnderlined); 
+		       // $this->_writeCell($sp, array("data"=>"$location_name: " ." $monthTxt ". date(Y)), $row, "A", $CalibriBoldUnderlined); 
+		        $this->_writeCell($sp, array("data"=>"$location_name: " ." $monthTxt ".$this->report_year), $row, "A", $CalibriBoldUnderlined); 
 				$row++;
 		        $this->_writeColumnHeaders($workbook, $sp, $row);
 			}	
@@ -689,8 +689,8 @@ class excelBCEstateSalesReport
 		{
 		 	$location_name=$this->data_cfg["NAME_ALBERTA"];
 			$row=$row+2;
-	       // $this->_writeCell($sp, array("data"=>"$location_name: " ." $monthTxt ". date(Y)), $row, "A", $arialBoldUnderlined); 
-	        $this->_writeCell($sp, array("data"=>"$location_name: " ." $monthTxt ".$this->report_year), $row, "A", $arialBoldUnderlined); 
+	       // $this->_writeCell($sp, array("data"=>"$location_name: " ." $monthTxt ". date(Y)), $row, "A", $CalibriBoldUnderlined); 
+	        $this->_writeCell($sp, array("data"=>"$location_name: " ." $monthTxt ".$this->report_year), $row, "A", $CalibriBoldUnderlined); 
 	        $row++;
 	        $this->_writeColumnHeaders($workbook, $sp, $row, 2);
 		}	        
@@ -704,19 +704,19 @@ class excelBCEstateSalesReport
 			{
 				if(strstr($rowData["city"],"Total Sales")||strstr($rowData["city"],"Total Bottles")||strstr($rowData["city"],"Total Cases"))
 				{
-						$colFormat=$arialNormalBorderLefttRedBold;
-						$colNumFormat=$arialNormalBorderNumRightRedBold;
+						$colFormat=$CalibriNormalBorderLefttRedBold;
+						$colNumFormat=$CalibriNormalBorderNumRightRedBold;
 				}
 				else
 				{
-						$colFormat=$arialNormalBorderLefttRedGreenBold;
-						$colNumFormat=$arialNormalBorderNumRightRedGreenBold;
+						$colFormat=$CalibriNormalBorderLefttRedGreenBold;
+						$colNumFormat=$CalibriNormalBorderNumRightRedGreenBold;
 				}
 			}
 			else
 			{
-				$colFormat=$arialNormalBorder;
-				$colNumFormat=$arialNormalBorderNumRight;
+				$colFormat=$CalibriNormalBorder;
+				$colNumFormat=$CalibriNormalBorderNumRight;
 			}
 			$values = array(
 								array("data"=>$rowData["date"]), 
@@ -742,14 +742,14 @@ class excelBCEstateSalesReport
 			 		
 			
 					
-				$colData=array("data"=>"$quantities", "format"=>$arialNormalBorder);	
+				$colData=array("data"=>"$quantities", "format"=>$CalibriNormalBorder);	
 			
 				if(strstr($rowData["city"],"Total"))
 				{
 				 	if(strstr($rowData["city"],"Total Sales")||strstr($rowData["city"],"Total Bottles")||strstr($rowData["city"],"Total Cases"))
-						$colData=array("data"=>"$quantities", "format"=>$arialNormalBorderYellow);
+						$colData=array("data"=>"$quantities", "format"=>$CalibriNormalBorderYellow);
 					else
-						$colData=array("data"=>"$quantities", "format"=>$arialNormalBorderGreen);
+						$colData=array("data"=>"$quantities", "format"=>$CalibriNormalBorderGreen);
 				}
 				array_push($values,$colData);
 			}
@@ -760,7 +760,7 @@ class excelBCEstateSalesReport
 			$colData =array("data"=>$rowData["warehouse"]); 
 			array_push($values,$colData);
 				 
-            $this->_writeRow($sp, $values, $row, $arialNormalBorder); 
+            $this->_writeRow($sp, $values, $row, $CalibriNormalBorder); 
             $i++;
             $row++;
     
@@ -770,12 +770,12 @@ class excelBCEstateSalesReport
     
     function _writeTitle(& $workbook, & $sp, & $row)
     {
-        $fm = & $workbook->addFormat(array('fontfamily'=>'Arial', 'size'=>12, 'bold'=>1, 
+        $fm = & $workbook->addFormat(array('fontfamily'=>'Calibri', 'size'=>12, 'bold'=>1, 
                 'fgcolor'=>'silver', 'bgcolor'=>'black', 'align'=>'center', 'valign'=>'center'));
         $reportTitle = $fm;
 
-        $fm = & $workbook->addFormat(array('fontfamily'=>'Arial', 'size'=>11, 'bold'=>1));
-        $arialBoldUnderlined  = $fm;
+        $fm = & $workbook->addFormat(array('fontfamily'=>'Calibri', 'size'=>11, 'bold'=>1));
+        $CalibriBoldUnderlined  = $fm;
         
         $fm = & $workbook->addFormat(array('right'=>2));
         $thickRight = $fm;
@@ -817,29 +817,29 @@ class excelBCEstateSalesReport
         $row+=3;
          
         $location_name=$this->data_cfg["NAME_VANCOUVER"];
-    //    $this->_writeCell($sp, array("data"=>"$location_name: " ." $monthTxt ". date(Y)), $row, "A", $arialBoldUnderlined); 
-        $this->_writeCell($sp, array("data"=>"$location_name: " ." $monthTxt ". $this->report_year), $row, "A", $arialBoldUnderlined); 
+    //    $this->_writeCell($sp, array("data"=>"$location_name: " ." $monthTxt ". date(Y)), $row, "A", $CalibriBoldUnderlined); 
+        $this->_writeCell($sp, array("data"=>"$location_name: " ." $monthTxt ". $this->report_year), $row, "A", $CalibriBoldUnderlined); 
     }
     
     function _writeColumnHeaders(& $workbook, & $sp, & $row, $province_id=1)
     {
-        $fm = & $workbook->addFormat(array('fontfamily'=>'Arial', 'size'=>10, 'fgcolor'=>'26', 
+        $fm = & $workbook->addFormat(array('fontfamily'=>'Calibri', 'size'=>10, 'fgcolor'=>'26', 
                 'bgcolor'=>'black', 'border'=>1, 'align'=>'center', 'valign'=>'bottom','bold'=>'1',
                 'top'=>2, 'bottom'=>2));
         //$fm->setTextWrap();
         $columnHeader = $fm;
                
-        $fm = & $workbook->addFormat(array('fontfamily'=>'Arial', 'size'=>10, 'fgcolor'=>'26', 
+        $fm = & $workbook->addFormat(array('fontfamily'=>'Calibri', 'size'=>10, 'fgcolor'=>'26', 
                 'bgcolor'=>'black', 'border'=>1, 'align'=>'left', 'valign'=>'bottom','bold'=>'1',
                 'top'=>1, 'bottom'=>1));       
         $columnHeaderLeft = $fm;
         
-        $fm = & $workbook->addFormat(array('fontfamily'=>'Arial', 'size'=>10, 'fgcolor'=>'26', 
+        $fm = & $workbook->addFormat(array('fontfamily'=>'Calibri', 'size'=>10, 'fgcolor'=>'26', 
                 'bgcolor'=>'black', 'border'=>1, 'align'=>'right', 'valign'=>'bottom','bold'=>'1',
                 'top'=>1, 'bottom'=>1));       
         $columnHeaderRight = $fm;  
 		
-		$fm = & $workbook->addFormat(array('fontfamily'=>'Arial', 'size'=>10, 'fgcolor'=>'27', 'color'=>'black',
+		$fm = & $workbook->addFormat(array('fontfamily'=>'Calibri', 'size'=>10, 'fgcolor'=>'27', 'color'=>'black',
                 'bgcolor'=>'black', 'border'=>1, 'align'=>'right', 'valign'=>'bottom','TextRotation'=>'270', 'bold'=>'1',
                 'top'=>1, 'bottom'=>1));       
         $columnHeaderVertical = $fm;       

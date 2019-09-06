@@ -132,29 +132,29 @@ class excelABMonthlyAlloReport
     
     function _writeData(&$workbook, & $sp, & $row, $infoData)
     {
-        $fm = & $workbook->addFormat(array('fontfamily'=>'Arial', 'size'=>10, 'border'=>1));
-        $arialNormalBorder = $fm;
+        $fm = & $workbook->addFormat(array('fontfamily'=>'Calibri', 'size'=>10, 'border'=>1));
+        $CalibriNormalBorder = $fm;
  
-        $fm = & $workbook->addFormat(array('fontfamily'=>'Arial', 'size'=>10, 'align'=>'right','border'=>1));
-        $arialNormalBorderRight = $fm;
+        $fm = & $workbook->addFormat(array('fontfamily'=>'Calibri', 'size'=>10, 'align'=>'right','border'=>1));
+        $CalibriNormalBorderRight = $fm;
         
-        $fm = & $workbook->addFormat(array('fontfamily'=>'Arial',  'bold'=>1,'color'=>'red','size'=>10, 'align'=>'right','border'=>1));
-        $arialNormalBorderRedFontRight = $fm;
+        $fm = & $workbook->addFormat(array('fontfamily'=>'Calibri',  'bold'=>1,'color'=>'red','size'=>10, 'align'=>'right','border'=>1));
+        $CalibriNormalBorderRedFontRight = $fm;
         
-        $fm = & $workbook->addFormat(array('fontfamily'=>'Arial','bold'=>1,'color'=>'red','fgcolor'=>'yellow', 'size'=>10, 'align'=>'right','border'=>1));
-        $arialNormalBorderRedYellowBKFontRight = $fm;
+        $fm = & $workbook->addFormat(array('fontfamily'=>'Calibri','bold'=>1,'color'=>'red','fgcolor'=>'yellow', 'size'=>10, 'align'=>'right','border'=>1));
+        $CalibriNormalBorderRedYellowBKFontRight = $fm;
         
-        $fm = & $workbook->addFormat(array('fontfamily'=>'Arial', 'size'=>10, 'align'=>'right','border'=>1,'numformat'=>'0'));
-        $arialNormalBorderNumRight = $fm;
+        $fm = & $workbook->addFormat(array('fontfamily'=>'Calibri', 'size'=>10, 'align'=>'right','border'=>1,'numformat'=>'0'));
+        $CalibriNormalBorderNumRight = $fm;
         
-        $fm = & $workbook->addFormat(array('fontfamily'=>'Arial','size'=>10, 'align'=>'left','border'=>1));
-        $arialNormalBorderLeft = $fm;
+        $fm = & $workbook->addFormat(array('fontfamily'=>'Calibri','size'=>10, 'align'=>'left','border'=>1));
+        $CalibriNormalBorderLeft = $fm;
         
-        $fm = & $workbook->addFormat(array('fontfamily'=>'Arial','size'=>10, 'bold'=>1,'color'=>'red','border'=>1));
-        $arialNormalBorderRedFontLeft = $fm;
+        $fm = & $workbook->addFormat(array('fontfamily'=>'Calibri','size'=>10, 'bold'=>1,'color'=>'red','border'=>1));
+        $CalibriNormalBorderRedFontLeft = $fm;
         
-         $fm = & $workbook->addFormat(array('fontfamily'=>'Arial', 'size'=>10, 'border'=>1, 'fgcolor'=>'yellow','color'=>'red'));
-        $arialNormalBorderYellowFg = $fm;
+         $fm = & $workbook->addFormat(array('fontfamily'=>'Calibri', 'size'=>10, 'border'=>1, 'fgcolor'=>'yellow','color'=>'red'));
+        $CalibriNormalBorderYellowFg = $fm;
  
         
       
@@ -178,20 +178,20 @@ class excelABMonthlyAlloReport
 			{			 	 	
 				if($salesData["license_no"] !=$lastStoreNo ) // total  sales per store
 				{
-				 	$this->_writeBorderToRow($sp,$row,$arialNormalBorderRedFontRight);					
+				 	$this->_writeBorderToRow($sp,$row,$CalibriNormalBorderRedFontRight);					
 
-					$this->_writeCell($sp, array("data"=>"Total"), $row, "G" , $arialNormalBorderRedFontLeft);	                
+					$this->_writeCell($sp, array("data"=>"Total"), $row, "G" , $CalibriNormalBorderRedFontLeft);	                
 
 	                $endRow = $row;
-					$this->_writeCell($sp, array("data"=>"=SUM(H$startRow:H$endRow)"), $row, "H", $arialNormalBorderRedFontRight);	                				                
+					$this->_writeCell($sp, array("data"=>"=SUM(H$startRow:H$endRow)"), $row, "H", $CalibriNormalBorderRedFontRight);	                				                
 
-	                $this->_writeCell($sp, array("data"=>$this->currencyNumber($total_store_sales)), $row, "I", $arialNormalBorderRedFontRight);		                
+	                $this->_writeCell($sp, array("data"=>$this->currencyNumber($total_store_sales)), $row, "I", $CalibriNormalBorderRedFontRight);		                
 	                
 	        		$total_store_sales =0;
 					
 					$row =$row+1;
 					
-		        	$this->_writeBorderToRow($sp,$row,$arialNormalBorderRedFontRight);
+		        	$this->_writeBorderToRow($sp,$row,$CalibriNormalBorderRedFontRight);
 
 					$row =$row+1;
 					$startRow = $row;
@@ -212,20 +212,20 @@ class excelABMonthlyAlloReport
 			$total_cases = $total_cases + floatval($salesData["allo_cases"]);
 
 			$values = array(
-							array("data"=>$salesData["license_no"],"format"=>$arialNormalBorderLeft ), 
-							array("data"=>$salesData["customer_name"],"format"=>$arialNormalBorderLeft ), 
-							array("data"=>$salesData["cspc_code"], "format"=>$arialNormalBorderNumRight), 
-							array("data"=>$salesData["wine_name"], "format"=>$arialNormalBorderLeft),				
-							array("data"=>$salesData["size"], "format"=>$arialNormalBorderNumRight),				
-							array("data"=>$this->currencyNumber($salesData["price_per_unit"]), "format"=>$arialNormalBorderNumRight),	
-							array("data"=>$this->currencyNumber($salesData["price_per_case"]), "format"=>$arialNormalBorderNumRight),										
+							array("data"=>$salesData["license_no"],"format"=>$CalibriNormalBorderLeft ), 
+							array("data"=>$salesData["customer_name"],"format"=>$CalibriNormalBorderLeft ), 
+							array("data"=>$salesData["cspc_code"], "format"=>$CalibriNormalBorderNumRight), 
+							array("data"=>$salesData["wine_name"], "format"=>$CalibriNormalBorderLeft),				
+							array("data"=>$salesData["size"], "format"=>$CalibriNormalBorderNumRight),				
+							array("data"=>$this->currencyNumber($salesData["price_per_unit"]), "format"=>$CalibriNormalBorderNumRight),	
+							array("data"=>$this->currencyNumber($salesData["price_per_case"]), "format"=>$CalibriNormalBorderNumRight),										
 										
-							array("data"=>$salesData["allo_cases"], "format"=>$arialNormalBorderNumRight),				
-							array("data"=>$display_s_sales, "format"=>$arialNormalBorderNumRight),	
-							array("data"=>$salesData["format_date"],"format"=>$arialNormalBorderLeft ) 																																											); 
+							array("data"=>$salesData["allo_cases"], "format"=>$CalibriNormalBorderNumRight),				
+							array("data"=>$display_s_sales, "format"=>$CalibriNormalBorderNumRight),	
+							array("data"=>$salesData["format_date"],"format"=>$CalibriNormalBorderLeft ) 																																											); 
 			
 				
-	            $this->_writeRow($sp, $values, $row, $arialNormalBorder); 
+	            $this->_writeRow($sp, $values, $row, $CalibriNormalBorder); 
 	            $row++;
 	        
         }//end while
@@ -233,25 +233,25 @@ class excelABMonthlyAlloReport
         //Add last store
         $endRow = $row;
         $this->_writeCell($sp, array("data"=>"=SUM(H$startRow:H$endRow)"), $row, "H"
-	                , $arialNormalBorderRedFontRight);
+	                , $CalibriNormalBorderRedFontRight);
 	                
 	    $this->_writeCell($sp, array("data"=>$this->currencyNumber($total_store_sales)), $row, "I"
-	                , $arialNormalBorderRedFontRight);	
+	                , $CalibriNormalBorderRedFontRight);	
 	                
 		//FINAL TOTAL
         $row++;
          
         
 		$this->_writeCell($sp, array("data"=>"Total"), $row, "G"
-	                , $arialNormalBorderYellowFg);	
+	                , $CalibriNormalBorderYellowFg);	
 	                
 	    //cases
   		$this->_writeCell($sp, array("data"=>$total_cases), $row, "H"
-	                , $arialNormalBorderYellowFg);	
+	                , $CalibriNormalBorderYellowFg);	
 		
 		//sales
    		$this->_writeCell($sp, array("data"=>$this->currencyNumber($total_sales)), $row, "I"
-	                , $arialNormalBorderYellowFg);	
+	                , $CalibriNormalBorderYellowFg);	
 
 		
 		$row++;
@@ -259,12 +259,12 @@ class excelABMonthlyAlloReport
     
     function _writeTitle(& $workbook, & $sp, & $row, $titleText)
     {
-        $fm = & $workbook->addFormat(array('fontfamily'=>'Arial', 'size'=>10, 'bold'=>1, 
+        $fm = & $workbook->addFormat(array('fontfamily'=>'Calibri', 'size'=>10, 'bold'=>1, 
                 'fgcolor'=>'white', 'bgcolor'=>'black', 'align'=>'left', 'valign'=>'center'));
         $reportTitle = $fm;
 
-        $fm = & $workbook->addFormat(array('fontfamily'=>'Arial', 'size'=>10, 'bold'=>1, 'underline'=>1));
-        $arialBoldUnderlined  = $fm;
+        $fm = & $workbook->addFormat(array('fontfamily'=>'Calibri', 'size'=>10, 'bold'=>1, 'underline'=>1));
+        $CalibriBoldUnderlined  = $fm;
         
         $fm = & $workbook->addFormat(array('right'=>2));
         $thickRight = $fm;
@@ -279,18 +279,18 @@ class excelABMonthlyAlloReport
     
     function _writeColumnHeaders(& $workbook, & $sp, & $row)
     {
-        $fm = & $workbook->addFormat(array('fontfamily'=>'Arial', 'size'=>10, 'fgcolor'=>'yellow', 
+        $fm = & $workbook->addFormat(array('fontfamily'=>'Calibri', 'size'=>10, 'fgcolor'=>'yellow', 
                 'bgcolor'=>'black', 'color'=>'red' ,'border'=>1, 'align'=>'center', 'valign'=>'bottom','bold'=>1,
                 'top'=>2, 'bottom'=>2));
         //$fm->setTextWrap();
         $columnHeader = $fm;
         
-        $fm = & $workbook->addFormat(array('fontfamily'=>'Arial', 'size'=>10, 'fgcolor'=>'yellow', 
+        $fm = & $workbook->addFormat(array('fontfamily'=>'Calibri', 'size'=>10, 'fgcolor'=>'yellow', 
                 'bgcolor'=>'black','color'=>'red' ,'border'=>1, 'align'=>'left', 'valign'=>'bottom','bold'=>1,
                 'top'=>2, 'bottom'=>2));       
         $columnHeaderLeft = $fm;
         
-        $fm = & $workbook->addFormat(array('fontfamily'=>'Arial', 'size'=>10, 'fgcolor'=>'yellow', 
+        $fm = & $workbook->addFormat(array('fontfamily'=>'Calibri', 'size'=>10, 'fgcolor'=>'yellow', 
                 'bgcolor'=>'black','color'=>'red' , 'border'=>1, 'align'=>'right', 'valign'=>'bottom','bold'=>1,
                 'top'=>2, 'bottom'=>2));       
         $columnHeaderRight = $fm;

@@ -137,54 +137,54 @@ class excelCSSalesSummary
     { 
         
 	     $isWrite=true;
-         	$fm = & $workbook->addFormat(array('fontfamily'=>'Arial', 'size'=>10, 'border'=>1));
-		$arialNormalBorder = $fm;
+         	$fm = & $workbook->addFormat(array('fontfamily'=>'Calibri', 'size'=>10, 'border'=>1));
+		$CalibriNormalBorder = $fm;
         
         $isWrite=true;
-         	$fm = & $workbook->addFormat(array('fontfamily'=>'Arial', 'size'=>10, 'border'=>0));
-		$arialNormalNoBorder = $fm;
+         	$fm = & $workbook->addFormat(array('fontfamily'=>'Calibri', 'size'=>10, 'border'=>0));
+		$CalibriNormalNoBorder = $fm;
         
 		
-		$fm = & $workbook->addFormat(array('fontfamily'=>'Arial', 'size'=>10, 'border'=>1,'color'=>'red'));
-		$arialNormalBorderRed = $fm;
-		$fm = & $workbook->addFormat(array('fontfamily'=>'Arial', 'size'=>10, 'border'=>1, 'bold'=>1, 'color'=>'red'));
+		$fm = & $workbook->addFormat(array('fontfamily'=>'Calibri', 'size'=>10, 'border'=>1,'color'=>'red'));
+		$CalibriNormalBorderRed = $fm;
+		$fm = & $workbook->addFormat(array('fontfamily'=>'Calibri', 'size'=>10, 'border'=>1, 'bold'=>1, 'color'=>'red'));
         
-		$arialNormalBorderRedBold = $fm;
+		$CalibriNormalBorderRedBold = $fm;
         
         $fgcolor="26"; //yellow
-        $fm = & $workbook->addFormat(array('fontfamily'=>'Arial', 'size'=>10, 'border'=>1, 'bold'=>1, 'color'=>'red','fgcolor'=>$fgcolor));
+        $fm = & $workbook->addFormat(array('fontfamily'=>'Calibri', 'size'=>10, 'border'=>1, 'bold'=>1, 'color'=>'red','fgcolor'=>$fgcolor));
         
-		$arialNormalBorderRedBoldYellowBG = $fm;
+		$CalibriNormalBorderRedBoldYellowBG = $fm;
         
 		
-		$fm = & $workbook->addFormat(array('fontfamily'=>'Arial', 'size'=>10, 'bold'=>1,'border'=>1,'color'=>'blue'));
-		$arialNormalBorderBlue = $fm;
+		$fm = & $workbook->addFormat(array('fontfamily'=>'Calibri', 'size'=>10, 'bold'=>1,'border'=>1,'color'=>'blue'));
+		$CalibriNormalBorderBlue = $fm;
         
-        $fm = & $workbook->addFormat(array('fontfamily'=>'Arial', 'size'=>10, 'border'=>1,'bold'=>1,'color'=>'blue'));
-		$arialNormalBorderBlueBold = $fm;
+        $fm = & $workbook->addFormat(array('fontfamily'=>'Calibri', 'size'=>10, 'border'=>1,'bold'=>1,'color'=>'blue'));
+		$CalibriNormalBorderBlueBold = $fm;
 		
-		$fm = & $workbook->addFormat(array('fontfamily'=>'Arial', 'size'=>10, 'align'=>'right','border'=>1));
-		$arialNormalBorderRight = $fm;
+		$fm = & $workbook->addFormat(array('fontfamily'=>'Calibri', 'size'=>10, 'align'=>'right','border'=>1));
+		$CalibriNormalBorderRight = $fm;
 		
-		$fm = & $workbook->addFormat(array('fontfamily'=>'Arial', 'size'=>10, 'align'=>'right','border'=>1,'numformat'=>'0'));
-		$arialNormalBorderNumRight = $fm;
+		$fm = & $workbook->addFormat(array('fontfamily'=>'Calibri', 'size'=>10, 'align'=>'right','border'=>1,'numformat'=>'0'));
+		$CalibriNormalBorderNumRight = $fm;
 		
-		$fm = & $workbook->addFormat(array('fontfamily'=>'Arial','size'=>9, 'align'=>'right','border'=>1));
+		$fm = & $workbook->addFormat(array('fontfamily'=>'Calibri','size'=>9, 'align'=>'right','border'=>1));
         $fm ->setNumFormat("$#,##0.00;[Red]-$#,##0.00");
-        $arialNormalCurrency = $fm;
+        $CalibriNormalCurrency = $fm;
         
-        $fm = & $workbook->addFormat(array('fontfamily'=>'Arial','size'=>9, 'align'=>'right','bold'=>1,'border'=>1,'color'=>'red'));
+        $fm = & $workbook->addFormat(array('fontfamily'=>'Calibri','size'=>9, 'align'=>'right','bold'=>1,'border'=>1,'color'=>'red'));
         $fm ->setNumFormat("$#,##0.00;[Red]-$#,##0.00");
-        $arialNormalCurrencyRed = $fm;
+        $CalibriNormalCurrencyRed = $fm;
         
-        $fm = & $workbook->addFormat(array('fontfamily'=>'Arial','size'=>9, 'align'=>'right','bold'=>1,'border'=>1,'color'=>'red','fgcolor'=>$fgcolor));
+        $fm = & $workbook->addFormat(array('fontfamily'=>'Calibri','size'=>9, 'align'=>'right','bold'=>1,'border'=>1,'color'=>'red','fgcolor'=>$fgcolor));
         $fm ->setNumFormat("$#,##0.00;[Red]-$#,##0.00");
-        $arialNormalCurrencyRedYellowBG = $fm;
+        $CalibriNormalCurrencyRedYellowBG = $fm;
         
         
-        $fm = & $workbook->addFormat(array('fontfamily'=>'Arial','size'=>9, 'align'=>'right','bold'=>1,'border'=>1,'color'=>'blue'));
+        $fm = & $workbook->addFormat(array('fontfamily'=>'Calibri','size'=>9, 'align'=>'right','bold'=>1,'border'=>1,'color'=>'blue'));
         $fm ->setNumFormat("$#,##0.00;[Red]-$#,##0.00");
-        $arialNormalCurrencyBlue = $fm;
+        $CalibriNormalCurrencyBlue = $fm;
  //   print_r($invoiceDatas);
         $lastPro ="";
         
@@ -280,20 +280,20 @@ class excelCSSalesSummary
         							array("data"=>""), 
         							array("data"=>""), 
         							array("data"=>""), 
-                                    array("data"=>"Consultant Total","format"=>$arialNormalBorderRedBold),
-        							array("data"=>"=SUM(G$startUserRow:G$endUserRow)","format"=>$arialNormalBorderRedBold),
-        							array("data"=>"=SUM(H$startUserRow:H$endUserRow)","format"=>$arialNormalBorderRedBold),
-        							array("data"=>"=SUM(I$startUserRow:I$endUserRow)","format"=>$arialNormalBorderRedBold),
+                                    array("data"=>"Consultant Total","format"=>$CalibriNormalBorderRedBold),
+        							array("data"=>"=SUM(G$startUserRow:G$endUserRow)","format"=>$CalibriNormalBorderRedBold),
+        							array("data"=>"=SUM(H$startUserRow:H$endUserRow)","format"=>$CalibriNormalBorderRedBold),
+        							array("data"=>"=SUM(I$startUserRow:I$endUserRow)","format"=>$CalibriNormalBorderRedBold),
      						
-                                   	array("data"=>"=SUM(J$startUserRow:J$endUserRow)","format"=>$arialNormalBorderRedBold),	
+                                   	array("data"=>"=SUM(J$startUserRow:J$endUserRow)","format"=>$CalibriNormalBorderRedBold),	
                                         
-                                	array("data"=>"=SUM(K$startUserRow:K$endUserRow)","format"=>$arialNormalCurrencyRed),	
-                                    array("data"=>"=SUM(L$startUserRow:L$endUserRow)","format"=>$arialNormalCurrencyRed),												
-                                    array("data"=>"=SUM(M$startUserRow:M$endUserRow)","format"=>$arialNormalCurrencyRed),	
-                                    array("data"=>"=SUM(N$startUserRow:N$endUserRow)","format"=>$arialNormalCurrencyRed),												
+                                	array("data"=>"=SUM(K$startUserRow:K$endUserRow)","format"=>$CalibriNormalCurrencyRed),	
+                                    array("data"=>"=SUM(L$startUserRow:L$endUserRow)","format"=>$CalibriNormalCurrencyRed),												
+                                    array("data"=>"=SUM(M$startUserRow:M$endUserRow)","format"=>$CalibriNormalCurrencyRed),	
+                                    array("data"=>"=SUM(N$startUserRow:N$endUserRow)","format"=>$CalibriNormalCurrencyRed),												
     							); 
                                
-    						 	$this->_writeRow($sp, $values, $row, $arialNormalBorder); 
+    						 	$this->_writeRow($sp, $values, $row, $CalibriNormalBorder); 
                      $last_user = $user_name;
                     
                    
@@ -333,20 +333,20 @@ class excelCSSalesSummary
     							array("data"=>""), 
     							array("data"=>""), 
     							array("data"=>""), 
-                                array("data"=>"Province Total","format"=>$arialNormalBorderBlueBold),
-    							array("data"=>$proTotalW,"format"=>$arialNormalBorderBlue),
-    							array("data"=>$proTotalBM,"format"=>$arialNormalBorderBlue),
-    							array("data"=>$proTotalBT,"format"=>$arialNormalBorderBlue),
-                                array("data"=>$proTotalSB,"format"=>$arialNormalBorderBlue),
+                                array("data"=>"Province Total","format"=>$CalibriNormalBorderBlueBold),
+    							array("data"=>$proTotalW,"format"=>$CalibriNormalBorderBlue),
+    							array("data"=>$proTotalBM,"format"=>$CalibriNormalBorderBlue),
+    							array("data"=>$proTotalBT,"format"=>$CalibriNormalBorderBlue),
+                                array("data"=>$proTotalSB,"format"=>$CalibriNormalBorderBlue),
     						
-                               	array("data"=>$proTotal,"format"=>$arialNormalCurrencyBlue),	
+                               	array("data"=>$proTotal,"format"=>$CalibriNormalCurrencyBlue),	
                                     
-                                array("data"=>$proTotalCM,"format"=>$arialNormalCurrencyBlue),
-                                array("data"=>$proCost,"format"=>$arialNormalCurrencyBlue),
-                                array("data"=>$proTotalPF,"format"=>$arialNormalCurrencyBlue),												
+                                array("data"=>$proTotalCM,"format"=>$CalibriNormalCurrencyBlue),
+                                array("data"=>$proCost,"format"=>$CalibriNormalCurrencyBlue),
+                                array("data"=>$proTotalPF,"format"=>$CalibriNormalCurrencyBlue),												
     							); 
                                 
-    						 	$this->_writeRow($sp, $values, $row, $arialNormalBorder); 
+    						 	$this->_writeRow($sp, $values, $row, $CalibriNormalBorder); 
             
                     $gTotalBT = $gTotalBT+$proTotalBT;
                     $gTotalBM = $gTotalBM+$proTotalBM;
@@ -397,12 +397,12 @@ class excelCSSalesSummary
     							array("data"=>""), 
     							array("data"=>""), 
                                 array("data"=>""), 
-    							array("data"=>$total,"format"=>$arialNormalCurrency),	
-                                array("data"=>$commission,"format"=>$arialNormalCurrency),
-                                array("data"=>$cost,"format"=>$arialNormalCurrency),	
-                                 array("data"=>$profit,"format"=>$arialNormalCurrency),												
+    							array("data"=>$total,"format"=>$CalibriNormalCurrency),	
+                                array("data"=>$commission,"format"=>$CalibriNormalCurrency),
+                                array("data"=>$cost,"format"=>$CalibriNormalCurrency),	
+                                 array("data"=>$profit,"format"=>$CalibriNormalCurrency),												
     							); 
-    						 	$this->_writeRow($sp, $values, $row, $arialNormalBorder); 
+    						 	$this->_writeRow($sp, $values, $row, $CalibriNormalBorder); 
     							$row++;
             
                 }
@@ -419,14 +419,14 @@ class excelCSSalesSummary
     							array("data"=>$qty), 
     							array("data"=>""), 
                                 array("data"=>""), 
-    							array("data"=>$total,"format"=>$arialNormalCurrency),
-    							array("data"=>$commission,"format"=>$arialNormalCurrency),
-                                array("data"=>$cost,"format"=>$arialNormalCurrency),
-                                array("data"=>$profit,"format"=>$arialNormalCurrency),					
+    							array("data"=>$total,"format"=>$CalibriNormalCurrency),
+    							array("data"=>$commission,"format"=>$CalibriNormalCurrency),
+                                array("data"=>$cost,"format"=>$CalibriNormalCurrency),
+                                array("data"=>$profit,"format"=>$CalibriNormalCurrency),					
     							); 
     
     
-    						 	$this->_writeRow($sp, $values, $row, $arialNormalBorder); 
+    						 	$this->_writeRow($sp, $values, $row, $CalibriNormalBorder); 
     							$row++;
     				
                 }
@@ -443,14 +443,14 @@ class excelCSSalesSummary
     							array("data"=>""), 
                                 array("data"=>$qty),
                                 array("data"=>""),
-    							array("data"=>$total,"format"=>$arialNormalCurrency),
-    							array("data"=>$commission,"format"=>$arialNormalCurrency),
-                                array("data"=>$cost,"format"=>$arialNormalCurrency),
-                                	array("data"=>$profit,"format"=>$arialNormalCurrency),					
+    							array("data"=>$total,"format"=>$CalibriNormalCurrency),
+    							array("data"=>$commission,"format"=>$CalibriNormalCurrency),
+                                array("data"=>$cost,"format"=>$CalibriNormalCurrency),
+                                	array("data"=>$profit,"format"=>$CalibriNormalCurrency),					
     							); 
     
     
-    						 	$this->_writeRow($sp, $values, $row, $arialNormalBorder); 
+    						 	$this->_writeRow($sp, $values, $row, $CalibriNormalBorder); 
     							$row++;
     				
                 }
@@ -467,14 +467,14 @@ class excelCSSalesSummary
     							array("data"=>""), 
                                 array("data"=>""),
     							array("data"=>$qty), 
-    							array("data"=>$total,"format"=>$arialNormalCurrency),
-    							array("data"=>$commission,"format"=>$arialNormalCurrency),
-                                array("data"=>$cost,"format"=>$arialNormalCurrency),
-                                	array("data"=>$profit,"format"=>$arialNormalCurrency),					
+    							array("data"=>$total,"format"=>$CalibriNormalCurrency),
+    							array("data"=>$commission,"format"=>$CalibriNormalCurrency),
+                                array("data"=>$cost,"format"=>$CalibriNormalCurrency),
+                                	array("data"=>$profit,"format"=>$CalibriNormalCurrency),					
     							); 
     
     
-    						 	$this->_writeRow($sp, $values, $row, $arialNormalBorder); 
+    						 	$this->_writeRow($sp, $values, $row, $CalibriNormalBorder); 
     							$row++;
     				
                 }
@@ -495,17 +495,17 @@ class excelCSSalesSummary
     							array("data"=>""), 
     							array("data"=>""), 
     							array("data"=>""), 
-                                array("data"=>"Consultant Total","format"=>$arialNormalBorderRedBold),
-    							array("data"=>"=SUM(G$startUserRow:G$endUserRow)","format"=>$arialNormalBorderRedBold),
-    							array("data"=>"=SUM(H$startUserRow:H$endUserRow)","format"=>$arialNormalBorderRedBold),
-    							array("data"=>"=SUM(I$startUserRow:I$endUserRow)","format"=>$arialNormalBorderRedBold),
-    						   	array("data"=>"=SUM(J$startUserRow:J$endUserRow)","format"=>$arialNormalBorderRedBold),	
-                                array("data"=>"=SUM(K$startUserRow:K$endUserRow)","format"=>$arialNormalCurrencyRed),	
-                                array("data"=>"=SUM(L$startUserRow:L$endUserRow)","format"=>$arialNormalCurrencyRed),
-                                array("data"=>"=SUM(M$startUserRow:M$endUserRow)","format"=>$arialNormalCurrencyRed),
-                                array("data"=>"=SUM(N$startUserRow:N$endUserRow)","format"=>$arialNormalCurrencyRed),													
+                                array("data"=>"Consultant Total","format"=>$CalibriNormalBorderRedBold),
+    							array("data"=>"=SUM(G$startUserRow:G$endUserRow)","format"=>$CalibriNormalBorderRedBold),
+    							array("data"=>"=SUM(H$startUserRow:H$endUserRow)","format"=>$CalibriNormalBorderRedBold),
+    							array("data"=>"=SUM(I$startUserRow:I$endUserRow)","format"=>$CalibriNormalBorderRedBold),
+    						   	array("data"=>"=SUM(J$startUserRow:J$endUserRow)","format"=>$CalibriNormalBorderRedBold),	
+                                array("data"=>"=SUM(K$startUserRow:K$endUserRow)","format"=>$CalibriNormalCurrencyRed),	
+                                array("data"=>"=SUM(L$startUserRow:L$endUserRow)","format"=>$CalibriNormalCurrencyRed),
+                                array("data"=>"=SUM(M$startUserRow:M$endUserRow)","format"=>$CalibriNormalCurrencyRed),
+                                array("data"=>"=SUM(N$startUserRow:N$endUserRow)","format"=>$CalibriNormalCurrencyRed),													
 							); 
-                            $this->_writeRow($sp, $values, $row, $arialNormalBorder); 
+                            $this->_writeRow($sp, $values, $row, $CalibriNormalBorder); 
                             $row++;
                                 
         //last province total
@@ -515,19 +515,19 @@ class excelCSSalesSummary
     							array("data"=>""), 
     							array("data"=>""), 
     							array("data"=>""), 
-                                array("data"=>"Province Total","format"=>$arialNormalBorderBlueBold),
-    							array("data"=>$proTotalW,"format"=>$arialNormalBorderBlue),
-    							array("data"=>$proTotalBM,"format"=>$arialNormalBorderBlue),
-    							array("data"=>$proTotalBT,"format"=>$arialNormalBorderBlue),
-                                array("data"=>$proTotalSB,"format"=>$arialNormalBorderBlue),
+                                array("data"=>"Province Total","format"=>$CalibriNormalBorderBlueBold),
+    							array("data"=>$proTotalW,"format"=>$CalibriNormalBorderBlue),
+    							array("data"=>$proTotalBM,"format"=>$CalibriNormalBorderBlue),
+    							array("data"=>$proTotalBT,"format"=>$CalibriNormalBorderBlue),
+                                array("data"=>$proTotalSB,"format"=>$CalibriNormalBorderBlue),
     						
-                               	array("data"=>$proTotal,"format"=>$arialNormalCurrencyBlue),	
+                               	array("data"=>$proTotal,"format"=>$CalibriNormalCurrencyBlue),	
                                     
-                                array("data"=>$proTotalCM,"format"=>$arialNormalCurrencyBlue),	
-                                array("data"=>$proCost,"format"=>$arialNormalCurrencyBlue),	
-                                array("data"=>$proTotalPF,"format"=>$arialNormalCurrencyBlue),												
+                                array("data"=>$proTotalCM,"format"=>$CalibriNormalCurrencyBlue),	
+                                array("data"=>$proCost,"format"=>$CalibriNormalCurrencyBlue),	
+                                array("data"=>$proTotalPF,"format"=>$CalibriNormalCurrencyBlue),												
     							);                         
-    						 	$this->_writeRow($sp, $values, $row, $arialNormalBorder); 
+    						 	$this->_writeRow($sp, $values, $row, $CalibriNormalBorder); 
                                 
             $gTotalBT = $gTotalBT+$proTotalBT;
             $gTotalBM = $gTotalBM+$proTotalBM;
@@ -540,23 +540,23 @@ class excelCSSalesSummary
             $gProTotalPF=$gProTotalPF+$proTotalPF;
             
             
-            $fm = & $workbook->addFormat(array('fontfamily'=>'Arial', 'size'=>10, 'fgcolor'=>'silver', 'bold'=>1, 
+            $fm = & $workbook->addFormat(array('fontfamily'=>'Calibri', 'size'=>10, 'fgcolor'=>'silver', 'bold'=>1, 
                 'bgcolor'=>'black', 'border'=>1, 'align'=>'center', 'valign'=>'bottom',
                 'top'=>1, 'bottom'=>1));
      
             $columnHeader = $fm;
             
-            $fm = & $workbook->addFormat(array('fontfamily'=>'Arial', 'size'=>10, 'fgcolor'=>'silver', 'bold'=>1, 
+            $fm = & $workbook->addFormat(array('fontfamily'=>'Calibri', 'size'=>10, 'fgcolor'=>'silver', 'bold'=>1, 
                     'bgcolor'=>'black', 'border'=>1, 'align'=>'right', 'valign'=>'bottom',
                     'top'=>1, 'bottom'=>1));       
             $columnHeaderRight = $fm;
         
             // country total
-            	$values = array(array("data"=>"", "format"=>$arialNormalNoBorder),  
-		                        array("data"=>"", "format"=>$arialNormalNoBorder),   
-		                        array("data"=>"", "format"=>$arialNormalNoBorder),  
-                                array("data"=>"", "format"=>$arialNormalNoBorder),   
-		                        array("data"=>"", "format"=>$arialNormalNoBorder),   
+            	$values = array(array("data"=>"", "format"=>$CalibriNormalNoBorder),  
+		                        array("data"=>"", "format"=>$CalibriNormalNoBorder),   
+		                        array("data"=>"", "format"=>$CalibriNormalNoBorder),  
+                                array("data"=>"", "format"=>$CalibriNormalNoBorder),   
+		                        array("data"=>"", "format"=>$CalibriNormalNoBorder),   
 		                        
 		                        
 		                        array("data"=>""),  
@@ -573,38 +573,38 @@ class excelCSSalesSummary
                     
                     );	
                     $row++;
-                   	$this->_writeRow($sp, $values, $row, $arialNormalBorder); 
+                   	$this->_writeRow($sp, $values, $row, $CalibriNormalBorder); 
                    	 $values = array(
-    							array("data"=>"", "format"=>$arialNormalNoBorder),  
-		                        array("data"=>"", "format"=>$arialNormalNoBorder),   
-		                        array("data"=>"", "format"=>$arialNormalNoBorder),  
-                                array("data"=>"", "format"=>$arialNormalNoBorder),   
-		                        array("data"=>"", "format"=>$arialNormalNoBorder),    
-                                array("data"=>"Grand Total","format"=>$arialNormalBorderRedBoldYellowBG),
-    							array("data"=>$gTotalW,"format"=>$arialNormalBorderRedBoldYellowBG),
-    							array("data"=>$gTotalBM,"format"=>$arialNormalBorderRedBoldYellowBG),
-    							array("data"=>$gTotalBT,"format"=>$arialNormalBorderRedBoldYellowBG),
-                                array("data"=>$gTotalSB,"format"=>$arialNormalBorderRedBoldYellowBG),
+    							array("data"=>"", "format"=>$CalibriNormalNoBorder),  
+		                        array("data"=>"", "format"=>$CalibriNormalNoBorder),   
+		                        array("data"=>"", "format"=>$CalibriNormalNoBorder),  
+                                array("data"=>"", "format"=>$CalibriNormalNoBorder),   
+		                        array("data"=>"", "format"=>$CalibriNormalNoBorder),    
+                                array("data"=>"Grand Total","format"=>$CalibriNormalBorderRedBoldYellowBG),
+    							array("data"=>$gTotalW,"format"=>$CalibriNormalBorderRedBoldYellowBG),
+    							array("data"=>$gTotalBM,"format"=>$CalibriNormalBorderRedBoldYellowBG),
+    							array("data"=>$gTotalBT,"format"=>$CalibriNormalBorderRedBoldYellowBG),
+                                array("data"=>$gTotalSB,"format"=>$CalibriNormalBorderRedBoldYellowBG),
     						
-                               	array("data"=>$gProTotal,"format"=>$arialNormalCurrencyRedYellowBG),	
+                               	array("data"=>$gProTotal,"format"=>$CalibriNormalCurrencyRedYellowBG),	
                                     
-                                array("data"=>$gProCM,"format"=>$arialNormalCurrencyRedYellowBG),	
-                                array("data"=>$gProCost,"format"=>$arialNormalCurrencyRedYellowBG),	
-                                array("data"=>$gProTotalPF,"format"=>$arialNormalCurrencyRedYellowBG),												
+                                array("data"=>$gProCM,"format"=>$CalibriNormalCurrencyRedYellowBG),	
+                                array("data"=>$gProCost,"format"=>$CalibriNormalCurrencyRedYellowBG),	
+                                array("data"=>$gProTotalPF,"format"=>$CalibriNormalCurrencyRedYellowBG),												
     							);                         
     				$row++;
-                    		 	$this->_writeRow($sp, $values, $row, $arialNormalBorder); 			
+                    		 	$this->_writeRow($sp, $values, $row, $CalibriNormalBorder); 			
 	
     }
     
     function _writeTitle(& $workbook, & $sp, & $row)
     {
-         $fm = & $workbook->addFormat(array('fontfamily'=>'Arial', 'size'=>10, 'bold'=>1, 
+         $fm = & $workbook->addFormat(array('fontfamily'=>'Calibri', 'size'=>10, 'bold'=>1, 
                 'fgcolor'=>'white', 'bgcolor'=>'black', 'align'=>'left', 'valign'=>'center'));
         $reportTitle = $fm;
 
-        $fm = & $workbook->addFormat(array('fontfamily'=>'Arial', 'size'=>10, 'bold'=>1, 'underline'=>1));
-        $arialBoldUnderlined  = $fm;
+        $fm = & $workbook->addFormat(array('fontfamily'=>'Calibri', 'size'=>10, 'bold'=>1, 'underline'=>1));
+        $CalibriBoldUnderlined  = $fm;
         
         $fm = & $workbook->addFormat(array('right'=>2));
         $thickRight = $fm;
@@ -615,18 +615,18 @@ class excelCSSalesSummary
     
     function _writeColumnHeaders(& $workbook, & $sp, & $row)
     {
-        $fm = & $workbook->addFormat(array('fontfamily'=>'Arial', 'size'=>10, 'fgcolor'=>'silver', 'bold'=>1, 
+        $fm = & $workbook->addFormat(array('fontfamily'=>'Calibri', 'size'=>10, 'fgcolor'=>'silver', 'bold'=>1, 
                 'bgcolor'=>'black', 'border'=>1, 'align'=>'center', 'valign'=>'bottom',
                 'top'=>1, 'bottom'=>1));
      
         $columnHeader = $fm;        
         
-        $fm = & $workbook->addFormat(array('fontfamily'=>'Arial', 'size'=>10, 'fgcolor'=>'silver', 'bold'=>1, 
+        $fm = & $workbook->addFormat(array('fontfamily'=>'Calibri', 'size'=>10, 'fgcolor'=>'silver', 'bold'=>1, 
                 'bgcolor'=>'black', 'border'=>1, 'align'=>'left', 'valign'=>'bottom',
                 'top'=>1, 'bottom'=>1));       
         $columnHeaderLeft = $fm;
         
-        $fm = & $workbook->addFormat(array('fontfamily'=>'Arial', 'size'=>10, 'fgcolor'=>'silver', 'bold'=>1, 
+        $fm = & $workbook->addFormat(array('fontfamily'=>'Calibri', 'size'=>10, 'fgcolor'=>'silver', 'bold'=>1, 
                 'bgcolor'=>'black', 'border'=>1, 'align'=>'right', 'valign'=>'bottom',
                 'top'=>1, 'bottom'=>1));       
         $columnHeaderRight = $fm;

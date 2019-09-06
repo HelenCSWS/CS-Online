@@ -123,18 +123,18 @@ class excelDSWRReport
     function _writeData(&$workbook, & $sp, & $row,$estate_id)
     {
 	     $isWrite=true;
-        $fm = & $workbook->addFormat(array('fontfamily'=>'Arial', 'size'=>10, 'border'=>1));
-        $arialNormalBorder = $fm;
+        $fm = & $workbook->addFormat(array('fontfamily'=>'Calibri', 'size'=>10, 'border'=>1));
+        $CalibriNormalBorder = $fm;
  
     
-        $fm = & $workbook->addFormat(array('fontfamily'=>'Arial', 'size'=>10, 'align'=>'right','border'=>1));
-        $arialNormalBorderRight = $fm;
+        $fm = & $workbook->addFormat(array('fontfamily'=>'Calibri', 'size'=>10, 'align'=>'right','border'=>1));
+        $CalibriNormalBorderRight = $fm;
         
-        $fm = & $workbook->addFormat(array('fontfamily'=>'Arial', 'size'=>10, 'align'=>'right','border'=>1,'bold'=>1, 'fgcolor'=>'yellow'));
-        $arialNormalBorderBoldRight = $fm;
+        $fm = & $workbook->addFormat(array('fontfamily'=>'Calibri', 'size'=>10, 'align'=>'right','border'=>1,'bold'=>1, 'fgcolor'=>'yellow'));
+        $CalibriNormalBorderBoldRight = $fm;
         
-        $fm = & $workbook->addFormat(array('fontfamily'=>'Arial', 'size'=>10, 'border'=>1, 'fgcolor'=>'yellow'));
-        $arialNormalBorderYellowFg = $fm;
+        $fm = & $workbook->addFormat(array('fontfamily'=>'Calibri', 'size'=>10, 'border'=>1, 'fgcolor'=>'yellow'));
+        $CalibriNormalBorderYellowFg = $fm;
  
  
         
@@ -169,20 +169,20 @@ class excelDSWRReport
 	            $values = array(array("data"=>($sales["estate_number"])), 
 	                      array("data"=>"SALE"), 
 	                      array("data"=>$delivery_date), 
-	                      array("data"=>$sales["invoice_number"],"format"=>$arialNormalBorderRight), 
-	                      array("data"=>"","format"=>$arialNormalBorderRight), 
-	                      array("data"=>$sales["licensee_number"],"format"=>$arialNormalBorderRight), 
+	                      array("data"=>$sales["invoice_number"],"format"=>$CalibriNormalBorderRight), 
+	                      array("data"=>"","format"=>$CalibriNormalBorderRight), 
+	                      array("data"=>$sales["licensee_number"],"format"=>$CalibriNormalBorderRight), 
 	                      array("data"=>$store_type),
-							    array("data"=>"","format"=>$arialNormalBorderRight), 
-	                      array("data"=>$sales["sku"],"format"=>$arialNormalBorderRight), 
-	                      array("data"=>$sales["orqt"],"format"=>$arialNormalBorderRight),
-	                      array("data"=>$sales["price"],"format"=>$arialNormalBorderRight),							
-	                      array("data"=>$sales["deposit"],"format"=>$arialNormalBorderRight),
-	                       array("data"=>$sales["total_amount"],"format"=>$arialNormalBorderRight),
-	                        array("data"=>"","format"=>$arialNormalBorderRight)
+							    array("data"=>"","format"=>$CalibriNormalBorderRight), 
+	                      array("data"=>$sales["sku"],"format"=>$CalibriNormalBorderRight), 
+	                      array("data"=>$sales["orqt"],"format"=>$CalibriNormalBorderRight),
+	                      array("data"=>$sales["price"],"format"=>$CalibriNormalBorderRight),							
+	                      array("data"=>$sales["deposit"],"format"=>$CalibriNormalBorderRight),
+	                       array("data"=>$sales["total_amount"],"format"=>$CalibriNormalBorderRight),
+	                        array("data"=>"","format"=>$CalibriNormalBorderRight)
 								); 
 								
-				     $this->_writeRow($sp, $values, $row, $arialNormalBorder); 
+				     $this->_writeRow($sp, $values, $row, $CalibriNormalBorder); 
     	      
         	  $row++;
         	
@@ -196,12 +196,12 @@ class excelDSWRReport
     
     function _writeTitle(& $workbook, & $sp, & $row)
     {
-         $fm = & $workbook->addFormat(array('fontfamily'=>'Arial', 'size'=>10, 'bold'=>1, 
+         $fm = & $workbook->addFormat(array('fontfamily'=>'Calibri', 'size'=>10, 'bold'=>1, 
                 'fgcolor'=>'white', 'bgcolor'=>'black', 'align'=>'left', 'valign'=>'center'));
         $reportTitle = $fm;
 
-        $fm = & $workbook->addFormat(array('fontfamily'=>'Arial', 'size'=>10, 'bold'=>1, 'underline'=>1));
-        $arialBoldUnderlined  = $fm;
+        $fm = & $workbook->addFormat(array('fontfamily'=>'Calibri', 'size'=>10, 'bold'=>1, 'underline'=>1));
+        $CalibriBoldUnderlined  = $fm;
         
         $fm = & $workbook->addFormat(array('right'=>2));
         $thickRight = $fm;
@@ -217,7 +217,7 @@ class excelDSWRReport
     
     function _writeColumnHeaders(& $workbook, & $sp, & $row)
     {
-        $fm = & $workbook->addFormat(array('fontfamily'=>'Arial', 'size'=>10, 'fgcolor'=>'white', 
+        $fm = & $workbook->addFormat(array('fontfamily'=>'Calibri', 'size'=>10, 'fgcolor'=>'white', 
                 'bgcolor'=>'black', 'border'=>1, 'align'=>'center', 'valign'=>'bottom',
                 'top'=>1, 'bottom'=>1));
      
@@ -226,12 +226,12 @@ class excelDSWRReport
      
         
         
-        $fm = & $workbook->addFormat(array('fontfamily'=>'Arial', 'size'=>10, 'fgcolor'=>'white', 
+        $fm = & $workbook->addFormat(array('fontfamily'=>'Calibri', 'size'=>10, 'fgcolor'=>'white', 
                 'bgcolor'=>'black', 'border'=>1, 'align'=>'left', 'valign'=>'bottom',
                 'top'=>1, 'bottom'=>1));       
         $columnHeaderLeft = $fm;
         
-        $fm = & $workbook->addFormat(array('fontfamily'=>'Arial', 'size'=>10, 'fgcolor'=>'white', 
+        $fm = & $workbook->addFormat(array('fontfamily'=>'Calibri', 'size'=>10, 'fgcolor'=>'white', 
                 'bgcolor'=>'black', 'border'=>1, 'align'=>'right', 'valign'=>'bottom',
                 'top'=>1, 'bottom'=>1));       
         $columnHeaderRight = $fm;

@@ -174,14 +174,14 @@ class excelCCReport
     
     function _writeCCData(&$workbook, & $sp, & $row, $infoData)
     {
-		$fm = & $workbook->addFormat(array('fontfamily'=>'Arial', 'size'=>10, 'border'=>1));
-		$arialNormalBorder = $fm;
+		$fm = & $workbook->addFormat(array('fontfamily'=>'Calibri', 'size'=>10, 'border'=>1));
+		$CalibriNormalBorder = $fm;
 		
-		$fm = & $workbook->addFormat(array('fontfamily'=>'Arial', 'size'=>10, 'align'=>'right','border'=>1));
-		$arialNormalBorderRight = $fm;
+		$fm = & $workbook->addFormat(array('fontfamily'=>'Calibri', 'size'=>10, 'align'=>'right','border'=>1));
+		$CalibriNormalBorderRight = $fm;
 		
-		$fm = & $workbook->addFormat(array('fontfamily'=>'Arial', 'size'=>10, 'align'=>'right','border'=>1,'numformat'=>'0'));
-		$arialNormalBorderNumRight = $fm;
+		$fm = & $workbook->addFormat(array('fontfamily'=>'Calibri', 'size'=>10, 'align'=>'right','border'=>1,'numformat'=>'0'));
+		$CalibriNormalBorderNumRight = $fm;
 		
 		
 		$i=1;
@@ -235,13 +235,13 @@ class excelCCReport
 				$values = array(
 								array("data"=>$ccData["customer_name"]), 
 								array("data"=>$ccData["license_number"]), 
-								array("data"=>$ccNumber_new, "format"=>$arialNormalBorderNumRight), 
+								array("data"=>$ccNumber_new, "format"=>$CalibriNormalBorderNumRight), 
 								array("data"=>$ccData["card_type"]),
 								array("data"=>$expiry_date)
 								); 
 			}
 							             
-            $this->_writeRow($sp, $values, $row, $arialNormalBorder); 
+            $this->_writeRow($sp, $values, $row, $CalibriNormalBorder); 
             $i++;
             $row++;
         }
@@ -250,12 +250,12 @@ class excelCCReport
     
     function _writeTitle(& $workbook, & $sp, & $row, $titleText)
     {
-        $fm = & $workbook->addFormat(array('fontfamily'=>'Arial', 'size'=>10, 'bold'=>1, 
+        $fm = & $workbook->addFormat(array('fontfamily'=>'Calibri', 'size'=>10, 'bold'=>1, 
                 'fgcolor'=>'white', 'bgcolor'=>'black', 'align'=>'left', 'valign'=>'center'));
         $reportTitle = $fm;
 
-        $fm = & $workbook->addFormat(array('fontfamily'=>'Arial', 'size'=>10, 'bold'=>1, 'underline'=>1));
-        $arialBoldUnderlined  = $fm;
+        $fm = & $workbook->addFormat(array('fontfamily'=>'Calibri', 'size'=>10, 'bold'=>1, 'underline'=>1));
+        $CalibriBoldUnderlined  = $fm;
         
         $fm = & $workbook->addFormat(array('right'=>2));
         $thickRight = $fm;
@@ -271,18 +271,18 @@ class excelCCReport
     
     function _writeColumnHeaders(& $workbook, & $sp, & $row)
     {
-        $fm = & $workbook->addFormat(array('fontfamily'=>'Arial', 'size'=>10, 'fgcolor'=>'silver', 
+        $fm = & $workbook->addFormat(array('fontfamily'=>'Calibri', 'size'=>10, 'fgcolor'=>'silver', 
                 'bgcolor'=>'black', 'border'=>1, 'align'=>'center', 'valign'=>'bottom',
                 'top'=>2, 'bottom'=>2));
         //$fm->setTextWrap();
         $columnHeader = $fm;
                
-        $fm = & $workbook->addFormat(array('fontfamily'=>'Arial', 'size'=>10, 'fgcolor'=>'silver', 
+        $fm = & $workbook->addFormat(array('fontfamily'=>'Calibri', 'size'=>10, 'fgcolor'=>'silver', 
                 'bgcolor'=>'black', 'border'=>1, 'align'=>'left', 'valign'=>'bottom',
                 'top'=>2, 'bottom'=>2));       
         $columnHeaderLeft = $fm;
         
-        $fm = & $workbook->addFormat(array('fontfamily'=>'Arial', 'size'=>10, 'fgcolor'=>'silver', 
+        $fm = & $workbook->addFormat(array('fontfamily'=>'Calibri', 'size'=>10, 'fgcolor'=>'silver', 
                 'bgcolor'=>'black', 'border'=>1, 'align'=>'right', 'valign'=>'bottom',
                 'top'=>2, 'bottom'=>2));       
         $columnHeaderRight = $fm;        

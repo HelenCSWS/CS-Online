@@ -124,14 +124,14 @@ class excelCaseValueReport
     
     function _writeData(&$workbook, & $sp, & $row, $report_data)
     {
-       	$fm = & $workbook->addFormat(array('fontfamily'=>'Arial', 'size'=>10, 'border'=>1));
-		$arialNormalBorder = $fm;
+       	$fm = & $workbook->addFormat(array('fontfamily'=>'Calibri', 'size'=>10, 'border'=>1));
+		$CalibriNormalBorder = $fm;
 		
-		$fm = & $workbook->addFormat(array('fontfamily'=>'Arial', 'size'=>10, 'align'=>'right','border'=>1));
-		$arialNormalBorderRight = $fm;
+		$fm = & $workbook->addFormat(array('fontfamily'=>'Calibri', 'size'=>10, 'align'=>'right','border'=>1));
+		$CalibriNormalBorderRight = $fm;
 		
-		$fm = & $workbook->addFormat(array('fontfamily'=>'Arial', 'size'=>10, 'align'=>'right','border'=>1,'numformat'=>'0'));
-		$arialNormalBorderNumRight = $fm;
+		$fm = & $workbook->addFormat(array('fontfamily'=>'Calibri', 'size'=>10, 'align'=>'right','border'=>1,'numformat'=>'0'));
+		$CalibriNormalBorderNumRight = $fm;
 		
 		
 		$i=1;
@@ -193,7 +193,7 @@ class excelCaseValueReport
 												
 							); 
 										             
-            $this->_writeRow($sp, $values, $row, $arialNormalBorder); 
+            $this->_writeRow($sp, $values, $row, $CalibriNormalBorder); 
             $i++;
             $row++;
             
@@ -206,12 +206,12 @@ class excelCaseValueReport
     
     function _writeTitle(& $workbook, & $sp, & $row, $worksheetName)
     {
-		$fm = & $workbook->addFormat(array('fontfamily'=>'Arial', 'size'=>12, 'bold'=>1,
+		$fm = & $workbook->addFormat(array('fontfamily'=>'Calibri', 'size'=>12, 'bold'=>1,
 									'fgcolor'=>'silver', 'bgcolor'=>'black', 'align'=>'center', 'valign'=>'center'));
 		$reportTitle = $fm;
 		
-		$fm = & $workbook->addFormat(array('fontfamily'=>'Arial', 'size'=>10, 'bold'=>1, 'underline'=>1));
-		$arialBoldUnderlined  = $fm;
+		$fm = & $workbook->addFormat(array('fontfamily'=>'Calibri', 'size'=>10, 'bold'=>1, 'underline'=>1));
+		$CalibriBoldUnderlined  = $fm;
 		
 		$fm = & $workbook->addFormat(array('right'=>2));
 		$thickRight = $fm;
@@ -245,7 +245,7 @@ class excelCaseValueReport
         $row++;
         $row++;
           
-        $this->_writeCell($sp, array("data"=>"$worksheetName - Generated on: " . date("M d, Y")), $row, "A", $arialBoldUnderlined); 
+        $this->_writeCell($sp, array("data"=>"$worksheetName - Generated on: " . date("M d, Y")), $row, "A", $CalibriBoldUnderlined); 
         $row++;
         $row++;
         
@@ -258,7 +258,7 @@ class excelCaseValueReport
     
     function _writeColumnHeaders(& $workbook, & $sp, & $row)
     {
-        $fm = & $workbook->addFormat(array('fontfamily'=>'Arial', 'size'=>10, 'fgcolor'=>'silver', 
+        $fm = & $workbook->addFormat(array('fontfamily'=>'Calibri', 'size'=>10, 'fgcolor'=>'silver', 
                 'bgcolor'=>'black', 'border'=>1, 'align'=>'center', 'valign'=>'bottom','bold'=>0,
                 'top'=>2, 'bottom'=>2));
         //$fm->setTextWrap();
@@ -266,12 +266,12 @@ class excelCaseValueReport
         
       
         
-        $fm = & $workbook->addFormat(array('fontfamily'=>'Arial', 'size'=>10, 'fgcolor'=>'silver', 
+        $fm = & $workbook->addFormat(array('fontfamily'=>'Calibri', 'size'=>10, 'fgcolor'=>'silver', 
                 'bgcolor'=>'black', 'border'=>1, 'align'=>'left', 'valign'=>'bottom','bold'=>0,
                 'top'=>2, 'bottom'=>2));       
         $columnHeaderLeft = $fm;
         
-        $fm = & $workbook->addFormat(array('fontfamily'=>'Arial', 'size'=>10, 'fgcolor'=>'silver', 
+        $fm = & $workbook->addFormat(array('fontfamily'=>'Calibri', 'size'=>10, 'fgcolor'=>'silver', 
                 'bgcolor'=>'black', 'border'=>1, 'align'=>'right', 'valign'=>'bottom','bold'=>0,
                 'top'=>2, 'bottom'=>2));       
         $columnHeaderRight = $fm;

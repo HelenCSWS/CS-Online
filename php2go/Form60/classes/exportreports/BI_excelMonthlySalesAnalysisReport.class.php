@@ -280,7 +280,7 @@ class BI_excelMonthlySalesAnalysisReport
     {
 	
 	//header
-		   $fm = & $workbook->addFormat(array('fontfamily'=>'Arial', 'size'=>10, 'fgcolor'=>'silver', 
+		   $fm = & $workbook->addFormat(array('fontfamily'=>'Calibri', 'size'=>10, 'fgcolor'=>'silver', 
                 'bgcolor'=>'black', 'border'=>1, 'align'=>'center', 'valign'=>'bottom','bold'=>1,
                 'top'=>1, 'bottom'=>1));
         //$fm->setTextWrap();
@@ -288,40 +288,40 @@ class BI_excelMonthlySalesAnalysisReport
         
       
         
-        $fm = & $workbook->addFormat(array('fontfamily'=>'Arial', 'size'=>10, 'fgcolor'=>'silver', 
+        $fm = & $workbook->addFormat(array('fontfamily'=>'Calibri', 'size'=>10, 'fgcolor'=>'silver', 
                 'bgcolor'=>'black', 'border'=>1, 'align'=>'left', 'valign'=>'bottom','bold'=>1,
                 'top'=>1, 'bottom'=>1));       
         $columnHeaderLeft = $fm;
         
         
         
-        $fm = & $workbook->addFormat(array('fontfamily'=>'Arial', 'size'=>10, 'fgcolor'=>'silver', 
+        $fm = & $workbook->addFormat(array('fontfamily'=>'Calibri', 'size'=>10, 'fgcolor'=>'silver', 
                 'bgcolor'=>'black', 'border'=>1, 'align'=>'right', 'valign'=>'bottom','bold'=>1,
                 'top'=>1, 'bottom'=>1));       
         $columnHeaderRight = $fm;
 	
 	// content
 	
-		$fm = & $workbook->addFormat(array('fontfamily'=>'Arial', 'size'=>10, 'border'=>1));
-		$arialNormalBorder = $fm;
+		$fm = & $workbook->addFormat(array('fontfamily'=>'Calibri', 'size'=>10, 'border'=>1));
+		$CalibriNormalBorder = $fm;
 		
-		$fm = & $workbook->addFormat(array('fontfamily'=>'Arial', 'size'=>10, 'align'=>'right','border'=>1));
-		$arialNormalBorderRight = $fm;
+		$fm = & $workbook->addFormat(array('fontfamily'=>'Calibri', 'size'=>10, 'align'=>'right','border'=>1));
+		$CalibriNormalBorderRight = $fm;
 		
-		$fm = & $workbook->addFormat(array('fontfamily'=>'Arial', 'size'=>10, 'align'=>'left','border'=>1));
-		$arialNormalBorderLeft = $fm;
+		$fm = & $workbook->addFormat(array('fontfamily'=>'Calibri', 'size'=>10, 'align'=>'left','border'=>1));
+		$CalibriNormalBorderLeft = $fm;
 
-		$fm = & $workbook->addFormat(array('fontfamily'=>'Arial', 'size'=>10, 'align'=>'right','border'=>1,'numformat'=>'0'));
-		$arialNormalBorderNumRight = $fm;
+		$fm = & $workbook->addFormat(array('fontfamily'=>'Calibri', 'size'=>10, 'align'=>'right','border'=>1,'numformat'=>'0'));
+		$CalibriNormalBorderNumRight = $fm;
 		
-		$fm = & $workbook->addFormat(array('fontfamily'=>'Arial','size'=>10, 'align'=>'right','border'=>1));
+		$fm = & $workbook->addFormat(array('fontfamily'=>'Calibri','size'=>10, 'align'=>'right','border'=>1));
         $fm ->setNumFormat("$#,##0.00;[Black]-$#,##0.00");
-        $arialNormalCurrency = $fm;
+        $CalibriNormalCurrency = $fm;
 		
-		$fm = & $workbook->addFormat(array('fontfamily'=>'Arial','size'=>10, 'fgcolor'=>'silver', 'bold'=>1,
+		$fm = & $workbook->addFormat(array('fontfamily'=>'Calibri','size'=>10, 'fgcolor'=>'silver', 'bold'=>1,
                 'bgcolor'=>'black','align'=>'right','border'=>1));
         $fm ->setNumFormat("$#,##0.00;[Black]-$#,##0.00");
-        $arialNormalHeaderCurrency = $fm;
+        $CalibriNormalHeaderCurrency = $fm;
 
 		$i=1;
 		$startRow= $row; //remember the start row
@@ -403,30 +403,30 @@ class BI_excelMonthlySalesAnalysisReport
 			if($this->province_id ==1)
 			{
 				$values = array(
-								array("data"=>$license,"format"=>$arialNormalBorderLeft), 
-								array("data"=>$total_case,"format"=>$arialNormalBorderNumRight), 
-								array("data"=>$total_case_value,"format"=>$arialNormalBorderNumRight), 
-								array("data"=>$total_whole_sale,"format"=>$arialNormalCurrency), 
-								array("data"=>$total_retail,"format"=>$arialNormalCurrency), 
-								array("data"=>$total_profit,"format"=>$arialNormalCurrency), 
-								array("data"=>$precentage,"format"=>$arialNormalBorderNumRight)				
+								array("data"=>$license,"format"=>$CalibriNormalBorderLeft), 
+								array("data"=>$total_case,"format"=>$CalibriNormalBorderNumRight), 
+								array("data"=>$total_case_value,"format"=>$CalibriNormalBorderNumRight), 
+								array("data"=>$total_whole_sale,"format"=>$CalibriNormalCurrency), 
+								array("data"=>$total_retail,"format"=>$CalibriNormalCurrency), 
+								array("data"=>$total_profit,"format"=>$CalibriNormalCurrency), 
+								array("data"=>$precentage,"format"=>$CalibriNormalBorderNumRight)				
 													
 								); 
 			}
 			else
 			{
 					$values = array(
-								array("data"=>$license,"format"=>$arialNormalBorderLeft), 
-								array("data"=>$total_case,"format"=>$arialNormalBorderNumRight), 
-								array("data"=>$total_case_value,"format"=>$arialNormalBorderNumRight), 
-								array("data"=>$total_whole_sale,"format"=>$arialNormalCurrency), 
-								array("data"=>$total_profit,"format"=>$arialNormalCurrency)		
+								array("data"=>$license,"format"=>$CalibriNormalBorderLeft), 
+								array("data"=>$total_case,"format"=>$CalibriNormalBorderNumRight), 
+								array("data"=>$total_case_value,"format"=>$CalibriNormalBorderNumRight), 
+								array("data"=>$total_whole_sale,"format"=>$CalibriNormalCurrency), 
+								array("data"=>$total_profit,"format"=>$CalibriNormalCurrency)		
 													
 								); 
 			}
 			
 						             
-            $this->_writeRow($sp, $values, $row, $arialNormalBorderNumRight); 
+            $this->_writeRow($sp, $values, $row, $CalibriNormalBorderNumRight); 
            
             $row++;
             
@@ -445,9 +445,9 @@ class BI_excelMonthlySalesAnalysisReport
 				array("data"=>"Total", "format"=>$columnHeaderRight), 
 				array("data"=>$gTotalCS, "format"=>$columnHeaderRight),
 				array("data"=>$gTotalVL, "format"=>$columnHeaderRight), 
-				array("data"=>$gTotalWS, "format"=>$arialNormalHeaderCurrency), 
-				array("data"=>$gTotalRT, "format"=>$arialNormalHeaderCurrency),
-				array("data"=>$gTotalPT, "format"=>$arialNormalHeaderCurrency),
+				array("data"=>$gTotalWS, "format"=>$CalibriNormalHeaderCurrency), 
+				array("data"=>$gTotalRT, "format"=>$CalibriNormalHeaderCurrency),
+				array("data"=>$gTotalPT, "format"=>$CalibriNormalHeaderCurrency),
 				array("data"=>"", "format"=>$columnHeaderRight)
 	
 				);	
@@ -464,32 +464,32 @@ class BI_excelMonthlySalesAnalysisReport
     {
 	
 	    //header
-		$fm = & $workbook->addFormat(array('fontfamily'=>'Arial', 'size'=>10, 'fgcolor'=>'silver', 
+		$fm = & $workbook->addFormat(array('fontfamily'=>'Calibri', 'size'=>10, 'fgcolor'=>'silver', 
                 'bgcolor'=>'black', 'border'=>1, 'align'=>'center', 'valign'=>'bottom','bold'=>1,
                 'top'=>1, 'bottom'=>1));
         //$fm->setTextWrap();
         $columnHeader = $fm;
         
       
-         $fm = & $workbook->addFormat(array('fontfamily'=>'Arial', 'size'=>10, 'fgcolor'=>'silver', 
+         $fm = & $workbook->addFormat(array('fontfamily'=>'Calibri', 'size'=>10, 'fgcolor'=>'silver', 
                 'bgcolor'=>'black', 'border'=>1, 'align'=>'right', 'valign'=>'bottom','bold'=>1,
                 'top'=>1, 'bottom'=>1));       
         $columnHeaderRight = $fm;
         
-        $fm = & $workbook->addFormat(array('fontfamily'=>'Arial', 'size'=>10, 'fgcolor'=>'silver', 
+        $fm = & $workbook->addFormat(array('fontfamily'=>'Calibri', 'size'=>10, 'fgcolor'=>'silver', 
                 'bgcolor'=>'black', 'border'=>1, 'align'=>'left', 'valign'=>'bottom','bold'=>1,
                 'top'=>1, 'bottom'=>1));       
         $columnHeaderLeft = $fm;
         
         
         
-        $fm = & $workbook->addFormat(array('fontfamily'=>'Arial', 'size'=>10, 'fgcolor'=>'silver', 'color'=>'blue',
+        $fm = & $workbook->addFormat(array('fontfamily'=>'Calibri', 'size'=>10, 'fgcolor'=>'silver', 'color'=>'blue',
                 'bgcolor'=>'black', 'border'=>1, 'align'=>'right', 'valign'=>'bottom','bold'=>0,
                 'top'=>1, 'bottom'=>1));       
         $columnHeaderRightRed = $fm;
         
         
-         $fm = & $workbook->addFormat(array('fontfamily'=>'Arial', 'size'=>10, 'fgcolor'=>'silver', 'color'=>'blue',
+         $fm = & $workbook->addFormat(array('fontfamily'=>'Calibri', 'size'=>10, 'fgcolor'=>'silver', 'color'=>'blue',
                 'bgcolor'=>'black', 'border'=>1, 'align'=>'left', 'valign'=>'bottom','bold'=>0,
                 'top'=>1, 'bottom'=>1));       
         $columnHeaderLeftRed = $fm;
@@ -500,29 +500,29 @@ class BI_excelMonthlySalesAnalysisReport
 	
 	// content
 	
-		$fm = & $workbook->addFormat(array('fontfamily'=>'Arial', 'size'=>10, 'border'=>1));
-		$arialNormalBorder = $fm;
+		$fm = & $workbook->addFormat(array('fontfamily'=>'Calibri', 'size'=>10, 'border'=>1));
+		$CalibriNormalBorder = $fm;
 		
-		$fm = & $workbook->addFormat(array('fontfamily'=>'Arial', 'size'=>10, 'align'=>'right','border'=>1));
-		$arialNormalBorderRight = $fm;
+		$fm = & $workbook->addFormat(array('fontfamily'=>'Calibri', 'size'=>10, 'align'=>'right','border'=>1));
+		$CalibriNormalBorderRight = $fm;
 		
-		$fm = & $workbook->addFormat(array('fontfamily'=>'Arial', 'size'=>10, 'align'=>'left','border'=>1));
-		$arialNormalBorderLeft = $fm;
+		$fm = & $workbook->addFormat(array('fontfamily'=>'Calibri', 'size'=>10, 'align'=>'left','border'=>1));
+		$CalibriNormalBorderLeft = $fm;
 
-		$fm = & $workbook->addFormat(array('fontfamily'=>'Arial', 'size'=>10, 'align'=>'right','border'=>1,'numformat'=>'0'));
-		$arialNormalBorderNumRight = $fm;
+		$fm = & $workbook->addFormat(array('fontfamily'=>'Calibri', 'size'=>10, 'align'=>'right','border'=>1,'numformat'=>'0'));
+		$CalibriNormalBorderNumRight = $fm;
 		
-		$fm = & $workbook->addFormat(array('fontfamily'=>'Arial', 'size'=>10, 'align'=>'right','border'=>1,'color'=>'blue','numformat'=>'0'));
-		$arialNormalBorderNumRightRed = $fm;
+		$fm = & $workbook->addFormat(array('fontfamily'=>'Calibri', 'size'=>10, 'align'=>'right','border'=>1,'color'=>'blue','numformat'=>'0'));
+		$CalibriNormalBorderNumRightRed = $fm;
 		
-		$fm = & $workbook->addFormat(array('fontfamily'=>'Arial','size'=>10, 'align'=>'right','border'=>1));
+		$fm = & $workbook->addFormat(array('fontfamily'=>'Calibri','size'=>10, 'align'=>'right','border'=>1));
         $fm ->setNumFormat("$#,##0.00;[Black]-$#,##0.00");
-        $arialNormalCurrency = $fm;
+        $CalibriNormalCurrency = $fm;
 		
-		$fm = & $workbook->addFormat(array('fontfamily'=>'Arial','size'=>10, 'fgcolor'=>'silver', 
+		$fm = & $workbook->addFormat(array('fontfamily'=>'Calibri','size'=>10, 'fgcolor'=>'silver', 
                 'bgcolor'=>'black','align'=>'right','border'=>1));
         $fm ->setNumFormat("$#,##0.00;[Black]-$#,##0.00");
-        $arialNormalHeaderCurrency = $fm;
+        $CalibriNormalHeaderCurrency = $fm;
 
 		$i=1;
 		$startRow= $row; //remember the start row
@@ -572,10 +572,10 @@ class BI_excelMonthlySalesAnalysisReport
 				
 			$values = array(
 					array("data"=>"Customers who purchased this month", "format"=>$columnHeaderLeft), 
-					array("data"=>$gTotalPurchasedCMS, "format"=>$arialNormalBorderNumRight),
-					array("data"=>$precentage, "format"=>$arialNormalBorderNumRight),
+					array("data"=>$gTotalPurchasedCMS, "format"=>$CalibriNormalBorderNumRight),
+					array("data"=>$precentage, "format"=>$CalibriNormalBorderNumRight),
 					array("data"=>"Customer base", "format"=>$columnHeaderLeft),
-					array("data"=>$gTotalCMS, "format"=>$arialNormalBorderNumRight),
+					array("data"=>$gTotalCMS, "format"=>$CalibriNormalBorderNumRight),
 				
 					);	
 					
@@ -596,8 +596,8 @@ class BI_excelMonthlySalesAnalysisReport
 					}
 				  $values = array(
 					array("data"=>"Customers who didn't purchased last month", "format"=>$columnHeaderLeftRed), 
-					array("data"=>$notPCHCMs, "format"=>$arialNormalBorderNumRightRed),
-					array("data"=>$precentage, "format"=>$arialNormalBorderNumRightRed)
+					array("data"=>$notPCHCMs, "format"=>$CalibriNormalBorderNumRightRed),
+					array("data"=>$precentage, "format"=>$CalibriNormalBorderNumRightRed)
 
 				
 					);	
@@ -613,8 +613,8 @@ class BI_excelMonthlySalesAnalysisReport
 	        	$precentage = F60Common::percentage($nMSCMs,$gTotalCMS,2);
 	        	$values = array(
 					array("data"=>"Customers who didn't purchased current month", "format"=>$columnHeaderLeft), 
-					array("data"=>$nMSCMs, "format"=>$arialNormalBorderNumRight),
-					array("data"=>$precentage, "format"=>$arialNormalBorderNumRight)				
+					array("data"=>$nMSCMs, "format"=>$CalibriNormalBorderNumRight),
+					array("data"=>$precentage, "format"=>$CalibriNormalBorderNumRight)				
 					);	
 					
 				
@@ -652,12 +652,12 @@ class BI_excelMonthlySalesAnalysisReport
 			
 			//	$value=round(($case_value/$case_sold),2);
 				$values = array(
-								array("data"=>$license,"format"=>$arialNormalBorderLeft), 
-								array("data"=>$total_recs,"format"=>$arialNormalBorderNumRight), 
-								array("data"=>$precentage,"format"=>$arialNormalBorderNumRight)				
+								array("data"=>$license,"format"=>$CalibriNormalBorderLeft), 
+								array("data"=>$total_recs,"format"=>$CalibriNormalBorderNumRight), 
+								array("data"=>$precentage,"format"=>$CalibriNormalBorderNumRight)				
 													
 								); 			
-	            $this->_writeRow($sp, $values, $row, $arialNormalBorderNumRight); 
+	            $this->_writeRow($sp, $values, $row, $CalibriNormalBorderNumRight); 
 	            
 	           
 	            
@@ -738,9 +738,9 @@ class BI_excelMonthlySalesAnalysisReport
 			
 			//	$value=round(($case_value/$case_sold),2);
 				$values = array(
-								array("data"=>$license,"format"=>$arialNormalBorderLeft), 
-								array("data"=>$total_recs,"format"=>$arialNormalBorderNumRight), 
-								array("data"=>$precentage,"format"=>$arialNormalBorderNumRight)				
+								array("data"=>$license,"format"=>$CalibriNormalBorderLeft), 
+								array("data"=>$total_recs,"format"=>$CalibriNormalBorderNumRight), 
+								array("data"=>$precentage,"format"=>$CalibriNormalBorderNumRight)				
 													
 								); 
 				
@@ -749,7 +749,7 @@ class BI_excelMonthlySalesAnalysisReport
 	           
 	          
 							             
-	            $this->_writeRow($sp, $values, $row, $arialNormalBorderNumRight); 
+	            $this->_writeRow($sp, $values, $row, $CalibriNormalBorderNumRight); 
 	           
 	            $row++;
 	            
@@ -794,9 +794,9 @@ class BI_excelMonthlySalesAnalysisReport
 				$precentage =F60Common::percentage($total_recs,$notCMs,2);
 				
 				$values = array(
-								array("data"=>$license,"format"=>$arialNormalBorderLeft), 
-								array("data"=>$total_recs,"format"=>$arialNormalBorderNumRight), 
-								array("data"=>$precentage,"format"=>$arialNormalBorderNumRight)				
+								array("data"=>$license,"format"=>$CalibriNormalBorderLeft), 
+								array("data"=>$total_recs,"format"=>$CalibriNormalBorderNumRight), 
+								array("data"=>$precentage,"format"=>$CalibriNormalBorderNumRight)				
 													
 								); 
 				
@@ -809,30 +809,30 @@ class BI_excelMonthlySalesAnalysisReport
 	
 	function _writeData(&$workbook, & $sp, & $row)
     {
-       	$fm = & $workbook->addFormat(array('fontfamily'=>'Arial', 'size'=>10, 'border'=>1));
-		$arialNormalBorder = $fm;
+       	$fm = & $workbook->addFormat(array('fontfamily'=>'Calibri', 'size'=>10, 'border'=>1));
+		$CalibriNormalBorder = $fm;
 		
 		
-		$fm = & $workbook->addFormat(array('fontfamily'=>'Arial', 'size'=>10, 'border'=>1,'color'=>'blue'));
-		$arialNormalBorderRed = $fm;
+		$fm = & $workbook->addFormat(array('fontfamily'=>'Calibri', 'size'=>10, 'border'=>1,'color'=>'blue'));
+		$CalibriNormalBorderRed = $fm;
 		
-		$fm = & $workbook->addFormat(array('fontfamily'=>'Arial', 'size'=>10, 'border'=>1,'color'=>'red'));
-		$arialNormalBorderBlue = $fm;
+		$fm = & $workbook->addFormat(array('fontfamily'=>'Calibri', 'size'=>10, 'border'=>1,'color'=>'red'));
+		$CalibriNormalBorderBlue = $fm;
 		
-		$fm = & $workbook->addFormat(array('fontfamily'=>'Arial', 'size'=>10, 'align'=>'right','border'=>1));
-		$arialNormalBorderRight = $fm;
+		$fm = & $workbook->addFormat(array('fontfamily'=>'Calibri', 'size'=>10, 'align'=>'right','border'=>1));
+		$CalibriNormalBorderRight = $fm;
 		
-		$fm = & $workbook->addFormat(array('fontfamily'=>'Arial', 'size'=>10, 'align'=>'right','border'=>1,'numformat'=>'0'));
-		$arialNormalBorderNumRight = $fm;
+		$fm = & $workbook->addFormat(array('fontfamily'=>'Calibri', 'size'=>10, 'align'=>'right','border'=>1,'numformat'=>'0'));
+		$CalibriNormalBorderNumRight = $fm;
 		
-		$fm = & $workbook->addFormat(array('fontfamily'=>'Arial','size'=>9, 'align'=>'right','border'=>1));
+		$fm = & $workbook->addFormat(array('fontfamily'=>'Calibri','size'=>9, 'align'=>'right','border'=>1));
         $fm ->setNumFormat("$#,##0.00;[Red]-$#,##0.00");
-        $arialNormalCurrency = $fm;
+        $CalibriNormalCurrency = $fm;
         
         
-        $fm = & $workbook->addFormat(array('fontfamily'=>'Arial','size'=>9, 'align'=>'right','border'=>1,'color'=>'blue'));
+        $fm = & $workbook->addFormat(array('fontfamily'=>'Calibri','size'=>9, 'align'=>'right','border'=>1,'color'=>'blue'));
         $fm ->setNumFormat("$#,##0.00;[blue]-$#,##0.00");
-        $arialNormalCurrencyRed = $fm;
+        $CalibriNormalCurrencyRed = $fm;
 		
 		$i=1;
 		$startRow= $row + 1; //internally rows are 0 based, in formulas rows are 1 based
@@ -850,8 +850,8 @@ class BI_excelMonthlySalesAnalysisReport
 		 $lastID="";
 		 $currentId="";
 		 
-		 $cellFormat = $arialNormalBorder;
-		 $cellCurrencyFormat = $arialNormalCurrency;
+		 $cellFormat = $CalibriNormalBorder;
+		 $cellCurrencyFormat = $CalibriNormalCurrency;
 		 
 		foreach($basicInfos as $info_date)
 	    {
@@ -883,32 +883,32 @@ class BI_excelMonthlySalesAnalysisReport
 		 		if(floatval($totalcases)<0)
 					{
 					 //	$this->debugText($totalcases);
-						$cellFormat = $arialNormalBorderBlue;
+						$cellFormat = $CalibriNormalBorderBlue;
 					}
 					else
 					{
-						$cellFormat = $arialNormalBorderRed;
-			 			$cellCurrencyFormat = $arialNormalCurrencyRed;
+						$cellFormat = $CalibriNormalBorderRed;
+			 			$cellCurrencyFormat = $CalibriNormalCurrencyRed;
 					}
 				
 			 	}
 			}
 			else
 			{
-				 $cellFormat = $arialNormalBorder;
+				 $cellFormat = $CalibriNormalBorder;
 				 
 				 	if(floatval($totalcases)<0)
 					{
 					 //	$this->debugText($totalcases);
-						$cellFormat = $arialNormalBorderBlue;
-						$cellCurrencyFormat = $arialNormalCurrencyRed;
+						$cellFormat = $CalibriNormalBorderBlue;
+						$cellCurrencyFormat = $CalibriNormalCurrencyRed;
 					}
 					else
 					{
-						$cellFormat =$arialNormalBorder;
+						$cellFormat =$CalibriNormalBorder;
 					}
 			
-		 		 $cellCurrencyFormat = $arialNormalCurrency;
+		 		 $cellCurrencyFormat = $CalibriNormalCurrency;
 			}
 		
 		
@@ -991,12 +991,12 @@ class BI_excelMonthlySalesAnalysisReport
     
     function _writeTitle(& $workbook, & $sp, & $row)
     {
-        $fm = & $workbook->addFormat(array('fontfamily'=>'Arial', 'size'=>12, 'bold'=>1, 
+        $fm = & $workbook->addFormat(array('fontfamily'=>'Calibri', 'size'=>12, 'bold'=>1, 
                 'fgcolor'=>'silver', 'bgcolor'=>'black', 'align'=>'center', 'valign'=>'center'));
         $reportTitle = $fm;
 
-        $fm = & $workbook->addFormat(array('fontfamily'=>'Arial', 'size'=>11, 'bold'=>1));
-        $arialBoldUnderlined  = $fm;
+        $fm = & $workbook->addFormat(array('fontfamily'=>'Calibri', 'size'=>11, 'bold'=>1));
+        $CalibriBoldUnderlined  = $fm;
         
         $fm = & $workbook->addFormat(array('right'=>2));
         $thickRight = $fm;
@@ -1016,7 +1016,7 @@ $row+=5;
     }
     function _writeColumnHeaders(& $workbook, & $sp, & $row)
     {
-        $fm = & $workbook->addFormat(array('fontfamily'=>'Arial', 'size'=>10, 'fgcolor'=>'silver', 
+        $fm = & $workbook->addFormat(array('fontfamily'=>'Calibri', 'size'=>10, 'fgcolor'=>'silver', 
                 'bgcolor'=>'black', 'border'=>1, 'align'=>'center', 'valign'=>'bottom','bold'=>1,
                 'top'=>1, 'bottom'=>1));
         //$fm->setTextWrap();
@@ -1024,14 +1024,14 @@ $row+=5;
         
       
         
-        $fm = & $workbook->addFormat(array('fontfamily'=>'Arial', 'size'=>10, 'fgcolor'=>'silver', 
+        $fm = & $workbook->addFormat(array('fontfamily'=>'Calibri', 'size'=>10, 'fgcolor'=>'silver', 
                 'bgcolor'=>'black', 'border'=>1, 'align'=>'left', 'valign'=>'bottom','bold'=>1,
                 'top'=>1, 'bottom'=>1));       
         $columnHeaderLeft = $fm;
         
         
         
-        $fm = & $workbook->addFormat(array('fontfamily'=>'Arial', 'size'=>10, 'fgcolor'=>'silver', 
+        $fm = & $workbook->addFormat(array('fontfamily'=>'Calibri', 'size'=>10, 'fgcolor'=>'silver', 
                 'bgcolor'=>'black', 'border'=>1, 'align'=>'right', 'valign'=>'bottom','bold'=>1,
                 'top'=>1, 'bottom'=>1));       
         $columnHeaderRight = $fm;

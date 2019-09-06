@@ -23,6 +23,7 @@ class excelBCInABVenderReport
     
     var $displayVender = false;
     
+     var $report_month_text ="";
     
      
     function excelBCInABVenderReport($displayAsWebPage=true,$displayVender=false)
@@ -35,42 +36,22 @@ class excelBCInABVenderReport
 		}
 	
 		$this->displayVender = $displayVender;
-	/*	if($this->estate_id == 2 )//Hillside
-		{
-			$this->columns= array("A"=>array("index"=>0, "width"=>7.72), "B"=>array("index"=>1, "width"=>22), 
-		          				"C"=>array("index"=>2, "width"=>8.50), "D"=>array("index"=>3, "width"=>8.45), 
-								"E"=>array("index"=>4, "width"=>7.15), "F"=>array("index"=>5, "width"=>6),
-								"G"=>array("index"=>6, "width"=>11.30), "H"=>array("index"=>7, "width"=>47.30),
-								"I"=>array("index"=>8, "width"=>18.45));
-		}*/
-		if($this->estate_id == 175 )//C.C Jentsch
-		{
-			$this->columns= array("A"=>array("index"=>0, "width"=>7.72), "B"=>array("index"=>1, "width"=>40), 
-		          				"C"=>array("index"=>2, "width"=>8.50), "D"=>array("index"=>3, "width"=>8.45), 
-								"E"=>array("index"=>4, "width"=>7.15), "F"=>array("index"=>5, "width"=>6),
-								"G"=>array("index"=>6, "width"=>11.30), "H"=>array("index"=>7, "width"=>47.30),
-								"I"=>array("index"=>8, "width"=>18.45));
-		}
-		else //enotecca use estate_id =96
-		{
-			$this->estate_id =96;
-			$this->columns = array("A"=>array("index"=>0, "width"=>7.72), "B"=>array("index"=>1, "width"=>42), 
-		          				"C"=>array("index"=>2, "width"=>8.50), "D"=>array("index"=>3, "width"=>8.45), 
-								"E"=>array("index"=>4, "width"=>7.15), "F"=>array("index"=>5, "width"=>6),
-								"G"=>array("index"=>6, "width"=>11.30), "H"=>array("index"=>7, "width"=>47.30),
-								"I"=>array("index"=>8, "width"=>18.45));
-		
-		
-		}  
+
  
-        $this->VerderData = new bllABVenderData();
-	
-      
+        if($this->estate_id == 150 )//SpearHead
+		{		$this->columns= array("A"=>array("index"=>0, "width"=>29), "B"=>array("index"=>1, "width"=>14), 
+  		          				"C"=>array("index"=>2, "width"=>14), "D"=>array("index"=>3, "width"=>14), 
+  								"E"=>array("index"=>4, "width"=>14), "F"=>array("index"=>5, "width"=>14),
+  								"G"=>array("index"=>6, "width"=>16), "H"=>array("index"=>7, "width"=>45),
+                                "I"=>array("index"=>8, "width"=>16));
+		};
         
+ 
+        $this->VenderData = new bllABVenderData();
+       
        if ($displayAsWebPage)
         {
-        	$this->generateSpreadsheet($this->report_month, $this->report_year);
-     
+        	$this->generateSpreadsheet($this->report_month, $this->report_year);     
         }        
     }
     
@@ -83,8 +64,10 @@ class excelBCInABVenderReport
     function generateSpreadsheet($report_month, $report_year,$returnFile=false)
     {		
        
-		$sale_month =F60Date::getMonthTxt($report_month);
-		
+		$sale_month =F60Date::getMonthTxt($report_month);	
+        
+        $this->report_month_text = F60Date::getMonthTxt($report_month);	
+     
 		$sale_year = $report_year;
 		
 		$sale_month_invent = intval($report_month)+1; // for current month
@@ -95,35 +78,17 @@ class excelBCInABVenderReport
 			$sale_month_invent = 1;
 			$sale_year_invent = intval($sale_year)+1;
 		}
-	
-			
+				
 		$sale_month_invent =F60Date::getMonthTxt($sale_month_invent);
-	
-	/*	if($this->estate_id==2)
-		
-        	$this->titleText = "Hillside Estate Alberta sales - ".$sale_month." ".$sale_year;
-        if($this->estate_id==118)
-		
-        	$this->titleText = "Rustico Farm and Cellars Alberta sales - ".$sale_month." ".$sale_year;
-        if($this->estate_id==126)
-		
-        	$this->titleText = "Bench 1775 Alberta sales - ".$sale_month." ".$sale_year;*/
-        	
-        if($this->estate_id==175)
-		
-        	$this->titleText = "C.C. Jentsch Cellars Alberta sales - ".$sale_month." ".$sale_year;
-        	
-        else
-        	$this->titleText = "Enotecca Winery Alberta sales - ".$sale_month." ".$sale_year;
-        	
-        if($this->displayVender)
-	       	$this->reportData = $this->VerderData->getVenderSalesFromDB($report_month, $report_year,$this->estate_id);     
-	    else
-	    	$this->reportData = $this->VerderData->getABSalesReportFromDB($report_month, $report_year,$this->estate_id);     
-        		
-		$worksheetName = $this->titleText;
+
+        $this->fileName = "SpearHead Alberta Sales Commission and Inventory Report - ".$sale_month." ".$sale_year;
+        $this->titleText = "SpearHead Alberta Licensee Sales - ".$sale_month." ".$sale_year;
+    
+	    $this->reportData = $this->VenderData->getVenderSalesFromDB($report_month, $report_year,$this->estate_id);     
+       		
+		$worksheetName = "SpearHead AB Sales";
         
-        $fileName = $this->titleText. ".xls";
+        $fileName = $this->fileName. ".xls";
         $filePath = ROOT_PATH . "salesreports/" . $fileName;
         
         if ($returnFile)
@@ -147,29 +112,29 @@ class excelBCInABVenderReport
         
     	$this->_writeTitle($workbook, $sp, $row,$this->titleText); //$row++
         
-        $row++; // blank row
         
-    
-		// $totalRecords =$reportData["total_records"];
-      
-		$this->_writeColumnHeaders($workbook, $sp, $row,$this->estate_id,true);//sales header
-       	$this->_writeSalesData($workbook, $sp, $row, $this->reportData,$this->estate_id);//sales data
-       	
+  
+	
+		$this->_writeColumnHeaders($workbook, $sp, $row,$this->estate_id,1);   //sales header
+       	$this->_writeSalesData($workbook, $sp, $row, $this->reportData,$this->estate_id); //sales data
+        $row++;
+        $row++;  //blank row
+        
+        $this->titleText = "SpearHead Current Inventory as of ".$sale_month_invent." ".Date(d). " ".$sale_year_invent;
+        $this->_writeTitle($workbook, $sp, $row,$this->titleText); 
+        	
+       	$this->_writeColumnHeaders($workbook, $sp, $row,$this->estate_id,2); //inventory header
+  		
+ 		$this->_writeInventoryData($workbook, $sp, $row,$this->reportData); //inventory header
+            
         $row++;
         $row++;
+               
+        $this->_writeColumnHeaders($workbook, $sp, $row,$this->estate_id,3);//commission header
         
-        if($this->displayVender) // only display inventory report when automatically gernate the numbers from liquor connection at the beginning of the month
-        {
- 
-	       //Inverntory report      		
-	       	$this->titleText = "Current Inventory as of ".$sale_month_invent." ".Date(d). " ".$sale_year_invent;
-	        $this->_writeTitle($workbook, $sp, $row,$this->titleText); //$row++	
-			$row++;
-			
-			$this->_writeColumnHeaders($workbook, $sp, $row,$this->estate_id,false);//inventory header
-			$this->_writeInventoryData($workbook, $sp, $row,$this->reportData);//inventory header
-		}
-	         
+        $this->reportData = $this->VenderData->getBCWineryABSalesSummary($report_month,$report_year,$this->estate_id);
+		$this->_writeSalesCommissionData($workbook, $sp, $row,$this->reportData);
+          
         $workbook->close();
          
         if ($returnFile)
@@ -179,26 +144,26 @@ class excelBCInABVenderReport
     
     function _writeSalesData(&$workbook, & $sp, & $row, $infoData,$estate_id)
     {
-        $fm = & $workbook->addFormat(array('fontfamily'=>'Arial', 'size'=>10, 'border'=>1));
-        $arialNormalBorder = $fm;
+        $fm = & $workbook->addFormat(array('fontfamily'=>'Calibri', 'size'=>11, 'border'=>1));
+        $CalibriNormalBorder = $fm;
  
-        $fm = & $workbook->addFormat(array('fontfamily'=>'Arial', 'size'=>10, 'align'=>'right','border'=>1));
-        $arialNormalBorderRight = $fm;
+        $fm = & $workbook->addFormat(array('fontfamily'=>'Calibri', 'size'=>11, 'align'=>'right','border'=>1));
+        $CalibriNormalBorderRight = $fm;
         
-        $fm = & $workbook->addFormat(array('fontfamily'=>'Arial',  'bold'=>1,'color'=>'red','size'=>10, 'align'=>'right','border'=>1));
-        $arialNormalBorderRedFontRight = $fm;
+        $fm = & $workbook->addFormat(array('fontfamily'=>'Calibri',  'bold'=>1,'color'=>'red','size'=>11, 'align'=>'right','border'=>1));
+        $CalibriNormalBorderRedFontRight = $fm;
         
-        $fm = & $workbook->addFormat(array('fontfamily'=>'Arial','bold'=>1,'color'=>'red','fgcolor'=>'yellow', 'size'=>10, 'align'=>'right','border'=>1));
-        $arialNormalBorderRedYellowBKFontRight = $fm;
+        $fm = & $workbook->addFormat(array('fontfamily'=>'Calibri','bold'=>1,'color'=>'red','fgcolor'=>'yellow', 'size'=>11, 'align'=>'right','border'=>1));
+        $CalibriNormalBorderRedYellowBKFontRight = $fm;
         
-        $fm = & $workbook->addFormat(array('fontfamily'=>'Arial', 'size'=>10, 'align'=>'right','border'=>1,'numformat'=>'0'));
-        $arialNormalBorderNumRight = $fm;
+        $fm = & $workbook->addFormat(array('fontfamily'=>'Calibri', 'size'=>11, 'align'=>'right','border'=>1,'numformat'=>'0'));
+        $CalibriNormalBorderNumRight = $fm;
         
-        $fm = & $workbook->addFormat(array('fontfamily'=>'Arial','size'=>10, 'align'=>'left','border'=>1));
-        $arialNormalBorderLeft = $fm;
+        $fm = & $workbook->addFormat(array('fontfamily'=>'Calibri','size'=>11, 'align'=>'left','border'=>1));
+        $CalibriNormalBorderLeft = $fm;
         
-        $fm = & $workbook->addFormat(array('fontfamily'=>'Arial','size'=>10, 'bold'=>1,'color'=>'red','border'=>1));
-        $arialNormalBorderRedFontLeft = $fm;
+        $fm = & $workbook->addFormat(array('fontfamily'=>'Calibri','size'=>11, 'bold'=>1,'color'=>'red','border'=>1));
+        $CalibriNormalBorderRedFontLeft = $fm;
               
 		$i=1;
 		$startRow= $row + 1; //internally rows are 0 based, in formulas rows are 1 based
@@ -222,83 +187,69 @@ class excelBCInABVenderReport
 			$total_btls =$total_btls+intval($salesData["unit_sales"]);
 			$total_cases =$total_cases+intval($salesData["total_cs"]);
 			
-			
-  			if($estate_id ==2||$this->displayVender==false)			 	
-  			{
-				$values = array(
-								array("data"=>$salesData["SKUA"],"format"=>$arialNormalBorderLeft ), 
-								array("data"=>$salesData["product_name"]), 
-								array("data"=>$salesData["size"], "format"=>$arialNormalBorderNumRight), 
-								array("data"=>$salesData["unit_sales"], "format"=>$arialNormalBorderNumRight), 
-								array("data"=>$salesData["btl_per_cs"], "format"=>$arialNormalBorderNumRight), 
-								array("data"=>$salesData["total_cs"], "format"=>$arialNormalBorderNumRight), 
-								array("data"=>$salesData["licensee_no"],"format"=>$arialNormalBorderLeft ), 
-								array("data"=>$salesData["store_name"]),
-								array("data"=>$salesData["city"], "format"=>$arialNormalBorderLeft)); 
-			}
-			else
-			{
+	
 					$values = array(
-								array("data"=>$salesData["SKUA"],"format"=>$arialNormalBorderLeft ), 
-								array("data"=>$salesData["product_name"]), 
-								array("data"=>$salesData["size"], "format"=>$arialNormalBorderNumRight), 
-								array("data"=>$salesData["unit_sales"], "format"=>$arialNormalBorderNumRight), 
-								array("data"=>$salesData["btl_per_cs"], "format"=>$arialNormalBorderNumRight), 
-								array("data"=>$salesData["total_cs"], "format"=>$arialNormalBorderNumRight), 
-								array("data"=>$salesData["licensee_no"],"format"=>$arialNormalBorderLeft ), 
+                    	array("data"=>ucwords(strtolower($salesData["product_name"]))), 
+								array("data"=>$salesData["SKUA"],"format"=>$CalibriNormalBorderNumRight ), 
+							
+								array("data"=>$salesData["size"], "format"=>$CalibriNormalBorderNumRight), 
+								array("data"=>$salesData["unit_sales"], "format"=>$CalibriNormalBorderNumRight), 
+								array("data"=>$salesData["btl_per_cs"], "format"=>$CalibriNormalBorderNumRight), 
+								array("data"=>$salesData["total_cs"], "format"=>$CalibriNormalBorderNumRight), 
+								array("data"=>$salesData["licensee_no"],"format"=>$CalibriNormalBorderLeft ), 
 								array("data"=>$salesData["store_name"]),
-								array("data"=>$this->currencyNumber($salesData["price_case"]), "format"=>$arialNormalBorderNumRight)); 
-			}
+                                array("data"=>$salesData["city"])); 
+		//	}
          
              
-            $this->_writeRow($sp, $values, $row, $arialNormalBorder,true); 
+            $this->_writeRow($sp, $values, $row, $CalibriNormalBorder,true); 
             $i++;
             $row++;
         }
         
 		//Bottles
-		$this->_writeCell($sp, array("data"=>"Bottles"), $row, "C" , $arialNormalBorderRedFontLeft);
+		$this->_writeCell($sp, array("data"=>"Bottles"), $row, "C" , $CalibriNormalBorderRedFontLeft);
 		
-		$this->_writeCell($sp, array("data"=>$total_btls), $row, "D" , $arialNormalBorderRedFontRight);
+		$this->_writeCell($sp, array("data"=>$total_btls), $row, "D" , $CalibriNormalBorderRedFontRight);
 		
-		$this->_writeCell($sp, array("data"=>""), $row, "E" , $arialNormalBorderRedFontRight);
+		$this->_writeCell($sp, array("data"=>""), $row, "E" , $CalibriNormalBorderRedFontRight);
 		
-		$this->_writeCell($sp, array("data"=>""), $row, "F" , $arialNormalBorderRedFontRight);
+		$this->_writeCell($sp, array("data"=>""), $row, "F" , $CalibriNormalBorderRedFontRight);
         
         $row++;
         $rowBots=$row;
 
        //Cases
-		$this->_writeCell($sp, array("data"=>"Cases"), $row, "C", $arialNormalBorderRedFontLeft);
-		$this->_writeCell($sp, array("data"=>""), $row, "D" , $arialNormalBorderRedFontRight);
+		$this->_writeCell($sp, array("data"=>"Cases"), $row, "C", $CalibriNormalBorderRedFontLeft);
+		$this->_writeCell($sp, array("data"=>""), $row, "D" , $CalibriNormalBorderRedFontRight);
 		
-		$this->_writeCell($sp, array("data"=>""), $row, "E" , $arialNormalBorderRedFontRight);
+		$this->_writeCell($sp, array("data"=>""), $row, "E" , $CalibriNormalBorderRedFontRight);
 		
-		$this->_writeCell($sp, array("data"=>$total_cases), $row, "F" , $arialNormalBorderRedFontRight);
+		$this->_writeCell($sp, array("data"=>$total_cases), $row, "F" , $CalibriNormalBorderRedFontRight);
 	
     }
     function _writeInventoryData(&$workbook, & $sp, & $row, $infoData)
     {
-        $fm = & $workbook->addFormat(array('fontfamily'=>'Arial', 'size'=>10, 'border'=>1));
-        $arialNormalBorder = $fm;
+        $fm = & $workbook->addFormat(array('fontfamily'=>'Calibri', 'size'=>11, 'border'=>1));
+        $CalibriNormalBorder = $fm;
  
-        $fm = & $workbook->addFormat(array('fontfamily'=>'Arial', 'size'=>10, 'align'=>'right','border'=>1));
-        $arialNormalBorderRight = $fm;
+        $fm = & $workbook->addFormat(array('fontfamily'=>'Calibri', 'size'=>11, 'align'=>'right','border'=>1));
+        $CalibriNormalBorderRight = $fm;
         
-        $fm = & $workbook->addFormat(array('fontfamily'=>'Arial',  'bold'=>1,'color'=>'red','size'=>10, 'align'=>'right','border'=>1));
-        $arialNormalBorderRedFontRight = $fm;
+        $fm = & $workbook->addFormat(array('fontfamily'=>'Calibri',  'bold'=>1,'color'=>'red','size'=>11, 'align'=>'right','border'=>1));
+        $CalibriNormalBorderRedFontRight = $fm;
         
-        $fm = & $workbook->addFormat(array('fontfamily'=>'Arial','bold'=>1,'color'=>'red','fgcolor'=>'yellow', 'size'=>10, 'align'=>'right','border'=>1));
-        $arialNormalBorderRedYellowBKFontRight = $fm;
+        $fm = & $workbook->addFormat(array('fontfamily'=>'Calibri','bold'=>1,'color'=>'red','fgcolor'=>'yellow', 'size'=>11, 'align'=>'right','border'=>1));
+        $CalibriNormalBorderRedYellowBKFontRight = $fm;
         
-        $fm = & $workbook->addFormat(array('fontfamily'=>'Arial', 'size'=>10, 'align'=>'right','border'=>1,'numformat'=>'0'));
-        $arialNormalBorderNumRight = $fm;
+        $fm = & $workbook->addFormat(array('fontfamily'=>'Calibri', 'size'=>11, 'align'=>'right','border'=>1,'numformat'=>'0'));
+        $CalibriNormalBorderNumRight = $fm;
         
-        $fm = & $workbook->addFormat(array('fontfamily'=>'Arial','size'=>10, 'align'=>'left','border'=>1));
-        $arialNormalBorderLeft = $fm;
+        $fm = & $workbook->addFormat(array('fontfamily'=>'Calibri','size'=>11, 'align'=>'left','border'=>1));
+        $CalibriNormalBorderLeft = $fm;
         
-        $fm = & $workbook->addFormat(array('fontfamily'=>'Arial','size'=>10, 'bold'=>1,'color'=>'red','border'=>1));
-        $arialNormalBorderRedFontLeft = $fm;
+        $fm = & $workbook->addFormat(array('fontfamily'=>'Calibri','size'=>11, 'bold'=>1,'color'=>'red','border'=>1));
+        $CalibriNormalBorderRedFontLeft = $fm;
         
       
 		$i=1;
@@ -318,43 +269,210 @@ class excelBCInABVenderReport
 			
   			
 			$values = array(
-							array("data"=>$salesData["sku"],"format"=>$arialNormalBorderLeft ), 
-							array("data"=>$salesData["wine_name"]), 
-							array("data"=>$salesData["size"], "format"=>$arialNormalBorderNumRight), 
-							array("data"=>$salesData["units"], "format"=>$arialNormalBorderNumRight), 
-							array("data"=>$this->currencyNumber($salesData["unit_price"]), "format"=>$arialNormalBorderNumRight), 
-							array("data"=>$salesData["alloc"], "format"=>$arialNormalBorderNumRight), 
-							array("data"=>$salesData["av_cs"],"format"=>$arialNormalBorderNumRight )); 
+            	           array("data"=>ucwords(strtolower($salesData["wine_name"]))), 
+							array("data"=>$salesData["sku"],"format"=>$CalibriNormalBorderNumRight ), 
+						
+							array("data"=>$salesData["size"], "format"=>$CalibriNormalBorderNumRight), 
+							array("data"=>$salesData["units"], "format"=>$CalibriNormalBorderNumRight), 
+							array("data"=>$this->currencyNumber($salesData["unit_price"]), "format"=>$CalibriNormalBorderNumRight), 
+							array("data"=>$salesData["alloc"], "format"=>$CalibriNormalBorderNumRight), 
+							array("data"=>$salesData["av_cs"],"format"=>$CalibriNormalBorderNumRight )); 
 		
 			
              
-            $this->_writeRow($sp, $values, $row, $arialNormalBorder,false); 
+            $this->_writeRow($sp, $values, $row, $CalibriNormalBorder,2); 
             $i++;
             $row++;
         }
         
 		//Totals
-		$this->_writeCell($sp, array("data"=>"Totals"), $row, "A" , $arialNormalBorderRedFontRight);
-		$this->_writeCell($sp, array("data"=>""), $row, "B" , $arialNormalBorderRedFontRight);
-		$this->_writeCell($sp, array("data"=>""), $row, "C" , $arialNormalBorderRedFontRight);
-		$this->_writeCell($sp, array("data"=>""), $row, "D" , $arialNormalBorderRedFontRight);
-		$this->_writeCell($sp, array("data"=>""), $row, "E" , $arialNormalBorderRedFontRight);
+		$this->_writeCell($sp, array("data"=>"Totals"), $row, "A" , $CalibriNormalBorderRedFontRight);
+		$this->_writeCell($sp, array("data"=>""), $row, "B" , $CalibriNormalBorderRedFontRight);
+		$this->_writeCell($sp, array("data"=>""), $row, "C" , $CalibriNormalBorderRedFontRight);
+		$this->_writeCell($sp, array("data"=>""), $row, "D" , $CalibriNormalBorderRedFontRight);
+		$this->_writeCell($sp, array("data"=>""), $row, "E" , $CalibriNormalBorderRedFontRight);
         $sp->mergeCells($row, $this->columns["A"]["index"], $row, $this->columns["E"]["index"]);
 
-		$this->_writeCell($sp, array("data"=>$total_allo), $row, "F" , $arialNormalBorderRedFontRight);
+		$this->_writeCell($sp, array("data"=>$total_allo), $row, "F" , $CalibriNormalBorderRedFontRight);
 		
-		$this->_writeCell($sp, array("data"=>$total_avcs), $row, "G" , $arialNormalBorderRedFontRight);
+		$this->_writeCell($sp, array("data"=>$total_avcs), $row, "G" , $CalibriNormalBorderRedFontRight);
 		
     }
    
+   function _writeSalesCommissionData(&$workbook, & $sp, & $row, $infoData)
+    {
+        $fm = & $workbook->addFormat(array('fontfamily'=>'Calibri', 'size'=>11, 'border'=>1));
+        $CalibriNormalBorder = $fm;
+ 
+        $fm = & $workbook->addFormat(array('fontfamily'=>'Calibri', 'size'=>11, 'align'=>'right','border'=>1));
+        $CalibriNormalBorderRight = $fm;
+        
+         
+        $fm = & $workbook->addFormat(array('fontfamily'=>'Calibri','size'=>11, 'align'=>'left','bold'=>1,'border'=>1));
+        $CalibriBoldlBorderLeft = $fm;
+  
+          
+        $fm = & $workbook->addFormat(array('fontfamily'=>'Calibri','size'=>11, 'align'=>'right','border'=>1));
+        $fm ->setNumFormat("$#,##0.00;[Red]-$#,##0.00");
+        $CalibriNormalCurrency = $fm;
+        
+        
+         $fgColor='44';
+        $fm = & $workbook->addFormat(array('fontfamily'=>'Calibri', 'size'=>11, 'fgcolor'=>$fgColor, 
+                'bgcolor'=>'black', 'border'=>1, 'align'=>'left', 'valign'=>'bottom','bold'=>1,
+                'top'=>1, 'bottom'=>1));
+        //$fm->setTextWrap();
+        $columnHeaderBoldBlueLeft = $fm;
+        
+        $fm = & $workbook->addFormat(array('fontfamily'=>'Calibri', 'size'=>11, 'fgcolor'=>$fgColor, 
+                'bgcolor'=>'black', 'border'=>1, 'align'=>'right', 'valign'=>'bottom','bold'=>1,
+                'top'=>1, 'bottom'=>1));
+        //$fm->setTextWrap();
+        
+        $columnHeaderBoldBlueRight = $fm;
+        
+        $fmCurrency=& $workbook->addFormat(array('fontfamily'=>'Calibri', 'size'=>11, 'fgcolor'=>$fgColor, 
+                'bgcolor'=>'black', 'border'=>1, 'align'=>'right', 'valign'=>'bottom','bold'=>1,
+                'top'=>1, 'bottom'=>1));
+                
+         $fmCurrency ->setNumFormat("$#,##0.00;[Red]-$#,##0.00");
+         $columnHeaderBoldBlueCurrency = $fmCurrency;
+         
+              
+         $fgColor='26';
+        $fm = & $workbook->addFormat(array('fontfamily'=>'Calibri', 'size'=>11, 'fgcolor'=>$fgColor, 
+                'bgcolor'=>'black', 'border'=>1, 'align'=>'left', 'valign'=>'bottom','bold'=>1,
+                'top'=>1, 'bottom'=>1));
+        //$fm->setTextWrap();
+        $columnHeaderBoldYellowLeft = $fm;
+        
+        
+         $fgColor='1';
+        $fm = & $workbook->addFormat(array('fontfamily'=>'Calibri', 'size'=>11, 'fgcolor'=>$fgColor, 
+                'bgcolor'=>'black', 'border'=>1, 'align'=>'left', 'valign'=>'bottom','bold'=>1,
+                'top'=>1, 'bottom'=>1));
+        //$fm->setTextWrap();
+        $columnHeaderBoldLeft = $fm;
+        
+      
+        
+        
+		$i=1;
+		$startRow= $row + 1; //internally rows are 0 based, in formulas rows are 1 based
+		
+		// print $startRow;
+		$nIndex=0;
+	
+		$total_btls =0;
+        $total_wholesales =0;
+        $total_comm=0;
+		
+       // print_r($infoData);
+		foreach ($infoData as $salesData)
+		{
+//            $currentRow = $row+1;
+			$total_btls =$total_btls+floatval($salesData["unit_sales"]);
+            $total_wholesales =$total_wholesales+floatval($salesData["total_wholesale"]);
+            $total_comm =$total_comm+floatval($salesData["commission"]);
+			
+	
+			$values = array(
+                        array("data"=>ucwords(strtolower($salesData["product"]))), 
+						array("data"=>$salesData["cspc_code"],"format"=>$CalibriNormalBorderRight ), 
+					
+						array("data"=>$salesData["unit_sales"], "format"=>$CalibriNormalBorderRight), 
+						array("data"=>$salesData["wholesale"], "format"=>$CalibriNormalCurrency), 
+						array("data"=>$salesData["total_wholesale"], "format"=>$CalibriNormalCurrency), 
+						array("data"=>$salesData["commission"],"format"=>$CalibriNormalCurrency ) 
+					); 
+             
+            $this->_writeRow($sp, $values, $row, $CalibriNormalBorder,3); 
+            $i++;
+            $row++;
+        }
+        
+        // Total Summary
+        	$values = array(
+                            array("data"=>"Total","format"=>$columnHeaderBoldBlueLeft ), 
+                            array("data"=>"","format"=>$columnHeaderBoldBlueRight ), 
+                            
+                            array("data"=>$total_btls, "format"=>$columnHeaderBoldBlueRight), 
+                            array("data"=>"", "format"=>$columnHeaderBoldBlueRight), 
+                            array("data"=>$total_wholesales, "format"=>$columnHeaderBoldBlueCurrency), 
+                            array("data"=>$total_comm, "format"=>$columnHeaderBoldBlueCurrency) 
+							 
+							); 
+               $this->_writeRow($sp, $values, $row, $CalibriNormalBorder,3);     
+               $row++;
+               $row++;
+                        
+		//Bottles
+        $arrayCommCaptions = array("Commission Rate","Total Commission Amount","GST - 86125 6535 RT00001(0.05)","DEDUCTION","Final Commission" );
+        $gst = $total_comm*0.05; $totalFinal = $total_comm + $gst;
+        
+        $arrayCommSummary =array("15%",$total_comm,$gst,"",$totalFinal);
+        
+        $values = array(
+                            array("data"=>"Commission","format"=>$columnHeaderBoldYellowLeft ), 
+                            array("data"=>"","format"=>$columnHeaderBoldYellowLeft ), 
+                            
+                            array("data"=>"", "format"=>$columnHeaderBoldYellowLeft), 
+                            array("data"=>"", "format"=>$columnHeaderBoldYellowLeft), 
+                            array("data"=>"", "format"=>$columnHeaderBoldYellowLeft), 
+                            array("data"=>"", "format"=>$columnHeaderBoldYellowLeft) 
+							 
+							); 
+               $this->_writeRow($sp, $values, $row, $CalibriNormalBorder,3);  
+               $row++;   
+               
+       // Total Summary
+       for($i=0; $i<5; $i++)
+       {
+             $firstColFormat =  array("data"=>$arrayCommCaptions[$i], "format"=>$CalibriBoldlBorderLeft);
+             if($i==3)
+             {
+               // $firstColFormat =  array("data"=>$arrayCommCaptions[$i], "format"=>$columnHeaderBoldLeftBlueTxt);
+             }
+             elseif($i==4)
+             {
+                $firstColFormat =  array("data"=>$arrayCommCaptions[$i], "format"=>$columnHeaderBoldBlueLeft);
+             }
+             
+            
+            $secondColFormat =  array("data"=>$arrayCommSummary[$i],"format"=>$CalibriNormalCurrency );
+            if($i==0)
+                $secondColFormat =  array("data"=>$arrayCommSummary[$i],"format"=>$CalibriNormalBorderRight );
+            elseif($i==4)
+                $secondColFormat =  array("data"=>$arrayCommSummary[$i],"format"=>$columnHeaderBoldBlueCurrency );
+             
+            
+            
+           
+        	$values = array(
+                            $firstColFormat, 
+                            $secondColFormat, 
+                            
+                            array("data"=>"", "format"=>$CalibriBoldlBorderLeft), 
+                            array("data"=>"", "format"=>$CalibriBoldlBorderLeft), 
+                            array("data"=>"", "format"=>$CalibriBoldlBorderLeft), 
+                            array("data"=>"", "format"=>$CalibriBoldlBorderLeft) 
+							 
+							); 
+               $this->_writeRow($sp, $values, $row, $CalibriNormalBorder,3);  
+               $row++;   
+        }       
+	
+        $row++;
+    }
+    
     function _writeTitle(& $workbook, & $sp, & $row, $titleText)
     {
-        $fm = & $workbook->addFormat(array('fontfamily'=>'Arial', 'size'=>10, 'bold'=>1, 
+        $fm = & $workbook->addFormat(array('fontfamily'=>'Calibri', 'size'=>11, 'bold'=>1, 
                 'fgcolor'=>'white', 'bgcolor'=>'black', 'align'=>'left', 'valign'=>'center'));
         $reportTitle = $fm;
 
-        $fm = & $workbook->addFormat(array('fontfamily'=>'Arial', 'size'=>10, 'bold'=>1, 'underline'=>1));
-        $arialBoldUnderlined  = $fm;
+        $fm = & $workbook->addFormat(array('fontfamily'=>'Calibri', 'size'=>11, 'bold'=>1, 'underline'=>1));
+        $CalibriBoldUnderlined  = $fm;
         
         $fm = & $workbook->addFormat(array('right'=>2));
         $thickRight = $fm;
@@ -369,71 +487,164 @@ class excelBCInABVenderReport
         
   
     }   
-   
-    function _writeColumnHeaders(& $workbook, & $sp, & $row,$estate_id,$isSales=true)
+     function _writeColorChart(& $workbook, & $sp, & $row,$estate_id,$chart_type)
     {
-        $fm = & $workbook->addFormat(array('fontfamily'=>'Arial', 'size'=>10, 'fgcolor'=>'yellow', 
+        $fgColor='44';
+        $fm = & $workbook->addFormat(array('fontfamily'=>'Calibri', 'size'=>11, 'fgcolor'=>$fgColor, 
                 'bgcolor'=>'black', 'border'=>1, 'align'=>'center', 'valign'=>'bottom','bold'=>1,
-                'top'=>2, 'bottom'=>2));
+                'top'=>1, 'bottom'=>1));
         //$fm->setTextWrap();
         $columnHeader = $fm;
         
       
         
-        $fm = & $workbook->addFormat(array('fontfamily'=>'Arial', 'size'=>10, 'fgcolor'=>'yellow', 
+    	$values = array();
+        for($i=1; $i<=100; $i++)
+        {
+            $fgColor="$i";
+            $fm = & $workbook->addFormat(array('fontfamily'=>'Calibri', 'size'=>11, 'fgcolor'=>$fgColor, 
+                    'bgcolor'=>'black', 'border'=>1, 'align'=>'center', 'valign'=>'bottom','bold'=>1,
+                    'top'=>1, 'bottom'=>1));
+            //$fm->setTextWrap();
+            $columnHeaderColor = $fm;
+            $colorArray = array("data"=>"$i", "format"=>$columnHeaderColor);
+            
+            array_push($values, $colorArray);
+            
+            
+            if($i%8==0)
+            {
+              //  print_r($values);
+                $this->_writeRow($sp, $values, $row, $columnHeader,1);
+                $row++;
+                $values = array();
+            }
+        
+      }
+      
+
+    //  $this->_writeRow($sp, $values, $row, $columnHeader,1);  
+                $row++;
+    }
+   
+    function _writeColumnHeaders(& $workbook, & $sp, & $row,$estate_id,$chart_type)
+    {
+        $fgColor='26';
+        $fm = & $workbook->addFormat(array('fontfamily'=>'Calibri', 'size'=>11, 'fgcolor'=>$fgColor, 
+                'bgcolor'=>'black', 'border'=>1, 'align'=>'center', 'valign'=>'bottom','bold'=>1,
+                'top'=>1, 'bottom'=>1));
+        //$fm->setTextWrap();
+        $columnHeader = $fm;
+        
+        
+         
+        $fm = & $workbook->addFormat(array('fontfamily'=>'Calibri', 'size'=>11, 'fgcolor'=>"white", 
                 'bgcolor'=>'black', 'border'=>1, 'align'=>'left', 'valign'=>'bottom','bold'=>1,
-                'top'=>2, 'bottom'=>2));       
+                'top'=>1, 'bottom'=>1));
+        //$fm->setTextWrap();
+        $columnHeaderWhite = $fm;
+        
+      
+        
+        $fm = & $workbook->addFormat(array('fontfamily'=>'Calibri', 'size'=>11, 'fgcolor'=>$fgColor, 
+                'bgcolor'=>'black', 'border'=>1, 'align'=>'left', 'valign'=>'bottom','bold'=>1,
+                'top'=>1, 'bottom'=>1));       
         $columnHeaderLeft = $fm;
         
-        $fm = & $workbook->addFormat(array('fontfamily'=>'Arial', 'size'=>10, 'fgcolor'=>'yellow', 
+        $fm = & $workbook->addFormat(array('fontfamily'=>'Calibri', 'size'=>11, 'fgcolor'=>$fgColor, 
                 'bgcolor'=>'black', 'border'=>1, 'align'=>'right', 'valign'=>'bottom','bold'=>1,
-                'top'=>2, 'bottom'=>2));       
+                'top'=>1, 'bottom'=>1));       
         $columnHeaderRight = $fm;
         
+        $txtColor ='16';
+        $fm = & $workbook->addFormat(array('fontfamily'=>'Calibri', 'size'=>11, 'fgcolor'=>$fgColor, 
+                'bgcolor'=>'black', 'border'=>1, 'align'=>'right', 'color'=>$txtColor, 'valign'=>'bottom','bold'=>1,
+                'top'=>1, 'bottom'=>1));       
+        $columnHeaderRightRedTxt = $fm;
         
-       if($isSales)
+        
+        
+        
+       if($chart_type==1) // sales
        {
-        	if($estate_id ==2||$this->displayVender==false)
-        	{
+        
 				$values = array(
-								array("data"=>"CSPC #", "format"=>$columnHeaderLeft), 
-								array("data"=>"Wine Purchased", "format"=>$columnHeaderLeft), 
+                                array("data"=>"Product", "format"=>$columnHeaderLeft), 
+								array("data"=>"CSPC #", "format"=>$columnHeaderRight), 
+								
 								array("data"=>"Size", "format"=>$columnHeaderRight), 
-								array("data"=>"Total Bot", "format"=>$columnHeaderRight), 
-								array("data"=>"Bot Per", "format"=>$columnHeaderRight),
-								array("data"=>"Cases", "format"=>$columnHeaderRight),
+								array("data"=>"Bottles Sold", "format"=>$columnHeaderRight), 
+								array("data"=>"Btls/cs", "format"=>$columnHeaderRight),
+								array("data"=>"Cases Sold", "format"=>$columnHeaderRight),
 								array("data"=>"Store #", "format"=>$columnHeaderLeft),
 								array("data"=>"Store Name", "format"=>$columnHeaderLeft),
-								array("data"=>"City", "format"=>$columnHeaderLeft));
-			}
-			else
-			{
-				$values = array(
-								array("data"=>"CSPC #", "format"=>$columnHeaderLeft), 
-								array("data"=>"Wine Purchased", "format"=>$columnHeaderLeft), 
-								array("data"=>"Size", "format"=>$columnHeaderRight), 
-								array("data"=>"Total Bot", "format"=>$columnHeaderRight), 
-								array("data"=>"Bot Per", "format"=>$columnHeaderRight),
-								array("data"=>"Cases", "format"=>$columnHeaderRight),
-								array("data"=>"Store #", "format"=>$columnHeaderLeft),
-								array("data"=>"Store Name", "format"=>$columnHeaderLeft),
-								array("data"=>"Price /case", "format"=>$columnHeaderRight));
-			}
-		}
-		else
+                                array("data"=>"City", "format"=>$columnHeaderLeft)
+								);
+                                //array("data"=>"Price /case", "format"=>$columnHeaderRight)
+		
+		} 
+		elseif($chart_type==2) // inventory
 		{
 			$values = array(
-								array("data"=>"CSPC #", "format"=>$columnHeaderLeft), 
-								array("data"=>"DESCRIPTION", "format"=>$columnHeaderLeft), 
-								array("data"=>"SIZE", "format"=>$columnHeaderRight), 
-								array("data"=>"UNITS", "format"=>$columnHeaderRight), 
-								array("data"=>"$/UNIT", "format"=>$columnHeaderRight),
-								array("data"=>"ALLO", "format"=>$columnHeaderRight),
-								array("data"=>"AV_CS", "format"=>$columnHeaderRight));
+                            array("data"=>"Product", "format"=>$columnHeaderLeft), 
+                            array("data"=>"CSPC #", "format"=>$columnHeaderRight), 
+                            
+                            array("data"=>"Size", "format"=>$columnHeaderRight), 
+                            array("data"=>"Units", "format"=>$columnHeaderRight), 
+                            array("data"=>"$/Unit", "format"=>$columnHeaderRight),
+                            array("data"=>"Allocated cs", "format"=>$columnHeaderRight),
+                            array("data"=>"Available cs", "format"=>$columnHeaderRight));
 		}
-                        
+                 
+                 
+ 	elseif($chart_type==3) // Commission
+		{
+		  $values = array(
+                            array("data"=>"Commission - $this->report_month_text $this->report_year", "format"=>$columnHeader), 
+                            array("data"=>"", "format"=>$columnHeader), 
+                            
+                            array("data"=>"", "format"=>$columnHeader), 
+                            array("data"=>"", "format"=>$columnHeader),
+                            array("data"=>"", "format"=>$columnHeader),
+                            array("data"=>"", "format"=>$columnHeader) );
+                            
+          //  $commissoinTitle ="Commission - $this->report_month_text $this->report_year";
+          //  $this->_writeCell($sp, array("data"=>$commissoinTitle), $row, "A", $columnHeader); 
+          
+           $this->_writeRow($sp, $values, $row, $columnHeader,$chart_type); 
+           
+            $sp->mergeCells($row, $this->columns["A"]["index"], $row, $this->columns["F"]["index"]);
+            $row++;	
+        
+            $values = array(
+                            array("data"=>"Sales Summary", "format"=>$columnHeaderWhite), 
+                            array("data"=>"", "format"=>$columnHeaderWhite), 
+                            
+                            array("data"=>"", "format"=>$columnHeaderWhite), 
+                            array("data"=>"", "format"=>$columnHeaderWhite),
+                            array("data"=>"", "format"=>$columnHeaderWhite),
+                            array("data"=>"", "format"=>$columnHeaderWhite) );
+                            
+          //  $commissoinTitle ="Commission - $this->report_month_text $this->report_year";
+          //  $this->_writeCell($sp, array("data"=>$commissoinTitle), $row, "A", $columnHeader); 
+          
+           $this->_writeRow($sp, $values, $row, $columnHeader,$chart_type);
+             $sp->mergeCells($row, $this->columns["A"]["index"], $row, $this->columns["F"]["index"]);
+           $row++;	
+           
+        $values = array(
+                            array("data"=>"Product", "format"=>$columnHeaderLeft), 
+                            array("data"=>"CSPC #", "format"=>$columnHeaderRight), 
+                            
+                            array("data"=>"Bottles Sold", "format"=>$columnHeaderRight), 
+                            array("data"=>"Wholesale $", "format"=>$columnHeaderRight),
+                            array("data"=>"Total Amount", "format"=>$columnHeaderRight),
+                            array("data"=>"Commission", "format"=>$columnHeaderRight) );                            
+		}       
+        
+     
        
-        $this->_writeRow($sp, $values, $row, $columnHeader,$isSales);  
+        $this->_writeRow($sp, $values, $row, $columnHeader,$chart_type);  
         $row++;
         
     }
@@ -451,12 +662,19 @@ class excelBCInABVenderReport
     /*
 	  Hillside and Enotecca has same column for sales and inventory report, so only need on tag for knowing if it's for sales or inventory
 	*/
-    function _writeRow(& $sp, $value, & $row, $format=null,$isSales )
+    function _writeRow(& $sp, $value, & $row, $format=null,$chart_type )
     {
      	$endIndex = "J";
-     	if(!$isSales)
-     		$endIndex = "H";
-     
+  
+        if($chart_type==1) // sales
+            $endIndex = "J";
+        elseif ($chart_type==2)// inventory
+            $endIndex = "H";
+        elseif ($chart_type==3)// commission
+            $endIndex = "G";
+           
+            
+            
         for ($i = "A", $j=0; $i!=$endIndex; $i++, $j++) 
         {    
             $this->_writeCell(& $sp, $value[$j], $row, $i, $format);

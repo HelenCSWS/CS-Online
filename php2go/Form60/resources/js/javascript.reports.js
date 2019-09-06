@@ -323,7 +323,7 @@ function changeSalesReportType(keyValue)
 	}
 	else if (keyValue==3)//bc sales in ab
 	{
-			getSalesYears(keyValue);
+		//	getSalesYears(keyValue);
 		disableBreakTypeCombo(true);
 		disableEstate4ABCombo(false);
 		disableBICombo(true);
@@ -496,6 +496,9 @@ function createABSalesReports(isCancel)
   	var sale_month =  getCtlValue("sales_month");    
   	var estate_id =  getCtlValue("estate_id");  
 
+
+
+
  	if(parseInt(isCancel)==1)
     {
          document.location = "main.php";
@@ -514,6 +517,9 @@ function createABSalesReports(isCancel)
 		}
 		else if (parseInt(keyValue)==3)// BC Estates sales in Alberta
 		{	 			 	 
+         
+             sale_year =  getCtlValue("bc_sale_year");
+  	          sale_month =  getCtlValue("bc_sale_month");  
 			slink = "main.php?report_page_name=excelBCInABVenderReport&sale_month=" + sale_month + "&sale_year=" + sale_year+"&estate_id="+estate_id;	
 		}
 		else if (parseInt(keyValue)==4)// Alberta store penetration

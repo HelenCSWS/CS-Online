@@ -275,10 +275,7 @@ class ABReportData extends Php2Go
         return $this->cfg[$config];
     }
 
-	function test_emailDailyUnableReport()
-	{
-		return true;	
-	}
+
 	function emailDailyUnableReport()
     {
 

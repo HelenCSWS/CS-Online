@@ -187,41 +187,41 @@ class excelCurrentStorePenReport
 
     function _writeWineData(&$workbook, & $sp, & $row, $wineData)
     {
-        $fm = & $workbook->addFormat(array('fontfamily'=>'Arial', 'size'=>10, 'border'=>1));
-        $arialNormalBorder = $fm;
+        $fm = & $workbook->addFormat(array('fontfamily'=>'Calibri', 'size'=>10, 'border'=>1));
+        $CalibriNormalBorder = $fm;
         
         
         
-        $fm = & $workbook->addFormat(array('fontfamily'=>'Arial', 'size'=>10, 'fgcolor'=>'white', 
+        $fm = & $workbook->addFormat(array('fontfamily'=>'Calibri', 'size'=>10, 'fgcolor'=>'white', 
                 'bgcolor'=>'black', 'border'=>0, 'align'=>'center', 'valign'=>'vjustify','right'=>2,
                 'top'=>0, 'bottom'=>0));
         $columnEmpty = $fm;
  
  
  
-        $fm = & $workbook->addFormat(array('fontfamily'=>'Arial', 'size'=>10, 'border'=>1, 'numformat'=>'0.00%'));
-        $arialNormalBorderPercent = $fm;
+        $fm = & $workbook->addFormat(array('fontfamily'=>'Calibri', 'size'=>10, 'border'=>1, 'numformat'=>'0.00%'));
+        $CalibriNormalBorderPercent = $fm;
         
-        $fm = & $workbook->addFormat(array('fontfamily'=>'Arial', 'size'=>10, 'border'=>1, 'bottom'=>2));
-        $arialNormalThickBottom = $fm;
+        $fm = & $workbook->addFormat(array('fontfamily'=>'Calibri', 'size'=>10, 'border'=>1, 'bottom'=>2));
+        $CalibriNormalThickBottom = $fm;
         
-        $fm = & $workbook->addFormat(array('fontfamily'=>'Arial', 'size'=>10, 'border'=>1, 'bottom'=>2, 
+        $fm = & $workbook->addFormat(array('fontfamily'=>'Calibri', 'size'=>10, 'border'=>1, 'bottom'=>2, 
                 'numformat'=>'0.00%'));
-        $arialNormalThickBottomPercent = $fm;
+        $CalibriNormalThickBottomPercent = $fm;
         
-        $fm = & $workbook->addFormat(array('fontfamily'=>'Arial', 'size'=>10, 'border'=>1, 'right'=>2,
+        $fm = & $workbook->addFormat(array('fontfamily'=>'Calibri', 'size'=>10, 'border'=>1, 'right'=>2,
                 'numformat'=>'0.00%'));
-        $arialNormalThickRightPercent = $fm;
+        $CalibriNormalThickRightPercent = $fm;
         
-        $fm = & $workbook->addFormat(array('fontfamily'=>'Arial', 'size'=>10, 'border'=>1, 'right'=>2,
+        $fm = & $workbook->addFormat(array('fontfamily'=>'Calibri', 'size'=>10, 'border'=>1, 'right'=>2,
                 'BOTToM'=>2, 'numformat'=>'0.00%'));
-        $arialNormalThickRightThickBottomPercent = $fm;
+        $CalibriNormalThickRightThickBottomPercent = $fm;
         
-        $fm = & $workbook->addFormat(array('fontfamily'=>'Arial', 'size'=>10, 'numformat'=>'0.00%'));
-        $arialNormalNoBorderPercent = $fm;
+        $fm = & $workbook->addFormat(array('fontfamily'=>'Calibri', 'size'=>10, 'numformat'=>'0.00%'));
+        $CalibriNormalNoBorderPercent = $fm;
         
-        $fm = & $workbook->addFormat(array('fontfamily'=>'Arial', 'size'=>10, 'bold'=>1));
-        $arialBold = $fm;
+        $fm = & $workbook->addFormat(array('fontfamily'=>'Calibri', 'size'=>10, 'bold'=>1));
+        $CalibriBold = $fm;
         
         $i=1;
         $startRow= $row + 1; //internally rows are 0 based, in formulas rows are 1 based
@@ -233,7 +233,7 @@ class excelCurrentStorePenReport
 				$currentRow = $row+1;
 				$values = array(array("data"=>ucwords(strtolower(($wine["wine_name"])))), 
 				array("data"=>intval($wine["current_data"]))); 
-				$this->_writeRow($sp, $values, $row, ($i==count($wineData))?$arialNormalThickBottom:$arialNormalBorder); 
+				$this->_writeRow($sp, $values, $row, ($i==count($wineData))?$CalibriNormalThickBottom:$CalibriNormalBorder); 
 				$i++;
 				$row++;            
 			}
@@ -257,51 +257,51 @@ class excelCurrentStorePenReport
 						array("data"=>intval($wine["week1_2_end"])), 
 						array("data"=>"=SUM(C$currentRow-B$currentRow)"), 
 						array("data"=>"=IF(B$currentRow>0,D$currentRow/B$currentRow,0)", 
-						"format"=>($i==count($wineData))?$arialNormalThickBottomPercent:$arialNormalBorderPercent), 
+						"format"=>($i==count($wineData))?$CalibriNormalThickBottomPercent:$CalibriNormalBorderPercent), 
 						array("data"=>intval($wine["week3_4_start"])), 
 						array("data"=>intval($wine["week3_4_end"])), 
 						array("data"=>"=SUM(G$currentRow - F$currentRow)"), 
 						array("data"=>"=IF(F$currentRow>0,H$currentRow/F$currentRow, 0)", 
-						"format"=>($i==count($wineData))?$arialNormalThickBottomPercent:$arialNormalBorderPercent), 
+						"format"=>($i==count($wineData))?$CalibriNormalThickBottomPercent:$CalibriNormalBorderPercent), 
 						array("data"=>"=SUM(H$currentRow+D$currentRow)"), 
 						array("data"=>"=IF(B$currentRow>0,SUM(J$currentRow/B$currentRow), 0)",
-						"format"=>($i==count($wineData))?$arialNormalThickRightThickBottomPercent:$arialNormalThickRightPercent),
+						"format"=>($i==count($wineData))?$CalibriNormalThickRightThickBottomPercent:$CalibriNormalThickRightPercent),
 						
 						array("data"=>"","format"=>$columnEmpty),
 						array("data"=>$colStartData),  	
 						array("data"=>intval($wine["current_data"])),  
 						array("data"=>"=SUM(N$currentRow-M$currentRow)"), 	
 						array("data"=>"=IF(M$currentRow>0,O$currentRow/M$currentRow,0)", 
-						"format"=>($i==count($wineData))?$arialNormalThickRightThickBottomPercent:$arialNormalThickRightPercent)
+						"format"=>($i==count($wineData))?$CalibriNormalThickRightThickBottomPercent:$CalibriNormalThickRightPercent)
 						); 
 	                        
-	            $this->_writeRow($sp, $values, $row, ($i==count($wineData))?$arialNormalThickBottom:$arialNormalBorder); 
+	            $this->_writeRow($sp, $values, $row, ($i==count($wineData))?$CalibriNormalThickBottom:$CalibriNormalBorder); 
 	            $i++;
 	            $row++;
 	        }
 	        $endRow=$row;
 	        
 	          $this->_writeCell($sp, array("data"=>"=SUM(B$startRow:B$endRow)"), $row, "B"
-                , $arialNormalBorder);
+                , $CalibriNormalBorder);
                 
 	        $this->_writeCell($sp, array("data"=>"=SUM(C$startRow:C$endRow)"), $row, "C"
-	                , $arialNormalBorder);
+	                , $CalibriNormalBorder);
 	                
 	        $this->_writeCell($sp, array("data"=>"=SUM(F$startRow:F$endRow)"), $row, "F"
-	                , $arialNormalBorder);
+	                , $CalibriNormalBorder);
 	                
 	        $this->_writeCell($sp, array("data"=>"=SUM(G$startRow:G$endRow)"), $row, "G"
-	                , $arialNormalBorder);
+	                , $CalibriNormalBorder);
 	        $row++;
 	        
-			$this->_writeCell($sp, array("data"=>"% Increase in Store Distribution"), $row, "H", $arialBold);
+			$this->_writeCell($sp, array("data"=>"% Increase in Store Distribution"), $row, "H", $CalibriBold);
 			$sp->mergeCells($row, $this->columns["H"]["index"], $row, $this->columns["J"]["index"]);
 			$this->_writeCell($sp, array("data"=>"=SUM(J$startRow:J$endRow)/SUM(B$startRow:B$endRow)"), $row, "K"
-			, $arialNormalNoBorderPercent);
+			, $CalibriNormalNoBorderPercent);
 			
 			$sp->mergeCells($row, $this->columns["H"]["index"], $row, $this->columns["J"]["index"]);
 			$this->_writeCell($sp, array("data"=>"=SUM(P$startRow:P$endRow)"), $row, "P"
-			, $arialNormalNoBorderPercent);
+			, $CalibriNormalNoBorderPercent);
 			
 			$row++;
 			$row++;
@@ -311,12 +311,12 @@ class excelCurrentStorePenReport
     
     function _writeTitle(& $workbook, & $sp, & $row, $user_id =0,$worksheetName)
     {
-		$fm = & $workbook->addFormat(array('fontfamily'=>'Arial', 'size'=>12, 'bold'=>1,
+		$fm = & $workbook->addFormat(array('fontfamily'=>'Calibri', 'size'=>12, 'bold'=>1,
 									'fgcolor'=>'silver', 'bgcolor'=>'black', 'align'=>'center', 'valign'=>'center'));
 		$reportTitle = $fm;
 		
-		$fm = & $workbook->addFormat(array('fontfamily'=>'Arial', 'size'=>10, 'bold'=>1, 'underline'=>1));
-		$arialBoldUnderlined  = $fm;
+		$fm = & $workbook->addFormat(array('fontfamily'=>'Calibri', 'size'=>10, 'bold'=>1, 'underline'=>1));
+		$CalibriBoldUnderlined  = $fm;
 		
 		$fm = & $workbook->addFormat(array('right'=>2));
 		$thickRight = $fm;
@@ -375,7 +375,7 @@ class excelCurrentStorePenReport
 		}
         
         
-        $this->_writeCell($sp, array("data"=>"$worksheetName - Generated on: " . date("M d, Y").'  Total stores:'. $total), $row, "A", $arialBoldUnderlined); 
+        $this->_writeCell($sp, array("data"=>"$worksheetName - Generated on: " . date("M d, Y").'  Total stores:'. $total), $row, "A", $CalibriBoldUnderlined); 
         $row++;
         $row++;
         
@@ -388,35 +388,35 @@ class excelCurrentStorePenReport
     
     function _writeColumnHeaders(& $workbook, & $sp, & $row, $agency)
     {
-        $fm = & $workbook->addFormat(array('fontfamily'=>'Arial', 'size'=>10, 'fgcolor'=>'silver', 
+        $fm = & $workbook->addFormat(array('fontfamily'=>'Calibri', 'size'=>10, 'fgcolor'=>'silver', 
                 'bgcolor'=>'black', 'border'=>1, 'align'=>'center', 'valign'=>'bottom',
                 'top'=>2, 'bottom'=>2));
         $fm->setTextWrap();
         $columnHeader = $fm;
         
-        $fm = & $workbook->addFormat(array('fontfamily'=>'Arial', 'size'=>10, 'fgcolor'=>'silver', 
+        $fm = & $workbook->addFormat(array('fontfamily'=>'Calibri', 'size'=>10, 'fgcolor'=>'silver', 
                 'bgcolor'=>'black', 'border'=>1, 'align'=>'center', 'valign'=>'vjustify',
                 'top'=>2, 'bottom'=>2));
         $fm->setTextWrap();
         $columnHeadervJustify = $fm;
         
-        $fm = & $workbook->addFormat(array('fontfamily'=>'Arial', 'size'=>10, 'fgcolor'=>'white', 
+        $fm = & $workbook->addFormat(array('fontfamily'=>'Calibri', 'size'=>10, 'fgcolor'=>'white', 
                 'bgcolor'=>'black', 'border'=>0, 'align'=>'center', 'valign'=>'vjustify','right'=>2,
                 'top'=>0, 'bottom'=>0));
         $fm->setTextWrap();
         $columnEmpty = $fm;
         
-        $fm = & $workbook->addFormat(array('fontfamily'=>'Arial', 'size'=>10, 'fgcolor'=>'silver', 
+        $fm = & $workbook->addFormat(array('fontfamily'=>'Calibri', 'size'=>10, 'fgcolor'=>'silver', 
                 'bgcolor'=>'black', 'border'=>1, 'align'=>'center', 'valign'=>'bottom',
                 'top'=>2, 'bottom'=>2, 'right'=>2));
         $fm->setTextWrap();
         $columnHeadervThickRight = $fm;
         
-        $fm = & $workbook->addFormat(array('fontfamily'=>'Arial', 'size'=>10, 'border'=>1, 'top'=>2, 'bottom'=>2));
+        $fm = & $workbook->addFormat(array('fontfamily'=>'Calibri', 'size'=>10, 'border'=>1, 'top'=>2, 'bottom'=>2));
         $fm->setTextWrap();
         $columnHeader2ndLine = $fm;
         
-        $fm = & $workbook->addFormat(array('fontfamily'=>'Arial', 'size'=>10, 'border'=>1, 
+        $fm = & $workbook->addFormat(array('fontfamily'=>'Calibri', 'size'=>10, 'border'=>1, 
                 'top'=>2, 'bottom'=>2, 'right'=>2));
         $fm->setTextWrap();
         $columnHeader2ndLineRight = $fm;

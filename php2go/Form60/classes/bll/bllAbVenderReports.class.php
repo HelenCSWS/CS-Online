@@ -61,7 +61,7 @@ class bllABVenderData extends Php2Go
 		
 		$this->logMessage("---- Finished data collection ---- ", false);
 		
-		echo herer;
+	
 		if ($this->errorMessage <> "")
 		{
 		    if ($this->getConfigVal("EMAIL_ON_ERROR"))
@@ -232,6 +232,31 @@ class bllABVenderData extends Php2Go
 	  
 	  //first and last row are not valid row
 	  */
+   function getBCWineryABSalesSummary($report_month="",$report_year="",$estate_id="")
+   {
+    
+	   $sql="select w.wine_name product, wf.cspc_code,wf.price_winery wholesale,
+             sum(s.unit_sales) unit_sales, sum(s.unit_sales* wf.price_winery) total_wholesale,sum(s.unit_sales* wf.price_winery*0.15) commission
+             
+             from wines w, wines_info wf 
+             
+             left outer join ab_sales_bc s on wf.cspc_code= s.skua  
+             
+              and year(sale_date)=$report_year
+ 
+                and month(sale_date)=$report_month
+             
+            where  w.estate_id =$estate_id
+            
+            and w.wine_id =wf.wine_id
+            
+            group by cspc_code
+            
+            order by cspc_code";
+            
+       $rows = $this->db->getAll($sql);
+        return $rows;
+   }
 	function getVenderSalesFromDB($report_month="",$report_year="",$estate_id="")
 	{
 	 
@@ -252,8 +277,29 @@ class bllABVenderData extends Php2Go
 	 		$table_name ="ab_sales_bc";
 	 	}	 	
 	 		 		
-	 	if($estate_id==96||$estate_id==97||$estate_id==175)
-			$sql = "Select SKUA, product_name, size, unit_sales,btl_per_cs,total_cs,licensee_no,store_name,price_case,price_unit from $table_name $estate_filter  year(sale_date)= $sale_year and month(sale_date)=$sale_month order by licensee_no, store_name ";
+	 	if($estate_id==150) // BC Estate
+			$sql = "SELECT 
+                        abs.SKUA,
+                        abs.product_name,
+                        abs.size,
+                        abs.unit_sales,
+                        abs.btl_per_cs,
+                        abs.total_cs,
+                        abs.licensee_no,
+                        abs.store_name,
+                        abs.price_case,
+                        abs.price_unit,
+                        c.billing_address_city city
+                    FROM
+                        ab_sales_bc abs LEFT OUTER JOIN customers c 
+                    
+                    ON 
+                        abs.Licensee_No = c.licensee_number
+                    WHERE estate_id =150  
+                    AND year(sale_date)= $sale_year 
+                    AND month(sale_date)=$sale_month 
+                    ORDER BY licensee_no, store_name 
+                ";
 		else
 			$sql="Select SKUA, product_name, size, unit_sales,btl_per_cs,total_cs,st.licensee_no,store_name,price_case,price_unit, c.billing_address_city city
 			from $table_name st 
@@ -284,8 +330,6 @@ class bllABVenderData extends Php2Go
 		 	
 			$sql="Select * from government_inventory where estate_id = $estate_id and year(when_entered)= $sale_year and month(when_entered)=$sale_month";
 			
-		//	$sql="Select * from government_inventory where estate_id = $estate_id and year(when_entered)= 2012 and month(when_entered)=1";
-	        
 	        $rs["inventory_data"] =$this->db->getAll($sql);
 
 		}       
@@ -308,28 +352,12 @@ class bllABVenderData extends Php2Go
         $pagedRS->setPageSize(100000);
         $pagedRS->setCurrentPage(1);
 	 	
-	 	/*if($estate_id !="")
-	 	{
-	 		$estate_filter = " where estate_id = $estate_id and ";
-	 		$table_name ="ab_sales_bc";
-	 	}*/
+	 
 	 	
 	 	$estate_filter = "";
 	 	if($estate_id !="")
 	 	{
-	 	 	/*if($estate_id ==126)
-	 	 	{
-	 	 	 	$estate_filter =" and w.estate_id = 126 ";
-	 	 	}*/
-	 	 	
-	 	 	if($estate_id ==175)
-	 	 	{
-	 	 	 	$estate_filter =" and w.estate_id = 175 ";
-	 	 	}
-	 	 	else
-	 	 	{
-				$estate_filter =" and (w.estate_id =96 or w.estate_id =97)";
-			}
+	 	  	$estate_filter =" and w.estate_id = $estate_id "; 	 
 		}
 		
 		$sql = "Select SKUA, product_name, lksize.display_name size, unit_sales,w.bottles_per_case btl_per_cs, cases_sold total_cs, licensee_no,
@@ -350,18 +378,7 @@ class bllABVenderData extends Php2Go
 		
 		and year(sale_date)= $sale_year and month(sale_date)=$sale_month order by licensee_no, store_name ";
 			
-	 		
-	 /*	if($estate_id!=2)
-			$sql = "Select SKUA, product_name, size, unit_sales,btl_per_cs,total_cs,licensee_no,store_name,price_case,price_unit from $table_name $estate_filter  year(sale_date)= $sale_year and month(sale_date)=$sale_month order by licensee_no, store_name ";
-		else
-			$sql="Select SKUA, product_name, size, unit_sales,btl_per_cs,total_cs,st.licensee_no,store_name,price_case,price_unit, c.billing_address_city city
-			from ab_sales_bc st 
-			left outer join customers c on st.licensee_no = c.licensee_number 
-			where st.estate_id=2
-			and year(sale_date)= $sale_year and month(sale_date)=$sale_month
-			order by st.licensee_no, store_name";
-			
-	*/
+	
         if (!$pagedRS->load($sql))
         {
             $this->file_format_error .= "Error: unable to get sales data.";
@@ -392,7 +409,7 @@ class bllABVenderData extends Php2Go
 		$this->getInventoryHtmlData(175); //CC Jentch
 		//$this->getInventoryHtmlData(118); //rustico
 		
-	//	$this->getInventoryHtmlData(126); //bench 1775
+    	//	$this->getInventoryHtmlData(126); //bench 1775
 		
 	
 		

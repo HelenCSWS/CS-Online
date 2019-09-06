@@ -138,29 +138,29 @@ class excelABBreakDownReport
     
     function _writeData(&$workbook, & $sp, & $row, $infoData)
     {
-        $fm = & $workbook->addFormat(array('fontfamily'=>'Arial', 'size'=>10, 'border'=>1));
-        $arialNormalBorder = $fm;
+        $fm = & $workbook->addFormat(array('fontfamily'=>'Calibri', 'size'=>10, 'border'=>1));
+        $CalibriNormalBorder = $fm;
  
-        $fm = & $workbook->addFormat(array('fontfamily'=>'Arial', 'size'=>10, 'align'=>'right','border'=>1));
-        $arialNormalBorderRight = $fm;
+        $fm = & $workbook->addFormat(array('fontfamily'=>'Calibri', 'size'=>10, 'align'=>'right','border'=>1));
+        $CalibriNormalBorderRight = $fm;
         
-        $fm = & $workbook->addFormat(array('fontfamily'=>'Arial',  'bold'=>1,'color'=>'red','size'=>10, 'align'=>'right','border'=>1));
-        $arialNormalBorderRedFontRight = $fm;
+        $fm = & $workbook->addFormat(array('fontfamily'=>'Calibri',  'bold'=>1,'color'=>'red','size'=>10, 'align'=>'right','border'=>1));
+        $CalibriNormalBorderRedFontRight = $fm;
         
-        $fm = & $workbook->addFormat(array('fontfamily'=>'Arial','bold'=>1,'color'=>'red','fgcolor'=>'yellow', 'size'=>10, 'align'=>'right','border'=>1));
-        $arialNormalBorderRedYellowBKFontRight = $fm;
+        $fm = & $workbook->addFormat(array('fontfamily'=>'Calibri','bold'=>1,'color'=>'red','fgcolor'=>'yellow', 'size'=>10, 'align'=>'right','border'=>1));
+        $CalibriNormalBorderRedYellowBKFontRight = $fm;
         
-        $fm = & $workbook->addFormat(array('fontfamily'=>'Arial', 'size'=>10, 'align'=>'right','border'=>1,'numformat'=>'0'));
-        $arialNormalBorderNumRight = $fm;
+        $fm = & $workbook->addFormat(array('fontfamily'=>'Calibri', 'size'=>10, 'align'=>'right','border'=>1,'numformat'=>'0'));
+        $CalibriNormalBorderNumRight = $fm;
         
-        $fm = & $workbook->addFormat(array('fontfamily'=>'Arial','size'=>10, 'align'=>'left','border'=>1));
-        $arialNormalBorderLeft = $fm;
+        $fm = & $workbook->addFormat(array('fontfamily'=>'Calibri','size'=>10, 'align'=>'left','border'=>1));
+        $CalibriNormalBorderLeft = $fm;
         
-        $fm = & $workbook->addFormat(array('fontfamily'=>'Arial','size'=>10, 'bold'=>1,'color'=>'red','border'=>1));
-        $arialNormalBorderRedFontLeft = $fm;
+        $fm = & $workbook->addFormat(array('fontfamily'=>'Calibri','size'=>10, 'bold'=>1,'color'=>'red','border'=>1));
+        $CalibriNormalBorderRedFontLeft = $fm;
         
-         $fm = & $workbook->addFormat(array('fontfamily'=>'Arial', 'size'=>10, 'border'=>1, 'fgcolor'=>'yellow','color'=>'red'));
-        $arialNormalBorderYellowFg = $fm;
+         $fm = & $workbook->addFormat(array('fontfamily'=>'Calibri', 'size'=>10, 'border'=>1, 'fgcolor'=>'yellow','color'=>'red'));
+        $CalibriNormalBorderYellowFg = $fm;
  
         
       
@@ -176,23 +176,23 @@ class excelABBreakDownReport
 				if($this->report_type == 1)
 				{
 					$values = array(
-								array("data"=>$salesData["store_name"],"format"=>$arialNormalBorderLeft ), 
-								array("data"=>$salesData["licensee_no"],"format"=>$arialNormalBorderLeft ), 
-								array("data"=>$salesData["cases"], "format"=>$arialNormalBorderNumRight)
+								array("data"=>$salesData["store_name"],"format"=>$CalibriNormalBorderLeft ), 
+								array("data"=>$salesData["licensee_no"],"format"=>$CalibriNormalBorderLeft ), 
+								array("data"=>$salesData["cases"], "format"=>$CalibriNormalBorderNumRight)
 								); 
 				}
 				else
 				{
 					 		
 					$values = array(
-							array("data"=>$salesData["estate_name"],"format"=>$arialNormalBorderLeft ), 
-							array("data"=>$salesData["wine_name"],"format"=>$arialNormalBorderLeft ), 
-							array("data"=>$salesData["btl_size"], "format"=>$arialNormalBorderLeft), 
-							array("data"=>$salesData["cases"], "format"=>$arialNormalBorderNumRight)								
+							array("data"=>$salesData["estate_name"],"format"=>$CalibriNormalBorderLeft ), 
+							array("data"=>$salesData["wine_name"],"format"=>$CalibriNormalBorderLeft ), 
+							array("data"=>$salesData["btl_size"], "format"=>$CalibriNormalBorderLeft), 
+							array("data"=>$salesData["cases"], "format"=>$CalibriNormalBorderNumRight)								
 							); 
 				}
 				
-	            $this->_writeRow($sp, $values, $row, $arialNormalBorder); 
+	            $this->_writeRow($sp, $values, $row, $CalibriNormalBorder); 
 	            $row++;
 	        
         }//end while
@@ -201,24 +201,24 @@ class excelABBreakDownReport
         if($this->report_type==1)
         {
 			$this->_writeCell($sp, array("data"=>"=SUM(C$startRow:C$endRow)"), $row, "C"
-	                , $arialNormalBorderYellowFg);	
+	                , $CalibriNormalBorderYellowFg);	
 		}
 		else
 		{
 			$this->_writeCell($sp, array("data"=>"=SUM(D$startRow:D$endRow)"), $row, "D"
-	                , $arialNormalBorderYellowFg);	
+	                , $CalibriNormalBorderYellowFg);	
 		}
 		$row++;
     }
     
     function _writeTitle(& $workbook, & $sp, & $row, $titleText)
     {
-        $fm = & $workbook->addFormat(array('fontfamily'=>'Arial', 'size'=>10, 'bold'=>1, 
+        $fm = & $workbook->addFormat(array('fontfamily'=>'Calibri', 'size'=>10, 'bold'=>1, 
                 'fgcolor'=>'white', 'bgcolor'=>'black', 'align'=>'left', 'valign'=>'center'));
         $reportTitle = $fm;
 
-        $fm = & $workbook->addFormat(array('fontfamily'=>'Arial', 'size'=>10, 'bold'=>1, 'underline'=>1));
-        $arialBoldUnderlined  = $fm;
+        $fm = & $workbook->addFormat(array('fontfamily'=>'Calibri', 'size'=>10, 'bold'=>1, 'underline'=>1));
+        $CalibriBoldUnderlined  = $fm;
         
         $fm = & $workbook->addFormat(array('right'=>2));
         $thickRight = $fm;
@@ -233,7 +233,7 @@ class excelABBreakDownReport
     
     function _writeColumnHeaders(& $workbook, & $sp, & $row)
     {
-        $fm = & $workbook->addFormat(array('fontfamily'=>'Arial', 'size'=>10, 'fgcolor'=>'yellow', 
+        $fm = & $workbook->addFormat(array('fontfamily'=>'Calibri', 'size'=>10, 'fgcolor'=>'yellow', 
                 'bgcolor'=>'black', 'color'=>'red' ,'border'=>1, 'align'=>'center', 'valign'=>'bottom','bold'=>1,
                 'top'=>2, 'bottom'=>2));
         //$fm->setTextWrap();
@@ -242,12 +242,12 @@ class excelABBreakDownReport
       
       	
         
-        $fm = & $workbook->addFormat(array('fontfamily'=>'Arial', 'size'=>10, 'fgcolor'=>'yellow', 
+        $fm = & $workbook->addFormat(array('fontfamily'=>'Calibri', 'size'=>10, 'fgcolor'=>'yellow', 
                 'bgcolor'=>'black','color'=>'red' ,'border'=>1, 'align'=>'left', 'valign'=>'bottom','bold'=>1,
                 'top'=>2, 'bottom'=>2));       
         $columnHeaderLeft = $fm;
         
-        $fm = & $workbook->addFormat(array('fontfamily'=>'Arial', 'size'=>10, 'fgcolor'=>'yellow', 
+        $fm = & $workbook->addFormat(array('fontfamily'=>'Calibri', 'size'=>10, 'fgcolor'=>'yellow', 
                 'bgcolor'=>'black','color'=>'red' , 'border'=>1, 'align'=>'right', 'valign'=>'bottom','bold'=>1,
                 'top'=>2, 'bottom'=>2));       
         $columnHeaderRight = $fm;

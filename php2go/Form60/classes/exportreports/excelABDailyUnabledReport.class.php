@@ -129,30 +129,30 @@ class excelABDailyUnabledRepor
 		
 	function _writeData(&$workbook, & $sp, & $row)
     {
-       	$fm = & $workbook->addFormat(array('fontfamily'=>'Arial', 'size'=>10, 'border'=>1));
-		$arialNormalBorder = $fm;
+       	$fm = & $workbook->addFormat(array('fontfamily'=>'Calibri', 'size'=>10, 'border'=>1));
+		$CalibriNormalBorder = $fm;
 		
 		
-		$fm = & $workbook->addFormat(array('fontfamily'=>'Arial', 'size'=>10, 'border'=>1,'color'=>'red'));
-		$arialNormalBorderRed = $fm;
+		$fm = & $workbook->addFormat(array('fontfamily'=>'Calibri', 'size'=>10, 'border'=>1,'color'=>'red'));
+		$CalibriNormalBorderRed = $fm;
 		
-		$fm = & $workbook->addFormat(array('fontfamily'=>'Arial', 'size'=>10, 'border'=>1,'color'=>'blue'));
-		$arialNormalBorderBlue = $fm;
+		$fm = & $workbook->addFormat(array('fontfamily'=>'Calibri', 'size'=>10, 'border'=>1,'color'=>'blue'));
+		$CalibriNormalBorderBlue = $fm;
 		
-		$fm = & $workbook->addFormat(array('fontfamily'=>'Arial', 'size'=>10, 'align'=>'right','border'=>1));
-		$arialNormalBorderRight = $fm;
+		$fm = & $workbook->addFormat(array('fontfamily'=>'Calibri', 'size'=>10, 'align'=>'right','border'=>1));
+		$CalibriNormalBorderRight = $fm;
 		
-		$fm = & $workbook->addFormat(array('fontfamily'=>'Arial', 'size'=>10, 'align'=>'right','border'=>1,'numformat'=>'0'));
-		$arialNormalBorderNumRight = $fm;
+		$fm = & $workbook->addFormat(array('fontfamily'=>'Calibri', 'size'=>10, 'align'=>'right','border'=>1,'numformat'=>'0'));
+		$CalibriNormalBorderNumRight = $fm;
 		
-		$fm = & $workbook->addFormat(array('fontfamily'=>'Arial','size'=>9, 'align'=>'right','border'=>1));
+		$fm = & $workbook->addFormat(array('fontfamily'=>'Calibri','size'=>9, 'align'=>'right','border'=>1));
         $fm ->setNumFormat("$#,##0.00;[Red]-$#,##0.00");
-        $arialNormalCurrency = $fm;
+        $CalibriNormalCurrency = $fm;
         
         
-        $fm = & $workbook->addFormat(array('fontfamily'=>'Arial','size'=>9, 'align'=>'right','border'=>1,'color'=>'blue'));
+        $fm = & $workbook->addFormat(array('fontfamily'=>'Calibri','size'=>9, 'align'=>'right','border'=>1,'color'=>'blue'));
         $fm ->setNumFormat("$#,##0.00;[blue]-$#,##0.00");
-        $arialNormalCurrencyRed = $fm;
+        $CalibriNormalCurrencyRed = $fm;
 		
 		$i=1;
 		$startRow= $row + 1; //internally rows are 0 based, in formulas rows are 1 based
@@ -165,8 +165,8 @@ class excelABDailyUnabledRepor
 /
 		 $i=0;
          
-		 $cellFormat = $arialNormalBorder;
-		 $cellCurrencyFormat = $arialNormalCurrency;
+		 $cellFormat = $CalibriNormalBorder;
+		 $cellCurrencyFormat = $CalibriNormalCurrency;
 		 
 		foreach($basicInfos as $info_date)
 		{
@@ -187,7 +187,7 @@ class excelABDailyUnabledRepor
 	
 			$user_nameformat =$cellFormat;
 			if($user_name == "New Customer")
-				$user_nameformat= $arialNormalBorderRed;
+				$user_nameformat= $CalibriNormalBorderRed;
 	
 			$values = array(
 							array("data"=>$sku), 
@@ -215,12 +215,12 @@ class excelABDailyUnabledRepor
     
     function _writeTitle(& $workbook, & $sp, & $row)
     {
-        $fm = & $workbook->addFormat(array('fontfamily'=>'Arial', 'size'=>12, 'bold'=>1, 
+        $fm = & $workbook->addFormat(array('fontfamily'=>'Calibri', 'size'=>12, 'bold'=>1, 
                 'fgcolor'=>'silver', 'bgcolor'=>'black', 'align'=>'center', 'valign'=>'center'));
         $reportTitle = $fm;
 
-        $fm = & $workbook->addFormat(array('fontfamily'=>'Arial', 'size'=>11, 'bold'=>1));
-        $arialBoldUnderlined  = $fm;
+        $fm = & $workbook->addFormat(array('fontfamily'=>'Calibri', 'size'=>11, 'bold'=>1));
+        $CalibriBoldUnderlined  = $fm;
         
         $fm = & $workbook->addFormat(array('right'=>2));
         $thickRight = $fm;
@@ -245,7 +245,7 @@ class excelABDailyUnabledRepor
     {
         //$fgColor="silver";
         $fgColor="green";
-        $fm = & $workbook->addFormat(array('fontfamily'=>'Arial', 'size'=>10, 'fgcolor'=>$fgColor, 
+        $fm = & $workbook->addFormat(array('fontfamily'=>'Calibri', 'size'=>10, 'fgcolor'=>$fgColor, 
                 'bgcolor'=>'black', 'border'=>0, 'align'=>'center', 'valign'=>'bottom','bold'=>1,
                 'top'=>1, 'bottom'=>1));
         //$fm->setTextWrap();
@@ -253,14 +253,14 @@ class excelABDailyUnabledRepor
         
       
         
-        $fm = & $workbook->addFormat(array('fontfamily'=>'Arial', 'size'=>10, 'fgcolor'=>$fgColor, 
+        $fm = & $workbook->addFormat(array('fontfamily'=>'Calibri', 'size'=>10, 'fgcolor'=>$fgColor, 
                 'bgcolor'=>'black', 'border'=>0, 'align'=>'left', 'valign'=>'bottom','bold'=>1,
                 'top'=>1, 'bottom'=>1));       
         $columnHeaderLeft = $fm;
         
         
         
-        $fm = & $workbook->addFormat(array('fontfamily'=>'Arial', 'size'=>10, 'fgcolor'=>$fgColor, 
+        $fm = & $workbook->addFormat(array('fontfamily'=>'Calibri', 'size'=>10, 'fgcolor'=>$fgColor, 
                 'bgcolor'=>'black', 'border'=>0, 'align'=>'right', 'valign'=>'bottom','bold'=>1,
                 'top'=>1, 'bottom'=>1));       
         $columnHeaderRight = $fm;

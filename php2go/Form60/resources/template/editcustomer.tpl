@@ -169,7 +169,7 @@
 						
 						<tr>
 						<!-- Store info 5th row end HK Rank-->
-						<td colspan="3" >
+						<td colspan="3" style="display:none;" >
 						
 						<section id="hk_ranks">
 							<div style="padding-left:5px">Ranks</div>
@@ -182,8 +182,7 @@
 							<td style="padding-left:20px"><input class="chk-input" type="checkbox" name="rank_type_5" id="rank_type_5" border="0"></td><td>Tatler Best Resautants</td>
 							<td></td><td></td>
 							</tr>
-							</table>
-			
+							</table>			
 						</section>
 						</td>
 						</tr>
@@ -431,23 +430,26 @@ refreshWines();
 $(document).ready(function(){
 
  
-
-if($("#province_id").val()==13)
-{
-		initHKRank();
-
-	    document.getElementById("rank_type_1").onclick = function () { setHKRank("rank_type_1", 1) };
-		document.getElementById("rank_type_2").onclick = function () { setHKRank("rank_type_2", 2) };
-		document.getElementById("rank_type_3").onclick = function () { setHKRank("rank_type_3", 3) };
-		document.getElementById("rank_type_4").onclick = function () { setHKRank("rank_type_4", 4) };
-		document.getElementById("rank_type_5").onclick = function () { setHKRank("rank_type_5", 5) };
-		   
-	   
-
- }              
  });
  
+ function HKSetting()
+ {
  
+
+	if($("#province_id").val()==13)
+	{
+			initHKRank();
+
+			document.getElementById("rank_type_1").onclick = function () { setHKRank("rank_type_1", 1) };
+			document.getElementById("rank_type_2").onclick = function () { setHKRank("rank_type_2", 2) };
+			document.getElementById("rank_type_3").onclick = function () { setHKRank("rank_type_3", 3) };
+			document.getElementById("rank_type_4").onclick = function () { setHKRank("rank_type_4", 4) };
+			document.getElementById("rank_type_5").onclick = function () { setHKRank("rank_type_5", 5) };
+			   
+		   
+
+	 }             
+}
  function initHKRank()
  {
 	var i=1;

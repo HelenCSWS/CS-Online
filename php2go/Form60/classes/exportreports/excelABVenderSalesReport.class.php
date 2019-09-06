@@ -132,26 +132,26 @@ class excelABVenderSalesReport
     
     function _writeData(&$workbook, & $sp, & $row, $infoData)
     {
-        $fm = & $workbook->addFormat(array('fontfamily'=>'Arial', 'size'=>10, 'border'=>1));
-        $arialNormalBorder = $fm;
+        $fm = & $workbook->addFormat(array('fontfamily'=>'Calibri', 'size'=>10, 'border'=>1));
+        $CalibriNormalBorder = $fm;
  
-        $fm = & $workbook->addFormat(array('fontfamily'=>'Arial', 'size'=>10, 'align'=>'right','border'=>1));
-        $arialNormalBorderRight = $fm;
+        $fm = & $workbook->addFormat(array('fontfamily'=>'Calibri', 'size'=>10, 'align'=>'right','border'=>1));
+        $CalibriNormalBorderRight = $fm;
         
-        $fm = & $workbook->addFormat(array('fontfamily'=>'Arial',  'bold'=>1,'color'=>'red','size'=>10, 'align'=>'right','border'=>1));
-        $arialNormalBorderRedFontRight = $fm;
+        $fm = & $workbook->addFormat(array('fontfamily'=>'Calibri',  'bold'=>1,'color'=>'red','size'=>10, 'align'=>'right','border'=>1));
+        $CalibriNormalBorderRedFontRight = $fm;
         
-        $fm = & $workbook->addFormat(array('fontfamily'=>'Arial','bold'=>1,'color'=>'red','fgcolor'=>'yellow', 'size'=>10, 'align'=>'right','border'=>1));
-        $arialNormalBorderRedYellowBKFontRight = $fm;
+        $fm = & $workbook->addFormat(array('fontfamily'=>'Calibri','bold'=>1,'color'=>'red','fgcolor'=>'yellow', 'size'=>10, 'align'=>'right','border'=>1));
+        $CalibriNormalBorderRedYellowBKFontRight = $fm;
         
-        $fm = & $workbook->addFormat(array('fontfamily'=>'Arial', 'size'=>10, 'align'=>'right','border'=>1,'numformat'=>'0'));
-        $arialNormalBorderNumRight = $fm;
+        $fm = & $workbook->addFormat(array('fontfamily'=>'Calibri', 'size'=>10, 'align'=>'right','border'=>1,'numformat'=>'0'));
+        $CalibriNormalBorderNumRight = $fm;
         
-        $fm = & $workbook->addFormat(array('fontfamily'=>'Arial','size'=>10, 'align'=>'left','border'=>1));
-        $arialNormalBorderLeft = $fm;
+        $fm = & $workbook->addFormat(array('fontfamily'=>'Calibri','size'=>10, 'align'=>'left','border'=>1));
+        $CalibriNormalBorderLeft = $fm;
         
-        $fm = & $workbook->addFormat(array('fontfamily'=>'Arial','size'=>10, 'bold'=>1,'color'=>'red','border'=>1));
-        $arialNormalBorderRedFontLeft = $fm;
+        $fm = & $workbook->addFormat(array('fontfamily'=>'Calibri','size'=>10, 'bold'=>1,'color'=>'red','border'=>1));
+        $CalibriNormalBorderRedFontLeft = $fm;
         
       
 		$i=1;
@@ -185,30 +185,30 @@ class excelABVenderSalesReport
 			 	 	
 					if($salesData["licensee_no"] !=$lastStoreNo ) // total  sales per store
 					{
-					 	$this->_writeBorderToRow($sp,$row,$arialNormalBorderRedFontRight);
+					 	$this->_writeBorderToRow($sp,$row,$CalibriNormalBorderRedFontRight);
 						
 						//Total
-						$this->_writeCell($sp, array("data"=>"Total"), $row, "C" , $arialNormalBorderRedFontLeft);
+						$this->_writeCell($sp, array("data"=>"Total"), $row, "C" , $CalibriNormalBorderRedFontLeft);
 		                
 		                //total_bottles 
 		                $endRow = $row;
 						$this->_writeCell($sp, array("data"=>"=SUM(D$startRow:D$endRow)"), $row, "D"
-		                , $arialNormalBorderRedFontRight);
+		                , $CalibriNormalBorderRedFontRight);
 		                
 						//Empty cell
 		                $this->_writeCell($sp, array("data"=>""), $row, "E"
-		                , $arialNormalBorderNumRight);
+		                , $CalibriNormalBorderNumRight);
 		                
 		                //total_cases 
 		                $this->_writeCell($sp, array("data"=>"=SUM(F$startRow:F$endRow)"), $row, "F"
-		                , $arialNormalBorderRedFontRight);
+		                , $CalibriNormalBorderRedFontRight);
 		                
 		                $store_total_btls =0;
 						$store_total_cases =0;
 						
 						$row =$row+1;
 						
-			        	$this->_writeBorderToRow($sp,$row,$arialNormalBorderRedFontRight);
+			        	$this->_writeBorderToRow($sp,$row,$CalibriNormalBorderRedFontRight);
 
 						$row =$row+1;
 						$startRow = $row;
@@ -242,22 +242,22 @@ class excelABVenderSalesReport
 	    		$lastStoreNo = $salesData["licensee_no"];
 				 	
 				$values = array(
-								array("data"=>$salesData["SKUA"],"format"=>$arialNormalBorderLeft ), 
+								array("data"=>$salesData["SKUA"],"format"=>$CalibriNormalBorderLeft ), 
 								array("data"=>$salesData["product_name"]), 
-								array("data"=>$salesData["size"], "format"=>$arialNormalBorderNumRight), 
-								array("data"=>$salesData["unit_sales"], "format"=>$arialNormalBorderNumRight), 
-								array("data"=>$salesData["btl_per_cs"], "format"=>$arialNormalBorderNumRight), 
-								array("data"=>$salesData["total_cs"], "format"=>$arialNormalBorderNumRight), 
-								array("data"=>$salesData["licensee_no"],"format"=>$arialNormalBorderLeft ), 
+								array("data"=>$salesData["size"], "format"=>$CalibriNormalBorderNumRight), 
+								array("data"=>$salesData["unit_sales"], "format"=>$CalibriNormalBorderNumRight), 
+								array("data"=>$salesData["btl_per_cs"], "format"=>$CalibriNormalBorderNumRight), 
+								array("data"=>$salesData["total_cs"], "format"=>$CalibriNormalBorderNumRight), 
+								array("data"=>$salesData["licensee_no"],"format"=>$CalibriNormalBorderLeft ), 
 								array("data"=>$salesData["store_name"]),
-								array("data"=>$this->currencyNumber($salesData["price_case"]), "format"=>$arialNormalBorderNumRight), 
-								array("data"=>$this->currencyNumber($salesData["price_unit"]), "format"=>$arialNormalBorderNumRight)); 
+								array("data"=>$this->currencyNumber($salesData["price_case"]), "format"=>$CalibriNormalBorderNumRight), 
+								array("data"=>$this->currencyNumber($salesData["price_unit"]), "format"=>$CalibriNormalBorderNumRight)); 
 				
 				
 			
 	         
 	             
-	            $this->_writeRow($sp, $values, $row, $arialNormalBorder); 
+	            $this->_writeRow($sp, $values, $row, $CalibriNormalBorder); 
 	            $i++;
 	            $row++;
 	      //  }//if unit sales >0
@@ -268,13 +268,13 @@ class excelABVenderSalesReport
 		//Bottles
 		
 		
-		$this->_writeCell($sp, array("data"=>"Bottles"), $row, "D" , $arialNormalBorderRedFontLeft);
+		$this->_writeCell($sp, array("data"=>"Bottles"), $row, "D" , $CalibriNormalBorderRedFontLeft);
 		
-		$this->_writeCell($sp, array("data"=>$total_btls), $row, "E" , $arialNormalBorderRedFontRight);
+		$this->_writeCell($sp, array("data"=>$total_btls), $row, "E" , $CalibriNormalBorderRedFontRight);
 		
-		$this->_writeCell($sp, array("data"=>""), $row, "F" , $arialNormalBorderRedFontRight);
+		$this->_writeCell($sp, array("data"=>""), $row, "F" , $CalibriNormalBorderRedFontRight);
 		
-		$this->_writeCell($sp, array("data"=>""), $row, "G" , $arialNormalBorderRedFontRight);
+		$this->_writeCell($sp, array("data"=>""), $row, "G" , $CalibriNormalBorderRedFontRight);
         
         $row++;
         $rowBots=$row;
@@ -283,12 +283,12 @@ class excelABVenderSalesReport
        // add border first
        
         
-		$this->_writeCell($sp, array("data"=>"Cases"), $row, "D", $arialNormalBorderRedFontLeft);
-		$this->_writeCell($sp, array("data"=>""), $row, "E" , $arialNormalBorderRedFontRight);
+		$this->_writeCell($sp, array("data"=>"Cases"), $row, "D", $CalibriNormalBorderRedFontLeft);
+		$this->_writeCell($sp, array("data"=>""), $row, "E" , $CalibriNormalBorderRedFontRight);
 		
-		$this->_writeCell($sp, array("data"=>""), $row, "F" , $arialNormalBorderRedFontRight);
+		$this->_writeCell($sp, array("data"=>""), $row, "F" , $CalibriNormalBorderRedFontRight);
 		
-		$this->_writeCell($sp, array("data"=>$total_cases), $row, "G" , $arialNormalBorderRedFontRight);
+		$this->_writeCell($sp, array("data"=>$total_cases), $row, "G" , $CalibriNormalBorderRedFontRight);
 	
         $row++;
 		$rowCS=$row;
@@ -296,36 +296,36 @@ class excelABVenderSalesReport
  		//Samples
  		
  		
-		$this->_writeCell($sp, array("data"=>"Sample"), $row, "D", $arialNormalBorderRedFontLeft);
-		$this->_writeCell($sp, array("data"=>$total_CSWS_btls==0?0:"-".$total_CSWS_btls), $row, "E" , $arialNormalBorderRedFontRight);
+		$this->_writeCell($sp, array("data"=>"Sample"), $row, "D", $CalibriNormalBorderRedFontLeft);
+		$this->_writeCell($sp, array("data"=>$total_CSWS_btls==0?0:"-".$total_CSWS_btls), $row, "E" , $CalibriNormalBorderRedFontRight);
 		
-		$this->_writeCell($sp, array("data"=>""), $row, "F" , $arialNormalBorderRedFontRight);
+		$this->_writeCell($sp, array("data"=>""), $row, "F" , $CalibriNormalBorderRedFontRight);
 		
-		$this->_writeCell($sp, array("data"=>$total_CSWS_cs==0?0:"-".$total_CSWS_cs), $row, "G" , $arialNormalBorderRedFontRight);
+		$this->_writeCell($sp, array("data"=>$total_CSWS_cs==0?0:"-".$total_CSWS_cs), $row, "G" , $CalibriNormalBorderRedFontRight);
 		
 		
 		$row++;
 		$rowCSWS=$row;
 					
 		//SASK
-		$this->_writeCell($sp, array("data"=>"SASK"), $row, "D", $arialNormalBorderRedFontLeft);
-		$this->_writeCell($sp, array("data"=>$total_SASK_btls==0?0:"-".$total_SASK_btls), $row, "E" , $arialNormalBorderRedFontRight);
+		$this->_writeCell($sp, array("data"=>"SASK"), $row, "D", $CalibriNormalBorderRedFontLeft);
+		$this->_writeCell($sp, array("data"=>$total_SASK_btls==0?0:"-".$total_SASK_btls), $row, "E" , $CalibriNormalBorderRedFontRight);
 		
-		$this->_writeCell($sp, array("data"=>""), $row, "F" , $arialNormalBorderRedFontRight);
+		$this->_writeCell($sp, array("data"=>""), $row, "F" , $CalibriNormalBorderRedFontRight);
 		
-		$this->_writeCell($sp, array("data"=>$total_SASK_btls==0?0:"-".$total_SASK_btls), $row, "G" , $arialNormalBorderRedFontRight);
+		$this->_writeCell($sp, array("data"=>$total_SASK_btls==0?0:"-".$total_SASK_btls), $row, "G" , $CalibriNormalBorderRedFontRight);
 		
 		
 		$row++;
 		$rowSASK=$row;
 		
 		//NWT
-		$this->_writeCell($sp, array("data"=>"NWT"), $row, "D", $arialNormalBorderRedFontLeft);
-		$this->_writeCell($sp, array("data"=>$total_NWT_btls==0?0:"-".$total_NWT_btls), $row, "E" , $arialNormalBorderRedFontRight);
+		$this->_writeCell($sp, array("data"=>"NWT"), $row, "D", $CalibriNormalBorderRedFontLeft);
+		$this->_writeCell($sp, array("data"=>$total_NWT_btls==0?0:"-".$total_NWT_btls), $row, "E" , $CalibriNormalBorderRedFontRight);
 		
-		$this->_writeCell($sp, array("data"=>""), $row, "F" , $arialNormalBorderRedFontRight);
+		$this->_writeCell($sp, array("data"=>""), $row, "F" , $CalibriNormalBorderRedFontRight);
 		
-		$this->_writeCell($sp, array("data"=>$total_NWT_cs==0?0:"-".$total_NWT_cs), $row, "G" , $arialNormalBorderRedFontRight);
+		$this->_writeCell($sp, array("data"=>$total_NWT_cs==0?0:"-".$total_NWT_cs), $row, "G" , $CalibriNormalBorderRedFontRight);
 		
 		
 		$row++;
@@ -335,13 +335,13 @@ class excelABVenderSalesReport
 		//Total
 		
 		$Total = 
-		$this->_writeCell($sp, array("data"=>"Total"), $row, "D", $arialNormalBorderRedFontLeft);
-		$this->_writeCell($sp, array("data"=>"=(E$rowBots+E$rowCSWS+E$rowSASK+E$rowNWT)"), $row, "E" , $arialNormalBorderRedFontRight);
+		$this->_writeCell($sp, array("data"=>"Total"), $row, "D", $CalibriNormalBorderRedFontLeft);
+		$this->_writeCell($sp, array("data"=>"=(E$rowBots+E$rowCSWS+E$rowSASK+E$rowNWT)"), $row, "E" , $CalibriNormalBorderRedFontRight);
 		
-		$this->_writeCell($sp, array("data"=>""), $row, "F" , $arialNormalBorderRedFontRight);
+		$this->_writeCell($sp, array("data"=>""), $row, "F" , $CalibriNormalBorderRedFontRight);
 		
 		$rowTotalCS =$rowBots+1;
-		$this->_writeCell($sp, array("data"=>"=(G$rowTotalCS+G$rowCSWS+G$rowSASK+G$rowNWT)"), $row, "G" , $arialNormalBorderRedYellowBKFontRight);
+		$this->_writeCell($sp, array("data"=>"=(G$rowTotalCS+G$rowCSWS+G$rowSASK+G$rowNWT)"), $row, "G" , $CalibriNormalBorderRedYellowBKFontRight);
 
 		$row++;
 	                
@@ -351,12 +351,12 @@ class excelABVenderSalesReport
     
     function _writeTitle(& $workbook, & $sp, & $row, $titleText)
     {
-        $fm = & $workbook->addFormat(array('fontfamily'=>'Arial', 'size'=>10, 'bold'=>1, 
+        $fm = & $workbook->addFormat(array('fontfamily'=>'Calibri', 'size'=>10, 'bold'=>1, 
                 'fgcolor'=>'white', 'bgcolor'=>'black', 'align'=>'left', 'valign'=>'center'));
         $reportTitle = $fm;
 
-        $fm = & $workbook->addFormat(array('fontfamily'=>'Arial', 'size'=>10, 'bold'=>1, 'underline'=>1));
-        $arialBoldUnderlined  = $fm;
+        $fm = & $workbook->addFormat(array('fontfamily'=>'Calibri', 'size'=>10, 'bold'=>1, 'underline'=>1));
+        $CalibriBoldUnderlined  = $fm;
         
         $fm = & $workbook->addFormat(array('right'=>2));
         $thickRight = $fm;
@@ -374,7 +374,7 @@ class excelABVenderSalesReport
     
     function _writeColumnHeaders(& $workbook, & $sp, & $row)
     {
-        $fm = & $workbook->addFormat(array('fontfamily'=>'Arial', 'size'=>10, 'fgcolor'=>'yellow', 
+        $fm = & $workbook->addFormat(array('fontfamily'=>'Calibri', 'size'=>10, 'fgcolor'=>'yellow', 
                 'bgcolor'=>'black', 'border'=>1, 'align'=>'center', 'valign'=>'bottom','bold'=>1,
                 'top'=>2, 'bottom'=>2));
         //$fm->setTextWrap();
@@ -382,12 +382,12 @@ class excelABVenderSalesReport
         
       
         
-        $fm = & $workbook->addFormat(array('fontfamily'=>'Arial', 'size'=>10, 'fgcolor'=>'yellow', 
+        $fm = & $workbook->addFormat(array('fontfamily'=>'Calibri', 'size'=>10, 'fgcolor'=>'yellow', 
                 'bgcolor'=>'black', 'border'=>1, 'align'=>'left', 'valign'=>'bottom','bold'=>1,
                 'top'=>2, 'bottom'=>2));       
         $columnHeaderLeft = $fm;
         
-        $fm = & $workbook->addFormat(array('fontfamily'=>'Arial', 'size'=>10, 'fgcolor'=>'yellow', 
+        $fm = & $workbook->addFormat(array('fontfamily'=>'Calibri', 'size'=>10, 'fgcolor'=>'yellow', 
                 'bgcolor'=>'black', 'border'=>1, 'align'=>'right', 'valign'=>'bottom','bold'=>1,
                 'top'=>2, 'bottom'=>2));       
         $columnHeaderRight = $fm;

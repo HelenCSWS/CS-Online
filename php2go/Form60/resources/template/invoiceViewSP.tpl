@@ -114,7 +114,7 @@
 					</td></tr>    
 
 	</table>
-				</td></tr>  <!-Delivery status end here-->	
+				</td></tr>  <!-- Delivery status end here -->	
 				 </table>
 	</td></tr>    
 	

@@ -6,7 +6,7 @@
 
   {customer_id}{is_primary}{contact_id}{lkup_phone_type_id}{customers_contacts_id_1}{customers_contacts_id_2}{pageid}{isload}{test}
 
-{pst_no_org}{assign_user_id}{billing_address_state} {hk_rank_1}{hk_rank_2}{hk_rank_3}{hk_rank_4}{hk_rank_5}{hk_rank_dirty}
+{pst_no_org}{assign_user_id}{billing_address_state} {hk_rank_1}{hk_rank_2}{hk_rank_3}{hk_rank_4}{hk_rank_5}{hk_rank_dirty}{hk_rank_types}
 
 <!--Main table-->
 <table border="0" width="100%">
@@ -142,7 +142,20 @@
                         <tr>
                             <td width="33%" style="padding-left:3px" id="tddelivery">{label_best_time_to_deliver}<BR>{best_time_to_deliver}</td>
                             <td width="33%" style="padding-left:3px; display:none" id="tdrank">{label_rank}<BR>{rank}</td>
-							<td width="33%" style="padding-left:3px; display:none" id="tdsubtype">{label_sub_type}<BR>{sub_type}</td>
+							<td width="33%" style="padding-left:3px; display:none" id="tdsubtype">
+                            
+                            <!-- {label_sub_type}<BR>{sub_type} -->
+                            
+                            
+                            <table cellpadding="0" cellspacing="0" ><tr>
+                            <td style="display:block" id="showSubType"><LABEL FOR="sub_type" ID="label_sub_type" CLASS="label"><span style="cursor:pointer" onclick="selectHKSubType()"><U>Sub Type</U></span></LABEL></td>
+                            
+                            </tr>
+                            
+                            <tr><td style="padding-top:1px" id="sub_type" name="sub_type">{sub_type}</td></tr>
+                            </table>
+
+                            </td>
                             <td width="*" align="middle">
                                 <table>
                                     <tr>

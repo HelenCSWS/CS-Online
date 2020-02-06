@@ -130,6 +130,7 @@ class Report extends PagedDataSet
 	// @param		&Document Document object	Objeto Document onde o relatório será inserido
 	//!-----------------------------------------------------------------
 	function Report($xmlFile, $templateFile, &$Document) {
+
 		parent::PagedDataSet('db');
 		if (!TypeUtils::isObject($Document) || !TypeUtils::isInstanceOf($Document, 'document')) {
 			PHP2Go::raiseError(PHP2Go::getLangVal('ERR_INVALID_OBJECT', 'Document'), E_USER_ERROR, __FILE__, __LINE__);
@@ -919,6 +920,7 @@ class Report extends PagedDataSet
 			$this->_buildSearchForm();			
 			// executa as funções de geração de dados sobre a página e links para outras páginas
 			$functionMessages = PHP2Go::getLangVal('REPORT_FUNCTION_MESSAGES');
+
 			$this->Template->assign("_ROOT.page_links", $this->_pageLinks($functionMessages));
 			$this->Template->assign("_ROOT.row_count", $this->_rowCount($functionMessages));
 			$this->Template->assign("_ROOT.rows_per_page", $this->_rowsPerPage($functionMessages));
@@ -1360,7 +1362,7 @@ class Report extends PagedDataSet
 			if (isset($this->_navigation['nextPage'])) {
 				if (isset($this->_navigation['previousPage'])) $retorno .= ($symbols || $buttons ? HtmlUtils::noBreakSpace(2) : $limiter);			
 				if ($buttons)
-					$retorno .= sprintf("<BUTTON ID=\"report_next_page\" NAME=\"next\" TYPE=\"button\" CLASS=\"%s\" onClick=\"location.href='%s'\">%s</BUTTON>", $this->styleSheet['button'], $this->_generatePageLink($this->_navigation['nextPage']), ($symbols ? '>' : $fMessages['nextTit']));
+					$retorno .= sprintf("<BUTTON ID=\"report_next_page\" NAME=\"next\" TYPE=\"button\" CLASS=\"%s\" onClick=\"location.href='%s'\">%s ></BUTTON>", $this->styleSheet['button'], $this->_generatePageLink($this->_navigation['nextPage']), ($symbols ? '>' : $fMessages['nextTit']));
 				else
 					$retorno .= HtmlUtils::anchor($this->_generatePageLink($this->_navigation['nextPage']), ($symbols ? '>' : $fMessages['nextTit']), $fMessages['nextTip'], $this->styleSheet['link']);
 			}
@@ -1369,28 +1371,28 @@ class Report extends PagedDataSet
 			$buttons = TypeUtils::toBoolean($params['useButtons']);
 			if (isset($this->_navigation['firstPage'])) {
 				if ($buttons)
-					$retorno .= sprintf("<BUTTON ID=\"report_first_page\" NAME=\"first\" TYPE=\"button\" CLASS=\"%s\" onClick=\"location.href='%s'\">%s</BUTTON>", $this->styleSheet['button'], $this->_generatePageLink($this->_navigation['firstPage']), ($symbols ? '<<' : $fMessages['firstTit']));
+					$retorno .= sprintf("<BUTTON ID=\"report_first_page\" NAME=\"first\" TYPE=\"button\" CLASS=\"%s\" onClick=\"location.href='%s'\">%s page</BUTTON>", $this->styleSheet['button'], $this->_generatePageLink($this->_navigation['firstPage']), ($symbols ? '<<' : $fMessages['firstTit']));
 				else
 					$retorno .= HtmlUtils::anchor($this->_generatePageLink($this->_navigation['firstPage']), ($symbols ? '<<' : $fMessages['firstTit']), $fMessages['firstTip'], $this->styleSheet['link']);
 			}
 			if (isset($this->_navigation['previousPage'])) {
 				if (isset($this->_navigation['firstPage'])) $retorno .= ($symbols || $buttons ? HtmlUtils::noBreakSpace(2) : $limiter);							
 				if ($buttons)
-					$retorno .= sprintf("<BUTTON ID=\"report_prev_page\" NAME=\"prev\" TYPE=\"button\" CLASS=\"%s\" onClick=\"location.href='%s'\">%s</BUTTON>", $this->styleSheet['button'], $this->_generatePageLink($this->_navigation['previousPage']), ($symbols ? '<' : $fMessages['prevTit']));
+					$retorno .= sprintf("<BUTTON ID=\"report_prev_page\" NAME=\"prev\" TYPE=\"button\" CLASS=\"%s\" onClick=\"location.href='%s'\"><&nbsp;&nbsp;%s</BUTTON>", $this->styleSheet['button'], $this->_generatePageLink($this->_navigation['previousPage']), ($symbols ? '<' : $fMessages['prevTit']));
 				else
 					$retorno .= HtmlUtils::anchor($this->_generatePageLink($this->_navigation['previousPage']), ($symbols ? '<' : $fMessages['prevTit']), $fMessages['prevTip'], $this->styleSheet['link']);
 			}
 			if (isset($this->_navigation['nextPage'])) {
 				if (isset($this->_navigation['firstPage']) || isset($this->_navigation['previousPage'])) $retorno .= ($symbols || $buttons ? HtmlUtils::noBreakSpace(2) : $limiter);			
 				if ($buttons)
-					$retorno .= sprintf("<BUTTON ID=\"report_next_page\" NAME=\"next\" TYPE=\"button\" CLASS=\"%s\" onClick=\"location.href='%s'\">%s</BUTTON>", $this->styleSheet['button'], $this->_generatePageLink($this->_navigation['nextPage']), ($symbols ? '>' : $fMessages['nextTit']));
+					$retorno .= sprintf("<BUTTON ID=\"report_next_page\" NAME=\"next\" TYPE=\"button\" CLASS=\"%s\" onClick=\"location.href='%s'\">%s &nbsp;&nbsp;></BUTTON>", $this->styleSheet['button'], $this->_generatePageLink($this->_navigation['nextPage']), ($symbols ? '>' : $fMessages['nextTit']));
 				else
 					$retorno .= HtmlUtils::anchor($this->_generatePageLink($this->_navigation['nextPage']), ($symbols ? '>' : $fMessages['nextTit']), $fMessages['nextTip'], $this->styleSheet['link']);
 			}
 			if (isset($this->_navigation['lastPage'])) {
 				if (isset($this->_navigation['firstPage']) || isset($this->_navigation['previousPage']) || isset($this->_navigation['nextPage'])) $retorno .= ($symbols || $buttons ? HtmlUtils::noBreakSpace(2) : $limiter);			
 				if ($buttons)
-					$retorno .= sprintf("<BUTTON ID=\"report_last_page\" NAME=\"last\" TYPE=\"button\" CLASS=\"%s\" onClick=\"location.href='%s'\">%s</BUTTON>", $this->styleSheet['button'], $this->_generatePageLink($this->_navigation['lastPage']), ($symbols ? '>>' : $fMessages['lastTit']));
+					$retorno .= sprintf("<BUTTON ID=\"report_last_page\" NAME=\"last\" TYPE=\"button\" CLASS=\"%s\" onClick=\"location.href='%s'\">%s &nbsp;page</BUTTON>", $this->styleSheet['button'], $this->_generatePageLink($this->_navigation['lastPage']), ($symbols ? '>>' : $fMessages['lastTit']));
 				else
 					$retorno .= HtmlUtils::anchor($this->_generatePageLink($this->_navigation['lastPage']), ($symbols ? '>>' : $fMessages['lastTit']), $fMessages['lastTip'], $this->styleSheet['link']);
 			}			

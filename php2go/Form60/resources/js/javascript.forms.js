@@ -29,8 +29,8 @@ function submitAction(frm, actionName)
         fldAction = createHiddenField(frm, fld);
     }
 
-    if(frm=="reportsMian") // why the hell it is happened on here csproductadd
-    	fldAction = null;  // block the submit for reportMain page
+    if(frm=="reportsMian"||frm=="HKSubTypes") // why the hell it is happened on here csproductadd, hk_sub_types pop menu
+    	fldAction = null;  // block the submit for button click
     
     if (fldAction != null)
     {

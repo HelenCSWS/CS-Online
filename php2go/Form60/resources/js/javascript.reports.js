@@ -517,9 +517,8 @@ function createABSalesReports(isCancel)
 		}
 		else if (parseInt(keyValue)==3)// BC Estates sales in Alberta
 		{	 			 	 
-         
-             sale_year =  getCtlValue("bc_sale_year");
-  	          sale_month =  getCtlValue("bc_sale_month");  
+            sale_year =  getCtlValue("bc_sale_year");
+            sale_month =  getCtlValue("bc_sale_month");  
 			slink = "main.php?report_page_name=excelBCInABVenderReport&sale_month=" + sale_month + "&sale_year=" + sale_year+"&estate_id="+estate_id;	
 		}
 		else if (parseInt(keyValue)==4)// Alberta store penetration
@@ -536,21 +535,17 @@ function createABSalesReports(isCancel)
 			slink = "main.php?report_page_name=excelCaseValueReport&login_user_id="+login_user_id;		
 		}	
 		else if (parseInt(keyValue)==16) //BI monthly sales analysis
-			{
-			 
-				var user_id =-1;
-				var month = document.getElementById("bi_sale_month").value;	
-				var year = document.getElementById("bi_sale_year").value;	
-		
-			if(	document.getElementById("login_user_level").value>1)
-				user_id =document.getElementById("login_user_id").value;
-			else
-				user_id =document.getElementById("bi_user_id").value;
-			
-				slink = "main.php?report_page_name=BI_excelMonthlySalesAnalysisReport&user_id="+user_id+"&report_month="+month+"&report_year="+year;;
-		
-			}          
-
+		{			 
+			var user_id =-1;
+			var month = document.getElementById("bi_sale_month").value;	
+			var year = document.getElementById("bi_sale_year").value;	
+	
+    		if(	document.getElementById("login_user_level").value>1)
+    			user_id =document.getElementById("login_user_id").value;
+    		else
+    			user_id =document.getElementById("bi_user_id").value;			
+    			slink = "main.php?report_page_name=BI_excelMonthlySalesAnalysisReport&user_id="+user_id+"&report_month="+month+"&report_year="+year;;		
+		}          
 
 		document.location = slink;
 		stopEvt();
@@ -570,8 +565,7 @@ function createABSalesReports(isCancel)
 	 	if(reportTypeId == 3)
 	 	{
 			estate_id = document.getElementById("estate_id").value;
-		}
-		
+		}		
 		xajax_getABVenderSalesYears(reportTypeId, estate_id);
 	}
 
@@ -1065,18 +1059,18 @@ function back2Report(reportID)
 
 
 function updateInvocieStatus(order_id)
-	{	
-	    var ht = 500;
-	    var wd = 750;
+{	
+    var ht = 500;
+    var wd = 750;
+
+	var link="main.php?page_name=invoiceViewSP&id="+order_id+"&isInner=1";
 	
-		var link="main.php?page_name=invoiceViewSP&id="+order_id+"&isInner=1";
-		
-		var left=(screen.availWidth-wd)/2;
-		
-		var top=(screen.availHeight-ht)/2;		
+	var left=(screen.availWidth-wd)/2;
 	
-	    var printWindow = window.open(link, "Form60", "menubar=yes,scrollbars=yes, resizable=no, left="+left+",top="+top+",height=" + ht + ",width=" + wd);
-	}
+	var top=(screen.availHeight-ht)/2;		
+
+    var printWindow = window.open(link, "Form60", "menubar=yes,scrollbars=yes, resizable=no, left="+left+",top="+top+",height=" + ht + ",width=" + wd);
+}
 
 function refreshPage()
 {	

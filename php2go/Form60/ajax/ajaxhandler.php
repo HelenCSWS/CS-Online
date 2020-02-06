@@ -428,9 +428,9 @@ function supplierUpdateInvoice($order_id, $customer_id, $inovice_number, $paymen
 
         if ($spData->updateInvoiceStatus($order_id, $order_status))
         {
-            $fp = fopen("logs/inoviceupdate.log", "a");
-            fputs($fp, ". STep1  Should be updated.");
-            fclose($fp);
+            /*$fp = fopen("logs/inoviceupdate.log", "a");
+            fputs($fp, ". Step 1  should be updated.");
+            fclose($fp);*/
 
             $objResponse->addScript("reload_parent_page();");
         } else
@@ -441,8 +441,26 @@ function supplierUpdateInvoice($order_id, $customer_id, $inovice_number, $paymen
     return $objResponse->getXML();
 
 }
+
 //end overdue list
 
+
+function updateHKSubTypes($customer_id, $sub_types)
+{
+    $objResponse = new xajaxResponse();
+
+    import('Form60.bll.bllcustomers');
+    
+     $bllCM = &new bllcustomer();
+
+   //  $bllCM->saveHKRanks($customer_id,$sub_types);
+     
+     $objResponse->addScript("reload_parent_page();");
+     return $objResponse->getXML();
+
+    
+    
+}
 function refreshSupplierSalesList($estate_id, $date1, $date2, $order_by, $order_type,
     $dateType, $store_type_id, $user_id, $province_id, $wine_id, $vintage, $currentpage,
     $isSearch = false)
@@ -450,8 +468,7 @@ function refreshSupplierSalesList($estate_id, $date1, $date2, $order_by, $order_
 
     $objResponse = new xajaxResponse();
 
-    $objResponse->addAssign("arrow_" . $order_by, "innerHTML", ($order_type == 'a') ?
-        '5' : '6');
+    $objResponse->addAssign("arrow_" . $order_by, "innerHTML", ($order_type == 'a') ? '5' : '6');
 
     if ($isSearch)
     {
@@ -1235,6 +1252,10 @@ $xajax->registerFunction("getAnaSalesMonths");
 $xajax->registerFunction("getAnaSalesUsers");
 $xajax->registerFunction("BI_checkASAvaData");
 $xajax->registerFunction("BI_generateASAnaData");
+
+
+//HK Sub Types
+$xajax->registerFunction("updateHKSubTypes");
 //process ajax calls
 $xajax->processRequests();
 

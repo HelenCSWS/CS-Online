@@ -294,7 +294,7 @@ class bllABVenderData extends Php2Go
                         ab_sales_bc abs LEFT OUTER JOIN customers c 
                     
                     ON 
-                        abs.Licensee_No = c.licensee_number
+                        abs.Licensee_No = c.licensee_number and c.deleted =0
                     WHERE estate_id =150  
                     AND year(sale_date)= $sale_year 
                     AND month(sale_date)=$sale_month 

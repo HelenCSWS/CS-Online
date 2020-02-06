@@ -69,11 +69,15 @@ class customerAdd extends F60FormBase
             }
 
             $this->addStyle('resources/css/csproducts.css');
+            $this->addStyle('resources/css/multi-select.css');
+            
             $this->addScript('resources/js/javascript.pageAction.js');
             $this->addScript('resources/js/javascript.notes.js');
             $this->addScript('resources/js/javascript.winelist.js');
             $this->addScript('resources/js/javascript.orderlist.js');
             $this->addScript('resources/js/javascript.csproduct.js');
+            $this->addScript('resources/js/javascript.customer.js');
+            $this->addScript('resources/js/jquery.multi-select.js');
 
             $form = &$this->getForm();
             $form->setFormAction($_SERVER["REQUEST_URI"]);
@@ -293,7 +297,7 @@ class customerAdd extends F60FormBase
                     }       
                 if ($this->province_id == 13)
                 {    
-                   // $this->getHKRanks();
+                    $this->getHKRanks();
                 }       
             } 
             else
@@ -540,15 +544,20 @@ class customerAdd extends F60FormBase
     function getHKRanks()
     {
         $bllCM = &new bllcustomer();
-        $ranks = $bllCM->getHKRanks($this->customer_id);
+        $types = $bllCM->getHKRanks($this->customer_id);
+        $cmTypes ="";
         
-        foreach($ranks as $rank)
+        if(count($types)!=0)
         {
-            $type_id =$rank["hk_rank_type_id"];
-            $rankValCtl ="hk_rank_$type_id";
-            $this->setValue2Ctl($rankValCtl, 1);
-        }
+            foreach($types as $type)
+            {
+                $type_id =$type["hk_rank_type_id"];
+                $cmTypes =$type_id."|".$cmTypes;
+            }        
         
+            $rankValCtl ="hk_rank_types";
+            $this->setValue2Ctl($rankValCtl, $cmTypes);
+        }
     }
     function processForm()
     {

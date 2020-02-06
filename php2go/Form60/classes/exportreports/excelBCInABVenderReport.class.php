@@ -70,19 +70,20 @@ class excelBCInABVenderReport
      
 		$sale_year = $report_year;
 		
-		$sale_month_invent = intval($report_month)+1; // for current month
+	//	$sale_month_invent = intval($report_month)+1; // for current month as sales data are always from last month
 		$sale_year_invent =$sale_year;
 		
-		if($sale_month_invent==13)
+		if($sale_year_invent==13)
 		{
 			$sale_month_invent = 1;
 			$sale_year_invent = intval($sale_year)+1;
 		}
-				
+		
+        $sale_month_invent = date('F');
 		$sale_month_invent =F60Date::getMonthTxt($sale_month_invent);
 
-        $this->fileName = "SpearHead Alberta Sales Commission and Inventory Report - ".$sale_month." ".$sale_year;
-        $this->titleText = "SpearHead Alberta Licensee Sales - ".$sale_month." ".$sale_year;
+        $this->fileName = "SpearHead Winery Alberta Sales Commission and Inventory Report - ".$sale_month." ".$sale_year;
+        $this->titleText = "SpearHead Winery Alberta Licensee Sales - ".$sale_month." ".$sale_year;
     
 	    $this->reportData = $this->VenderData->getVenderSalesFromDB($report_month, $report_year,$this->estate_id);     
        		
@@ -120,7 +121,7 @@ class excelBCInABVenderReport
         $row++;
         $row++;  //blank row
         
-        $this->titleText = "SpearHead Current Inventory as of ".$sale_month_invent." ".Date(d). " ".$sale_year_invent;
+        $this->titleText = "SpearHead Winery Current Inventory as of ".$sale_month_invent." ".Date(d). " ".$sale_year_invent;
         $this->_writeTitle($workbook, $sp, $row,$this->titleText); 
         	
        	$this->_writeColumnHeaders($workbook, $sp, $row,$this->estate_id,2); //inventory header

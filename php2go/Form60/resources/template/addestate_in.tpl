@@ -1,6 +1,6 @@
 	<!-- Form60 : template used in estateadd.php -->
 
-<table border="0" width="100%"><tr><td align=middle style="padding-top:5px">
+<table border="0" width="100%"><tr><td align="middle" style="padding-top:5px">
 <tr id="in_estate" name="in_estate"><td >
      <fieldset >
      <legend class="legend" ><b> Estate  information&nbsp;</b></legend>
@@ -8,7 +8,7 @@
     {is_addwine}{pageid}{is_international}{isCountry}{is_fob}
     	<table cellpadding="3" cellspacing="0" border="0" width="100%" height="100" >
         <!-- used for error display -->
-        <tr><td colspan="4" align=left >
+        <tr><td colspan="4" align="left" >
             <div id="form_client_errors" class="error_style" style="display:none">{error}</div></td>
         </tr>
     	<tr>
@@ -25,11 +25,10 @@
                          </td>
               	     		</tr>
                	     		<tr>
-
                       			<td   valign="top" style="padding-top:3px">
 
 <table cellpadding="0" cellspacing="0" ><tr>
-<td style="display:block" id="showCCno"><LABEL FOR="cc_number" ID="lbl_cc_number" CLASS="label"><span style="cursor:hand" onclick="addCountry()"><U>Country</U></span><SPAN STYLE="color:#FF0000">*</SPAN></LABEL></td>
+<td style="display:block" id="showCCno"><LABEL FOR="cc_number" ID="lbl_cc_number" CLASS="label"><span style="cursor:pointer" onclick="addCountry()"><U>Country</U></span><SPAN STYLE="color:#FF0000">*</SPAN></LABEL></td>
 
 </tr>
 

@@ -447,36 +447,26 @@ class bllcustomer extends dalcustomers
    }
    
    //HK ranks
-   function saveHKRanks($customer_id, $ranks)
+   function saveHKRanks($customer_id, $subTypeIDs)
    {
         //clear previous ranls
-    	$SQL="delete from hk_customers_ranks where customer_id =$customer_id";
-		$bRet = $this->db->execute($SQL);
+    $SQL="delete from hk_customers_ranks where customer_id =$customer_id";
+	$bRet = $this->db->execute($SQL);
       
-	   for($i=0;$i<5; $i++)
-	   {
-	       
-	     $year =2019;  
-         
-       
-	     if($ranks[$i]==1)
-         {
-           
-            if($i==2)// tatler 2018
+      if($subTypeIDs!=0)
+      {
+        foreach ($subTypeID as $subTypeIDs) 
+        {
+            $year=2019;
+            if($subTypeID==3) //tatler 2018
             {
                 $year=2018;
             }
-             $rankType=$i+1;
-            
-           
             $SQL="insert hk_customers_ranks(customer_id, hk_rank_type_id, rank_year)                       
-                                value ($customer_id,$rankType,$year)";
-                                
+                                    value($customer_id,$subTypeID,$year)";
             $bRet = $this->db->execute($SQL);
-                                
-         }   
-          
-	   }
+        }
+      }
   }
   
     function getHKRanks($customer_id)
@@ -485,8 +475,7 @@ class bllcustomer extends dalcustomers
         
         $rows = $this->db->getAll($SQL);
         
-		return $rows;	       
-        
+		return $rows;	 
     }
 
 }

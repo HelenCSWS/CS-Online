@@ -714,7 +714,8 @@ function refreshSpSalesList(isGoButton)
 	 	}
 	 	else
 	 	{
-			xajax_supplierUpdateInvoice(order_id,customer_id,inovice_number, payment_type,user_id,estate_id);			
+			xajax_supplierUpdateInvoice(order_id,customer_id,inovice_number, payment_type,user_id,estate_id);
+            xajax_supplierUpdateInvoice			
 		}	 	
 	}
 
@@ -788,8 +789,7 @@ function refreshSpSalesList(isGoButton)
 	}
 
 	function initInvoiceView(isHidePayment)
-	{
-	 
+	{	 
 		if(isHidePayment==1)
 		{
 			$("tr_payment_method").style.display="none";
@@ -803,73 +803,51 @@ function refreshSpSalesList(isGoButton)
 		}
 	}
 
-function exportDSWReport()
-{ 	
-
-  
-  
-  
-			var estate_id = $('estate').value;
-			var dateType=0;
-			var date1;
-			var date2;
-			var order_by;
-			var order_type;
-		
-			var store_type_id=-1;
-			var wine_id =-1;
-			var user_id =-1;
-			
-			var province_id = $('province_id').value;
-			
-			var currentpage = 1;
-			var isBCEstate=$("isBCEstate").value;
-
-	
-			/*	if(estate_id ==-1)
-				{
-					alert("Please select an estate.");
-					return false;
-				}
-			*/
-		
-			 		if(supplierSales.chkdate[0].checked)
-			 		{			 	 	
-						dateType =0;
-						date1 = format2SqlDate($('from_1').value);  //mm/dd/yyyy should change to yyyy/mm/dd
-						date2 = format2SqlDate($('to_1').value);  //mm/dd/yyyy should change to yyyy/mm/dd
-					}
-					else
-					{
-						date1 = $('sales_year').value;
-		
-						if($("chkQut").checked)  //quarter
-						{
-							dateType = 1;
-							date2 = $('sales_qut').value;
-						}
-						else
-						{
-							dateType = 2;
-							date2 = $('sales_month').value;
-						}
-					}
-				
-			
-	
-				
-				var sURL = "main.php?report_page_name=excelDSWRReport&estate_id=" + estate_id + "&date1=" + date1 + "&date2=" + date2 + "&dateType=" + dateType;
-				
-		
-			    document.location = sURL;
-	       
-	       
-	       
-	
-  
-	stopEvt();
-    return false;
-}
+    function exportDSWReport()
+    { 	
+    	var estate_id = $('estate').value;
+    	var dateType=0;
+    	var date1;
+    	var date2;
+    	var order_by;
+    	var order_type;
+    
+    	var store_type_id=-1;
+    	var wine_id =-1;
+    	var user_id =-1;
+    	
+    	var province_id = $('province_id').value;
+    	
+    	var currentpage = 1;
+    	var isBCEstate=$("isBCEstate").value;
+    		
+    	if(supplierSales.chkdate[0].checked)
+    	{			 	 	
+    		dateType =0;
+    		date1 = format2SqlDate($('from_1').value);  //mm/dd/yyyy should change to yyyy/mm/dd
+    		date2 = format2SqlDate($('to_1').value);  //mm/dd/yyyy should change to yyyy/mm/dd
+    	}
+    	else
+    	{
+    		date1 = $('sales_year').value;
+    
+    		if($("chkQut").checked)  //quarter
+    		{
+    			dateType = 1;
+    			date2 = $('sales_qut').value;
+    		}
+    		else
+    		{
+    			dateType = 2;
+    			date2 = $('sales_month').value;
+    		}
+    	}
+    	var sURL = "main.php?report_page_name=excelDSWRReport&estate_id=" + estate_id + "&date1=" + date1 + "&date2=" + date2 + "&dateType=" + dateType;
+    	document.location = sURL;
+       
+    	stopEvt();
+        return false;
+    }
 
 
 

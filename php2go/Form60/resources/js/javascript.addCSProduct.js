@@ -101,6 +101,6 @@ function addProductInventory()
 
 function setAddAnother()
 {
-    alert("set");
+
     $("#isAddNew").val(1);
 }

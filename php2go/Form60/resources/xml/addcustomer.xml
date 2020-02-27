@@ -273,10 +273,10 @@
       
       <combofield name="sales_year" label="Year" width="68" tabindex="13" nofirst="T" default ="2020">
 		
-			<option value="2014" caption="2014" />
+			<!-- option value="2014" caption="2014" />
 			<option value="2015" caption="2015" />
-			<option value="2016" caption="2016" />
-			<option value="2017" caption="2017" />
+			<option value="2016" caption="2016" / >
+			<option value="2017" caption="2017" / -->
             <option value="2018" caption="2018" />
             <option value="2019" caption="2019" />
 			 <option value="2020" caption="2020" />
